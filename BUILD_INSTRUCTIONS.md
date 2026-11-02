@@ -16,7 +16,8 @@ mention Supabase, use the Railway Postgres equivalent described here.
 | Database | Railway Postgres 18 service `Postgres` (`179b97ec-1e07-4cbd-b647-ad287b0cc6dd`), `asia-southeast1-eqsg3a`, volume `postgres-volume-nvFd`. The web service reads it through `DATABASE_URL=${{Postgres.DATABASE_URL}}` (private network) |
 | Variables set | `SESSION_SECRET`, `STAFF_DOMAIN`, `TZ`, `NODE_ENV`, `APP_ENV`, `PUBLIC_URL`, `DATABASE_URL` (reference to Postgres) |
 | Not yet set | `GMAIL_SENDER`, `GOOGLE_SA_JSON`, `GOOGLE_CLIENT_ID` (ask the owner before copying them from sales-pro) |
-| App code | A **placeholder** `server.mjs` with `/health`. Replace it with version 1 below |
+| App code | **Version 1 built (2 Nov 2026):** logins with invite links/QR, desktop admin (dashboard, people, classes, content, needs answers), live TV classes (presenter on desktop or phone, TV view, phones, live quiz and role-play, attendance and crediting), learner phone app. See `RUNBOOK.md`. Next: written lessons, remaining quizzes, sign-offs, the 8-week program, certificates, email invites |
+| Setup | `ADMIN_SETUP_CODE` is set on Railway. The owner completes `/setup` once, entering their own email there |
 
 ## The goal: version 1, in this order
 1. **On Railway**, built and deployed the same way as Proximity's other apps.

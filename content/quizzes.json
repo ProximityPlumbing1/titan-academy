@@ -1,0 +1,112 @@
+{
+  "_status": "DRAFT for owner review (Nov 2026). Written only from data/trade-paths.json key points and the Oct 2026 sales sessions. Modules not listed here have no quiz yet: their classes still run (slides come from key points).",
+  "modules": {
+    "f1": {
+      "questions": [
+        { "q": "A customer says a competitor quoted cheaper. What does Proximity compete on?", "options": ["Price: we match the cheaper quote", "Speed: whoever arrives first wins", "Trust and quality, with a fixed upfront price", "Loyalty discounts"], "correct": 2, "why": "We never compete on price. Competitors like Mr Emergency compete on price and speed; we compete on trust and quality." },
+        { "q": "On a $1,000 job, roughly how much is profit?", "options": ["About $50", "About $200", "About $100", "About $500"], "correct": 1, "why": "Roughly 50% labour and materials, 30% running the business, 20% profit: about $200 on a $1,000 job." },
+        { "q": "You give a 10% discount on a $1,000 job. What happens to the profit?", "options": ["It drops by about half: $100 of the $200", "Nothing, the customer covers it", "It drops by 10%", "It goes up because we win the job"], "correct": 0, "why": "A $100 discount comes straight out of the roughly $200 profit, so half of it is gone." },
+        { "q": "The customer has a fixed upfront price. Who pays for hours you didn't estimate?", "options": ["The customer, on the next invoice", "Nobody, they don't matter", "The office absorbs it at month end", "We do: they come out of our profit"], "correct": 3, "why": "With a fixed upfront price, unestimated hours and unbilled materials come out of our profit, not the customer's pocket." },
+        { "q": "What is Proximity's reputation built on?", "options": ["Being the cheapest in Sydney", "Our 4.9★ reviews: every visit adds to them or damages them", "Van signage", "Having the most trucks"], "correct": 1, "why": "Our reputation is the 4.9★ review base, and every single visit adds to it or damages it." }
+      ]
+    },
+    "f2": {
+      "questions": [
+        { "q": "Something on site feels unsafe, but you're not sure. What do you do?", "options": ["Keep going carefully", "Finish quickly, then report it", "Stop and ask. Nobody is criticised for stopping a job", "Ask the customer what they think"], "correct": 2, "why": "Anyone can stop a job if it's unsafe, and nobody is ever criticised for it. If you're unsure, stop and ask." },
+        { "q": "Before you work on water or gas, you…", "options": ["Isolate and test, every time, no exceptions", "Isolate only on big jobs", "Test after you finish", "Ask the customer to turn it off"], "correct": 0, "why": "Isolate and test water and gas before starting. No exceptions." },
+        { "q": "You need to cut into a wall and suspect asbestos. What now?", "options": ["Wet it down and cut carefully", "Wear a mask and cut quickly", "Ask the customer whether it's asbestos", "Stop, photograph it, flag it in ServiceTitan and call the Install Manager or the office"], "correct": 3, "why": "Never cut, drill or break suspected asbestos. Stop, photograph, flag it in ServiceTitan, and call the Install Manager (Charlotte, interim) or the office." },
+        { "q": "Compliance paperwork and certificates are…", "options": ["Office admin done at month end", "Part of the job, and lodged on time", "Optional on small jobs", "Only needed for gas work"], "correct": 1, "why": "Compliance paperwork is part of the job, not admin afterwards. Certificates are lodged on time." },
+        { "q": "An apprentice is on your job. Which is right?", "options": ["They can do anything they feel confident with", "They work alone on small jobs", "They only do work their licence covers, with a named supervisor on every job", "They only need supervising on Saturdays"], "correct": 2, "why": "Only do work your licence covers. Supervised workers have a named supervisor on every job." }
+      ]
+    },
+    "f3": {
+      "questions": [
+        { "q": "You did extra work but didn't record it in ServiceTitan. As far as the business is concerned…", "options": ["It didn't happen", "It happened, because the customer saw it", "The office will work it out", "It's fine as long as you remember"], "correct": 0, "why": "If it isn't in ServiceTitan, it didn't happen: notes, photos, videos, time, payment and sign-off." },
+        { "q": "When do you update statuses, forms and timesheets?", "options": ["At the end of the week", "When dispatch asks", "At the end of each day", "As you go: tools out, timer on"], "correct": 3, "why": "Statuses, forms and timesheets are updated as you go, never at the end of the week." },
+        { "q": "What do you check before you knock on the door?", "options": ["Nothing, just knock", "The customer's and the equipment's history in ServiceTitan", "The weather", "Your next job"], "correct": 1, "why": "Always check customer and equipment history before you knock. Past jobs and recommendations matter." },
+        { "q": "Where does every price come from?", "options": ["Your experience", "What the customer can afford", "The pricebook or an approved template", "The last similar invoice"], "correct": 2, "why": "Every price comes from the pricebook or an approved template. No hand-typed prices." },
+        { "q": "Which of these must be recorded in ServiceTitan?", "options": ["Only the invoice", "Notes, photos, videos, time, payment and sign-off", "Only photos", "Only payment"], "correct": 1, "why": "All of it: notes, photos, videos, time, payment and sign-off." }
+      ]
+    },
+    "f4": {
+      "questions": [
+        { "q": "What sets the tone for the whole visit?", "options": ["The invoice", "The review request", "The first 30 seconds: on time (or call ahead), professional, protecting their home", "The quote"], "correct": 2, "why": "The first 30 seconds set the tone. Be on time or call ahead, look professional, and protect their home." },
+        { "q": "A customer complains the last tech was late. What do you say?", "options": ["\"I'm sorry about that. Let's get this sorted for you today.\"", "\"Dispatch messed up again.\"", "\"That tech is always late.\"", "\"Not my problem.\""], "correct": 0, "why": "Customers judge the whole company by you. Never blame dispatch, the office or another tech." },
+        { "q": "A customer demands money off while you're on site. You…", "options": ["Give 10% to keep them happy", "Explain why the price is fair until they agree", "Stay calm and listen, promise no refund or discount, then call the Install Manager or the office and log it", "Pack up and leave"], "correct": 2, "why": "Stay calm, listen, and never promise a refund or discount. Log it so the Customer Service team takes over the complaint." },
+        { "q": "On a tenant job, who approves the work?", "options": ["The tenant", "The property manager. The tenant gives access", "Whoever answers the door", "You decide"], "correct": 1, "why": "Tenant jobs: the property manager approves, and the tenant gives access." },
+        { "q": "On a strata job, what extra thing must you record?", "options": ["Whether it's common property or a lot", "The building's colour", "Only the tenant's phone number", "Nothing extra"], "correct": 0, "why": "Strata: record common property vs lot. It changes who approves and who pays." }
+      ],
+      "sim": {
+        "persona": "😠 The on-site complaint",
+        "scenario": "The job is taking longer than expected and the customer wants money off.",
+        "steps": [
+          { "them": "This was meant to take two hours. It's been four. I want money off.", "options": ["\"Fair enough. I'll knock 20% off.\"", "\"I understand, that's frustrating. Can you tell me what's worrying you most?\"", "\"It's not my fault. Dispatch booked it wrong.\"", "\"Prices are fixed. Nothing I can do.\""], "best": 1, "feedback": "Stay calm and listen first. No discounts, and no blaming anyone." },
+          { "them": "So are you taking something off or not?", "options": ["\"Yes, I'll sort a refund now.\"", "\"No. Take it or leave it.\"", "\"I can't promise a refund or discount, but I'll get this logged now and the team will call you.\"", "\"Maybe, if you leave us a 5-star review.\""], "best": 2, "feedback": "Never promise a refund or discount on site. Hand it to the people who can resolve it." },
+          { "them": "Fine. Who's going to call me?", "options": ["\"I'm calling the Install Manager or the office right now to log it. Our Customer Service team will take it from there.\"", "\"Nobody, it's sorted.\"", "\"Just google our number.\"", "\"Leave a review and they'll see it.\""], "best": 0, "feedback": "Log it and hand it over, so the Customer Service team owns the complaint." }
+        ]
+      }
+    },
+    "f5": {
+      "questions": [
+        { "q": "Which jobs need before-and-after photos and video?", "options": ["Only big installs", "Every job, no exceptions", "Only if the customer asks", "Only warranty jobs"], "correct": 1, "why": "Every job gets before-and-after photos and video. They protect you, prove the work and feed the reports." },
+        { "q": "Which job note is best?", "options": ["\"Fixed leak.\"", "\"All good.\"", "\"Photo 3: corroded flexi hose under the kitchen sink. Recommend replacing all flexis.\"", "\"See photos.\""], "correct": 2, "why": "Number your photos and refer to them in your notes, with what you found and what you recommend." },
+        { "q": "Which wording belongs in customer-facing notes?", "options": ["\"Showing signs of age and worth a licensed assessment\"", "\"Illegal pipework\"", "\"Non-compliant and dangerous\"", "\"Done by a cowboy\""], "correct": 0, "why": "Record observations, not legal opinions. Never write 'illegal' or 'non-compliant' in customer-facing notes." },
+        { "q": "You find something the customer must deal with today. You…", "options": ["Mention it at the next visit", "Put it at the bottom of the invoice", "Flag it as urgent so the office calls the same day", "Leave it, it's not your job"], "correct": 2, "why": "Flag anything urgent so the office calls the same day." },
+        { "q": "Why do photos and video matter?", "options": ["They're mainly for social media", "They protect you, prove the work and feed the reports", "They're only for insurance jobs", "They don't, they slow you down"], "correct": 1, "why": "They protect you, prove the work and become the reports that win the next job." }
+      ]
+    },
+    "f6": {
+      "questions": [
+        { "q": "When are payment and customer sign-off collected?", "options": ["Before you leave, in ServiceTitan. No exceptions without office approval", "Next week by email", "Whenever the customer prefers", "At the end of the month"], "correct": 0, "why": "Payment and sign-off are collected in ServiceTitan before you leave." },
+        { "q": "On installs, who owns payment collection?", "options": ["The Sales Tech", "Nobody in particular", "The Install Manager (Charlotte, interim). The installer collects the balance on site", "The customer decides"], "correct": 2, "why": "The Install Manager owns payment collection and the customer's happiness. The installer collects the balance on site, and anything overdue goes to Chloe." },
+        { "q": "How is planned work paid for?", "options": ["100% upfront", "50% upfront when approved, the balance on completion", "All on completion", "Three instalments"], "correct": 1, "why": "Planned work is 50% upfront when approved, with the balance on completion." },
+        { "q": "A job for a property manager, strata or builder account is paid…", "options": ["On the spot by card", "With a 50% deposit", "It's free", "On their account terms"], "correct": 3, "why": "Accounts customers follow their account terms." },
+        { "q": "What does a genuine 5-star review earn you?", "options": ["$10", "$100, and it brings in the next customer", "Nothing", "A day off"], "correct": 1, "why": "Every genuine 5-star review earns you $100 and brings in the next customer." }
+      ],
+      "sim": {
+        "persona": "💳 The 'pay later' customer",
+        "scenario": "The homeowner is happy with the work but wants to be invoiced and pay next week.",
+        "steps": [
+          { "them": "Great job! Just invoice me and I'll pay next week.", "options": ["\"No worries, I'll tell the office.\"", "\"Glad you're happy! Our policy is payment on completion, so I can take it now. What's easiest for you?\"", "\"Pay now or I take the parts back.\"", "\"Pay cash and I'll do you a deal.\""], "best": 1, "feedback": "Stay friendly, restate the policy, and offer the payment options." },
+          { "them": "I really can't today. Payday's Friday.", "options": ["\"Okay, I'll just leave it unpaid.\"", "\"No problem. Let me call the office now so we sort it properly before I go.\"", "\"Then I'm taking the new tap back out.\"", "\"I'll cover it for you.\""], "best": 1, "feedback": "Escalate to the office rather than leaving the job unpaid." }
+        ]
+      }
+    },
+    "f7": {
+      "questions": [
+        { "q": "Why does a bad scope matter?", "options": ["It doesn't, install sorts it out", "It costs the installer time and the business its profit", "It only affects the office", "It makes the quote cheaper"], "correct": 1, "why": "Each role depends on the one before it. A bad scope costs the installer time and the business its profit." },
+        { "q": "You hit a parts or access problem on an install. Who do you call first?", "options": ["The Install Manager (Charlotte, interim)", "Harriet in sales", "Nobody, just wait", "The customer's neighbour"], "correct": 0, "why": "Raise issues with the Install Manager (Charlotte, interim) straight away: scope, parts, access, customer." },
+        { "q": "You spot extra work the customer needs. How do you raise it?", "options": ["Mention it to the office when you're back", "Tell the customer to ring later", "Do it for free", "In ServiceTitan, with photos and notes"], "correct": 3, "why": "Extra work is raised in ServiceTitan with photos and notes, never just a verbal 'mention it to the office'." },
+        { "q": "Lots of warranty and same-day-return jobs usually means…", "options": ["Great customer service", "A busy week", "A quality problem", "Cheap parts"], "correct": 2, "why": "Warranty and same-day-return jobs are handled graciously, but a lot of them signals a quality problem." },
+        { "q": "Who can approve a change to a price?", "options": ["Any tech", "Harriet (Sales Manager) or Sadie (Office Manager)", "The customer", "Dispatch"], "correct": 1, "why": "Only Harriet (Sales Manager) or Sadie (Office Manager) can change a price. Techs never can." }
+      ]
+    },
+    "x1": {
+      "questions": [
+        { "q": "Which two numbers does Dispatch Pro rank you on?", "options": ["Jobs per day and reviews", "Close rate and average ticket", "Hours worked and kilometres driven", "Leads and Saturdays"], "correct": 1, "why": "Average ticket and close rate are the only two numbers the Sales Manager watches, and the two Dispatch Pro ranks you on." },
+        { "q": "From $213K a month, +$250 on the ticket and +5 points of close rate gets you to about…", "options": ["$215K", "$220K", "$248K", "$300K"], "correct": 2, "why": "Small lifts multiply: +$250 ticket and +5 points of close rate takes $213K to about $248K a month, with no extra days." },
+        { "q": "When do Saturdays count in Dispatch Pro?", "options": ["Always", "Only when they're rostered as regular shifts", "Never", "Only on-call shifts"], "correct": 1, "why": "Dispatch Pro only assigns techs on regular shifts. Saturdays must be rostered as regular shifts to count." },
+        { "q": "10 jobs at $2,000 vs 11 jobs at $2,200. What's the lift?", "options": ["About +21%, because the two numbers multiply", "+10%", "+5%", "No real change"], "correct": 0, "why": "$20,000 becomes $24,200. A 10% bigger ticket and one extra yes multiply to +21%." },
+        { "q": "How is Sales Tech commission earned?", "options": ["5% of the quoted value", "10% of profit", "A flat amount per job", "5% of sales paid in full"], "correct": 3, "why": "Commission is 5% of sales paid in full." }
+      ]
+    },
+    "x2": {
+      "questions": [
+        { "q": "After a complete handover, who does the job belong to?", "options": ["You, until it's paid", "The Install Manager", "Dispatch", "The customer"], "correct": 1, "why": "Sales Techs only sell. After a complete handover, the job belongs to the Install Manager." },
+        { "q": "What's the test of a finished handover?", "options": ["You uploaded at least one photo", "The customer signed", "Could the installer do the job without ever calling you?", "It's in the calendar"], "correct": 2, "why": "If the installer would need to call you, the handover isn't finished." },
+        { "q": "Who collects the 50% deposit, and when?", "options": ["You, at signing", "The Install Manager on install day", "The office next week", "Nobody"], "correct": 0, "why": "You collect the 50% deposit at signing. No deposit, no booking, no materials ordered." },
+        { "q": "Who collects the balance?", "options": ["You", "Dispatch", "The customer pays whenever they like", "The Install Manager, on completion"], "correct": 3, "why": "The Install Manager collects the balance on completion." },
+        { "q": "Why does a clean handover protect your pay?", "options": ["It doesn't", "Commission is paid on sales paid in full", "You're paid per handover", "It earns review bonuses"], "correct": 1, "why": "Commission is paid on sales paid in full, so a job that stalls or comes back hurts you too." }
+      ],
+      "sim": {
+        "persona": "🗂️ The rushed handover",
+        "scenario": "Last lead of a long day. The customer has just signed a $16K Elite bathroom job.",
+        "steps": [
+          { "them": "It's 6:40pm. What goes in the scope?", "options": ["\"See photos.\" The installer will work it out", "The scope, in and out, line by line from the pricebook", "Just the total price", "Whatever fits in one sentence"], "best": 1, "feedback": "Finish the scope properly. 'See photos' is how installers end up calling you." },
+          { "them": "The customer asks: \"So who do I talk to now?\"", "options": ["\"Call me any time, day or night.\"", "\"The Install Manager will call you next to book everything in.\"", "\"Just ring the main number and see.\"", "\"Nobody, they'll just turn up.\""], "best": 1, "feedback": "Set the customer up: the Install Manager calls them next." },
+          { "them": "Before you leave the driveway…", "options": ["Record access, specials and the customer's expectations, and confirm the 50% deposit is collected", "Head home and finish it tomorrow", "Text the installer a photo", "Nothing, it's all in the system"], "best": 0, "feedback": "Access, specials, expectations and the deposit, done before you leave." }
+        ]
+      }
+    }
+  }
+}
