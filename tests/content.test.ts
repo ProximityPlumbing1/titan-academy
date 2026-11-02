@@ -18,8 +18,8 @@ describe('content', () => {
     expect(full.every((s) => s.kind === 'quiz' && typeof s.correct === 'number')).toBe(true);
   });
 
-  it('has a valid answer key for every drafted question', () => {
-    for (const id of ['f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'x1', 'x2']) {
+  it('has a valid 5-question quiz with a correct answer key for every module', () => {
+    for (const id of [...modulesForRole('install'), ...modulesForRole('service'), ...modulesForRole('salestech')]) {
       const quiz = quizFor(id);
       expect(quiz.length).toBe(5);
       quiz.forEach((q, i) => {

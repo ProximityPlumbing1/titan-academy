@@ -1,110 +1,3055 @@
 {
-  "_status": "DRAFT for owner review (Nov 2026). Written only from data/trade-paths.json key points and the Oct 2026 sales sessions. Modules not listed here have no quiz yet: their classes still run (slides come from key points).",
+  "_status": "DRAFT for owner review (Nov 2026). Written only from data/trade-paths.json (key points, lessons, sign-offs, path notes) and the Oct 2026 sales sessions. Every module now has 5 questions; every module with a role-play persona has steps.",
   "modules": {
     "f1": {
       "questions": [
-        { "q": "A customer says a competitor quoted cheaper. What does Proximity compete on?", "options": ["Price: we match the cheaper quote", "Speed: whoever arrives first wins", "Trust and quality, with a fixed upfront price", "Loyalty discounts"], "correct": 2, "why": "We never compete on price. Competitors like Mr Emergency compete on price and speed; we compete on trust and quality." },
-        { "q": "On a $1,000 job, roughly how much is profit?", "options": ["About $50", "About $200", "About $100", "About $500"], "correct": 1, "why": "Roughly 50% labour and materials, 30% running the business, 20% profit: about $200 on a $1,000 job." },
-        { "q": "You give a 10% discount on a $1,000 job. What happens to the profit?", "options": ["It drops by about half: $100 of the $200", "Nothing, the customer covers it", "It drops by 10%", "It goes up because we win the job"], "correct": 0, "why": "A $100 discount comes straight out of the roughly $200 profit, so half of it is gone." },
-        { "q": "The customer has a fixed upfront price. Who pays for hours you didn't estimate?", "options": ["The customer, on the next invoice", "Nobody, they don't matter", "The office absorbs it at month end", "We do: they come out of our profit"], "correct": 3, "why": "With a fixed upfront price, unestimated hours and unbilled materials come out of our profit, not the customer's pocket." },
-        { "q": "What is Proximity's reputation built on?", "options": ["Being the cheapest in Sydney", "Our 4.9★ reviews: every visit adds to them or damages them", "Van signage", "Having the most trucks"], "correct": 1, "why": "Our reputation is the 4.9★ review base, and every single visit adds to it or damages it." }
+        {
+          "q": "A customer says a competitor quoted cheaper. What does Proximity compete on?",
+          "options": [
+            "Price: we match the cheaper quote",
+            "Speed: whoever arrives first wins",
+            "Trust and quality, with a fixed upfront price",
+            "Loyalty discounts"
+          ],
+          "correct": 2,
+          "why": "We never compete on price. Competitors like Mr Emergency compete on price and speed; we compete on trust and quality."
+        },
+        {
+          "q": "On a $1,000 job, roughly how much is profit?",
+          "options": [
+            "About $50",
+            "About $200",
+            "About $100",
+            "About $500"
+          ],
+          "correct": 1,
+          "why": "Roughly 50% labour and materials, 30% running the business, 20% profit: about $200 on a $1,000 job."
+        },
+        {
+          "q": "You give a 10% discount on a $1,000 job. What happens to the profit?",
+          "options": [
+            "It drops by about half: $100 of the $200",
+            "Nothing, the customer covers it",
+            "It drops by 10%",
+            "It goes up because we win the job"
+          ],
+          "correct": 0,
+          "why": "A $100 discount comes straight out of the roughly $200 profit, so half of it is gone."
+        },
+        {
+          "q": "The customer has a fixed upfront price. Who pays for hours you didn't estimate?",
+          "options": [
+            "The customer, on the next invoice",
+            "Nobody, they don't matter",
+            "The office absorbs it at month end",
+            "We do: they come out of our profit"
+          ],
+          "correct": 3,
+          "why": "With a fixed upfront price, unestimated hours and unbilled materials come out of our profit, not the customer's pocket."
+        },
+        {
+          "q": "What is Proximity's reputation built on?",
+          "options": [
+            "Being the cheapest in Sydney",
+            "Our 4.9★ reviews: every visit adds to them or damages them",
+            "Van signage",
+            "Having the most trucks"
+          ],
+          "correct": 1,
+          "why": "Our reputation is the 4.9★ review base, and every single visit adds to it or damages it."
+        }
       ]
     },
     "f2": {
       "questions": [
-        { "q": "Something on site feels unsafe, but you're not sure. What do you do?", "options": ["Keep going carefully", "Finish quickly, then report it", "Stop and ask. Nobody is criticised for stopping a job", "Ask the customer what they think"], "correct": 2, "why": "Anyone can stop a job if it's unsafe, and nobody is ever criticised for it. If you're unsure, stop and ask." },
-        { "q": "Before you work on water or gas, you…", "options": ["Isolate and test, every time, no exceptions", "Isolate only on big jobs", "Test after you finish", "Ask the customer to turn it off"], "correct": 0, "why": "Isolate and test water and gas before starting. No exceptions." },
-        { "q": "You need to cut into a wall and suspect asbestos. What now?", "options": ["Wet it down and cut carefully", "Wear a mask and cut quickly", "Ask the customer whether it's asbestos", "Stop, photograph it, flag it in ServiceTitan and call the Install Manager or the office"], "correct": 3, "why": "Never cut, drill or break suspected asbestos. Stop, photograph, flag it in ServiceTitan, and call the Install Manager (Charlotte, interim) or the office." },
-        { "q": "Compliance paperwork and certificates are…", "options": ["Office admin done at month end", "Part of the job, and lodged on time", "Optional on small jobs", "Only needed for gas work"], "correct": 1, "why": "Compliance paperwork is part of the job, not admin afterwards. Certificates are lodged on time." },
-        { "q": "An apprentice is on your job. Which is right?", "options": ["They can do anything they feel confident with", "They work alone on small jobs", "They only do work their licence covers, with a named supervisor on every job", "They only need supervising on Saturdays"], "correct": 2, "why": "Only do work your licence covers. Supervised workers have a named supervisor on every job." }
+        {
+          "q": "Something on site feels unsafe, but you're not sure. What do you do?",
+          "options": [
+            "Keep going carefully",
+            "Finish quickly, then report it",
+            "Stop and ask. Nobody is criticised for stopping a job",
+            "Ask the customer what they think"
+          ],
+          "correct": 2,
+          "why": "Anyone can stop a job if it's unsafe, and nobody is ever criticised for it. If you're unsure, stop and ask."
+        },
+        {
+          "q": "Before you work on water or gas, you…",
+          "options": [
+            "Isolate and test, every time, no exceptions",
+            "Isolate only on big jobs",
+            "Test after you finish",
+            "Ask the customer to turn it off"
+          ],
+          "correct": 0,
+          "why": "Isolate and test water and gas before starting. No exceptions."
+        },
+        {
+          "q": "You need to cut into a wall and suspect asbestos. What now?",
+          "options": [
+            "Wet it down and cut carefully",
+            "Wear a mask and cut quickly",
+            "Ask the customer whether it's asbestos",
+            "Stop, photograph it, flag it in ServiceTitan and call the Install Manager or the office"
+          ],
+          "correct": 3,
+          "why": "Never cut, drill or break suspected asbestos. Stop, photograph, flag it in ServiceTitan, and call the Install Manager (Charlotte, interim) or the office."
+        },
+        {
+          "q": "Compliance paperwork and certificates are…",
+          "options": [
+            "Office admin done at month end",
+            "Part of the job, and lodged on time",
+            "Optional on small jobs",
+            "Only needed for gas work"
+          ],
+          "correct": 1,
+          "why": "Compliance paperwork is part of the job, not admin afterwards. Certificates are lodged on time."
+        },
+        {
+          "q": "An apprentice is on your job. Which is right?",
+          "options": [
+            "They can do anything they feel confident with",
+            "They work alone on small jobs",
+            "They only do work their licence covers, with a named supervisor on every job",
+            "They only need supervising on Saturdays"
+          ],
+          "correct": 2,
+          "why": "Only do work your licence covers. Supervised workers have a named supervisor on every job."
+        }
       ]
     },
     "f3": {
       "questions": [
-        { "q": "You did extra work but didn't record it in ServiceTitan. As far as the business is concerned…", "options": ["It didn't happen", "It happened, because the customer saw it", "The office will work it out", "It's fine as long as you remember"], "correct": 0, "why": "If it isn't in ServiceTitan, it didn't happen: notes, photos, videos, time, payment and sign-off." },
-        { "q": "When do you update statuses, forms and timesheets?", "options": ["At the end of the week", "When dispatch asks", "At the end of each day", "As you go: tools out, timer on"], "correct": 3, "why": "Statuses, forms and timesheets are updated as you go, never at the end of the week." },
-        { "q": "What do you check before you knock on the door?", "options": ["Nothing, just knock", "The customer's and the equipment's history in ServiceTitan", "The weather", "Your next job"], "correct": 1, "why": "Always check customer and equipment history before you knock. Past jobs and recommendations matter." },
-        { "q": "Where does every price come from?", "options": ["Your experience", "What the customer can afford", "The pricebook or an approved template", "The last similar invoice"], "correct": 2, "why": "Every price comes from the pricebook or an approved template. No hand-typed prices." },
-        { "q": "Which of these must be recorded in ServiceTitan?", "options": ["Only the invoice", "Notes, photos, videos, time, payment and sign-off", "Only photos", "Only payment"], "correct": 1, "why": "All of it: notes, photos, videos, time, payment and sign-off." }
+        {
+          "q": "You did extra work but didn't record it in ServiceTitan. As far as the business is concerned…",
+          "options": [
+            "It didn't happen",
+            "It happened, because the customer saw it",
+            "The office will work it out",
+            "It's fine as long as you remember"
+          ],
+          "correct": 0,
+          "why": "If it isn't in ServiceTitan, it didn't happen: notes, photos, videos, time, payment and sign-off."
+        },
+        {
+          "q": "When do you update statuses, forms and timesheets?",
+          "options": [
+            "At the end of the week",
+            "When dispatch asks",
+            "At the end of each day",
+            "As you go: tools out, timer on"
+          ],
+          "correct": 3,
+          "why": "Statuses, forms and timesheets are updated as you go, never at the end of the week."
+        },
+        {
+          "q": "What do you check before you knock on the door?",
+          "options": [
+            "Nothing, just knock",
+            "The customer's and the equipment's history in ServiceTitan",
+            "The weather",
+            "Your next job"
+          ],
+          "correct": 1,
+          "why": "Always check customer and equipment history before you knock. Past jobs and recommendations matter."
+        },
+        {
+          "q": "Where does every price come from?",
+          "options": [
+            "Your experience",
+            "What the customer can afford",
+            "The pricebook or an approved template",
+            "The last similar invoice"
+          ],
+          "correct": 2,
+          "why": "Every price comes from the pricebook or an approved template. No hand-typed prices."
+        },
+        {
+          "q": "Which of these must be recorded in ServiceTitan?",
+          "options": [
+            "Only the invoice",
+            "Notes, photos, videos, time, payment and sign-off",
+            "Only photos",
+            "Only payment"
+          ],
+          "correct": 1,
+          "why": "All of it: notes, photos, videos, time, payment and sign-off."
+        }
       ]
     },
     "f4": {
       "questions": [
-        { "q": "What sets the tone for the whole visit?", "options": ["The invoice", "The review request", "The first 30 seconds: on time (or call ahead), professional, protecting their home", "The quote"], "correct": 2, "why": "The first 30 seconds set the tone. Be on time or call ahead, look professional, and protect their home." },
-        { "q": "A customer complains the last tech was late. What do you say?", "options": ["\"I'm sorry about that. Let's get this sorted for you today.\"", "\"Dispatch messed up again.\"", "\"That tech is always late.\"", "\"Not my problem.\""], "correct": 0, "why": "Customers judge the whole company by you. Never blame dispatch, the office or another tech." },
-        { "q": "A customer demands money off while you're on site. You…", "options": ["Give 10% to keep them happy", "Explain why the price is fair until they agree", "Stay calm and listen, promise no refund or discount, then call the Install Manager or the office and log it", "Pack up and leave"], "correct": 2, "why": "Stay calm, listen, and never promise a refund or discount. Log it so the Customer Service team takes over the complaint." },
-        { "q": "On a tenant job, who approves the work?", "options": ["The tenant", "The property manager. The tenant gives access", "Whoever answers the door", "You decide"], "correct": 1, "why": "Tenant jobs: the property manager approves, and the tenant gives access." },
-        { "q": "On a strata job, what extra thing must you record?", "options": ["Whether it's common property or a lot", "The building's colour", "Only the tenant's phone number", "Nothing extra"], "correct": 0, "why": "Strata: record common property vs lot. It changes who approves and who pays." }
+        {
+          "q": "What sets the tone for the whole visit?",
+          "options": [
+            "The invoice",
+            "The review request",
+            "The first 30 seconds: on time (or call ahead), professional, protecting their home",
+            "The quote"
+          ],
+          "correct": 2,
+          "why": "The first 30 seconds set the tone. Be on time or call ahead, look professional, and protect their home."
+        },
+        {
+          "q": "A customer complains the last tech was late. What do you say?",
+          "options": [
+            "\"I'm sorry about that. Let's get this sorted for you today.\"",
+            "\"Dispatch messed up again.\"",
+            "\"That tech is always late.\"",
+            "\"Not my problem.\""
+          ],
+          "correct": 0,
+          "why": "Customers judge the whole company by you. Never blame dispatch, the office or another tech."
+        },
+        {
+          "q": "A customer demands money off while you're on site. You…",
+          "options": [
+            "Give 10% to keep them happy",
+            "Explain why the price is fair until they agree",
+            "Stay calm and listen, promise no refund or discount, then call the Install Manager or the office and log it",
+            "Pack up and leave"
+          ],
+          "correct": 2,
+          "why": "Stay calm, listen, and never promise a refund or discount. Log it so the Customer Service team takes over the complaint."
+        },
+        {
+          "q": "On a tenant job, who approves the work?",
+          "options": [
+            "The tenant",
+            "The property manager. The tenant gives access",
+            "Whoever answers the door",
+            "You decide"
+          ],
+          "correct": 1,
+          "why": "Tenant jobs: the property manager approves, and the tenant gives access."
+        },
+        {
+          "q": "On a strata job, what extra thing must you record?",
+          "options": [
+            "Whether it's common property or a lot",
+            "The building's colour",
+            "Only the tenant's phone number",
+            "Nothing extra"
+          ],
+          "correct": 0,
+          "why": "Strata: record common property vs lot. It changes who approves and who pays."
+        }
       ],
       "sim": {
         "persona": "😠 The on-site complaint",
         "scenario": "The job is taking longer than expected and the customer wants money off.",
         "steps": [
-          { "them": "This was meant to take two hours. It's been four. I want money off.", "options": ["\"Fair enough. I'll knock 20% off.\"", "\"I understand, that's frustrating. Can you tell me what's worrying you most?\"", "\"It's not my fault. Dispatch booked it wrong.\"", "\"Prices are fixed. Nothing I can do.\""], "best": 1, "feedback": "Stay calm and listen first. No discounts, and no blaming anyone." },
-          { "them": "So are you taking something off or not?", "options": ["\"Yes, I'll sort a refund now.\"", "\"No. Take it or leave it.\"", "\"I can't promise a refund or discount, but I'll get this logged now and the team will call you.\"", "\"Maybe, if you leave us a 5-star review.\""], "best": 2, "feedback": "Never promise a refund or discount on site. Hand it to the people who can resolve it." },
-          { "them": "Fine. Who's going to call me?", "options": ["\"I'm calling the Install Manager or the office right now to log it. Our Customer Service team will take it from there.\"", "\"Nobody, it's sorted.\"", "\"Just google our number.\"", "\"Leave a review and they'll see it.\""], "best": 0, "feedback": "Log it and hand it over, so the Customer Service team owns the complaint." }
+          {
+            "them": "This was meant to take two hours. It's been four. I want money off.",
+            "options": [
+              "\"Fair enough. I'll knock 20% off.\"",
+              "\"I understand, that's frustrating. Can you tell me what's worrying you most?\"",
+              "\"It's not my fault. Dispatch booked it wrong.\"",
+              "\"Prices are fixed. Nothing I can do.\""
+            ],
+            "best": 1,
+            "feedback": "Stay calm and listen first. No discounts, and no blaming anyone."
+          },
+          {
+            "them": "So are you taking something off or not?",
+            "options": [
+              "\"Yes, I'll sort a refund now.\"",
+              "\"No. Take it or leave it.\"",
+              "\"I can't promise a refund or discount, but I'll get this logged now and the team will call you.\"",
+              "\"Maybe, if you leave us a 5-star review.\""
+            ],
+            "best": 2,
+            "feedback": "Never promise a refund or discount on site. Hand it to the people who can resolve it."
+          },
+          {
+            "them": "Fine. Who's going to call me?",
+            "options": [
+              "\"I'm calling the Install Manager or the office right now to log it. Our Customer Service team will take it from there.\"",
+              "\"Nobody, it's sorted.\"",
+              "\"Just google our number.\"",
+              "\"Leave a review and they'll see it.\""
+            ],
+            "best": 0,
+            "feedback": "Log it and hand it over, so the Customer Service team owns the complaint."
+          }
         ]
       }
     },
     "f5": {
       "questions": [
-        { "q": "Which jobs need before-and-after photos and video?", "options": ["Only big installs", "Every job, no exceptions", "Only if the customer asks", "Only warranty jobs"], "correct": 1, "why": "Every job gets before-and-after photos and video. They protect you, prove the work and feed the reports." },
-        { "q": "Which job note is best?", "options": ["\"Fixed leak.\"", "\"All good.\"", "\"Photo 3: corroded flexi hose under the kitchen sink. Recommend replacing all flexis.\"", "\"See photos.\""], "correct": 2, "why": "Number your photos and refer to them in your notes, with what you found and what you recommend." },
-        { "q": "Which wording belongs in customer-facing notes?", "options": ["\"Showing signs of age and worth a licensed assessment\"", "\"Illegal pipework\"", "\"Non-compliant and dangerous\"", "\"Done by a cowboy\""], "correct": 0, "why": "Record observations, not legal opinions. Never write 'illegal' or 'non-compliant' in customer-facing notes." },
-        { "q": "You find something the customer must deal with today. You…", "options": ["Mention it at the next visit", "Put it at the bottom of the invoice", "Flag it as urgent so the office calls the same day", "Leave it, it's not your job"], "correct": 2, "why": "Flag anything urgent so the office calls the same day." },
-        { "q": "Why do photos and video matter?", "options": ["They're mainly for social media", "They protect you, prove the work and feed the reports", "They're only for insurance jobs", "They don't, they slow you down"], "correct": 1, "why": "They protect you, prove the work and become the reports that win the next job." }
+        {
+          "q": "Which jobs need before-and-after photos and video?",
+          "options": [
+            "Only big installs",
+            "Every job, no exceptions",
+            "Only if the customer asks",
+            "Only warranty jobs"
+          ],
+          "correct": 1,
+          "why": "Every job gets before-and-after photos and video. They protect you, prove the work and feed the reports."
+        },
+        {
+          "q": "Which job note is best?",
+          "options": [
+            "\"Fixed leak.\"",
+            "\"All good.\"",
+            "\"Photo 3: corroded flexi hose under the kitchen sink. Recommend replacing all flexis.\"",
+            "\"See photos.\""
+          ],
+          "correct": 2,
+          "why": "Number your photos and refer to them in your notes, with what you found and what you recommend."
+        },
+        {
+          "q": "Which wording belongs in customer-facing notes?",
+          "options": [
+            "\"Showing signs of age and worth a licensed assessment\"",
+            "\"Illegal pipework\"",
+            "\"Non-compliant and dangerous\"",
+            "\"Done by a cowboy\""
+          ],
+          "correct": 0,
+          "why": "Record observations, not legal opinions. Never write 'illegal' or 'non-compliant' in customer-facing notes."
+        },
+        {
+          "q": "You find something the customer must deal with today. You…",
+          "options": [
+            "Mention it at the next visit",
+            "Put it at the bottom of the invoice",
+            "Flag it as urgent so the office calls the same day",
+            "Leave it, it's not your job"
+          ],
+          "correct": 2,
+          "why": "Flag anything urgent so the office calls the same day."
+        },
+        {
+          "q": "Why do photos and video matter?",
+          "options": [
+            "They're mainly for social media",
+            "They protect you, prove the work and feed the reports",
+            "They're only for insurance jobs",
+            "They don't, they slow you down"
+          ],
+          "correct": 1,
+          "why": "They protect you, prove the work and become the reports that win the next job."
+        }
       ]
     },
     "f6": {
       "questions": [
-        { "q": "When are payment and customer sign-off collected?", "options": ["Before you leave, in ServiceTitan. No exceptions without office approval", "Next week by email", "Whenever the customer prefers", "At the end of the month"], "correct": 0, "why": "Payment and sign-off are collected in ServiceTitan before you leave." },
-        { "q": "On installs, who owns payment collection?", "options": ["The Sales Tech", "Nobody in particular", "The Install Manager (Charlotte, interim). The installer collects the balance on site", "The customer decides"], "correct": 2, "why": "The Install Manager owns payment collection and the customer's happiness. The installer collects the balance on site, and anything overdue goes to Chloe." },
-        { "q": "How is planned work paid for?", "options": ["100% upfront", "50% upfront when approved, the balance on completion", "All on completion", "Three instalments"], "correct": 1, "why": "Planned work is 50% upfront when approved, with the balance on completion." },
-        { "q": "A job for a property manager, strata or builder account is paid…", "options": ["On the spot by card", "With a 50% deposit", "It's free", "On their account terms"], "correct": 3, "why": "Accounts customers follow their account terms." },
-        { "q": "What does a genuine 5-star review earn you?", "options": ["$10", "$100, and it brings in the next customer", "Nothing", "A day off"], "correct": 1, "why": "Every genuine 5-star review earns you $100 and brings in the next customer." }
+        {
+          "q": "When are payment and customer sign-off collected?",
+          "options": [
+            "Before you leave, in ServiceTitan. No exceptions without office approval",
+            "Next week by email",
+            "Whenever the customer prefers",
+            "At the end of the month"
+          ],
+          "correct": 0,
+          "why": "Payment and sign-off are collected in ServiceTitan before you leave."
+        },
+        {
+          "q": "On installs, who owns payment collection?",
+          "options": [
+            "The Sales Tech",
+            "Nobody in particular",
+            "The Install Manager (Charlotte, interim). The installer collects the balance on site",
+            "The customer decides"
+          ],
+          "correct": 2,
+          "why": "The Install Manager owns payment collection and the customer's happiness. The installer collects the balance on site, and anything overdue goes to Chloe."
+        },
+        {
+          "q": "How is planned work paid for?",
+          "options": [
+            "100% upfront",
+            "50% upfront when approved, the balance on completion",
+            "All on completion",
+            "Three instalments"
+          ],
+          "correct": 1,
+          "why": "Planned work is 50% upfront when approved, with the balance on completion."
+        },
+        {
+          "q": "A job for a property manager, strata or builder account is paid…",
+          "options": [
+            "On the spot by card",
+            "With a 50% deposit",
+            "It's free",
+            "On their account terms"
+          ],
+          "correct": 3,
+          "why": "Accounts customers follow their account terms."
+        },
+        {
+          "q": "What does a genuine 5-star review earn you?",
+          "options": [
+            "$10",
+            "$100, and it brings in the next customer",
+            "Nothing",
+            "A day off"
+          ],
+          "correct": 1,
+          "why": "Every genuine 5-star review earns you $100 and brings in the next customer."
+        }
       ],
       "sim": {
         "persona": "💳 The 'pay later' customer",
         "scenario": "The homeowner is happy with the work but wants to be invoiced and pay next week.",
         "steps": [
-          { "them": "Great job! Just invoice me and I'll pay next week.", "options": ["\"No worries, I'll tell the office.\"", "\"Glad you're happy! Our policy is payment on completion, so I can take it now. What's easiest for you?\"", "\"Pay now or I take the parts back.\"", "\"Pay cash and I'll do you a deal.\""], "best": 1, "feedback": "Stay friendly, restate the policy, and offer the payment options." },
-          { "them": "I really can't today. Payday's Friday.", "options": ["\"Okay, I'll just leave it unpaid.\"", "\"No problem. Let me call the office now so we sort it properly before I go.\"", "\"Then I'm taking the new tap back out.\"", "\"I'll cover it for you.\""], "best": 1, "feedback": "Escalate to the office rather than leaving the job unpaid." }
+          {
+            "them": "Great job! Just invoice me and I'll pay next week.",
+            "options": [
+              "\"No worries, I'll tell the office.\"",
+              "\"Glad you're happy! Our policy is payment on completion, so I can take it now. What's easiest for you?\"",
+              "\"Pay now or I take the parts back.\"",
+              "\"Pay cash and I'll do you a deal.\""
+            ],
+            "best": 1,
+            "feedback": "Stay friendly, restate the policy, and offer the payment options."
+          },
+          {
+            "them": "I really can't today. Payday's Friday.",
+            "options": [
+              "\"Okay, I'll just leave it unpaid.\"",
+              "\"No problem. Let me call the office now so we sort it properly before I go.\"",
+              "\"Then I'm taking the new tap back out.\"",
+              "\"I'll cover it for you.\""
+            ],
+            "best": 1,
+            "feedback": "Escalate to the office rather than leaving the job unpaid."
+          }
         ]
       }
     },
     "f7": {
       "questions": [
-        { "q": "Why does a bad scope matter?", "options": ["It doesn't, install sorts it out", "It costs the installer time and the business its profit", "It only affects the office", "It makes the quote cheaper"], "correct": 1, "why": "Each role depends on the one before it. A bad scope costs the installer time and the business its profit." },
-        { "q": "You hit a parts or access problem on an install. Who do you call first?", "options": ["The Install Manager (Charlotte, interim)", "Harriet in sales", "Nobody, just wait", "The customer's neighbour"], "correct": 0, "why": "Raise issues with the Install Manager (Charlotte, interim) straight away: scope, parts, access, customer." },
-        { "q": "You spot extra work the customer needs. How do you raise it?", "options": ["Mention it to the office when you're back", "Tell the customer to ring later", "Do it for free", "In ServiceTitan, with photos and notes"], "correct": 3, "why": "Extra work is raised in ServiceTitan with photos and notes, never just a verbal 'mention it to the office'." },
-        { "q": "Lots of warranty and same-day-return jobs usually means…", "options": ["Great customer service", "A busy week", "A quality problem", "Cheap parts"], "correct": 2, "why": "Warranty and same-day-return jobs are handled graciously, but a lot of them signals a quality problem." },
-        { "q": "Who can approve a change to a price?", "options": ["Any tech", "Harriet (Sales Manager) or Sadie (Office Manager)", "The customer", "Dispatch"], "correct": 1, "why": "Only Harriet (Sales Manager) or Sadie (Office Manager) can change a price. Techs never can." }
+        {
+          "q": "Why does a bad scope matter?",
+          "options": [
+            "It doesn't, install sorts it out",
+            "It costs the installer time and the business its profit",
+            "It only affects the office",
+            "It makes the quote cheaper"
+          ],
+          "correct": 1,
+          "why": "Each role depends on the one before it. A bad scope costs the installer time and the business its profit."
+        },
+        {
+          "q": "You hit a parts or access problem on an install. Who do you call first?",
+          "options": [
+            "The Install Manager (Charlotte, interim)",
+            "Harriet in sales",
+            "Nobody, just wait",
+            "The customer's neighbour"
+          ],
+          "correct": 0,
+          "why": "Raise issues with the Install Manager (Charlotte, interim) straight away: scope, parts, access, customer."
+        },
+        {
+          "q": "You spot extra work the customer needs. How do you raise it?",
+          "options": [
+            "Mention it to the office when you're back",
+            "Tell the customer to ring later",
+            "Do it for free",
+            "In ServiceTitan, with photos and notes"
+          ],
+          "correct": 3,
+          "why": "Extra work is raised in ServiceTitan with photos and notes, never just a verbal 'mention it to the office'."
+        },
+        {
+          "q": "Lots of warranty and same-day-return jobs usually means…",
+          "options": [
+            "Great customer service",
+            "A busy week",
+            "A quality problem",
+            "Cheap parts"
+          ],
+          "correct": 2,
+          "why": "Warranty and same-day-return jobs are handled graciously, but a lot of them signals a quality problem."
+        },
+        {
+          "q": "Who can approve a change to a price?",
+          "options": [
+            "Any tech",
+            "Harriet (Sales Manager) or Sadie (Office Manager)",
+            "The customer",
+            "Dispatch"
+          ],
+          "correct": 1,
+          "why": "Only Harriet (Sales Manager) or Sadie (Office Manager) can change a price. Techs never can."
+        }
       ]
     },
     "x1": {
       "questions": [
-        { "q": "Which two numbers does Dispatch Pro rank you on?", "options": ["Jobs per day and reviews", "Close rate and average ticket", "Hours worked and kilometres driven", "Leads and Saturdays"], "correct": 1, "why": "Average ticket and close rate are the only two numbers the Sales Manager watches, and the two Dispatch Pro ranks you on." },
-        { "q": "From $213K a month, +$250 on the ticket and +5 points of close rate gets you to about…", "options": ["$215K", "$220K", "$248K", "$300K"], "correct": 2, "why": "Small lifts multiply: +$250 ticket and +5 points of close rate takes $213K to about $248K a month, with no extra days." },
-        { "q": "When do Saturdays count in Dispatch Pro?", "options": ["Always", "Only when they're rostered as regular shifts", "Never", "Only on-call shifts"], "correct": 1, "why": "Dispatch Pro only assigns techs on regular shifts. Saturdays must be rostered as regular shifts to count." },
-        { "q": "10 jobs at $2,000 vs 11 jobs at $2,200. What's the lift?", "options": ["About +21%, because the two numbers multiply", "+10%", "+5%", "No real change"], "correct": 0, "why": "$20,000 becomes $24,200. A 10% bigger ticket and one extra yes multiply to +21%." },
-        { "q": "How is Sales Tech commission earned?", "options": ["5% of the quoted value", "10% of profit", "A flat amount per job", "5% of sales paid in full"], "correct": 3, "why": "Commission is 5% of sales paid in full." }
+        {
+          "q": "Which two numbers does Dispatch Pro rank you on?",
+          "options": [
+            "Jobs per day and reviews",
+            "Close rate and average ticket",
+            "Hours worked and kilometres driven",
+            "Leads and Saturdays"
+          ],
+          "correct": 1,
+          "why": "Average ticket and close rate are the only two numbers the Sales Manager watches, and the two Dispatch Pro ranks you on."
+        },
+        {
+          "q": "From $213K a month, +$250 on the ticket and +5 points of close rate gets you to about…",
+          "options": [
+            "$215K",
+            "$220K",
+            "$248K",
+            "$300K"
+          ],
+          "correct": 2,
+          "why": "Small lifts multiply: +$250 ticket and +5 points of close rate takes $213K to about $248K a month, with no extra days."
+        },
+        {
+          "q": "When do Saturdays count in Dispatch Pro?",
+          "options": [
+            "Always",
+            "Only when they're rostered as regular shifts",
+            "Never",
+            "Only on-call shifts"
+          ],
+          "correct": 1,
+          "why": "Dispatch Pro only assigns techs on regular shifts. Saturdays must be rostered as regular shifts to count."
+        },
+        {
+          "q": "10 jobs at $2,000 vs 11 jobs at $2,200. What's the lift?",
+          "options": [
+            "About +21%, because the two numbers multiply",
+            "+10%",
+            "+5%",
+            "No real change"
+          ],
+          "correct": 0,
+          "why": "$20,000 becomes $24,200. A 10% bigger ticket and one extra yes multiply to +21%."
+        },
+        {
+          "q": "How is Sales Tech commission earned?",
+          "options": [
+            "5% of the quoted value",
+            "10% of profit",
+            "A flat amount per job",
+            "5% of sales paid in full"
+          ],
+          "correct": 3,
+          "why": "Commission is 5% of sales paid in full."
+        }
       ]
     },
     "x2": {
       "questions": [
-        { "q": "After a complete handover, who does the job belong to?", "options": ["You, until it's paid", "The Install Manager", "Dispatch", "The customer"], "correct": 1, "why": "Sales Techs only sell. After a complete handover, the job belongs to the Install Manager." },
-        { "q": "What's the test of a finished handover?", "options": ["You uploaded at least one photo", "The customer signed", "Could the installer do the job without ever calling you?", "It's in the calendar"], "correct": 2, "why": "If the installer would need to call you, the handover isn't finished." },
-        { "q": "Who collects the 50% deposit, and when?", "options": ["You, at signing", "The Install Manager on install day", "The office next week", "Nobody"], "correct": 0, "why": "You collect the 50% deposit at signing. No deposit, no booking, no materials ordered." },
-        { "q": "Who collects the balance?", "options": ["You", "Dispatch", "The customer pays whenever they like", "The Install Manager, on completion"], "correct": 3, "why": "The Install Manager collects the balance on completion." },
-        { "q": "Why does a clean handover protect your pay?", "options": ["It doesn't", "Commission is paid on sales paid in full", "You're paid per handover", "It earns review bonuses"], "correct": 1, "why": "Commission is paid on sales paid in full, so a job that stalls or comes back hurts you too." }
+        {
+          "q": "After a complete handover, who does the job belong to?",
+          "options": [
+            "You, until it's paid",
+            "The Install Manager",
+            "Dispatch",
+            "The customer"
+          ],
+          "correct": 1,
+          "why": "Sales Techs only sell. After a complete handover, the job belongs to the Install Manager."
+        },
+        {
+          "q": "What's the test of a finished handover?",
+          "options": [
+            "You uploaded at least one photo",
+            "The customer signed",
+            "Could the installer do the job without ever calling you?",
+            "It's in the calendar"
+          ],
+          "correct": 2,
+          "why": "If the installer would need to call you, the handover isn't finished."
+        },
+        {
+          "q": "Who collects the 50% deposit, and when?",
+          "options": [
+            "You, at signing",
+            "The Install Manager on install day",
+            "The office next week",
+            "Nobody"
+          ],
+          "correct": 0,
+          "why": "You collect the 50% deposit at signing. No deposit, no booking, no materials ordered."
+        },
+        {
+          "q": "Who collects the balance?",
+          "options": [
+            "You",
+            "Dispatch",
+            "The customer pays whenever they like",
+            "The Install Manager, on completion"
+          ],
+          "correct": 3,
+          "why": "The Install Manager collects the balance on completion."
+        },
+        {
+          "q": "Why does a clean handover protect your pay?",
+          "options": [
+            "It doesn't",
+            "Commission is paid on sales paid in full",
+            "You're paid per handover",
+            "It earns review bonuses"
+          ],
+          "correct": 1,
+          "why": "Commission is paid on sales paid in full, so a job that stalls or comes back hurts you too."
+        }
       ],
       "sim": {
         "persona": "🗂️ The rushed handover",
         "scenario": "Last lead of a long day. The customer has just signed a $16K Elite bathroom job.",
         "steps": [
-          { "them": "It's 6:40pm. What goes in the scope?", "options": ["\"See photos.\" The installer will work it out", "The scope, in and out, line by line from the pricebook", "Just the total price", "Whatever fits in one sentence"], "best": 1, "feedback": "Finish the scope properly. 'See photos' is how installers end up calling you." },
-          { "them": "The customer asks: \"So who do I talk to now?\"", "options": ["\"Call me any time, day or night.\"", "\"The Install Manager will call you next to book everything in.\"", "\"Just ring the main number and see.\"", "\"Nobody, they'll just turn up.\""], "best": 1, "feedback": "Set the customer up: the Install Manager calls them next." },
-          { "them": "Before you leave the driveway…", "options": ["Record access, specials and the customer's expectations, and confirm the 50% deposit is collected", "Head home and finish it tomorrow", "Text the installer a photo", "Nothing, it's all in the system"], "best": 0, "feedback": "Access, specials, expectations and the deposit, done before you leave." }
+          {
+            "them": "It's 6:40pm. What goes in the scope?",
+            "options": [
+              "\"See photos.\" The installer will work it out",
+              "The scope, in and out, line by line from the pricebook",
+              "Just the total price",
+              "Whatever fits in one sentence"
+            ],
+            "best": 1,
+            "feedback": "Finish the scope properly. 'See photos' is how installers end up calling you."
+          },
+          {
+            "them": "The customer asks: \"So who do I talk to now?\"",
+            "options": [
+              "\"Call me any time, day or night.\"",
+              "\"The Install Manager will call you next to book everything in.\"",
+              "\"Just ring the main number and see.\"",
+              "\"Nobody, they'll just turn up.\""
+            ],
+            "best": 1,
+            "feedback": "Set the customer up: the Install Manager calls them next."
+          },
+          {
+            "them": "Before you leave the driveway…",
+            "options": [
+              "Record access, specials and the customer's expectations, and confirm the 50% deposit is collected",
+              "Head home and finish it tomorrow",
+              "Text the installer a photo",
+              "Nothing, it's all in the system"
+            ],
+            "best": 0,
+            "feedback": "Access, specials, expectations and the deposit, done before you leave."
+          }
+        ]
+      }
+    },
+    "e1": {
+      "questions": [
+        {
+          "q": "What comes first on any quote?",
+          "options": [
+            "The price",
+            "Diagnosis. The price comes last",
+            "The discount",
+            "The deposit"
+          ],
+          "correct": 1,
+          "why": "Diagnose first and price last."
+        },
+        {
+          "q": "Why does every estimate say what's included and what isn't?",
+          "options": [
+            "It protects the fixed-price, no-hidden-costs promise",
+            "It makes the quote look longer",
+            "Customers like long lists",
+            "It's only needed for strata"
+          ],
+          "correct": 0,
+          "why": "Clear inclusions and exclusions protect the fixed-price, no-hidden-costs promise."
+        },
+        {
+          "q": "Why do realistic hours matter on an estimate?",
+          "options": [
+            "They don't, because the customer pays a fixed price",
+            "They set your commission rate",
+            "The installer's time and the business's profit depend on them",
+            "Only the office uses them"
+          ],
+          "correct": 2,
+          "why": "Realistic hours matter because the installer's time and the business's profit depend on them."
+        },
+        {
+          "q": "Which option do you present first?",
+          "options": [
+            "Essential",
+            "Standard",
+            "Premium",
+            "Elite"
+          ],
+          "correct": 3,
+          "why": "Elite is the best outcome, future-proofed, and is presented first."
+        },
+        {
+          "q": "The customer called about a tap, but you also find perished flexi hoses. Your quote…",
+          "options": [
+            "Covers the tap only",
+            "Bundles the related items into Standard, Premium and Elite",
+            "Adds a bundle discount",
+            "Leaves the hoses for next time"
+          ],
+          "correct": 1,
+          "why": "Never quote one job when the site shows more. Standard, Premium and Elite bundle the related items you found."
+        }
+      ]
+    },
+    "e2": {
+      "questions": [
+        {
+          "q": "Why use estimate templates?",
+          "options": [
+            "Every customer gets the same price and wording for the same job",
+            "They let you set your own price",
+            "They make discounting faster",
+            "They're only for commercial jobs"
+          ],
+          "correct": 0,
+          "why": "Templates mean every customer gets the same price and wording for the same job."
+        },
+        {
+          "q": "A template already exists for the job. You…",
+          "options": [
+            "Build from scratch so it's tailored",
+            "Use the template",
+            "Copy last week's invoice",
+            "Type in a price"
+          ],
+          "correct": 1,
+          "why": "Never build from scratch when a template exists."
+        },
+        {
+          "q": "When should a new template be created?",
+          "options": [
+            "For every single job",
+            "Never, always start fresh",
+            "Whenever a customer asks",
+            "For job types quoted repeatedly"
+          ],
+          "correct": 3,
+          "why": "New templates are for job types quoted repeatedly."
+        },
+        {
+          "q": "Before a new template goes live, it must be…",
+          "options": [
+            "Shared on WhatsApp",
+            "Reviewed and signed off",
+            "Priced 10% lower",
+            "Used three times"
+          ],
+          "correct": 1,
+          "why": "New templates are reviewed and signed off before going live."
+        },
+        {
+          "q": "What does a good template include?",
+          "options": [
+            "Just the total price",
+            "A built-in discount line",
+            "Standard scope wording, inclusions, exclusions, materials and estimated hours",
+            "Only the job title"
+          ],
+          "correct": 2,
+          "why": "A template carries standard scope wording, inclusions, exclusions, materials and estimated hours."
+        }
+      ]
+    },
+    "e3": {
+      "questions": [
+        {
+          "q": "On a $1,000 job, roughly how much is profit?",
+          "options": [
+            "About $50",
+            "About $100",
+            "About $200",
+            "About $500"
+          ],
+          "correct": 2,
+          "why": "About 50% labour and materials, 30% running the business, 20% profit: about $200 on a $1,000 job."
+        },
+        {
+          "q": "What does a 10% discount on a $1,000 job do?",
+          "options": [
+            "Takes $100, which is half of the $200 profit",
+            "Costs nothing",
+            "Takes 10% of the profit",
+            "Pays for itself by winning more work"
+          ],
+          "correct": 0,
+          "why": "A 10% discount takes $100 off the $1,000 job, which is half the $200 profit."
+        },
+        {
+          "q": "Who pays for an hour you didn't estimate?",
+          "options": [
+            "The customer, later",
+            "It comes straight out of the profit",
+            "The installer's wages",
+            "The next job"
+          ],
+          "correct": 1,
+          "why": "Every unestimated hour comes straight out of the profit."
+        },
+        {
+          "q": "Who can change a price?",
+          "options": [
+            "Any tech",
+            "Dispatch",
+            "The customer",
+            "Harriet (Sales Manager) or Sadie (Office Manager)"
+          ],
+          "correct": 3,
+          "why": "Techs can't discount or change a price. Only Harriet (Sales Manager) or Sadie (Office Manager) can."
+        },
+        {
+          "q": "A customer asks for a better price. What do you say?",
+          "options": [
+            "\"Let me ask the office for a better price.\"",
+            "\"I can't change the price, but I can show you a lower option.\"",
+            "\"Sure, 10% off.\"",
+            "\"Pay cash and we'll sort something out.\""
+          ],
+          "correct": 1,
+          "why": "Never offer to 'ask the office for a better price' in front of a customer: that's a discount by another name. Step down an option instead."
+        }
+      ]
+    },
+    "e4": {
+      "questions": [
+        {
+          "q": "What's the order for presenting a proposal?",
+          "options": [
+            "Price → options → problem",
+            "Problem → fix → options → the Proximity promise → let them choose",
+            "Discount → price → options",
+            "Options → price → leave"
+          ],
+          "correct": 1,
+          "why": "Problem → fix → options → the Proximity promise → let them choose."
+        },
+        {
+          "q": "Why use the customer's own photos and video?",
+          "options": [
+            "Showing beats telling",
+            "It fills time",
+            "It's a legal requirement",
+            "It replaces the quote"
+          ],
+          "correct": 0,
+          "why": "Use their photos and video. Showing beats telling."
+        },
+        {
+          "q": "A modest house and a worried-looking owner. What do you present?",
+          "options": [
+            "Only Essential",
+            "Essential and Standard only",
+            "Whatever you think they can afford",
+            "Every option, Elite first"
+          ],
+          "correct": 3,
+          "why": "Never prejudge what someone can afford. Present every option at every door, Elite first."
+        },
+        {
+          "q": "You've just said the price. Now you…",
+          "options": [
+            "Explain it all again",
+            "Offer a discount",
+            "Stay quiet and let the customer speak first",
+            "Start packing up"
+          ],
+          "correct": 2,
+          "why": "Scope. Price. Silence. Never discount to fill the quiet."
+        },
+        {
+          "q": "The customer isn't ready to decide. You…",
+          "options": [
+            "Push for a yes today",
+            "Agree when you'll follow up, and log it in ServiceTitan",
+            "Drop the price",
+            "Leave without a plan"
+          ],
+          "correct": 1,
+          "why": "If they're not ready, that's fine. Agree when you'll follow up and log it in ServiceTitan."
+        }
+      ],
+      "sim": {
+        "persona": "🤔 The hesitant hot water customer",
+        "scenario": "The hot water unit is failing. The customer balks at the price and wants to 'think about it'.",
+        "steps": [
+          {
+            "them": "That's a lot more than I expected. The Elite one especially.",
+            "options": [
+              "\"I can knock 10% off.\"",
+              "\"Totally fair. Is it the overall cost that worries you, or whether it's worth it?\"",
+              "\"That's what it costs, sorry.\"",
+              "\"Most people just pick Essential.\""
+            ],
+            "best": 1,
+            "feedback": "Ask whether the concern is the price or the value. No flinch and no discount."
+          },
+          {
+            "them": "Remind me what I actually get with you?",
+            "options": [
+              "\"A fixed upfront price, no hidden costs, a lifetime labour warranty and same-day return.\"",
+              "\"We're the cheapest around.\"",
+              "\"Whatever you want, really.\"",
+              "\"We'll beat any quote.\""
+            ],
+            "best": 0,
+            "feedback": "Clarify the options and the promise. That's what they're paying for."
+          },
+          {
+            "them": "I think I need to think about it.",
+            "options": [
+              "\"If you sign today I'll do you a deal.\"",
+              "\"Prices go up tomorrow.\"",
+              "\"No worries. When's a good time for me to follow up, Thursday or Friday?\"",
+              "\"Okay, see you.\""
+            ],
+            "best": 2,
+            "feedback": "'Not yet' is fine. Agree the follow-up time and log it. No discounts and no fake urgency."
+          }
+        ]
+      }
+    },
+    "e5": {
+      "questions": [
+        {
+          "q": "No 50% deposit means…",
+          "options": [
+            "No scheduling and no materials ordered",
+            "Schedule it anyway",
+            "Order the materials anyway",
+            "Charge a late fee"
+          ],
+          "correct": 0,
+          "why": "No 50% deposit, no scheduling and no materials ordered."
+        },
+        {
+          "q": "When is the balance paid?",
+          "options": [
+            "Upfront",
+            "On completion",
+            "Next month",
+            "Whenever the customer likes"
+          ],
+          "correct": 1,
+          "why": "50% upfront when the plan is approved, and the balance on completion."
+        },
+        {
+          "q": "Why does the handover matter so much?",
+          "options": [
+            "It's office paperwork only",
+            "It replaces the signed quote",
+            "It's your promise to the installer and the customer: missing information costs everyone time",
+            "It doesn't, install sorts it out"
+          ],
+          "correct": 2,
+          "why": "The handover is your promise to the installer and the customer. Missing information costs everyone time."
+        },
+        {
+          "q": "What goes in the handover?",
+          "options": [
+            "Only the address",
+            "Only the total price",
+            "One photo",
+            "Scope, materials, photos, access, hours and customer notes"
+          ],
+          "correct": 3,
+          "why": "The handover carries the scope, materials, photos, access, hours and customer notes."
+        },
+        {
+          "q": "Who accepts install handovers?",
+          "options": [
+            "Residential dispatch (Kim)",
+            "The customer",
+            "Any installer",
+            "Nobody, it's automatic"
+          ],
+          "correct": 0,
+          "why": "Handovers are accepted by residential dispatch (Kim) when nothing is missing."
+        }
+      ]
+    },
+    "i1": {
+      "questions": [
+        {
+          "q": "What drives Install Tech pay?",
+          "options": [
+            "Hours on site, however long",
+            "The gap between estimated and actual hours",
+            "The number of parts used",
+            "Kilometres driven"
+          ],
+          "correct": 1,
+          "why": "Your pay is driven by the gap between estimated and actual hours."
+        },
+        {
+          "q": "Roughly how much value is created for each hour saved against the estimate?",
+          "options": [
+            "About $5",
+            "About $20",
+            "About $50",
+            "About $500"
+          ],
+          "correct": 2,
+          "why": "Every hour saved against the estimate is worth about $50."
+        },
+        {
+          "q": "What does a warranty return do?",
+          "options": [
+            "Nothing to your numbers",
+            "Wipes out the time you saved and costs the business its profit on the job",
+            "Earns overtime",
+            "Doubles your saving"
+          ],
+          "correct": 1,
+          "why": "A warranty return wipes out the time you saved and costs the business its profit on the job."
+        },
+        {
+          "q": "Speed without quality is…",
+          "options": [
+            "Failure, because the lifetime labour warranty brings the job back",
+            "Fine if the customer is happy today",
+            "Always rewarded",
+            "Only a problem on big jobs"
+          ],
+          "correct": 0,
+          "why": "Speed without quality is failure: under the lifetime labour warranty, rework comes back to us."
+        },
+        {
+          "q": "What widens the gap between estimated and actual hours?",
+          "options": [
+            "Rushing and skipping tests",
+            "Waiting for parts on site",
+            "Supply runs mid-job",
+            "A clean, prepared, rework-free job"
+          ],
+          "correct": 3,
+          "why": "A clean, prepared, rework-free job widens the gap."
+        }
+      ]
+    },
+    "i2": {
+      "questions": [
+        {
+          "q": "When do you confirm the scope and parts?",
+          "options": [
+            "The day before",
+            "When you arrive",
+            "After you start",
+            "Only if something's missing"
+          ],
+          "correct": 0,
+          "why": "Confirm the scope and parts the day before so nothing holds the job up."
+        },
+        {
+          "q": "Before you start work, you…",
+          "options": [
+            "Start straight away to save time",
+            "Walk the customer through the approved scope and quote, and confirm it's signed",
+            "Ask for payment",
+            "Wait for the Sales Tech"
+          ],
+          "correct": 1,
+          "why": "Don't start until you've walked the customer through the approved scope and quote and confirmed it's signed."
+        },
+        {
+          "q": "The site doesn't match the scope. You…",
+          "options": [
+            "Do what looks right",
+            "Leave the job",
+            "Call the Install Manager (Charlotte, interim) before starting",
+            "Ask the customer what they'd like"
+          ],
+          "correct": 2,
+          "why": "If the site doesn't match the scope, call the Install Manager before starting."
+        },
+        {
+          "q": "What's the arrival standard?",
+          "options": [
+            "Whenever suits, as long as the work's good",
+            "Uniform is optional on small jobs",
+            "Drop sheets only on big jobs",
+            "On time, in uniform, shoe covers on, drop sheets down"
+          ],
+          "correct": 3,
+          "why": "On time, in uniform, shoe covers on, drop sheets down, work area protected."
+        },
+        {
+          "q": "What does 7am readiness mean?",
+          "options": [
+            "Rolling to the first job at 7am, fully stocked",
+            "Arriving at base at 7am",
+            "Loading the van at 7am",
+            "Checking your phone at 7am"
+          ],
+          "correct": 0,
+          "why": "7am readiness means rolling to the first job at 7am, fully stocked."
+        }
+      ]
+    },
+    "i3": {
+      "questions": [
+        {
+          "q": "Parts pickups should be…",
+          "options": [
+            "Mid-job surprises",
+            "Planned, and noted against the job",
+            "Done whenever there's time",
+            "Left to the customer"
+          ],
+          "correct": 1,
+          "why": "Parts pickups are planned, not mid-job surprises, and every pickup is noted against the job."
+        },
+        {
+          "q": "What's the end-of-day brief for?",
+          "options": [
+            "So anyone can pick the job up tomorrow",
+            "Payroll only",
+            "Marketing",
+            "The customer only"
+          ],
+          "correct": 0,
+          "why": "The end-of-day brief means anyone can pick the job up tomorrow."
+        },
+        {
+          "q": "When are statuses, forms and timesheets updated?",
+          "options": [
+            "At the end of the week",
+            "At the end of the month",
+            "When someone reminds you",
+            "In real time, as you go"
+          ],
+          "correct": 3,
+          "why": "Real-time updates, never at the end of the week."
+        },
+        {
+          "q": "What goes in the end-of-day brief?",
+          "options": [
+            "Just your hours",
+            "Only photos",
+            "What's done, what's outstanding, and any issues",
+            "Nothing if it went fine"
+          ],
+          "correct": 2,
+          "why": "What's done, what's outstanding, and any issues."
+        },
+        {
+          "q": "Which jobs need video and before-and-after photos saved to the job?",
+          "options": [
+            "Only big jobs",
+            "Every job",
+            "Only if the customer asks",
+            "Only warranty jobs"
+          ],
+          "correct": 1,
+          "why": "Videos and before-and-after photos on every job, saved to the job."
+        }
+      ]
+    },
+    "i4": {
+      "questions": [
+        {
+          "q": "Before you start, what do you isolate?",
+          "options": [
+            "Water or gas, every time",
+            "Only gas",
+            "Only on big jobs",
+            "Nothing, it's quicker"
+          ],
+          "correct": 0,
+          "why": "Isolate water or gas before starting. Every time."
+        },
+        {
+          "q": "Demolition uncovers something that might be asbestos. You…",
+          "options": [
+            "Carry on carefully",
+            "Stop and ask: photograph it, flag it and call the Install Manager or the office",
+            "Break it up quickly",
+            "Bag it yourself"
+          ],
+          "correct": 1,
+          "why": "Stop and ask if unsure. Never cut, drill or break suspected asbestos."
+        },
+        {
+          "q": "Compliance certificates are…",
+          "options": [
+            "Optional on small jobs",
+            "The office's problem",
+            "Lodged on time, as part of finishing the job",
+            "Only for gas work"
+          ],
+          "correct": 2,
+          "why": "Certificates lodged on time are part of finishing the job."
+        },
+        {
+          "q": "PPE on installs means…",
+          "options": [
+            "Only on big jobs",
+            "Optional in summer",
+            "Only if the customer is watching",
+            "The right PPE for the job, on every job"
+          ],
+          "correct": 3,
+          "why": "Site safety and the right PPE for the job, on every job."
+        },
+        {
+          "q": "Which hazards are specific to installs?",
+          "options": [
+            "Nothing beyond service work",
+            "Demolition, wall cavities and roof spaces",
+            "Only traffic",
+            "Only the weather"
+          ],
+          "correct": 1,
+          "why": "Install-specific hazards include demolition, wall cavities and roof spaces."
+        }
+      ]
+    },
+    "i5": {
+      "questions": [
+        {
+          "q": "When does hot water work peak?",
+          "options": [
+            "December to February",
+            "Around Easter",
+            "June to August",
+            "It's the same all year"
+          ],
+          "correct": 2,
+          "why": "Hot water is the biggest install category and peaks June to August."
+        },
+        {
+          "q": "Where do you record a new hot water unit?",
+          "options": [
+            "Your notebook",
+            "ServiceTitan equipment records",
+            "Nowhere",
+            "A text to the office"
+          ],
+          "correct": 1,
+          "why": "Record the new unit in ServiceTitan equipment records."
+        },
+        {
+          "q": "When is the manufacturer warranty registered?",
+          "options": [
+            "On the day",
+            "Next month",
+            "Only if the customer asks",
+            "Never"
+          ],
+          "correct": 0,
+          "why": "Register the manufacturer warranty on the day."
+        },
+        {
+          "q": "What do you record for a new unit?",
+          "options": [
+            "Just the brand",
+            "Nothing",
+            "The price only",
+            "The serial, install date and warranty registration"
+          ],
+          "correct": 3,
+          "why": "Record the serial, install date and warranty registration."
+        },
+        {
+          "q": "Which sign-off is needed for hot water installs?",
+          "options": [
+            "None",
+            "Supervised installs signed off: one electric, one gas or continuous flow",
+            "A quiz only",
+            "The customer's say-so"
+          ],
+          "correct": 1,
+          "why": "A supervised hot water install is signed off: one electric, and one gas or continuous flow."
+        }
+      ]
+    },
+    "i6": {
+      "questions": [
+        {
+          "q": "Why follow the standard workflow for each job type?",
+          "options": [
+            "It's optional",
+            "So every install is right first time",
+            "To slow the job down",
+            "It's only for apprentices"
+          ],
+          "correct": 1,
+          "why": "Standard workflows mean every install is right first time."
+        },
+        {
+          "q": "When do you clean up?",
+          "options": [
+            "Only at the end",
+            "The customer does it",
+            "Throughout the job, not just at the end",
+            "Only if it's messy"
+          ],
+          "correct": 2,
+          "why": "Work cleanly throughout, not just at the end."
+        },
+        {
+          "q": "On a renovation, what must you know?",
+          "options": [
+            "Nothing, you do it all",
+            "Which trade owns what: waterproofing, tiling, electrical",
+            "Only the customer's colour choice",
+            "Only the finish date"
+          ],
+          "correct": 1,
+          "why": "On renovations, know which trade owns what."
+        },
+        {
+          "q": "What does a re-pipe need before you start?",
+          "options": [
+            "Planning: materials and access",
+            "Nothing, just turn up",
+            "The customer to choose the pipe",
+            "A discount"
+          ],
+          "correct": 0,
+          "why": "Re-pipes need planning: materials and access."
+        },
+        {
+          "q": "Which sign-off is needed for this module?",
+          "options": [
+            "None",
+            "A quiz only",
+            "A phone call",
+            "A supervised fixture install plus one other job type"
+          ],
+          "correct": 3,
+          "why": "A supervised fixture install and one other job type are signed off."
+        }
+      ]
+    },
+    "i7": {
+      "questions": [
+        {
+          "q": "What do you test before you leave?",
+          "options": [
+            "Nothing if it looks fine",
+            "Pressure, flow and leaks",
+            "Only leaks, if asked",
+            "Just the tap handle"
+          ],
+          "correct": 1,
+          "why": "Nothing leaves site untested: pressure, flow and leaks."
+        },
+        {
+          "q": "Every return under the lifetime labour warranty is…",
+          "options": [
+            "Unpaid time and a dent in trust",
+            "Extra pay",
+            "Normal and expected",
+            "The customer's fault"
+          ],
+          "correct": 0,
+          "why": "Every return under the lifetime labour warranty is unpaid time and a dent in trust."
+        },
+        {
+          "q": "What's your proof of the finished work?",
+          "options": [
+            "Your word",
+            "The invoice",
+            "The finished-work photos",
+            "Nothing"
+          ],
+          "correct": 2,
+          "why": "The finished-work photos are your proof."
+        },
+        {
+          "q": "The lifetime labour warranty and same-day return mean…",
+          "options": [
+            "Mistakes don't matter",
+            "Customers pay for returns",
+            "Testing is optional",
+            "Getting it right first time matters even more"
+          ],
+          "correct": 3,
+          "why": "Because we stand behind the labour for life, getting it right first time matters even more."
+        },
+        {
+          "q": "What do you complete on a live job for sign-off?",
+          "options": [
+            "The testing and commissioning checklist",
+            "A customer survey",
+            "Nothing",
+            "A timesheet only"
+          ],
+          "correct": 0,
+          "why": "Complete the testing and commissioning checklist on a live job."
+        }
+      ]
+    },
+    "i8": {
+      "questions": [
+        {
+          "q": "You find work that isn't in the approved quote. What's your first step?",
+          "options": [
+            "Do it, it needs doing",
+            "Stop",
+            "Ask for cash",
+            "Ignore it"
+          ],
+          "correct": 1,
+          "why": "Stop. Don't carry on with work that isn't in the approved quote."
+        },
+        {
+          "q": "What's the order for a change to scope?",
+          "options": [
+            "Do it, then tell them later",
+            "Stop → document → explain and re-price → signed approval → continue",
+            "Re-price → do it → document",
+            "Ask the office → do it"
+          ],
+          "correct": 1,
+          "why": "Stop → document → explain and re-price → signed approval → continue."
+        },
+        {
+          "q": "Why is unapproved extra work a problem?",
+          "options": [
+            "It isn't, customers like extras",
+            "It breaks the no-hidden-costs promise and is the biggest silent profit leak on installs",
+            "It only affects the office",
+            "It's slower"
+          ],
+          "correct": 1,
+          "why": "Unapproved extra work breaks the no-hidden-costs promise and is the biggest silent profit leak on installs."
+        },
+        {
+          "q": "Where does the new price come from?",
+          "options": [
+            "Your best guess",
+            "The customer",
+            "Last job's invoice",
+            "The pricebook"
+          ],
+          "correct": 3,
+          "why": "Explain it to the customer and give a new price from the pricebook."
+        },
+        {
+          "q": "You're unsure whether to continue. You…",
+          "options": [
+            "Call the Install Manager (Charlotte, interim)",
+            "Keep going",
+            "Ask the customer",
+            "Go home"
+          ],
+          "correct": 0,
+          "why": "Unsure? Call the Install Manager before you continue."
+        }
+      ],
+      "sim": {
+        "persona": "🧱 Rotten pipe behind the wall",
+        "scenario": "Halfway through a bathroom fit-off, you find corroded galvanised pipe that isn't in the scope.",
+        "steps": [
+          {
+            "them": "Just do it, mate. We'll sort the money out later.",
+            "options": [
+              "\"No worries, I'll keep going.\"",
+              "\"Let me stop and show you what I've found first.\"",
+              "\"I'll do it for free.\"",
+              "\"That'll be cash.\""
+            ],
+            "best": 1,
+            "feedback": "Stop and photograph it. Never carry on with unapproved work."
+          },
+          {
+            "them": "How much extra are we talking?",
+            "options": [
+              "\"About a grand, roughly.\"",
+              "\"Don't worry about it.\"",
+              "\"Depends how it goes.\"",
+              "\"I'll price it from the pricebook now and show you exactly.\""
+            ],
+            "best": 3,
+            "feedback": "Explain it and give a real price from the pricebook, never a guess."
+          },
+          {
+            "them": "Okay, go ahead.",
+            "options": [
+              "Get their signed approval in ServiceTitan, then continue",
+              "Carry on straight away",
+              "Text the office tonight",
+              "Add it to the invoice at the end"
+            ],
+            "best": 0,
+            "feedback": "Signed approval before you continue keeps the fixed-price promise honest."
+          }
+        ]
+      }
+    },
+    "i9": {
+      "questions": [
+        {
+          "q": "On every job, you…",
+          "options": [
+            "Mind your own business",
+            "Look for genuine extra work",
+            "Push upsells hard",
+            "Never mention anything"
+          ],
+          "correct": 1,
+          "why": "Look for genuine extra work on every job."
+        },
+        {
+          "q": "You spot extra work. What do you do?",
+          "options": [
+            "Photograph it, explain it, and quote it or raise it",
+            "Mention it at the door on the way out",
+            "Do it for free",
+            "Ignore it"
+          ],
+          "correct": 0,
+          "why": "Photograph it, explain it, and quote it or raise it."
+        },
+        {
+          "q": "What do you earn on extra work you raise that's sold and completed?",
+          "options": [
+            "5%",
+            "Nothing",
+            "1%",
+            "10%"
+          ],
+          "correct": 2,
+          "why": "That's the 1% for you on extra work you raise that's sold and completed."
+        },
+        {
+          "q": "A problem comes up mid-job. When do you tell the Install Manager?",
+          "options": [
+            "At the end of the day",
+            "At the end of the week",
+            "Only if it gets worse",
+            "Immediately"
+          ],
+          "correct": 3,
+          "why": "Tell the Install Manager about problems immediately, not at the end of the day."
+        },
+        {
+          "q": "A job is booked for three days. You…",
+          "options": [
+            "Pace the work so it finishes on time and to standard",
+            "Rush to finish in two",
+            "Let it run to four",
+            "Leave early each day"
+          ],
+          "correct": 0,
+          "why": "On a job booked for a set period, pace the work so it finishes on time and to standard."
+        }
+      ]
+    },
+    "i10": {
+      "questions": [
+        {
+          "q": "What's the finishing order?",
+          "options": [
+            "Payment, then clean up",
+            "Review first, then the rest",
+            "Clean, walk-through, warranty, payment and sign-off, review",
+            "Leave, then invoice"
+          ],
+          "correct": 2,
+          "why": "Clean, walk-through, warranty, payment and sign-off, review: in that order, every time."
+        },
+        {
+          "q": "Why show the before-and-after photos?",
+          "options": [
+            "Customers rarely see what was behind the wall",
+            "For social media",
+            "It's quicker than talking",
+            "To fill time"
+          ],
+          "correct": 0,
+          "why": "Customers rarely see what was behind the wall."
+        },
+        {
+          "q": "How do you explain the warranty?",
+          "options": [
+            "In your own words",
+            "Skip it if they're busy",
+            "Using the approved wording",
+            "Say everything's covered forever"
+          ],
+          "correct": 2,
+          "why": "Explain the warranty using the approved wording, so every tech says it the same way."
+        },
+        {
+          "q": "What do you collect before you leave?",
+          "options": [
+            "Nothing, the office invoices",
+            "A tip",
+            "Only their email",
+            "The balance payment and sign-off in ServiceTitan"
+          ],
+          "correct": 3,
+          "why": "Collect payment (the balance) and get sign-off in ServiceTitan before leaving."
+        },
+        {
+          "q": "How do you leave the site?",
+          "options": [
+            "Cleaner than you found it, with the rubbish taken away",
+            "As it was",
+            "Rubbish bagged by the bin",
+            "The customer cleans up"
+          ],
+          "correct": 0,
+          "why": "Leave the site cleaner than you found it and take the rubbish away."
+        }
+      ]
+    },
+    "i11": {
+      "questions": [
+        {
+          "q": "Why does every tool have a home in the van?",
+          "options": [
+            "It looks good",
+            "Searching for tools is lost time",
+            "It's a rule for apprentices",
+            "Insurance"
+          ],
+          "correct": 1,
+          "why": "Every tool has a home. Searching for tools is lost time."
+        },
+        {
+          "q": "What happens to unused parts?",
+          "options": [
+            "They stay in the van, just in case",
+            "They go home with you",
+            "They go back, because parts left in vans are lost profit",
+            "They get binned"
+          ],
+          "correct": 2,
+          "why": "Unused parts go back. Parts left in vans are lost profit."
+        },
+        {
+          "q": "A tool gets damaged. You…",
+          "options": [
+            "Report it straight away",
+            "Keep using it until it breaks",
+            "Hide it",
+            "Buy a new one yourself"
+          ],
+          "correct": 0,
+          "why": "Report damaged tools straight away."
+        },
+        {
+          "q": "Van stock should be…",
+          "options": [
+            "Topped up when it runs out",
+            "The office's job",
+            "Optional",
+            "Kept up and restocked on time"
+          ],
+          "correct": 3,
+          "why": "Keep van stock up and restock on time."
+        },
+        {
+          "q": "What does the van audit check?",
+          "options": [
+            "Only cleanliness",
+            "Stock, returns and tools",
+            "Fuel only",
+            "Nothing"
+          ],
+          "correct": 1,
+          "why": "The van passes a stock, returns and tool audit."
+        }
+      ]
+    },
+    "i12": {
+      "questions": [
+        {
+          "q": "A job is going to overrun. You…",
+          "options": [
+            "Text at the end of the day",
+            "Say nothing and push on",
+            "Call immediately",
+            "Leave it for tomorrow"
+          ],
+          "correct": 2,
+          "why": "Call immediately if a job will overrun."
+        },
+        {
+          "q": "Saturday and emergency cover are…",
+          "options": [
+            "Part of the role",
+            "Optional",
+            "Only for apprentices",
+            "Never needed"
+          ],
+          "correct": 0,
+          "why": "Saturday and emergency cover are part of the role."
+        },
+        {
+          "q": "A return comes back on your own work. You…",
+          "options": [
+            "Argue it wasn't you",
+            "Charge for it",
+            "Fix it promptly and graciously, and learn from it",
+            "Ignore it"
+          ],
+          "correct": 2,
+          "why": "A return on your own work is fixed promptly and graciously, and you learn from it."
+        },
+        {
+          "q": "Something urgent changes on a job. What's the best way to tell dispatch?",
+          "options": [
+            "Email",
+            "A text later",
+            "Wait until tomorrow",
+            "Call"
+          ],
+          "correct": 3,
+          "why": "Urgent changes get a call, not a message."
+        },
+        {
+          "q": "Who dispatches install jobs?",
+          "options": [
+            "Residential dispatch (Kim)",
+            "Commercial dispatch (Ruby)",
+            "The Sales Manager",
+            "The customer"
+          ],
+          "correct": 0,
+          "why": "Install jobs are dispatched by residential dispatch (Kim)."
+        }
+      ]
+    },
+    "s1": {
+      "questions": [
+        {
+          "q": "How do most customers first meet Proximity?",
+          "options": [
+            "Through a sales consultation",
+            "Through a service call",
+            "Through an install",
+            "At the office"
+          ],
+          "correct": 1,
+          "why": "Most customers meet Proximity through a service call."
+        },
+        {
+          "q": "What makes your average job value rise?",
+          "options": [
+            "Fixing the whole problem and offering genuine options",
+            "Pushing harder",
+            "Discounting to win the job",
+            "Staying longer on site"
+          ],
+          "correct": 0,
+          "why": "Average job value rises when you fix the whole problem and offer genuine options, not when you push."
+        },
+        {
+          "q": "Every return trip is…",
+          "options": [
+            "Extra revenue",
+            "Good for reviews",
+            "Lost capacity",
+            "Normal"
+          ],
+          "correct": 2,
+          "why": "Every return trip is lost capacity."
+        },
+        {
+          "q": "What does a Service Tech do at Proximity?",
+          "options": [
+            "Only diagnose",
+            "Only sell",
+            "Only install",
+            "Diagnose, fix and sell on the spot"
+          ],
+          "correct": 3,
+          "why": "Service Techs diagnose, fix and sell on the spot."
+        },
+        {
+          "q": "Which of these is one of your KPIs?",
+          "options": [
+            "Kilometres driven",
+            "First-time fix rate",
+            "Hours on site",
+            "Calls made"
+          ],
+          "correct": 1,
+          "why": "First-time fix rate is one of your KPIs, along with average job value, returns and reviews."
+        }
+      ]
+    },
+    "s2": {
+      "questions": [
+        {
+          "q": "You've fixed what they called about. Next, you…",
+          "options": [
+            "Check the rest of the system",
+            "Leave",
+            "Invoice and go",
+            "Pitch a new system"
+          ],
+          "correct": 0,
+          "why": "Fix what they called about, then check the rest of the system."
+        },
+        {
+          "q": "What's the diagnostic flow?",
+          "options": [
+            "Quote → inspect → fix",
+            "Listen → inspect → test → root cause → explain",
+            "Fix → invoice → explain",
+            "Explain → test → listen"
+          ],
+          "correct": 1,
+          "why": "Listen → inspect → test → root cause → explain."
+        },
+        {
+          "q": "In the health check, what do you record?",
+          "options": [
+            "Only problems",
+            "Only things that sell",
+            "Nothing unless asked",
+            "The 'all good' items too"
+          ],
+          "correct": 3,
+          "why": "The health check feeds reports and future work. Record the 'all good' items too."
+        },
+        {
+          "q": "A finding is borderline. You…",
+          "options": [
+            "Make it sound worse to be safe",
+            "Leave it out",
+            "Describe it honestly. Never inflate a finding",
+            "Call it non-compliant"
+          ],
+          "correct": 2,
+          "why": "Never inflate a finding. Calm, honest advice builds the reputation."
+        },
+        {
+          "q": "What's the best way to explain a problem?",
+          "options": [
+            "Show photos or footage and explain it in plain English",
+            "Use technical terms so you sound expert",
+            "Tell them to trust you",
+            "Email it later"
+          ],
+          "correct": 0,
+          "why": "Show, don't tell: photos and camera footage, explained in plain English."
+        }
+      ]
+    },
+    "s3": {
+      "questions": [
+        {
+          "q": "What does every recurring blockage get?",
+          "options": [
+            "A quick clear only",
+            "A camera inspection, with the footage",
+            "Chemical cleaner",
+            "A note for next time"
+          ],
+          "correct": 1,
+          "why": "Every recurring blockage gets a camera inspection, and the footage is what the customer decides on."
+        },
+        {
+          "q": "You clear a drain, but roots or damage are present. The clear is…",
+          "options": [
+            "Temporary. Say so and present all four options",
+            "Permanent",
+            "Guaranteed for a year",
+            "Enough, so say nothing"
+          ],
+          "correct": 0,
+          "why": "A clear is temporary if roots or damage are present. Say so and present all four options."
+        },
+        {
+          "q": "When do blocked drains spike?",
+          "options": [
+            "Winter",
+            "Spring",
+            "Storm season, summer to autumn",
+            "They don't"
+          ],
+          "correct": 2,
+          "why": "Blocked drains spike in storm season (summer to autumn)."
+        },
+        {
+          "q": "What does the customer base their decision on?",
+          "options": [
+            "Your opinion",
+            "The price only",
+            "A guess",
+            "The camera footage"
+          ],
+          "correct": 3,
+          "why": "The footage is what the customer decides on."
+        },
+        {
+          "q": "Where does the camera footage go?",
+          "options": [
+            "Saved to the job",
+            "Deleted after",
+            "Your personal phone only",
+            "Nowhere"
+          ],
+          "correct": 0,
+          "why": "CCTV footage is saved to the job."
+        }
+      ],
+      "sim": {
+        "persona": "🌧️ The repeat blockage",
+        "scenario": "It's the third blockage this year. The customer wants it 'just cleared again, cheaply'.",
+        "steps": [
+          {
+            "them": "Third time this year. Just clear it again, as cheap as you can.",
+            "options": [
+              "Clear it and leave",
+              "Clear it, then run the camera and show them the footage",
+              "Refuse to clear it",
+              "Offer a repeat-customer discount"
+            ],
+            "best": 1,
+            "feedback": "Clear it and show the footage. That's what they'll decide on."
+          },
+          {
+            "them": "Why does it keep happening?",
+            "options": [
+              "\"Bad luck, I reckon.\"",
+              "\"Your pipes are illegal.\"",
+              "Explain what the footage shows, in plain English",
+              "\"No idea, mate.\""
+            ],
+            "best": 2,
+            "feedback": "Explain why it keeps happening, using the footage. Calm and honest."
+          },
+          {
+            "them": "So what are my options?",
+            "options": [
+              "Only the cheapest clear",
+              "All four options, Elite first, and that doing nothing is also a choice",
+              "Only the biggest job",
+              "A discount if they sign now"
+            ],
+            "best": 1,
+            "feedback": "Present all four, Elite first, without pressure."
+          }
+        ]
+      }
+    },
+    "s4": {
+      "questions": [
+        {
+          "q": "Why record precise facts, photos and locations on leak jobs?",
+          "options": [
+            "Reports can end up with insurers or in disputes",
+            "It looks professional",
+            "It fills the report",
+            "Only for strata"
+          ],
+          "correct": 0,
+          "why": "Leak detection reports can end up with insurers or in disputes."
+        },
+        {
+          "q": "A plumbing fault or a waterproofing defect? You…",
+          "options": [
+            "Blame the builder",
+            "Call it all plumbing",
+            "Separate them clearly",
+            "Leave it out of the notes"
+          ],
+          "correct": 2,
+          "why": "Separate plumbing faults from waterproofing or building defects."
+        },
+        {
+          "q": "When does insurance work spike?",
+          "options": [
+            "Winter",
+            "After storms",
+            "Christmas",
+            "Never"
+          ],
+          "correct": 1,
+          "why": "Insurance work spikes after storms."
+        },
+        {
+          "q": "Notes for a Leak Detection report contain…",
+          "options": [
+            "Prices for every option",
+            "Who is legally at fault",
+            "A discount offer",
+            "Findings only"
+          ],
+          "correct": 3,
+          "why": "Leak Detection reports are findings only. A formal quote follows separately."
+        },
+        {
+          "q": "On a strata leak, what must you record?",
+          "options": [
+            "Lot or common property",
+            "The building's age only",
+            "The tenant's opinion",
+            "Nothing extra"
+          ],
+          "correct": 0,
+          "why": "Strata leaks: record lot vs common property."
+        }
+      ]
+    },
+    "s5": {
+      "questions": [
+        {
+          "q": "No hot water is often…",
+          "options": [
+            "Low priority",
+            "Urgent, especially with vulnerable occupants",
+            "A next-week job",
+            "Not our problem"
+          ],
+          "correct": 1,
+          "why": "No hot water is often urgent, especially with vulnerable occupants."
+        },
+        {
+          "q": "When should you aim to restore hot water?",
+          "options": [
+            "Today, if at all possible",
+            "Next week",
+            "When parts arrive next month",
+            "Whenever suits"
+          ],
+          "correct": 0,
+          "why": "Restore it today if at all possible."
+        },
+        {
+          "q": "An older unit has failed. What do you present?",
+          "options": [
+            "Only a repair",
+            "Only a replacement",
+            "A discount",
+            "Repair vs replace, across the four options"
+          ],
+          "correct": 3,
+          "why": "For older units, present repair vs replace across the four options."
+        },
+        {
+          "q": "The customer chooses a replacement. You…",
+          "options": [
+            "Tell them to ring the office",
+            "Sell it on the spot",
+            "Wait a week",
+            "Refuse"
+          ],
+          "correct": 1,
+          "why": "Sell the replacement on the spot if they choose it."
+        },
+        {
+          "q": "When is this module refreshed?",
+          "options": [
+            "Never",
+            "December",
+            "Every April, before the winter peak",
+            "Only for new starters"
+          ],
+          "correct": 2,
+          "why": "Refresh this module every April before the winter peak."
+        }
+      ]
+    },
+    "s6": {
+      "questions": [
+        {
+          "q": "When does first-time fix start?",
+          "options": [
+            "The night before: check tomorrow's jobs and stock up",
+            "When you arrive",
+            "After the first attempt",
+            "At month end"
+          ],
+          "correct": 0,
+          "why": "First-time fix starts the night before: check tomorrow's jobs and stock up."
+        },
+        {
+          "q": "What does a return trip do?",
+          "options": [
+            "Earns more",
+            "Doubles the cost of the job",
+            "Builds rapport",
+            "Nothing"
+          ],
+          "correct": 1,
+          "why": "A return trip doubles the cost of the job."
+        },
+        {
+          "q": "Replacing a part, you…",
+          "options": [
+            "Fit whatever's in the van",
+            "Guess a price",
+            "Replace like-for-like, or offer an upgrade from the pricebook",
+            "Use second-hand parts"
+          ],
+          "correct": 2,
+          "why": "Replace like-for-like, or offer an upgrade from the pricebook."
+        },
+        {
+          "q": "You don't have the part on board. What's the aim?",
+          "options": [
+            "Book a return next week by default",
+            "Leave it",
+            "Bodge it",
+            "Find an option that avoids a return trip"
+          ],
+          "correct": 3,
+          "why": "No part on board: find a way to avoid a return trip."
+        },
+        {
+          "q": "What wins first-time fix?",
+          "options": [
+            "Preparation and van stock",
+            "Speed",
+            "Luck",
+            "Discounts"
+          ],
+          "correct": 0,
+          "why": "First-time fix comes from preparation and van stock."
+        }
+      ]
+    },
+    "s7": {
+      "questions": [
+        {
+          "q": "A job has more than one sensible fix. You present…",
+          "options": [
+            "Just the cheapest",
+            "All four options, Elite first, and the customer chooses",
+            "Just one option",
+            "Whatever you'd prefer"
+          ],
+          "correct": 1,
+          "why": "Every job with more than one sensible fix gets all four options, Elite first."
+        },
+        {
+          "q": "Bundle discounts are…",
+          "options": [
+            "Never given: every line comes from the pricebook",
+            "10%",
+            "Up to you",
+            "For regulars only"
+          ],
+          "correct": 0,
+          "why": "Never discount a bundle: every line comes from the pricebook."
+        },
+        {
+          "q": "The customer chooses work that can be done today. You…",
+          "options": [
+            "Book it for next week",
+            "Hand it to Sales",
+            "Leave it",
+            "Finish it today"
+          ],
+          "correct": 3,
+          "why": "If they choose work that's done today, you finish it today."
+        },
+        {
+          "q": "How is bigger work booked?",
+          "options": [
+            "Verbally",
+            "With no deposit",
+            "With a 50% deposit and a proper handover",
+            "By the customer ringing later"
+          ],
+          "correct": 2,
+          "why": "Bigger work is booked with a 50% deposit and a proper handover."
+        },
+        {
+          "q": "What do you offer on every completed job?",
+          "options": [
+            "A discount",
+            "The Care Plan",
+            "Nothing",
+            "A gift card"
+          ],
+          "correct": 1,
+          "why": "Offer the Care Plan on every completed job."
+        }
+      ],
+      "sim": {
+        "persona": "🛠️ 'Just fix the leak'",
+        "scenario": "The customer wants the cheapest fix only and is wary of being sold anything.",
+        "steps": [
+          {
+            "them": "Just fix the leak. I don't want to be sold anything.",
+            "options": [
+              "\"Sure, but you really need a whole new system.\"",
+              "\"We can't just fix the leak.\"",
+              "\"No problem, I'll fix the leak.\"",
+              "\"I'll do it cheaper if you add more.\""
+            ],
+            "best": 2,
+            "feedback": "Respect it and fix what they asked for."
+          },
+          {
+            "them": "Done? Anything else I should know?",
+            "options": [
+              "\"Nope, all good.\"",
+              "Briefly show the photos of what you found and what each one means",
+              "Hand them a long priced list",
+              "Tell them it's dangerous"
+            ],
+            "best": 1,
+            "feedback": "Briefly show what you found. No pressure."
+          },
+          {
+            "them": "Hmm. What would sorting that out cost?",
+            "options": [
+              "Present the options, Elite first, and let them decide",
+              "One price for everything",
+              "Offer 10% off today",
+              "Say the office will call"
+            ],
+            "best": 0,
+            "feedback": "Present the options and let them decide, with no pressure."
+          }
+        ]
+      }
+    },
+    "s8": {
+      "questions": [
+        {
+          "q": "Who are our most loyal customers?",
+          "options": [
+            "Members on the Care Plan",
+            "One-off customers",
+            "Builders",
+            "Competitors' customers"
+          ],
+          "correct": 0,
+          "why": "Members are our most loyal customers."
+        },
+        {
+          "q": "A preventive visit should feel…",
+          "options": [
+            "Like a hard sell",
+            "Rushed",
+            "Reassuring first",
+            "Optional"
+          ],
+          "correct": 2,
+          "why": "Preventive visits are reassuring first."
+        },
+        {
+          "q": "When do you offer the Care Plan?",
+          "options": [
+            "Only to big spenders",
+            "Never",
+            "Once a year",
+            "On every completed job"
+          ],
+          "correct": 3,
+          "why": "Offer the Care Plan on every completed job."
+        },
+        {
+          "q": "Offering the Care Plan is…",
+          "options": [
+            "Optional",
+            "One of the weekly tracked habits",
+            "Only for the office",
+            "Only for strata"
+          ],
+          "correct": 1,
+          "why": "Offering the Care Plan is one of the weekly tracked habits."
+        },
+        {
+          "q": "A preventive visit finds everything in good shape. That's…",
+          "options": [
+            "A good result. Say so clearly",
+            "A failure",
+            "A reason to keep looking",
+            "A wasted visit"
+          ],
+          "correct": 0,
+          "why": "Preventive visits are reassuring first. 'Everything's in good shape' is a good result."
+        }
+      ]
+    },
+    "s9": {
+      "questions": [
+        {
+          "q": "What's the first thing you do at an emergency?",
+          "options": [
+            "Quote the job",
+            "Make safe: isolate, contain, protect",
+            "Take marketing photos",
+            "Explain the rates"
+          ],
+          "correct": 1,
+          "why": "Make safe first: isolate, contain, protect."
+        },
+        {
+          "q": "Emergency customers…",
+          "options": [
+            "Remember how they were treated for life",
+            "Forget quickly",
+            "Only care about price",
+            "Never leave reviews"
+          ],
+          "correct": 0,
+          "why": "Emergency customers remember how they were treated for life."
+        },
+        {
+          "q": "Once it's safe, you…",
+          "options": [
+            "Leave",
+            "Start the biggest job",
+            "Offer a discount",
+            "Present the four options for the permanent fix"
+          ],
+          "correct": 3,
+          "why": "Make safe first, then present the four options for the permanent fix."
+        },
+        {
+          "q": "When do the highest-intent calls come in?",
+          "options": [
+            "9am Mondays",
+            "Lunchtime",
+            "6pm to 10pm and weekends",
+            "Never"
+          ],
+          "correct": 2,
+          "why": "6pm to 10pm and weekends are when the highest-intent calls come in."
+        },
+        {
+          "q": "Which of these is an emergency?",
+          "options": [
+            "A dripping tap",
+            "An active leak coming through a ceiling",
+            "A slow-filling cistern",
+            "A squeaky tap handle"
+          ],
+          "correct": 1,
+          "why": "An active leak is an emergency. Make it safe fast."
+        }
+      ],
+      "sim": {
+        "persona": "🚨 Burst pipe, 9pm",
+        "scenario": "Water is coming through the kitchen ceiling. The customer is panicking and angry about after-hours rates.",
+        "steps": [
+          {
+            "them": "Water's pouring through the ceiling! Do something!",
+            "options": [
+              "Explain the after-hours rate first",
+              "Take photos for the report first",
+              "Isolate the water immediately",
+              "Call the office"
+            ],
+            "best": 2,
+            "feedback": "Isolate immediately. Make safe first."
+          },
+          {
+            "them": "And what's this going to cost me at this hour?!",
+            "options": [
+              "\"Not my problem.\"",
+              "\"I know this is stressful. Here's how the after-hours rate works…\"",
+              "\"I'll do it cheap.\"",
+              "Ignore the question"
+            ],
+            "best": 1,
+            "feedback": "Acknowledge the stress and explain the rate calmly."
+          },
+          {
+            "them": "Okay. Now what?",
+            "options": [
+              "Make it safe, then give the options for the permanent fix",
+              "Leave once the water's off",
+              "Start the biggest repair straight away",
+              "Tell them to ring someone tomorrow"
+            ],
+            "best": 0,
+            "feedback": "Make safe, then give the options."
+          }
+        ]
+      }
+    },
+    "s10": {
+      "questions": [
+        {
+          "q": "The fix costs more than the property manager's approval limit. You…",
+          "options": [
+            "Do it anyway",
+            "Get written approval before going over",
+            "Ask the tenant to approve",
+            "Do half the job"
+          ],
+          "correct": 1,
+          "why": "Never exceed the PM's approval limit without written approval."
+        },
+        {
+          "q": "On a tenant job, who decides?",
+          "options": [
+            "The tenant",
+            "The neighbour",
+            "You",
+            "The property manager, not the tenant"
+          ],
+          "correct": 3,
+          "why": "Tenants aren't the decision-maker."
+        },
+        {
+          "q": "Who does larger strata work go to?",
+          "options": [
+            "Bella",
+            "Alex",
+            "Kim",
+            "Harriet"
+          ],
+          "correct": 0,
+          "why": "Larger strata work goes to Bella."
+        },
+        {
+          "q": "Who does commercial work go to?",
+          "options": [
+            "Bella",
+            "Chloe",
+            "Alex",
+            "Sadie"
+          ],
+          "correct": 2,
+          "why": "Commercial work goes to Alex."
+        },
+        {
+          "q": "With a landlord, the focus is…",
+          "options": [
+            "The cheapest fix",
+            "Protecting the asset",
+            "Upselling",
+            "Speed only"
+          ],
+          "correct": 1,
+          "why": "Landlords: protecting the asset."
+        }
+      ],
+      "sim": {
+        "persona": "🏢 Tenant with a $300 limit",
+        "scenario": "The hot water has failed. The PM's approval limit is $300 and the fix costs more.",
+        "steps": [
+          {
+            "them": "Can you just fix it? The agent won't mind.",
+            "options": [
+              "Fix it all and bill the agent",
+              "Make it safe and explain the agent has to approve anything over their limit",
+              "Ask the tenant to pay",
+              "Leave"
+            ],
+            "best": 1,
+            "feedback": "Make safe and explain to the tenant. The agent approves."
+          },
+          {
+            "them": "So what happens now?",
+            "options": [
+              "Wait for the agent to ring you",
+              "Do the cheapest thing under $300, even if it won't fix it",
+              "Send the PM photos and the options",
+              "Nothing today"
+            ],
+            "best": 2,
+            "feedback": "Send the PM photos and options so they can decide quickly."
+          },
+          {
+            "them": "(The PM replies) Okay, go ahead with Standard.",
+            "options": [
+              "Document the approval before proceeding",
+              "Start on a verbal OK",
+              "Do Elite instead",
+              "Wait a week"
+            ],
+            "best": 0,
+            "feedback": "Document the approval before you proceed."
+          }
+        ]
+      }
+    },
+    "x3": {
+      "questions": [
+        {
+          "q": "Why is prejudging the most expensive objection?",
+          "options": [
+            "Because we raise it for the customer",
+            "Because customers hate it",
+            "Because it slows the job",
+            "It isn't"
+          ],
+          "correct": 0,
+          "why": "Prejudging is the most expensive objection, because we raise it for the customer."
+        },
+        {
+          "q": "Every quote has…",
+          "options": [
+            "One line only",
+            "A bundle discount",
+            "At least one bundled tier, built from findings",
+            "Four separate jobs"
+          ],
+          "correct": 2,
+          "why": "Every quote has at least one bundled tier, built from findings, never from a script."
+        },
+        {
+          "q": "How is a bundle priced?",
+          "options": [
+            "10% off the total",
+            "Every line from the pricebook, with no bundle discount",
+            "Whatever feels fair",
+            "Cheaper for regulars"
+          ],
+          "correct": 1,
+          "why": "No bundle discounts, ever. Every line is priced from the pricebook."
+        },
+        {
+          "q": "You've quoted the same bundle twice. It should…",
+          "options": [
+            "Get a discount",
+            "Stay as it is",
+            "Be dropped",
+            "Become a template, reviewed and signed off"
+          ],
+          "correct": 3,
+          "why": "If you've quoted the same bundle twice, it should be a template."
+        },
+        {
+          "q": "A modest house and a quiet owner. You…",
+          "options": [
+            "Present every option, Elite first: their choice reveals the budget",
+            "Only show Essential",
+            "Skip Elite",
+            "Ask what they can afford first"
+          ],
+          "correct": 0,
+          "why": "Never prejudge. Present every option, every time. Their choice reveals the budget."
+        }
+      ],
+      "sim": {
+        "persona": "🔥 'Just replace the hot water'",
+        "scenario": "A tidy older home and a quiet, careful owner. The 14-year-old unit has failed, there's no tempering valve, the flexis are perished and the mains pressure is high.",
+        "steps": [
+          {
+            "them": "Just the hot water, mate.",
+            "options": [
+              "\"No worries, unit only.\"",
+              "\"You need the lot.\"",
+              "\"Happy to. Can I quickly show you a few things I found while I was here?\"",
+              "\"I'll do you a bundle deal.\""
+            ],
+            "best": 2,
+            "feedback": "Don't prejudge, and don't skip the findings."
+          },
+          {
+            "them": "Why does all that matter?",
+            "options": [
+              "Explain it as one ageing system failing in stages, using the photos",
+              "Read out a list of separate jobs",
+              "Say it's dangerous and illegal",
+              "Say every house needs it"
+            ],
+            "best": 0,
+            "feedback": "Frame it as one problem, not a list of jobs."
+          },
+          {
+            "them": "What are the options, then?",
+            "options": [
+              "Unit only",
+              "All four, Elite first (Essential is the unit only; Elite is the full bundle with a Care Plan), and let them choose",
+              "Elite only",
+              "10% off the bundle"
+            ],
+            "best": 1,
+            "feedback": "All four, Elite first, and let them choose."
+          }
+        ]
+      }
+    },
+    "x4": {
+      "questions": [
+        {
+          "q": "Technicians who talk too much…",
+          "options": [
+            "Close faster",
+            "Miss the details that justify the bigger option",
+            "Build more trust",
+            "Get better reviews"
+          ],
+          "correct": 1,
+          "why": "Ask, then listen. Technicians who talk too much miss the details that justify the bigger option."
+        },
+        {
+          "q": "What do customers really buy?",
+          "options": [
+            "The cheapest parts",
+            "Speed",
+            "Peace of mind, not parts",
+            "Brand names"
+          ],
+          "correct": 2,
+          "why": "Customers buy peace of mind, not parts."
+        },
+        {
+          "q": "Describing what happens if they leave it should be…",
+          "options": [
+            "Calm, honest consequences, not scare tactics",
+            "As scary as possible",
+            "Skipped",
+            "Only in writing"
+          ],
+          "correct": 0,
+          "why": "Consequences, not scare tactics: describe what really happens, calmly and honestly."
+        },
+        {
+          "q": "What does the up-front agreement do?",
+          "options": [
+            "Locks them into a yes",
+            "Sets the price early",
+            "Replaces the quote",
+            "Makes 'not yet' a normal outcome, which takes pressure off both sides"
+          ],
+          "correct": 3,
+          "why": "The up-front agreement makes 'not yet' a normal outcome."
+        },
+        {
+          "q": "Which of these is a trust signal?",
+          "options": [
+            "They start asking 'when can you start?'",
+            "They only ask defensive questions",
+            "Arms crossed, short answers",
+            "They keep checking their phone"
+          ],
+          "correct": 0,
+          "why": "Forward questions like 'how long will it last?' and 'when can you start?' are the trust shift."
+        }
+      ],
+      "sim": {
+        "persona": "🧐 The polite but guarded customer",
+        "scenario": "They say all the right things but only ask defensive questions. You're tempted to present now.",
+        "steps": [
+          {
+            "them": "Right. So how much is all this going to be?",
+            "options": [
+              "Give the full price now",
+              "\"I'll get to that. Can I ask how long you're planning to stay in the house?\"",
+              "\"Don't worry about price.\"",
+              "\"Cheaper than the others.\""
+            ],
+            "best": 1,
+            "feedback": "Hold off presenting. Ask discovery questions first."
+          },
+          {
+            "them": "We've had nothing but trouble with the water pressure since we moved in.",
+            "options": [
+              "\"That happens.\"",
+              "Start presenting options",
+              "\"That'll cost you.\"",
+              "\"What has that meant for you, day to day?\""
+            ],
+            "best": 3,
+            "feedback": "Ask how the problem affects them. Diagnose the person, not just the pipes."
+          },
+          {
+            "them": "How long would the proper fix last? When could you start?",
+            "options": [
+              "That's the trust shift: present now, Elite first",
+              "Keep asking questions",
+              "Leave a quote in the letterbox",
+              "Offer a discount"
+            ],
+            "best": 0,
+            "feedback": "Present once they start asking forward questions."
+          }
+        ]
+      }
+    },
+    "x5": {
+      "questions": [
+        {
+          "q": "Why lead with Elite?",
+          "options": [
+            "It's the most profitable",
+            "The first number sets the scale, so everything below sounds reasonable",
+            "Customers expect it",
+            "It's quicker"
+          ],
+          "correct": 1,
+          "why": "The first number they hear sets the scale."
+        },
+        {
+          "q": "Lead with Essential and…",
+          "options": [
+            "Everything above sounds like a rip-off",
+            "They'll upgrade",
+            "It builds trust",
+            "Nothing changes"
+          ],
+          "correct": 0,
+          "why": "Lead with Essential and everything above sounds like a rip-off."
+        },
+        {
+          "q": "You've just said a $30K price. You…",
+          "options": [
+            "Justify it straight away",
+            "Offer a discount",
+            "Talk faster",
+            "Hold the silence"
+          ],
+          "correct": 3,
+          "why": "Scope. Price. Silence. Let them speak first."
+        },
+        {
+          "q": "What do most techs do wrong with big numbers?",
+          "options": [
+            "Quote too high",
+            "Talk too slowly",
+            "Discount before the customer has even objected",
+            "Present Elite"
+          ],
+          "correct": 2,
+          "why": "Most techs discount before the customer has even objected. Don't."
+        },
+        {
+          "q": "How do you get comfortable saying a big number?",
+          "options": [
+            "Practise it out loud until it's boring",
+            "Avoid saying it",
+            "Write it down instead",
+            "Round it down"
+          ],
+          "correct": 0,
+          "why": "Say a $30K number out loud without flinching. Practise it until it's boring."
+        }
+      ],
+      "sim": {
+        "persona": "🏚️ The $28K re-pipe",
+        "scenario": "A 1960s home with galvanised pipe, three leaks this year and low pressure. A couple: one is keen, the other thinks 'just patch the leaks'.",
+        "steps": [
+          {
+            "them": "Can't you just patch the leaks?",
+            "options": [
+              "\"Sure, patch it is.\"",
+              "Walk through what failure looks like (the burst, the ceiling, the damage), calmly and honestly",
+              "\"Patching is illegal.\"",
+              "\"I'll discount the re-pipe.\""
+            ],
+            "best": 1,
+            "feedback": "Anchor honestly: show what failure looks like before the price."
+          },
+          {
+            "them": "So what are you suggesting?",
+            "options": [
+              "Present Elite first, then narrow to the two that fit this home",
+              "Start with patching, then mention the re-pipe",
+              "Give one price only",
+              "Read out every line item"
+            ],
+            "best": 0,
+            "feedback": "Elite first, then narrow to two. Don't read it like a menu."
+          },
+          {
+            "them": "And the full re-pipe is how much?",
+            "options": [
+              "\"$28,000, but I can do better.\"",
+              "\"It's a lot, sorry, it's about $28,000…\"",
+              "\"Let me check with the office.\"",
+              "\"$28,000.\" Then stop talking."
+            ],
+            "best": 3,
+            "feedback": "State the price and hold the silence."
+          }
+        ]
+      }
+    },
+    "x6": {
+      "questions": [
+        {
+          "q": "When is finance mentioned?",
+          "options": [
+            "Only if they ask",
+            "Three times: during the inspection, with the options, and after the price",
+            "Only after 'too expensive'",
+            "Never"
+          ],
+          "correct": 1,
+          "why": "Seed it three times: during the inspection, while walking through options, and after the price and the silence."
+        },
+        {
+          "q": "What's the financed benchmark?",
+          "options": [
+            "10%",
+            "25%",
+            "40% of big jobs",
+            "90%"
+          ],
+          "correct": 2,
+          "why": "If fewer than 40% of big jobs are financed, it isn't being offered consistently."
+        },
+        {
+          "q": "Finance is…",
+          "options": [
+            "The 'how', not the 'what': lead with the solution",
+            "The main pitch",
+            "A last resort",
+            "A discount"
+          ],
+          "correct": 0,
+          "why": "Lead with the solution; finance removes the barrier."
+        },
+        {
+          "q": "Who do you offer finance to?",
+          "options": [
+            "Only people who look like they need it",
+            "Only the wealthy",
+            "Nobody unless asked",
+            "Every customer on every big job, with the same line and tone"
+          ],
+          "correct": 3,
+          "why": "Same line, same tone, to every customer on every big job."
+        },
+        {
+          "q": "Where does finance appear on the proposal?",
+          "options": [
+            "Nowhere: HomePro sits outside ServiceTitan, and the proposal shows the full scope and real price",
+            "As a discount line",
+            "At the top",
+            "In the fine print"
+          ],
+          "correct": 0,
+          "why": "HomePro sits outside ServiceTitan, so the proposal never mentions finance."
+        }
+      ],
+      "sim": {
+        "persona": "💳 The quiet flinch",
+        "scenario": "You've stated $14,800 for the Premium option. They go silent and look at each other.",
+        "steps": [
+          {
+            "them": "(Silence.)",
+            "options": [
+              "Fill the silence by justifying the price",
+              "Hold the silence",
+              "Offer a discount",
+              "Ask \"Is that too much?\""
+            ],
+            "best": 1,
+            "feedback": "Hold the silence. It feels long to you, not to them."
+          },
+          {
+            "them": "That's… a lot in one hit.",
+            "options": [
+              "\"I'll take 10% off.\"",
+              "\"Most people can't afford it.\"",
+              "\"Like I mentioned, I can turn that into a weekly figure in about two minutes.\"",
+              "\"Let me ask the office.\""
+            ],
+            "best": 2,
+            "feedback": "Bring finance home as something they've already heard."
+          },
+          {
+            "them": "What would it be weekly?",
+            "options": [
+              "Quote HomePro's real figure",
+              "Make up a rough number",
+              "Promise it's interest-free",
+              "Say 'about forty bucks'"
+            ],
+            "best": 0,
+            "feedback": "Always use HomePro's real numbers, never a guess."
+          }
+        ]
+      }
+    },
+    "x7": {
+      "questions": [
+        {
+          "q": "'I can't afford it' usually means…",
+          "options": [
+            "They can't pay",
+            "They want a discount",
+            "They don't see the value yet, they're scared of the number, or nobody gave them a way to say yes",
+            "They're not interested"
+          ],
+          "correct": 2,
+          "why": "'I can't afford it' almost never means they can't pay."
+        },
+        {
+          "q": "How do you separate can't from won't?",
+          "options": [
+            "\"Totally fair. Can I ask what feels like too much about it?\"",
+            "\"So you can't afford it?\"",
+            "\"I'll do it cheaper.\"",
+            "\"Everyone says that.\""
+          ],
+          "correct": 0,
+          "why": "Stay calm and curious, then let them talk."
+        },
+        {
+          "q": "When does the price come down?",
+          "options": [
+            "When they push hard",
+            "When the office approves",
+            "At the end of the month",
+            "Only when scope comes out"
+          ],
+          "correct": 3,
+          "why": "Price only comes down when scope comes out. Otherwise they learn our first number was fake."
+        },
+        {
+          "q": "\"Can you sharpen your pencil?\" You…",
+          "options": [
+            "\"Let me see what the office can do.\"",
+            "Step down an option: you can't discount",
+            "Take 10% off",
+            "Walk away"
+          ],
+          "correct": 1,
+          "why": "You can't discount. Never say 'let me see what the office can do'. Step down an option instead."
+        },
+        {
+          "q": "A respectful 'not yet' with a booked follow-up is…",
+          "options": [
+            "A loss",
+            "A win, not a loss",
+            "A waste of time",
+            "A reason to discount"
+          ],
+          "correct": 1,
+          "why": "A respectful 'not yet' with a booked follow-up is a win, not a loss."
+        }
+      ],
+      "sim": {
+        "persona": "🚪 Three doors",
+        "scenario": "Three customers, three objections. Use the lines from the session.",
+        "steps": [
+          {
+            "them": "Door 1: you say the price and they go silent.",
+            "options": [
+              "Hold the silence and let them speak first",
+              "Drop the price",
+              "Re-explain everything",
+              "Ask if they want a cheaper one"
+            ],
+            "best": 0,
+            "feedback": "The silence feels long to you, not to them."
+          },
+          {
+            "them": "Door 2: \"Can you do it cheaper?\" on the Premium option.",
+            "options": [
+              "\"Sure, 10% off.\"",
+              "\"Let me see what the office can do.\"",
+              "\"I can't do that price on the full job. If we do just the urgent part today, here's where we land.\"",
+              "\"No.\""
+            ],
+            "best": 2,
+            "feedback": "Never discount for free. If the price comes down, scope comes out."
+          },
+          {
+            "them": "Door 3: \"Money's tight right now. We'll have to think about it.\"",
+            "options": [
+              "\"Prices go up next week.\"",
+              "\"Totally fair. Can I ask what feels like too much about it?\"",
+              "\"I'll throw in a discount.\"",
+              "\"Okay, bye.\""
+            ],
+            "best": 1,
+            "feedback": "Separate can't from won't, then remove the barrier."
+          }
+        ]
+      }
+    },
+    "x8": {
+      "questions": [
+        {
+          "q": "What do commercial buyers want?",
+          "options": [
+            "The cheapest price",
+            "Reliability, compliance and response time",
+            "Lots of options",
+            "A friendly chat"
+          ],
+          "correct": 1,
+          "why": "Commercial buyers want reliability, compliance and response time."
+        },
+        {
+          "q": "A commercial quote has to work for…",
+          "options": [
+            "People who weren't in the room",
+            "Only the person you met",
+            "You",
+            "The installer only"
+          ],
+          "correct": 0,
+          "why": "The quote has to work for people who weren't in the room."
+        },
+        {
+          "q": "Every open estimate has…",
+          "options": [
+            "A discount ready",
+            "Nothing until they call",
+            "A reminder in your head",
+            "A next action and a date in ServiceTitan"
+          ],
+          "correct": 3,
+          "why": "Every open estimate has a next action and a date in ServiceTitan."
+        },
+        {
+          "q": "Unsold quotes are followed up within…",
+          "options": [
+            "A month",
+            "A week",
+            "48 hours",
+            "Never"
+          ],
+          "correct": 2,
+          "why": "Follow-up within 48 hours is one of the weekly habits."
+        },
+        {
+          "q": "On commercial and strata work, who owns the relationship?",
+          "options": [
+            "Alex (commercial) and Bella (strata). You own the scope and the quote",
+            "You do",
+            "The customer",
+            "Dispatch"
+          ],
+          "correct": 0,
+          "why": "Alex and Bella own the relationship. You own the scope and the quote."
+        }
+      ],
+      "sim": {
+        "persona": "🏢 The strata committee chair",
+        "scenario": "Three quotes for a building-wide hot water and riser problem. Ours is the most expensive, and the committee meets next week.",
+        "steps": [
+          {
+            "them": "We've got three quotes and yours is the most expensive.",
+            "options": [
+              "\"We'll match the cheapest.\"",
+              "\"Happy to help. What does the committee need to decide, and by when?\"",
+              "\"The others are cowboys.\"",
+              "\"Take it or leave it.\""
+            ],
+            "best": 1,
+            "feedback": "Agree up front what the committee needs to decide."
+          },
+          {
+            "them": "So why are you dearer?",
+            "options": [
+              "Badmouth the competitors",
+              "Offer a discount",
+              "Compare scope like-for-like: show what the other quotes leave out",
+              "Change the subject"
+            ],
+            "best": 2,
+            "feedback": "A cheaper quote almost always has a smaller scope. Show the gaps."
+          },
+          {
+            "them": "It's a lot for the committee to approve in one go.",
+            "options": [
+              "Offer a staged works program, and offer to attend the committee meeting",
+              "Drop the price",
+              "Walk away",
+              "Say it's all or nothing"
+            ],
+            "best": 0,
+            "feedback": "Stage it and offer to attend the meeting."
+          }
         ]
       }
     }
