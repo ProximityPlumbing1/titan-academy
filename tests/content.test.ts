@@ -86,6 +86,19 @@ describe('written lessons', () => {
     }
   });
 
+  it('every module has every lesson written', () => {
+    const missing: string[] = [];
+    for (const role of ['install', 'service', 'salestech']) {
+      for (const id of modulesForRole(role)) {
+        const hit = getModule(id)!;
+        const file = path.join(process.cwd(), 'content', 'lessons', `${id}.md`);
+        const n = fs.existsSync(file) ? parseLessonMarkdown(fs.readFileSync(file, 'utf8')).lessons.length : 0;
+        if (n !== hit.module.lessons.length) missing.push(`${id}: ${n}/${hit.module.lessons.length}`);
+      }
+    }
+    expect(missing).toEqual([]);
+  });
+
   it('written lessons never name field staff', () => {
     const roster = fs.readFileSync(path.join(process.cwd(), 'data', 'team-roster.csv'), 'utf8').split(/\r?\n/).slice(1).filter(Boolean);
     const names = roster.flatMap((r) => r.split(',')[0].split(/\s+/)).filter((n) => n.length > 2);
