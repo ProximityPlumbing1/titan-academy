@@ -516,8 +516,8 @@ export function ContentPage() {
                   <span className="w-9 text-xs text-faint">{m.id}</span>
                   <span className="flex-1 text-sm">{m.title}</span>
                   {m.lessonsWritten > 0 && (
-                    <Badge tone={m.lessonStatus?.startsWith('sample') ? 'amber' : 'good'}>
-                      {m.lessonStatus?.startsWith('sample') ? 'sample for approval' : `lessons ${m.lessonsWritten}/${m.lessonCount}`}
+                    <Badge tone={m.lessonStatus === 'approved' ? 'good' : 'amber'}>
+                      {m.lessonStatus?.startsWith('sample') ? 'sample for approval' : `${m.lessonStatus === 'approved' ? '' : 'draft · '}lessons ${m.lessonsWritten}/${m.lessonCount}`}
                     </Badge>
                   )}
                   {m.quizLength > 0 ? <Badge tone="good">quiz · {m.quizLength}</Badge> : <Badge>no quiz yet</Badge>}
@@ -583,7 +583,7 @@ export function PreviewPage() {
         <section className="mt-8 max-w-3xl">
           <div className="mb-4 flex flex-wrap items-center gap-3">
             <h2 className="text-xl font-bold">Written lessons</h2>
-            <Badge tone={data.lessons.status.startsWith('sample') ? 'amber' : 'good'}>{data.lessons.status}</Badge>
+            <Badge tone={data.lessons.status === 'approved' ? 'good' : 'amber'}>{data.lessons.status}</Badge>
           </div>
           <div className="space-y-4">
             {data.lessons.lessons.map((l, n) => (
