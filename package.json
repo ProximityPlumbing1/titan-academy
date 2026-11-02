@@ -1,0 +1,12 @@
+{
+  "name": "titan-academy",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Proximity Plumbing Titan Academy: field team training (placeholder until version 1 is built)",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "migrate": "node scripts/migrate.mjs",
+    "start": "node server.mjs"
+  }
+}

@@ -1,0 +1,108 @@
+path_id,path_name,module_id,module_title,objective,est_minutes,lessons,quiz_questions,has_sim
+owner,"Owner",o1,"ServiceTitan Landscape & Tenant Setup","Tour the tenant, navigation and how the business is configured",131,10,5,no
+owner,"Owner",o2,"Lead Flow → Job Creation","How a lead becomes a job across every source",131,10,5,no
+owner,"Owner",o3,"Job Pipeline Control (Booking → Paid)","Drive jobs cleanly through five stages and spot bottlenecks",131,10,5,no
+owner,"Owner",o4,"Pricebook & Margin Management (50% GP)","Structure, labour, materials and holding the margin line",131,10,5,no
+owner,"Owner",o5,"Dispatch & Capacity Management","Balance daily demand across the fleet; avoid overbook and idle",131,10,5,no
+owner,"Owner",o6,"Reporting & KPI Dashboards","Build and read the dashboards that run the business",131,10,5,no
+owner,"Owner",o7,"The Numbers That Matter (Guardrails)","The headline targets and guardrails every decision is checked against",131,10,5,no
+owner,"Owner",o8,"Configuration, Job Types & Data Standards","Job types, tags, windows and what ""good data"" looks like",131,10,5,no
+owner,"Owner",o9,"System Governance & Quality Auditing","Audit job quality, training compliance and hold the standard",131,10,5,no
+owner,"Owner",o10,"Owner Capstone: KPI Review & Decision-Making","Diagnose a live dashboard, decide three actions, certify",131,10,5,no
+manager,"Managers",m1,"ServiceTitan Foundations","Orient managers in ServiceTitan — the ecosystem, roles, navigation and a daily manager workflow",30,10,5,no
+manager,"Managers",m2,"Reporting Fundamentals","Run, save, schedule, filter and trust ServiceTitan reports",29,10,5,no
+manager,"Managers",m3,"Dashboard Mastery","Build and read dashboards and KPI scorecards to run the department",31,10,5,no
+manager,"Managers",m4,"Customer Management","Oversee customer records, history, retention and experience metrics",30,10,5,no
+manager,"Managers",m5,"Call Center & Dispatch","Manage booking, the dispatch board, capacity and dispatch KPIs",30,10,5,no
+manager,"Managers",m6,"Sales Management","Run the sales pipeline, estimates, conversion and coaching from the data",30,10,5,no
+manager,"Managers",m7,"Service Department Management","Manage the service job lifecycle, productivity, agreements and profitability",30,10,5,no
+manager,"Managers",m8,"Installation Department Management","Manage installation projects, scheduling, job costing and KPIs",30,10,5,no
+manager,"Managers",m9,"Financial & Operational Management","Read revenue, gross profit, job costing, AR and forecasting to steer operations",30,10,5,no
+manager,"Managers",m10,"Leadership Through ServiceTitan","Lead a data-driven department — KPIs, scorecards, coaching and action plans",32,10,5,no
+accounts,"Accounts",ac1,"ServiceTitan Foundations for Finance","Orient the finance team in ServiceTitan — how it connects to accounting, roles, navigation and a daily finance workflow",30,10,5,no
+accounts,"Accounts",ac2,"Customer Billing & Invoicing","Create, review and correct accurate invoices through their full lifecycle",30,10,5,no
+accounts,"Accounts",ac3,"Payments & Reconciliation","Collect, process, refund and reconcile payments accurately every day",30,10,5,no
+accounts,"Accounts",ac4,"Accounts Receivable Management","Manage outstanding invoices, aging, collections and cash flow",30,10,5,no
+accounts,"Accounts",ac5,"Financial Reporting","Run, build and schedule the financial reports that run the business",31,10,5,no
+accounts,"Accounts",ac6,"Payroll & Technician Compensation","Manage timesheets, hours, commissions and accurate payroll exports",30,10,5,no
+accounts,"Accounts",ac7,"Job Costing & Profitability","Track true costs and read profitability by job, department and technician",30,10,5,no
+accounts,"Accounts",ac8,"Membership & Recurring Revenue","Bill, track and grow recurring membership revenue",30,10,5,no
+accounts,"Accounts",ac9,"Budgeting & Forecasting","Build budgets and forecasts and track variance to steer the business",30,10,5,no
+accounts,"Accounts",ac10,"Executive Finance Leadership","Lead finance — scorecards, KPIs, P&L, cash flow, risk and strategy",32,10,5,no
+marketing,"Marketing",mk1,"ServiceTitan for Marketing (Orientation)","Where marketing data lives and how to read it",131,10,5,no
+marketing,"Marketing",mk2,"Lead Sources & Attribution Setup","Set up and protect clean attribution",131,10,5,no
+marketing,"Marketing",mk3,"Call Tracking & Conversion Data","Use call tracking to measure conversion",131,10,5,no
+marketing,"Marketing",mk4,"Campaign Performance & ROI","Measure campaign ROI honestly",131,10,5,no
+marketing,"Marketing",mk5,"Channel Mix & Budget Allocation","Allocate budget across channels by return",131,10,5,no
+marketing,"Marketing",mk6,"Booking Rate & Speed-to-Lead","Turn leads into booked jobs faster",131,10,5,no
+marketing,"Marketing",mk7,"Reviews, Reputation & Referrals","Build reputation that generates leads",131,10,5,no
+marketing,"Marketing",mk8,"Customer Database & Reactivation","Mine the database for repeat revenue",131,10,5,no
+marketing,"Marketing",mk9,"Reporting & Marketing Dashboards","Build the marketing reports leadership trusts",131,10,5,no
+marketing,"Marketing",mk10,"Marketing Capstone: Audit a Channel","Audit a channel and decide its future; certify",131,10,5,no
+sales,"Service Tech",sa1,"Sales Tech Role & the Proximity Sales System","Define your identity and how you make money.",78,10,4,no
+sales,"Service Tech",sa2,"ServiceTitan Workflow Mastery for Sales Techs","System control and discipline on every job.",76,10,4,no
+sales,"Service Tech",sa3,"Customer Psychology & Trust Building","Build authority without pressure.",74,10,4,no
+sales,"Service Tech",sa4,"Diagnosis & Value Creation (Education Selling)","Create clarity so customers sell themselves.",76,10,4,no
+sales,"Service Tech",sa5,"Good-Better-Best Presentation Framework","A standardised structure that converts through clarity.",76,10,4,no
+sales,"Service Tech",sa6,"Pricing Discipline & Pricebook Control","Protect margin and consistency on every quote.",74,10,4,no
+sales,"Service Tech",sa7,"Sales Without Pressure (Ethical Conversion)","Build high conversion without aggression.",74,10,4,no
+sales,"Service Tech",sa8,"Objection Handling & Customer Concerns","Turn hesitation into clarity.",76,10,4,yes
+sales,"Service Tech",sa9,"Payment, Completion & Commission Protection","Cash discipline and compliance — protect your commission.",74,10,4,no
+sales,"Service Tech",sa10,"Sales Performance, Reviews & Continuous Improvement","Build an elite, top-1% Service Tech.",74,10,4,no
+tech,"Install Tech",t1,"Install Tech Identity, Pay & Standards","Understand exactly how you make money and what great looks like.",78,10,5,no
+tech,"Install Tech",t2,"Pre-Start Routine & 7am Readiness","No delays, no excuses — full readiness before the first job.",74,10,4,no
+tech,"Install Tech",t3,"Job Understanding & Scope Control","Prevent wasted time and confusion onsite.",76,10,4,no
+tech,"Install Tech",t4,"Customer Engagement & Professional Presence","Build trust immediately and create the upsell environment.",72,10,4,no
+tech,"Install Tech",t5,"Technical Install Execution Standards","Consistent, high-quality installs with zero rework.",78,10,4,no
+tech,"Install Tech",t6,"Time Control & ServiceTitan Discipline","Protect your efficiency earnings through ServiceTitan time discipline.",74,10,4,no
+tech,"Install Tech",t7,"Sales Assists & Work Promotion Culture","Turn every installer into a revenue generator.",76,10,4,no
+tech,"Install Tech",t8,"Photos, Documentation & Job Notes","Protect the business, protect the technician, prove the work.",76,10,4,no
+tech,"Install Tech",t9,"Payment Collection & Cash Discipline","Zero unpaid jobs, zero exceptions.",74,10,4,yes
+tech,"Install Tech",t10,"Dispatch Communication, Overtime & Emergencies","Keep operations flowing and maximise job completion.",74,10,4,no
+support,"Support VA",su1,"Pipeline Monitoring & Stuck-Job Detection","Watch the board, spot stuck jobs, fix missing data",30,10,5,no
+support,"Support VA",su2,"Customer & Job Records Accuracy","Accuracy standards, notes hygiene, updating records",30,10,5,no
+support,"Support VA",su3,"Quoting Support in ServiceTitan","Build quotes from the pricebook with consistent margin",30,10,5,no
+support,"Support VA",su4,"Follow-Up Cadence (Quotes & Reports)","Quote and report follow-up; prevent lost-revenue jobs",30,10,5,no
+support,"Support VA",su5,"Invoicing Accuracy & Missing Invoices","Ensure jobs invoice correctly; catch missing invoices",30,10,5,no
+support,"Support VA",su6,"Payment Tracking & Reconciliation","Payment tracking support and reconciliation basics",30,10,5,no
+support,"Support VA",su7,"Customer Support & Escalations","Handle enquiries, update records, follow escalation paths",30,10,5,no
+support,"Support VA",su8,"Document & Compliance Management","Attach, store and manage job documents and compliance records",30,10,5,no
+support,"Support VA",su9,"Reporting & Daily Office Rhythm","Run the daily office reports and a repeatable routine",30,10,5,no
+support,"Support VA",su10,"Support Office Capstone: Clean the Backlog","Clear a backlog of messy jobs to clean status; certify",31,10,5,no
+scr,"SCR / DSR",s1,"ServiceTitan Orientation & Navigation","ServiceTitan for call handlers; the standard of service",34,10,5,no
+scr,"SCR / DSR",s2,"Customers & Locations (Records Done Right)","Search, create and de-duplicate records first time",35,10,5,no
+scr,"SCR / DSR",s3,"Inbound Call Handling & Scripts","Answering scripts, classification, capturing details",30,10,5,no
+scr,"SCR / DSR",s4,"Job Creation, Tagging & Priority","Correct job type, tags, priority and business unit at creation",33,10,5,no
+scr,"SCR / DSR",s5,"Booking Flow & Arrival Windows","Choose windows, match urgency, avoid conflicts",32,10,5,no
+scr,"SCR / DSR",s6,"Dispatching Technicians (Skill & Zone)","Assign the right tech by skill and zone; manage live",36,10,5,no
+scr,"SCR / DSR",s7,"Customer Communication (Confirm · ETA · Reschedule)","Confirmations, ETAs and clean reschedules",32,10,5,no
+scr,"SCR / DSR",s8,"Conversion & Objection Handling","Turn ""just a quote"" into a booking; handle price/availability",30,10,5,no
+scr,"SCR / DSR",s9,"Completion Tracking & Handoff to Invoicing","Keep status accurate and hand off cleanly",33,10,5,no
+scr,"SCR / DSR",s10,"SCR Capstone: Live Call Simulations","Handle scored call roleplays end-to-end; certify",32,10,5,no
+stacct,"Accounting",a1,"Accounting Section Overview","Get the map: what every screen does, how money flows, and who owns what",30,6,5,no
+stacct,"Accounting",a2,"Financial Dashboard","Read the health of the business at a glance and know which screen to open next",32,6,5,no
+stacct,"Accounting",a3,"Journal Entries","Record manual GL adjustments that balance, with proper support and memos",32,6,5,no
+stacct,"Accounting",a4,"Accounting Periods","Open and close months correctly so reported numbers can't shift after the fact",32,6,5,no
+stacct,"Accounting",a5,"Batch / Export Transactions","Bundle finalised transactions and export them cleanly to the general ledger",32,6,5,no
+stacct,"Accounting",a6,"AR Management","See who owes us, how overdue, and drive professional collections",32,6,5,no
+stacct,"Accounting",a7,"Invoices","Finalise, correct and track customer invoices so revenue and AR stay accurate",32,6,5,no
+stacct,"Accounting",a8,"Customer Payments","Record payments, apply them to the right invoices, and feed clean deposits",32,6,5,no
+stacct,"Accounting",a9,"Bank Deposits","Group payments to match the bank statement so reconciliation is clean",32,6,5,no
+stacct,"Accounting",a10,"Bills","Enter supplier bills accurately, code them right, and protect job GP",32,6,5,no
+stacct,"Accounting",a11,"Accounting Audit Trail","Use the change log to investigate discrepancies and protect data integrity",32,6,5,no
+streports,"Reports",rep1,"Reports Overview & the Report Center","Understand how ServiceTitan reporting is organised and where to find any report",32,6,5,no
+streports,"Reports",rep2,"Finding & Running a Report","Confidently locate, filter and run any standard report",32,6,5,no
+streports,"Reports",rep3,"Reading Standard Financial Reports","Read the core financial reports: revenue, AR ageing, sales and gross profit",32,6,5,no
+streports,"Reports",rep4,"Operational & Technician Performance Reports","Measure jobs, technicians and capacity",32,6,5,no
+streports,"Reports",rep5,"Marketing & Lead-Source Reports","Tie revenue back to marketing spend and sources",32,6,5,no
+streports,"Reports",rep6,"Building Custom Reports","Build, validate, save and share a custom report",32,6,5,no
+streports,"Reports",rep7,"Dashboards & Performance Analytics","Use live dashboards to run the business at a glance",32,6,5,no
+streports,"Reports",rep8,"Scheduling, Subscriptions, Exporting & Reconciling","Automate report delivery and keep the numbers trustworthy",32,6,5,no
+stpricebook,"Price Book",pb1,"Price Book Overview","Understand the Price Book structure: Categories, Services, Materials, Equipment",32,6,5,no
+stpricebook,"Price Book",pb2,"Navigating Categories & Structure","Navigate and maintain a clean category structure",32,6,5,no
+stpricebook,"Price Book",pb3,"Services: Building & Pricing to 50% GP","Build a service and price it to 50% gross profit",32,6,5,no
+stpricebook,"Price Book",pb4,"Materials: Costs, Supplier Links & Markup","Manage materials so costs are right and margin holds",32,6,5,no
+stpricebook,"Price Book",pb5,"Equipment: Units, Warranties & Install Items","Manage equipment items and their warranties",32,6,5,no
+stpricebook,"Price Book",pb6,"Good/Better/Best, Bundles & Recommendations","Use options and bundles to lift average ticket the right way",32,6,5,no
+stpricebook,"Price Book",pb7,"Member Pricing & the 50% GP Discipline","Embed member pricing and hold the margin line",32,6,5,no
+stpricebook,"Price Book",pb8,"Maintaining the Price Book: Bulk Edits, Import/Export & Audits","Keep the Price Book accurate at scale and import/export safely",32,6,5,no

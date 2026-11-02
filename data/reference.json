@@ -1,0 +1,152 @@
+[
+  {
+    "id": "r1",
+    "title": "How do I reschedule a job?",
+    "cat": "Dispatch",
+    "roles": [
+      "scr",
+      "support",
+      "owner"
+    ],
+    "icon": "📅",
+    "updated": "Jun 2026",
+    "body": "<h3>Reschedule a job</h3><div class=\"screenshot\"><span class=\"ico\">🖥️</span>ServiceTitan screen walkthrough — captured from the live the company tenant.</div><ul><li>Open the job from the dispatch board or Calls.</li><li>Tap <b>Reschedule</b>, pick the new arrival window.</li><li>Confirm the customer and trigger the ETA/confirmation message.</li><li>Check the new slot doesn't create a conflict for that tech.</li></ul><div class='callout'><b>Tip:</b> always send the customer the updated confirmation — silent reschedules cause 'where's my plumber?' calls.</div>"
+  },
+  {
+    "id": "r2",
+    "title": "Where's the GP on a quote?",
+    "cat": "Pricebook",
+    "roles": [
+      "owner",
+      "support",
+      "sales"
+    ],
+    "icon": "💰",
+    "updated": "Jun 2026",
+    "body": "<h3>Finding gross profit on a quote</h3><div class=\"screenshot\"><span class=\"ico\">🖥️</span>ServiceTitan screen walkthrough — captured from the live the company tenant.</div><p>Pricebook lines already hold 50% GP. On the estimate screen, the margin column shows per-line and total GP. If a quote drops below 50%, a discount has been applied — review before it goes out.</p>"
+  },
+  {
+    "id": "r3",
+    "title": "Creating a customer without duplicates",
+    "cat": "Customers",
+    "roles": [
+      "scr",
+      "support"
+    ],
+    "icon": "👥",
+    "updated": "Jun 2026",
+    "body": "<h3>Avoid duplicate records</h3><div class=\"screenshot\"><span class=\"ico\">🖥️</span>ServiceTitan screen walkthrough — captured from the live the company tenant.</div><ul><li>Search by phone first, then address.</li><li>Only create new if there's truly no match.</li><li>If you spot a duplicate, merge — never create a third.</li></ul>"
+  },
+  {
+    "id": "r4",
+    "title": "Recording materials correctly",
+    "cat": "Field",
+    "roles": [
+      "tech",
+      "manager"
+    ],
+    "icon": "🔧",
+    "updated": "Jun 2026",
+    "body": "<h3>Materials = margin</h3><div class=\"screenshot\"><span class=\"ico\">🖥️</span>ServiceTitan screen walkthrough — captured from the live the company tenant.</div><p>Add every material from the pricebook as you use it. Unrecorded materials are gross profit lost. Don't freehand prices — the pricebook handles that.</p>"
+  },
+  {
+    "id": "r5",
+    "title": "Presenting Good-Better-Best",
+    "cat": "Sales",
+    "roles": [
+      "tech",
+      "sales",
+      "manager"
+    ],
+    "icon": "📊",
+    "updated": "Jun 2026",
+    "body": "<h3>The three-option presentation</h3><p>Always present three tiers. 'Good' solves it; 'Better' adds protection/service; 'Best' is the premium, longest-lasting solution. Let the customer choose up — never present a single price.</p><div class='callout gold'><b>Attach:</b> include the membership plan in the Better and Best tiers.</div>"
+  },
+  {
+    "id": "r6",
+    "title": "Reading the pace rate",
+    "cat": "Reporting",
+    "roles": [
+      "owner",
+      "manager"
+    ],
+    "icon": "📈",
+    "updated": "Jun 2026",
+    "body": "<h3>Pace rate explained</h3><div class=\"screenshot\"><span class=\"ico\">🖥️</span>ServiceTitan screen walkthrough — captured from the live the company tenant.</div><p>Pace rate projects where the month lands if today's run-rate holds. Below target means you need a higher daily average for the remaining working days. Monthly budget is the source of truth; daily/weekly targets derive from it.</p>"
+  },
+  {
+    "id": "r7",
+    "title": "Handling a price objection",
+    "cat": "Sales",
+    "roles": [
+      "scr",
+      "tech",
+      "sales"
+    ],
+    "icon": "💬",
+    "updated": "Jun 2026",
+    "body": "<h3>Hold value, don't discount</h3><p>A price objection is usually unclear value. Reframe: licensed, insured, on-time, guaranteed, and the cost of getting it wrong. Get a tech on site for an accurate price rather than quoting blind.</p>"
+  },
+  {
+    "id": "r8",
+    "title": "The five job stages",
+    "cat": "Pipeline",
+    "roles": [
+      "owner",
+      "support",
+      "scr"
+    ],
+    "icon": "🔄",
+    "updated": "Jun 2026",
+    "body": "<h3>New → Scheduled → Completed → Invoiced → Paid</h3><p>Every job lives in one stage. Watch for jobs stuck in Completed (unbilled) or Invoiced (unpaid). Reconcile daily.</p>"
+  },
+  {
+    "id": "r9",
+    "title": "Classifying job type on a call",
+    "cat": "Call handling",
+    "roles": [
+      "scr"
+    ],
+    "icon": "📞",
+    "updated": "Jun 2026",
+    "body": "<h3>Service, install or emergency?</h3><p>Classification drives urgency, window and tech selection. Emergency = same-day priority. Listen for trigger words: 'flooding', 'no hot water', 'burst', 'sewage'.</p>"
+  },
+  {
+    "id": "r10",
+    "title": "The 50/20/200 guardrails",
+    "cat": "Reporting",
+    "roles": [
+      "owner",
+      "manager",
+      "sales"
+    ],
+    "icon": "🎯",
+    "updated": "Jun 2026",
+    "body": "<h3>The three numbers</h3><p><b>50% gross profit</b>, <b>20% net profit</b>, <b>$200K per truck per month</b>. Every operational decision is checked against these. If a choice breaks the line, it needs a strong reason.</p>"
+  },
+  {
+    "id": "r11",
+    "title": "Before & after photos",
+    "cat": "Field",
+    "roles": [
+      "tech",
+      "manager"
+    ],
+    "icon": "📸",
+    "updated": "Jun 2026",
+    "body": "<h3>Photo discipline</h3><div class=\"screenshot\"><span class=\"ico\">🖥️</span>ServiceTitan screen walkthrough — captured from the live the company tenant.</div><p>Before-photos show the customer the problem and protect you. After-photos prove the work and make the invoice and review easy. Take both on every job.</p>"
+  },
+  {
+    "id": "r12",
+    "title": "Following up a stale quote",
+    "cat": "Follow-up",
+    "roles": [
+      "support",
+      "sales",
+      "scr"
+    ],
+    "icon": "⏰",
+    "updated": "Jun 2026",
+    "body": "<h3>The follow-up cadence</h3><p>Most lost revenue dies in the silence after a quote. Work the cadence (12-month / 15-touch logic) before marking anything lost. A tracked follow-up recovers jobs others let go.</p>"
+  }
+]
