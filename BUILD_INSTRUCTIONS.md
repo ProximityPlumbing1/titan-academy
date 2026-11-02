@@ -5,6 +5,19 @@ detail: the curriculum (`docs/TRADE_TRAINING_PLAN.md`, `data/trade-paths.json`),
 behaviour (`docs/LIVE_SESSIONS.md`) and the full spec (`docs/REBUILD_BRIEF.md`). Where they
 mention Supabase, use the Railway Postgres equivalent described here.
 
+## Current state (set up 2 Nov 2026)
+| Item | Value |
+|---|---|
+| GitHub repo | `ProximityPlumbing1/titan-academy` (private). `main` deploys to production, `staging` branch exists |
+| Railway project | `titan-academy` (`38a7b2c9-c8d8-4b1c-a125-701dae4955d9`) in workspace "Proximity Plumbing's Projects" |
+| Environment | `production` (`3e958194-bb9a-400e-a230-e184bf0c3bb5`). A `staging` environment is still to be created (in the dashboard) |
+| Web service | `titan-academy` (`1f5e0ecc-9730-4f2a-ae9b-456f188312e4`): repo root, Railpack, `npm run migrate && npm start`, `/health`, `asia-southeast1-eqsg3a`, 1 replica. Auto-deploys on push to `main` |
+| Public URL | https://titan-academy-production.up.railway.app (the custom domain isn't added yet) |
+| Database | Railway Postgres 18 service `Postgres` (`179b97ec-1e07-4cbd-b647-ad287b0cc6dd`), `asia-southeast1-eqsg3a`, volume `postgres-volume-nvFd`. The web service reads it through `DATABASE_URL=${{Postgres.DATABASE_URL}}` (private network) |
+| Variables set | `SESSION_SECRET`, `STAFF_DOMAIN`, `TZ`, `NODE_ENV`, `APP_ENV`, `PUBLIC_URL`, `DATABASE_URL` (reference to Postgres) |
+| Not yet set | `GMAIL_SENDER`, `GOOGLE_SA_JSON`, `GOOGLE_CLIENT_ID` (ask the owner before copying them from sales-pro) |
+| App code | A **placeholder** `server.mjs` with `/health`. Replace it with version 1 below |
+
 ## The goal: version 1, in this order
 1. **On Railway**, built and deployed the same way as Proximity's other apps.
 2. **Every tech has their own login** and works at their own pace on their phone.
