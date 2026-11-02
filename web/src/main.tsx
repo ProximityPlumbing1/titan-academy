@@ -4,7 +4,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './styles.css';
 import { AuthProvider, RequireAuth } from './auth';
 import { LinkPage, LoginPage, SetupPage } from './pages/auth';
-import { HomePage, JoinPage, ModulePage, QuizPage } from './pages/learner';
+import { HomePage, JoinPage, LessonPage, ModulePage, QuizPage } from './pages/learner';
 import { FollowPage, PresentPage, TvPage } from './pages/live';
 import {
   AdminLayout, ClassesPage, ContentPage, DashboardPage, NeedsAnswersPage, PreviewPage, UsersPage,
@@ -32,6 +32,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<RequireAuth><HomePage /></RequireAuth>} />
           <Route path="/module/:id" element={<RequireAuth><ModulePage /></RequireAuth>} />
           <Route path="/module/:id/quiz" element={<RequireAuth><QuizPage /></RequireAuth>} />
+          <Route path="/module/:id/lesson/:n" element={<RequireAuth><LessonPage /></RequireAuth>} />
           <Route path="/join" element={<RequireAuth><JoinPage /></RequireAuth>} />
           <Route path="/live/:code" element={<RequireAuth><FollowPage /></RequireAuth>} />
           <Route path="/present/:id" element={<RequireAuth staff><PresentPage /></RequireAuth>} />

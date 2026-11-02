@@ -6,7 +6,7 @@ import {
   safeEqual, startSession, verifyPassword, type UserRow,
 } from './auth.js';
 import {
-  classDeck, getModule, modulesForRole, moduleSlides, needsAnswers, pathsForRole, paths, publicModule, quizFor,
+  classDeck, getModule, lessonsFor, modulesForRole, moduleSlides, needsAnswers, pathsForRole, paths, publicModule, quizFor,
 } from './content.js';
 import { GROUPS } from '../shared/types.js';
 import { liveClassesFor } from './live.js';
@@ -165,7 +165,7 @@ export async function registerRoutes(app: FastifyInstance) {
     const myPaths = pathsForRole(u.trade_role).map((p) => ({
       id: p.id, name: p.name, summary: p.summary,
       modules: p.modules.map((m) => ({
-        id: m.id, title: m.title, objective: m.objective, lessonCount: m.lessons.length,
+        id: m.id, title: m.title, objective: m.objective, lessonCount: m.lessons.length, lessonsWritten: publicModule(m.id)!.lessonsWritten,
         quizLength: quizFor(m.id).length, status: moduleStatus(m.id, prog.get(m.id)),
       })),
     }));
@@ -185,7 +185,34 @@ export async function registerRoutes(app: FastifyInstance) {
     const m = publicModule(id);
     if (!m) throw new HttpError(404, 'Module not found.');
     const e = (await progressFor([u.id])).get(u.id)?.get(id);
-    return { module: m, status: moduleStatus(id, e), best: e?.best ?? null, attempts: e?.attempts ?? 0 };
+    const done = await q<{ lesson_index: number }>(`select lesson_index from lesson_progress where user_id = $1 and module_id = $2`, [u.id, id]);
+    return { module: m, status: moduleStatus(id, e), best: e?.best ?? null, attempts: e?.attempts ?? 0, doneLessons: done.map((r) => r.lesson_index) };
+  });
+
+  app.get('/api/modules/:id/lessons/:n', async (req) => {
+    const u = need(req);
+    const { id, n } = req.params as any;
+    const m = publicModule(id);
+    const idx = Number(n);
+    if (!m || !Number.isInteger(idx) || idx < 0 || idx >= m.lessons.length) throw new HttpError(404, 'Lesson not found.');
+    const lesson = lessonsFor(id)?.lessons[idx];
+    if (!lesson) throw new HttpError(404, 'This lesson is taught in your live class. The written version is coming.');
+    const done = await one(`select 1 from lesson_progress where user_id = $1 and module_id = $2 and lesson_index = $3`, [u.id, id, idx]);
+    return {
+      moduleId: id, moduleTitle: m.title, pathName: m.pathName, index: idx, total: m.lessons.length,
+      written: m.lessonsWritten, title: m.lessons[idx], blocks: lesson.blocks, status: m.lessonStatus, done: !!done,
+      quizLength: m.quizLength,
+    };
+  });
+
+  app.post('/api/modules/:id/lessons/:n/done', async (req) => {
+    const u = need(req);
+    const { id, n } = req.params as any;
+    const m = publicModule(id);
+    const idx = Number(n);
+    if (!m || !Number.isInteger(idx) || idx < 0 || idx >= m.lessons.length) throw new HttpError(404, 'Lesson not found.');
+    await q(`insert into lesson_progress (user_id, module_id, lesson_index, source) values ($1, $2, $3, 'self') on conflict do nothing`, [u.id, id, idx]);
+    return { ok: true };
   });
 
   app.get('/api/modules/:id/quiz', async (req) => {
@@ -228,7 +255,7 @@ export async function registerRoutes(app: FastifyInstance) {
     need(req, isStaff);
     return {
       groups: GROUPS,
-      paths: paths.map((p) => ({ id: p.id, name: p.name, modules: p.modules.map((m) => ({ id: m.id, title: m.title, quizLength: quizFor(m.id).length })) })),
+      paths: paths.map((p) => ({ id: p.id, name: p.name, modules: p.modules.map((m) => ({ id: m.id, title: m.title, quizLength: quizFor(m.id).length, lessonCount: m.lessons.length, lessonsWritten: publicModule(m.id)!.lessonsWritten, lessonStatus: lessonsFor(m.id)?.status ?? null })) })),
       schedule: (await import('./content.js')).program.schedule,
     };
   });
@@ -237,7 +264,7 @@ export async function registerRoutes(app: FastifyInstance) {
     need(req, isStaff);
     const id = (req.params as any).id;
     if (!getModule(id)) throw new HttpError(404, 'Module not found.');
-    return { module: publicModule(id), deck: moduleSlides(id, true) };
+    return { module: publicModule(id), deck: moduleSlides(id, true), lessons: lessonsFor(id) };
   });
 
   app.get('/api/admin/needs-answers', async (req) => {

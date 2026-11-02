@@ -134,6 +134,16 @@ function SlideBody({ slide, reveal, state, presenter, code, joinUrl }:
           )}
         </div>
       );
+    case 'onjob':
+      return (
+        <div className="flex h-full flex-col justify-center">
+          <Eyebrow>{slide.moduleTitle} · On the job</Eyebrow>
+          <div className="max-w-[1600px] rounded-[28px] border-l-[10px] border-gold bg-white/[0.04] px-16 py-14">
+            <p className="text-[52px] leading-snug"><Marked text={slide.text} compact={compact} /></p>
+          </div>
+          <p className="mt-12 text-[36px] text-cyan">What would you do here?</p>
+        </div>
+      );
     case 'quiz':
     case 'sim':
       return <QuestionBody slide={slide} reveal={reveal} state={state} presenter={presenter} />;
@@ -305,6 +315,13 @@ export function PhoneSlide({ slide, state, onAnswer, pending }:
           {slide.bullets.length > 0 && <ul className="mt-3 space-y-1.5 text-sm text-muted">{slide.bullets.map((b, i) => <li key={i}>• <Marked text={b} compact /></li>)}</ul>}
         </>
       )}
+      {slide.kind === 'onjob' && (
+        <>
+          <div className="eyebrow mb-2">On the job</div>
+          <p className="rounded-xl border-l-4 border-gold bg-white/[0.04] p-4 leading-relaxed"><Marked text={slide.text} compact /></p>
+          <p className="mt-3 text-sm text-cyan">What would you do here?</p>
+        </>
+      )}
       {slide.kind === 'signoff' && (
         <>
           <div className="eyebrow mb-2">On the job this week</div>
@@ -336,6 +353,7 @@ export function slideSummary(s: Slide | undefined): string {
     case 'point': return `Key point ${s.index}: ${s.lead}`;
     case 'quiz': return `Q${s.number}: ${s.question}`;
     case 'sim': return `Role-play ${s.step}: “${s.them}”`;
+    case 'onjob': return `On the job · ${s.text.slice(0, 60)}…`;
     case 'signoff': return `Sign-offs · ${s.moduleTitle}`;
     case 'recap': return `Recap · ${s.moduleTitle}`;
     case 'end': return 'End';

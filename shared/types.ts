@@ -20,11 +20,20 @@ export type Slide =
       kind: 'sim'; persona: string; scenario: string; step: number; total: number; them: string; options: string[];
       correct?: number; feedback?: string;
     })
+  | (SlideBase & { kind: 'onjob'; text: string; lesson: string })
   | (SlideBase & { kind: 'signoff'; items: string[]; assessor?: string })
   | (SlideBase & { kind: 'recap'; points: string[] })
   | (SlideBase & { kind: 'end'; title: string });
 
 export type SlideKind = Slide['kind'];
+
+export type LessonBlock =
+  | { type: 'p'; text: string }
+  | { type: 'ul'; items: string[] }
+  | { type: 'ol'; items: string[] }
+  | { type: 'callout'; kind: 'onjob' | 'say' | 'note'; text: string };
+
+export interface Lesson { title: string; blocks: LessonBlock[] }
 export type Phase = 'show' | 'open' | 'reveal';
 
 export interface Reveal {

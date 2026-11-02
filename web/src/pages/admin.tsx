@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
-import type { Slide } from '../../../shared/types';
+import type { Lesson, Slide } from '../../../shared/types';
 import { api, formatWhen, timeAgo, useApi } from '../api';
 import { canPresent, useAuth, type User } from '../auth';
 import { Stage, TvSlide } from '../slides';
+import { LessonBlocks } from './learner';
 import { Badge, Button, Card, ErrorNote, Field, Loading, Logo, Marked, Modal, Qr } from '../ui';
 
 const ROLE_NAMES: Record<string, string> = { install: 'Install', service: 'Service', salestech: 'Sales' };
@@ -364,7 +365,7 @@ function UserModal({ user, onClose, onSaved }: { user: User | null; onClose: () 
 // ---------------------------------------------------------------- classes
 interface Meta {
   groups: Array<{ id: string; name: string }>;
-  paths: Array<{ id: string; name: string; modules: Array<{ id: string; title: string; quizLength: number }> }>;
+  paths: Array<{ id: string; name: string; modules: Array<{ id: string; title: string; quizLength: number; lessonCount: number; lessonsWritten: number; lessonStatus: string | null }> }>;
   schedule: Array<{ week: number; sessions: Array<{ group: string; modules: string[] }> }>;
 }
 
@@ -504,7 +505,7 @@ export function ContentPage() {
   if (meta.error || !meta.data) return <ErrorNote error={meta.error?.message} />;
   return (
     <div className="fade-in">
-      <PageHead title="Content" sub="Every path and module. Open one to preview its slides at TV size." />
+      <PageHead title="Content" sub="Every path and module. Open one to preview its slides at TV size and read its written lessons." />
       <div className="grid gap-5 xl:grid-cols-2">
         {meta.data.paths.map((p) => (
           <Card key={p.id} className="p-5">
@@ -514,6 +515,11 @@ export function ContentPage() {
                 <Link key={m.id} to={`/admin/content/${m.id}`} className="flex items-center gap-3 py-2 hover:text-cyan">
                   <span className="w-9 text-xs text-faint">{m.id}</span>
                   <span className="flex-1 text-sm">{m.title}</span>
+                  {m.lessonsWritten > 0 && (
+                    <Badge tone={m.lessonStatus?.startsWith('sample') ? 'amber' : 'good'}>
+                      {m.lessonStatus?.startsWith('sample') ? 'sample for approval' : `lessons ${m.lessonsWritten}/${m.lessonCount}`}
+                    </Badge>
+                  )}
                   {m.quizLength > 0 ? <Badge tone="good">quiz · {m.quizLength}</Badge> : <Badge>no quiz yet</Badge>}
                 </Link>
               ))}
@@ -527,7 +533,7 @@ export function ContentPage() {
 
 export function PreviewPage() {
   const { id = '' } = useParams();
-  const { data, error, loading } = useApi<{ module: any; deck: Slide[] }>(`/api/admin/content/${id}/deck`);
+  const { data, error, loading } = useApi<{ module: any; deck: Slide[]; lessons: { status: string; lessons: Lesson[] } | null }>(`/api/admin/content/${id}/deck`);
   const [i, setI] = useState(0);
   const [answers, setAnswers] = useState(false);
   useEffect(() => setI(0), [id]);
@@ -567,9 +573,32 @@ export function PreviewPage() {
         <Card className="p-5">
           <h2 className="mb-2 font-bold">Lessons</h2>
           <ol className="list-decimal space-y-1 pl-5 text-sm">{m.lessons.map((l: string, n: number) => <li key={n}><Marked text={l} /></li>)}</ol>
-          <p className="mt-3 text-xs text-faint">{m.quizLength ? `${m.quizLength} quiz questions (draft).` : 'No quiz written yet: the class still runs from the key points.'}</p>
+          <p className="mt-3 text-xs text-faint">
+            {m.lessonsWritten ? `${m.lessonsWritten} of ${m.lessons.length} lessons written. ` : 'Lessons not written yet. '}
+            {m.quizLength ? `${m.quizLength} quiz questions (draft).` : 'No quiz written yet: the class still runs from the key points.'}
+          </p>
         </Card>
       </div>
+      {data.lessons && data.lessons.lessons.length > 0 && (
+        <section className="mt-8 max-w-3xl">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <h2 className="text-xl font-bold">Written lessons</h2>
+            <Badge tone={data.lessons.status.startsWith('sample') ? 'amber' : 'good'}>{data.lessons.status}</Badge>
+          </div>
+          <div className="space-y-4">
+            {data.lessons.lessons.map((l, n) => (
+              <details key={n} className="group rounded-2xl border border-line bg-panel" open={n === 0}>
+                <summary className="flex cursor-pointer list-none items-start gap-3 p-5">
+                  <b className="headline text-gold">{n + 1}</b>
+                  <span className="flex-1 font-semibold"><Marked text={l.title} /></span>
+                  <span className="text-faint transition group-open:rotate-90">›</span>
+                </summary>
+                <div className="border-t border-line px-5 pb-5 pt-4"><LessonBlocks blocks={l.blocks} /></div>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

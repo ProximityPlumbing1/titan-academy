@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { Slide } from '../shared/types.js';
+import type { Lesson, LessonBlock, Slide } from '../shared/types.js';
 
 export interface TradeModule {
   id: string; title: string; objective: string; assessor?: string; lessons: string[]; key_points: string[];
@@ -16,6 +16,62 @@ const trade = JSON.parse(fs.readFileSync(path.join(root, 'data', 'trade-paths.js
 const extras: Record<string, ModuleExtras> = JSON.parse(
   fs.readFileSync(path.join(root, 'content', 'quizzes.json'), 'utf8'),
 ).modules;
+
+// Written lessons: content/lessons/<moduleId>.md, one '## ' heading per lesson, in order.
+export function parseLessonMarkdown(src: string): { status: string; lessons: Lesson[] } {
+  const status = /<!--\s*status:\s*([^>]*?)\s*-->/.exec(src)?.[1] ?? 'draft';
+  const lessons: Lesson[] = [];
+  let cur: Lesson | null = null;
+  let para: string[] = [];
+  let list: { type: 'ul' | 'ol'; items: string[] } | null = null;
+  let quote: string[] = [];
+  const push = (b: LessonBlock) => cur?.blocks.push(b);
+  const flushPara = () => { if (para.length) push({ type: 'p', text: para.join(' ') }); para = []; };
+  const flushList = () => { if (list) push(list); list = null; };
+  const flushQuote = () => {
+    if (quote.length) {
+      const t = quote.join(' ').trim();
+      const m = /^\*\*(On the job|Say it like this):\*\*\s*(.*)$/i.exec(t);
+      push({ type: 'callout', kind: m ? (m[1].toLowerCase().startsWith('on') ? 'onjob' : 'say') : 'note', text: m ? m[2] : t });
+    }
+    quote = [];
+  };
+  const flushAll = () => { flushPara(); flushList(); flushQuote(); };
+  for (const raw of src.split(/\r?\n/)) {
+    const line = raw.trimEnd();
+    if (line.trim().startsWith('<!--')) continue;
+    const h = /^##\s+(.*)$/.exec(line);
+    if (h) { flushAll(); cur = { title: h[1].trim(), blocks: [] }; lessons.push(cur); continue; }
+    if (!cur) continue;
+    if (!line.trim()) { flushAll(); continue; }
+    const qm = /^>\s?(.*)$/.exec(line);
+    if (qm) { flushPara(); flushList(); quote.push(qm[1]); continue; }
+    const ul = /^[-*]\s+(.*)$/.exec(line);
+    const ol = /^\d+\.\s+(.*)$/.exec(line);
+    if (ul || ol) {
+      flushPara(); flushQuote();
+      const type = ul ? 'ul' : 'ol';
+      if (!list || list.type !== type) { flushList(); list = { type, items: [] }; }
+      list.items.push((ul ?? ol)![1]);
+      continue;
+    }
+    flushList(); flushQuote();
+    para.push(line.trim());
+  }
+  flushAll();
+  return { status, lessons };
+}
+
+const lessonDir = path.join(root, 'content', 'lessons');
+const written: Record<string, { status: string; lessons: Lesson[] }> = {};
+if (fs.existsSync(lessonDir)) {
+  for (const f of fs.readdirSync(lessonDir).filter((x) => x.endsWith('.md'))) {
+    written[f.replace(/\.md$/, '')] = parseLessonMarkdown(fs.readFileSync(path.join(lessonDir, f), 'utf8'));
+  }
+}
+export function lessonsFor(id: string) {
+  return written[id] ?? null;
+}
 
 export const paths: TradePath[] = trade.paths;
 export const program = trade.program;
@@ -58,6 +114,7 @@ export function publicModule(id: string) {
     id: m.id, title: m.title, objective: m.objective, pathId: p.id, pathName: p.name, position,
     moduleCount: p.modules.length, lessons: m.lessons, keyPoints: m.key_points, signoff: m.signoff ?? [],
     assessor: m.assessor ?? null, quizLength: quizFor(id).length, hasSim: !!simFor(id),
+    lessonsWritten: Math.min(lessonsFor(id)?.lessons.length ?? 0, m.lessons.length), lessonStatus: lessonsFor(id)?.status ?? null,
   };
 }
 
@@ -82,6 +139,8 @@ export function moduleSlides(id: string, withAnswers: boolean): Slide[] {
     const bullets = parts.length >= 3 ? parts.map((s) => s.replace(/^and\s+/i, '').replace(/\.$/, '')) : [];
     slides.push({ ...base, key: `${id}.p${i + 1}`, kind: 'point', lead, detail: bullets.length ? '' : rest, bullets, index: i + 1, total: m.key_points.length });
   });
+  const onJob = lessonsFor(id)?.lessons.flatMap((l) => l.blocks.filter((b) => b.type === 'callout' && b.kind === 'onjob').map((b) => ({ lesson: l.title, text: (b as { text: string }).text })))[0];
+  if (onJob) slides.push({ ...base, key: `${id}.onjob`, kind: 'onjob', text: onJob.text, lesson: onJob.lesson });
   const sim = simFor(id);
   if (sim) {
     sim.steps.forEach((s, i) => {
@@ -140,6 +199,17 @@ export function needsAnswers() {
       (m.signoff ?? []).forEach((s) => scan(p.name, m, 'Sign-off', s));
       (m.confirm ?? []).forEach((c) => out.push({ pathName: p.name, moduleId: m.id, moduleTitle: m.title, where: 'To confirm', text: c }));
     }
+  }
+  for (const [id, w] of Object.entries(written)) {
+    const hit = getModule(id);
+    if (!hit) continue;
+    w.lessons.forEach((l, i) => {
+      const text = l.blocks.map((b) => ('text' in b ? b.text : b.items.join(' '))).join(' ');
+      for (const hitM of text.matchAll(/\[(CONFIRM|VERIFY)([^\]]*)\]/g)) {
+        const detail = (hitM[2] || '').replace(/^[:\s]+/, '').trim();
+        out.push({ pathName: hit.path.name, moduleId: id, moduleTitle: hit.module.title, where: `Written lesson ${i + 1}`, text: `${hitM[1]}: ${detail || l.title}` });
+      }
+    });
   }
   for (const q of program.open_questions ?? []) out.push({ pathName: 'Program', moduleId: '', moduleTitle: 'Open question', where: 'Program', text: q });
   return out;

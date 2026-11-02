@@ -1,11 +1,12 @@
-import { useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import type { LessonBlock } from '../../../shared/types';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api, useApi } from '../api';
 import { canPresent, isStaff, useAuth } from '../auth';
 import { Badge, Button, Card, ErrorNote, Loading, Logo, Marked, Ring, firstName } from '../ui';
 
 interface Overview {
-  paths: Array<{ id: string; name: string; summary: string; modules: Array<{ id: string; title: string; objective: string; lessonCount: number; quizLength: number; status: 'done' | 'started' | 'none' }> }>;
+  paths: Array<{ id: string; name: string; summary: string; modules: Array<{ id: string; title: string; objective: string; lessonCount: number; lessonsWritten: number; quizLength: number; status: 'done' | 'started' | 'none' }> }>;
   done: number; total: number;
   live: Array<{ id: string; title: string; code: string }>;
 }
@@ -89,7 +90,7 @@ export function HomePage() {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate font-medium">{m.title}</span>
-                  <span className="text-xs text-faint">{m.quizLength ? `Quiz · ${m.quizLength} questions` : 'Covered in class'}</span>
+                  <span className="text-xs text-faint">{[m.lessonsWritten ? `${m.lessonsWritten} lessons to read` : '', m.quizLength ? `Quiz · ${m.quizLength} questions` : ''].filter(Boolean).join(' · ') || 'Covered in class'}</span>
                 </span>
                 {m.status === 'started' && <Badge tone="amber">Started</Badge>}
                 <span className="text-faint">›</span>
@@ -103,8 +104,8 @@ export function HomePage() {
 }
 
 interface ModuleData {
-  module: { id: string; title: string; objective: string; pathName: string; position: number; moduleCount: number; lessons: string[]; keyPoints: string[]; signoff: string[]; assessor: string | null; quizLength: number };
-  status: 'done' | 'started' | 'none'; best: number | null; attempts: number;
+  module: { id: string; title: string; objective: string; pathName: string; position: number; moduleCount: number; lessons: string[]; keyPoints: string[]; signoff: string[]; assessor: string | null; quizLength: number; lessonsWritten: number };
+  status: 'done' | 'started' | 'none'; best: number | null; attempts: number; doneLessons: number[];
 }
 
 export function ModulePage() {
@@ -114,6 +115,8 @@ export function ModulePage() {
   if (loading) return <Loading />;
   if (error || !data) return <PhoneShell back="/"><ErrorNote error={error?.message} /></PhoneShell>;
   const m = data.module;
+  const done = new Set(data.doneLessons);
+  const firstUnread = m.lessons.findIndex((_, i) => i < m.lessonsWritten && !done.has(i));
   const markRead = async () => {
     setBusy(true);
     await api(`/api/modules/${id}/read`, { body: {} }).catch(() => {});
@@ -131,20 +134,39 @@ export function ModulePage() {
       </div>
 
       <section className="mt-7">
+        <h2 className="mb-3 text-sm font-bold uppercase tracking-widest text-muted">{m.lessonsWritten ? `Lessons · ${[...done].filter((i) => i < m.lessonsWritten).length} of ${m.lessonsWritten} read` : 'What this module covers'}</h2>
+        {m.lessonsWritten > 0 ? (
+          <Card className="divide-y divide-line">
+            {m.lessons.map((l, i) => i < m.lessonsWritten ? (
+              <Link key={i} to={`/module/${id}/lesson/${i + 1}`} className="flex items-center gap-3 px-4 py-3.5 hover:bg-white/[0.03]">
+                <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-bold ${done.has(i) ? 'bg-good text-ink' : 'bg-white/8 text-faint'}`}>{done.has(i) ? '✓' : i + 1}</span>
+                <span className="min-w-0 flex-1 text-[15px] leading-snug"><Marked text={l} compact /></span>
+                <span className="text-faint">›</span>
+              </Link>
+            ) : (
+              <div key={i} className="flex items-center gap-3 px-4 py-3.5 text-muted">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/8 text-sm text-faint">{i + 1}</span>
+                <span className="min-w-0 flex-1 text-[15px] leading-snug"><Marked text={l} compact /></span>
+              </div>
+            ))}
+          </Card>
+        ) : (
+          <>
+            <ol className="space-y-2 text-[15px]">
+              {m.lessons.map((l, i) => <li key={i} className="flex gap-3"><span className="text-faint">{i + 1}.</span><Marked text={l} /></li>)}
+            </ol>
+            <p className="mt-3 text-xs text-faint">These lessons are taught in your live class. The written versions are being added.</p>
+          </>
+        )}
+      </section>
+
+      <section className="mt-7">
         <h2 className="mb-3 text-sm font-bold uppercase tracking-widest text-muted">Key points</h2>
         <div className="space-y-3">
           {m.keyPoints.map((k, i) => (
             <Card key={i} className="p-4"><div className="flex gap-3"><b className="headline text-gold">{i + 1}</b><p className="leading-relaxed"><Marked text={k} /></p></div></Card>
           ))}
         </div>
-      </section>
-
-      <section className="mt-7">
-        <h2 className="mb-3 text-sm font-bold uppercase tracking-widest text-muted">What this module covers</h2>
-        <ol className="space-y-2 text-[15px]">
-          {m.lessons.map((l, i) => <li key={i} className="flex gap-3"><span className="text-faint">{i + 1}.</span><Marked text={l} /></li>)}
-        </ol>
-        <p className="mt-3 text-xs text-faint">The full lessons are taught in your live class. Written lessons are being added.</p>
       </section>
 
       {m.signoff.length > 0 && (
@@ -157,7 +179,12 @@ export function ModulePage() {
         </section>
       )}
 
-      <div className="sticky bottom-4 mt-8">
+      <div className="sticky bottom-4 mt-8 space-y-3">
+        {firstUnread >= 0 && (
+          <Link to={`/module/${id}/lesson/${firstUnread + 1}`} className="block">
+            <Button size="lg" variant={m.quizLength > 0 ? 'ghost' : 'primary'} className={`w-full shadow-xl ${m.quizLength > 0 ? 'bg-ink' : ''}`}>{done.size ? 'Continue reading' : 'Start reading'} · lesson {firstUnread + 1}</Button>
+          </Link>
+        )}
         {m.quizLength > 0 ? (
           <Link to={`/module/${id}/quiz`}>
             <Button size="lg" className="w-full shadow-xl">{data.status === 'done' ? 'Retake the quiz' : `Take the quiz · ${m.quizLength} questions`}</Button>
@@ -165,6 +192,90 @@ export function ModulePage() {
         ) : data.status !== 'done' ? (
           <Button size="lg" variant="ghost" className="w-full bg-ink" onClick={markRead} disabled={busy}>I've read this module</Button>
         ) : null}
+      </div>
+    </PhoneShell>
+  );
+}
+
+interface LessonData {
+  moduleId: string; moduleTitle: string; pathName: string; index: number; total: number; written: number;
+  title: string; blocks: LessonBlock[]; status: string | null; done: boolean; quizLength: number;
+}
+
+export function LessonBlocks({ blocks }: { blocks: LessonBlock[] }) {
+  return (
+    <div className="space-y-4 text-[16px] leading-relaxed">
+      {blocks.map((b, i) => {
+        if (b.type === 'p') return <p key={i}><Marked text={b.text} /></p>;
+        if (b.type === 'ul' || b.type === 'ol') {
+          const Tag = b.type;
+          return (
+            <Tag key={i} className="space-y-2 pl-1">
+              {b.items.map((t, j) => (
+                <li key={j} className="flex gap-3">
+                  <span className={b.type === 'ol' ? 'font-bold text-gold' : 'text-cyan'}>{b.type === 'ol' ? `${j + 1}.` : '•'}</span>
+                  <span><Marked text={t} /></span>
+                </li>
+              ))}
+            </Tag>
+          );
+        }
+        const style = b.kind === 'say'
+          ? { box: 'border-cyan bg-cyan/[0.07]', label: 'Say it like this', labelCls: 'text-cyan' }
+          : b.kind === 'onjob'
+            ? { box: 'border-gold bg-gold/[0.07]', label: 'On the job', labelCls: 'text-gold' }
+            : { box: 'border-line bg-white/[0.03]', label: '', labelCls: '' };
+        return (
+          <div key={i} className={`rounded-xl border-l-4 p-4 ${style.box}`}>
+            {style.label && <div className={`mb-1 text-[11px] font-bold uppercase tracking-[0.18em] ${style.labelCls}`}>{style.label}</div>}
+            <p className={b.kind === 'say' ? 'italic' : ''}><Marked text={b.text} /></p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export function LessonPage() {
+  const { id = '', n = '1' } = useParams();
+  const idx = Math.max(0, Number(n) - 1);
+  const navigate = useNavigate();
+  const { data, error, loading } = useApi<LessonData>(`/api/modules/${id}/lessons/${idx}`);
+  const [busy, setBusy] = useState(false);
+  useEffect(() => { window.scrollTo(0, 0); }, [idx]);
+  if (loading) return <Loading />;
+  if (error || !data) return <PhoneShell back={`/module/${id}`}><ErrorNote error={error?.message} /></PhoneShell>;
+  const hasNext = idx + 1 < data.written;
+  const finish = async () => {
+    setBusy(true);
+    try {
+      await api(`/api/modules/${id}/lessons/${idx}/done`, { body: {} });
+      navigate(hasNext ? `/module/${id}/lesson/${idx + 2}` : `/module/${id}`);
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <PhoneShell back={`/module/${id}`}>
+      <div className="eyebrow mb-2">{data.moduleTitle} · Lesson {idx + 1} of {data.total}</div>
+      <div className="mb-5 flex gap-1">
+        {Array.from({ length: data.total }, (_, i) => (
+          <span key={i} className={`h-1 flex-1 rounded-full ${i < idx ? 'bg-blue2' : i === idx ? 'bg-cyan' : 'bg-white/10'}`} />
+        ))}
+      </div>
+      <h1 className="headline mb-5 text-[28px] leading-tight"><Marked text={data.title} /></h1>
+      {data.status?.startsWith('sample') && (
+        <p className="mb-5 rounded-lg bg-amber/10 px-3 py-2 text-xs text-amber">Draft lesson, awaiting owner approval.</p>
+      )}
+      <LessonBlocks blocks={data.blocks} />
+      <div className="mt-10 space-y-3">
+        <Button size="lg" className="w-full" onClick={finish} disabled={busy}>
+          {data.done ? (hasNext ? 'Next lesson →' : 'Back to module') : hasNext ? 'Done · next lesson →' : 'Done · back to module'}
+        </Button>
+        {!hasNext && data.quizLength > 0 && (
+          <Link to={`/module/${id}/quiz`} className="block"><Button size="lg" variant="ghost" className="w-full">Take the quiz · {data.quizLength} questions</Button></Link>
+        )}
+        {idx > 0 && <Link to={`/module/${id}/lesson/${idx}`} className="block py-2 text-center text-sm text-muted">← Previous lesson</Link>}
       </div>
     </PhoneShell>
   );

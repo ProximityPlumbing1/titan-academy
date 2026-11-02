@@ -83,8 +83,22 @@ export function Marked({ text, compact = false }: { text: string; compact?: bool
             {compact ? 'to be confirmed' : `${p.marker === 'VERIFY' ? 'Verify' : 'Confirm'}${p.text ? `: ${p.text}` : ''}`}
           </span>
         ) : (
-          <span key={i}>{p.text}</span>
+          <Emphasis key={i} text={p.text} />
         ),
+      )}
+    </>
+  );
+}
+
+// **bold** and *italic* from lesson markdown, rendered as elements (never innerHTML).
+function Emphasis({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*\s][^*]*\*)/g);
+  return (
+    <>
+      {parts.map((t, i) =>
+        t.startsWith('**') && t.endsWith('**') && t.length > 4 ? <strong key={i} className="font-semibold text-white">{t.slice(2, -2)}</strong>
+        : t.startsWith('*') && t.endsWith('*') && t.length > 2 ? <em key={i}>{t.slice(1, -1)}</em>
+        : t ? <span key={i}>{t}</span> : null,
       )}
     </>
   );
