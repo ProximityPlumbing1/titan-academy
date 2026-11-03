@@ -9,6 +9,7 @@ import { pool } from './db.js';
 import { COOKIE, HttpError, userFromToken } from './auth.js';
 import { registerRoutes } from './routes.js';
 import { registerLive } from './live.js';
+import { registerProgram } from './program.js';
 
 const app = Fastify({ logger: { level: config.isProd ? 'info' : 'warn' }, trustProxy: true, bodyLimit: 256 * 1024 });
 
@@ -34,7 +35,7 @@ app.addHook('onSend', async (_req, reply, payload) => {
   reply.header(
     'content-security-policy',
     "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-      "font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' ws: wss:; frame-ancestors 'none'",
+      "font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' ws: wss:; frame-ancestors 'none'",
   );
   return payload;
 });
@@ -53,6 +54,7 @@ app.get('/health', async () => {
 
 await registerRoutes(app);
 await registerLive(app);
+await registerProgram(app);
 
 const webDir = path.join(process.cwd(), 'dist', 'web');
 if (fs.existsSync(webDir)) {

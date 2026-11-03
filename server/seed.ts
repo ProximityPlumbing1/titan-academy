@@ -7,16 +7,17 @@ import { config } from './config.js';
 const OFFICE: Array<{
   key: string; name: string; position: string;
   admin?: boolean; trainer?: boolean; assessor?: boolean;
+  installManager?: boolean; salesManager?: boolean; dispatch?: boolean; signoffAll?: boolean;
 }> = [
-  { key: 'william', name: 'William', position: 'Owner', admin: true, trainer: true, assessor: true },
+  { key: 'william', name: 'William', position: 'Owner', admin: true, trainer: true, assessor: true, signoffAll: true },
   { key: 'aldwin', name: 'Aldwin', position: 'Administration', admin: true },
-  { key: 'charlotte', name: 'Charlotte', position: 'Operations Manager (interim Install & Service Manager)', trainer: true, assessor: true },
+  { key: 'charlotte', name: 'Charlotte', position: 'Operations Manager (interim Install & Service Manager)', trainer: true, assessor: true, installManager: true, signoffAll: true },
   { key: 'sadie', name: 'Sadie Sands', position: 'Office Manager' },
-  { key: 'harriet', name: 'Harriet Burns', position: 'Sales Manager', trainer: true, assessor: true },
+  { key: 'harriet', name: 'Harriet Burns', position: 'Sales Manager', trainer: true, assessor: true, salesManager: true },
   { key: 'carla', name: 'Carla', position: 'Finance Manager' },
   { key: 'alex', name: 'Alex Letowski', position: 'Commercial Manager' },
   { key: 'isabella', name: 'Isabella Marfé', position: 'Business Partnerships Manager' },
-  { key: 'kim', name: 'Kim Storch', position: 'Residential Dispatcher', assessor: true },
+  { key: 'kim', name: 'Kim Storch', position: 'Residential Dispatcher', assessor: true, dispatch: true },
   { key: 'ruby', name: 'Ruby Douglass', position: 'Commercial Dispatcher' },
   { key: 'abigail', name: 'Abigail Rose', position: 'Customer Service Representative' },
   { key: 'elle', name: 'Elle Smith', position: 'Customer Service Representative' },
@@ -44,10 +45,12 @@ export function readRoster(): Array<{ name: string; tradeRole: string; apprentic
 export async function seed() {
   for (const o of OFFICE) {
     await pool.query(
-      `insert into users (seed_key, name, position, is_admin, is_office, is_trainer, is_assessor)
-       values ($1, $2, $3, $4, true, $5, $6)
+      `insert into users (seed_key, name, position, is_admin, is_office, is_trainer, is_assessor,
+                          is_install_manager, is_sales_manager, is_dispatch, signoff_all)
+       values ($1, $2, $3, $4, true, $5, $6, $7, $8, $9, $10)
        on conflict (seed_key) do nothing`,
-      [`office:${o.key}`, o.name, o.position, !!o.admin, !!o.trainer, !!o.assessor],
+      [`office:${o.key}`, o.name, o.position, !!o.admin, !!o.trainer, !!o.assessor,
+        !!o.installManager, !!o.salesManager, !!o.dispatch, !!o.signoffAll],
     );
   }
   if (config.ownerEmail) {

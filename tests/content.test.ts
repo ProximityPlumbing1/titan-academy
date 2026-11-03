@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { splitMarkers } from '../shared/types';
-import { answerFor, classDeck, getModule, modulesForRole, moduleSlides, needsAnswers, parseLessonMarkdown, quizFor } from '../server/content';
+import { answerFor, classDeck, getModule, program, modulesForRole, moduleSlides, needsAnswers, parseLessonMarkdown, quizFor } from '../server/content';
+import { canReview, dueDates, routeFor, sessionDate, weekOf } from '../server/program';
 
 describe('content', () => {
   it('gives each trade the right paths', () => {
@@ -107,5 +108,38 @@ describe('written lessons', () => {
       const text = fs.readFileSync(path.join(dir, f), 'utf8');
       for (const n of names) expect(new RegExp(`\\b${n}\\b`).test(text), `${f} mentions ${n}`).toBe(false);
     }
+  });
+});
+
+describe('program and sign-offs', () => {
+  const spec = { start_date: '2027-02-01', schedule: program.schedule };
+  it('dates each module to the end of the week its group covers it', () => {
+    const inst = dueDates(spec, 'install');
+    expect(inst.get('f1')).toEqual({ week: 1, due: '2027-02-07' });
+    expect(inst.get('i1')).toEqual({ week: 2, due: '2027-02-14' });
+    expect(inst.size).toBe(modulesForRole('install').length);
+    expect(dueDates(spec, 'service').size).toBe(modulesForRole('service').length);
+    expect(dueDates(spec, 'salestech').get('x8')?.week).toBe(7);
+    expect(weekOf(spec, '2027-01-31')).toBe(0);
+    expect(weekOf(spec, '2027-02-01')).toBe(1);
+    expect(weekOf(spec, '2027-02-08')).toBe(2);
+  });
+  it('places sessions on the group weekday, the second one two days later', () => {
+    expect(sessionDate('2027-02-01', 1, 2, 0)).toBe('2027-02-02');
+    expect(sessionDate('2027-02-01', 1, 2, 1)).toBe('2027-02-04');
+    expect(sessionDate('2027-02-01', 3, 1, 0)).toBe('2027-02-15');
+  });
+  it('routes sign-offs from the "Signed off by" line', () => {
+    const base = { id: 'r', status: 'active', signoff_all: false, is_lead_tech: false, trade_role: null, is_install_manager: false, is_sales_manager: false, is_dispatch: false } as any;
+    const tech = { id: 't', trade_role: 'install' };
+    expect(routeFor('f1')).toEqual(['lead_trade', 'install_manager']);
+    expect(canReview({ ...base, is_lead_tech: true, trade_role: 'install' }, tech, 'f1')).toBe(true);
+    expect(canReview({ ...base, is_lead_tech: true, trade_role: 'service' }, tech, 'f1')).toBe(false);
+    expect(canReview({ ...base, is_sales_manager: true }, tech, 'f1')).toBe(false);
+    expect(canReview({ ...base, signoff_all: true }, tech, 'f1')).toBe(true);
+    expect(canReview({ ...base, signoff_all: true, id: 't' }, tech, 'f1')).toBe(false);
+    for (const role of ['install', 'service', 'salestech'])
+      for (const id of modulesForRole(role))
+        if ((getModule(id)!.module.signoff ?? []).length) expect(routeFor(id).length, `${id} has no route`).toBeGreaterThan(0);
   });
 });

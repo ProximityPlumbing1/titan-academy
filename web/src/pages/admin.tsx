@@ -29,14 +29,16 @@ export function AdminLayout() {
         <nav className="mt-4 flex flex-wrap gap-1 lg:mt-8 lg:block lg:space-y-1">
           {item('/admin', 'Dashboard')}
           {item('/admin/users', 'People & logins')}
+          {item('/admin/program', '8-week program')}
           {item('/admin/classes', 'Classes')}
+          {item('/admin/signoffs', 'Sign-offs')}
           {item('/admin/content', 'Content')}
           {item('/admin/needs-answers', 'Needs answers')}
         </nav>
         <div className="mt-8 hidden lg:block">
           <div className="px-3 text-[11px] font-semibold uppercase tracking-widest text-faint">Coming next</div>
           <div className="mt-2 space-y-1 px-3 text-sm text-faint">
-            <div>8-week program</div><div>Sign-offs</div><div>Certificates</div>
+            <div>Final assessment</div><div>Certificates</div><div>Weekly digest email</div>
           </div>
         </div>
         <div className="mt-8 hidden border-t border-line pt-4 text-sm lg:absolute lg:bottom-5 lg:left-5 lg:right-5 lg:block">
@@ -67,7 +69,12 @@ function PageHead({ title, sub, children }: { title: string; sub?: string; child
 
 // ---------------------------------------------------------------- dashboard
 interface Dash {
-  techs: Array<{ id: string; name: string; tradeRole: string; status: string; isApprentice: boolean; lastSeenAt: string | null; modules: Record<string, string>; done: number; total: number; flags: string[] }>;
+  techs: Array<{
+    id: string; name: string; tradeRole: string; status: string; isApprentice: boolean; lastSeenAt: string | null; modules: Record<string, string>;
+    done: number; total: number; flags: string[]; overdue: string[]; signoffs: { approved: number; waiting: number; total: number };
+  }>;
+  program: { name: string; startDate: string; week: number; weeks: number } | null;
+  signoffsWaiting: number;
   columns: Record<string, Array<{ id: string; title: string }>>;
   classes: Array<{ id: string; title: string; group_id: string; status: string; scheduled_at: string | null; join_code: string | null }>;
 }
@@ -81,12 +88,16 @@ export function DashboardPage() {
   const attention = data.techs.filter((t) => t.flags.length);
   return (
     <div className="fade-in">
-      <PageHead title="Dashboard" sub="Every tech's progress, at a glance." />
+      <PageHead title="Dashboard" sub={data.program
+        ? `${data.program.name} · ${data.program.week === 0 ? `starts ${new Date(`${data.program.startDate}T00:00`).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}` : data.program.week > data.program.weeks ? 'program finished' : `week ${data.program.week} of ${data.program.weeks}`}`
+        : "Every tech's progress, at a glance. No 8-week program yet."}>
+        {!data.program && <Link to="/admin/program"><Button>Set up the 8-week program</Button></Link>}
+      </PageHead>
       <div className="mb-6 grid grid-cols-2 gap-4 xl:grid-cols-4">
         <Stat label="Field techs" value={data.techs.length} />
         <Stat label="Signed up" value={`${active} / ${data.techs.length}`} tone={active === data.techs.length ? 'good' : 'amber'} />
         <Stat label="Average completion" value={`${avg}%`} />
-        <Stat label="Live now" value={data.classes.filter((c) => c.status === 'live').length} tone="cyan" />
+        <Stat label="Sign-offs waiting" value={<Link to="/admin/signoffs">{data.signoffsWaiting}</Link>} tone="cyan" />
       </div>
       {data.classes.length > 0 && (
         <Card className="mb-6 p-5">
@@ -124,6 +135,8 @@ export function DashboardPage() {
         <span className="flex items-center gap-1.5"><i className="inline-block h-3 w-3 rounded bg-good" /> Done</span>
         <span className="flex items-center gap-1.5"><i className="inline-block h-3 w-3 rounded bg-amber" /> Started</span>
         <span className="flex items-center gap-1.5"><i className="inline-block h-3 w-3 rounded bg-tone/10" /> Not started</span>
+        <span className="flex items-center gap-1.5"><i className="inline-block h-3 w-3 rounded bg-tone/10 ring-2 ring-bad ring-offset-1" /> Overdue</span>
+        <span>Sign-offs: approved / total, <span className="text-link">+waiting</span></span>
       </div>
     </div>
   );
@@ -149,6 +162,7 @@ function ProgressGrid({ title, columns, techs }: { title: string; columns: Array
             <th className="sticky left-0 bg-card pr-4 text-left font-medium text-muted">Name</th>
             {columns.map((c) => <th key={c.id} title={c.title} className="px-0.5 text-center text-[11px] font-medium uppercase text-faint">{c.id}</th>)}
             <th className="pl-3 text-right font-medium text-muted">Done</th>
+            <th className="pl-3 text-right font-medium text-muted">Sign-offs</th>
             <th className="pl-3 text-right font-medium text-muted">Last seen</th>
           </tr>
         </thead>
@@ -163,11 +177,13 @@ function ProgressGrid({ title, columns, techs }: { title: string; columns: Array
                 const s = t.modules[c.id];
                 return (
                   <td key={c.id} className="px-0.5 text-center">
-                    <span title={`${c.id} · ${c.title}`} className={`inline-block h-5 w-5 rounded ${s === 'done' ? 'bg-good' : s === 'started' ? 'bg-amber' : 'bg-tone/10'}`} />
+                    <span title={`${c.id} · ${c.title}${t.overdue.includes(c.id) ? ' · overdue' : ''}`}
+                      className={`inline-block h-5 w-5 rounded ${s === 'done' ? 'bg-good' : s === 'started' ? 'bg-amber' : 'bg-tone/10'} ${t.overdue.includes(c.id) ? 'ring-2 ring-bad ring-offset-1' : ''}`} />
                   </td>
                 );
               })}
               <td className="whitespace-nowrap pl-3 text-right">{t.done}/{t.total}</td>
+              <td className="whitespace-nowrap pl-3 text-right">{t.signoffs.approved}/{t.signoffs.total}{t.signoffs.waiting > 0 && <span className="ml-1 text-link">+{t.signoffs.waiting}</span>}</td>
               <td className="whitespace-nowrap pl-3 text-right text-muted">{timeAgo(t.lastSeenAt)}</td>
             </tr>
           ))}
@@ -242,8 +258,11 @@ export function UsersPage() {
                     {u.tradeRole && <Badge tone="cyan">{ROLE_NAMES[u.tradeRole]}</Badge>}
                     {u.isAdmin && <Badge tone="gold">Admin</Badge>}
                     {u.isTrainer && <Badge>Trainer</Badge>}
-                    {u.isAssessor && <Badge>Assessor</Badge>}
-                    {u.isLeadTech && <Badge>Lead tech</Badge>}
+                    {u.isLeadTech && <Badge tone="good">Lead tech</Badge>}
+                    {u.isInstallManager && <Badge tone="good">Install Manager</Badge>}
+                    {u.isSalesManager && <Badge tone="good">Sales Manager</Badge>}
+                    {u.isDispatch && <Badge tone="good">Dispatch</Badge>}
+                    {u.signoffAll && <Badge tone="good">Signs off anything</Badge>}
                     {u.isApprentice && <Badge>Apprentice</Badge>}
                   </div>
                 </td>
@@ -307,6 +326,8 @@ function UserModal({ user, onClose, onSaved }: { user: User | null; onClose: () 
     name: user?.name ?? '', email: user?.email ?? '', position: user?.position ?? '', tradeRole: user?.tradeRole ?? '',
     isAdmin: user?.isAdmin ?? false, isOffice: user?.isOffice ?? !user?.tradeRole, isTrainer: user?.isTrainer ?? false,
     isAssessor: user?.isAssessor ?? false, isLeadTech: user?.isLeadTech ?? false, isApprentice: user?.isApprentice ?? false,
+    isInstallManager: user?.isInstallManager ?? false, isSalesManager: user?.isSalesManager ?? false,
+    isDispatch: user?.isDispatch ?? false, signoffAll: user?.signoffAll ?? false,
   });
   const [error, setError] = useState<string | null>(null);
   const set = (k: string, v: unknown) => setForm((f) => ({ ...f, [k]: v }));
@@ -348,9 +369,17 @@ function UserModal({ user, onClose, onSaved }: { user: User | null; onClose: () 
           {flag('isAdmin', 'Admin', 'Manages people, logins and everything else')}
           {flag('isTrainer', 'Trainer', 'Can create and present classes')}
           {flag('isOffice', 'Office staff', 'Can see the admin dashboard')}
-          {flag('isAssessor', 'Assessor', 'Signs off practical skills (coming next)')}
-          {flag('isLeadTech', 'Lead tech', 'Signs off technical skills for their trade')}
           {flag('isApprentice', 'Apprentice', 'Sign-offs are supervised')}
+        </div>
+        <div>
+          <div className="eyebrow mb-1 px-2">Receives sign-off requests</div>
+          <div className="grid gap-1 sm:grid-cols-2">
+            {flag('isLeadTech', 'Lead tech', 'Technical skills for their own trade')}
+            {flag('isInstallManager', 'Install Manager', 'Job-related install items and Service backup (Charlotte, interim)')}
+            {flag('isSalesManager', 'Sales Manager', 'Sales and service selling (Harriet)')}
+            {flag('isDispatch', 'Dispatch', 'Install handovers (Kim)')}
+            {flag('signoffAll', 'Can sign off anything', 'Backup for every sign-off (William, Charlotte)')}
+          </div>
         </div>
         <ErrorNote error={error} />
         <div className="flex justify-end gap-2">

@@ -8,6 +8,8 @@ export interface User {
   tradeRole: 'install' | 'service' | 'salestech' | null; trainingGroup: string | null; isAdmin: boolean; isOffice: boolean;
   isTrainer: boolean; isAssessor: boolean; isLeadTech: boolean; isApprentice: boolean; hasPassword: boolean;
   lastLoginAt: string | null; lastSeenAt: string | null;
+  isInstallManager: boolean; isSalesManager: boolean; isDispatch: boolean; signoffAll: boolean; supervisorId: string | null;
+  reviewsSignoffs: boolean;
 }
 
 interface AuthCtx { user: User | null; loading: boolean; refresh: () => Promise<void>; logout: () => Promise<void> }

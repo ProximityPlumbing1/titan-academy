@@ -11,6 +11,7 @@ export interface UserRow {
   training_group: string | null; is_admin: boolean; is_office: boolean; is_trainer: boolean;
   is_assessor: boolean; is_lead_tech: boolean; is_apprentice: boolean; created_at: string;
   last_login_at: string | null; last_seen_at: string | null;
+  is_install_manager: boolean; is_sales_manager: boolean; is_dispatch: boolean; signoff_all: boolean; supervisor_id: string | null;
 }
 
 export function publicUser(u: UserRow) {
@@ -19,6 +20,9 @@ export function publicUser(u: UserRow) {
     trainingGroup: u.training_group, isAdmin: u.is_admin, isOffice: u.is_office, isTrainer: u.is_trainer,
     isAssessor: u.is_assessor, isLeadTech: u.is_lead_tech, isApprentice: u.is_apprentice,
     hasPassword: !!u.password_hash, lastLoginAt: u.last_login_at, lastSeenAt: u.last_seen_at,
+    isInstallManager: u.is_install_manager, isSalesManager: u.is_sales_manager, isDispatch: u.is_dispatch,
+    signoffAll: u.signoff_all, supervisorId: u.supervisor_id,
+    reviewsSignoffs: u.signoff_all || u.is_lead_tech || u.is_install_manager || u.is_sales_manager || u.is_dispatch,
   };
 }
 export type PublicUser = ReturnType<typeof publicUser>;

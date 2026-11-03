@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api, useApi } from '../api';
 import { canPresent, isStaff, useAuth } from '../auth';
 import { Badge, Button, Card, ErrorNote, Loading, Logo, Marked, Ring, firstName } from '../ui';
+import { ReviewBanner, SignoffSection, ThisWeek, type MySignoff } from './program';
 
 interface Overview {
   paths: Array<{ id: string; name: string; summary: string; modules: Array<{ id: string; title: string; objective: string; lessonCount: number; lessonsWritten: number; quizLength: number; status: 'done' | 'started' | 'none' }> }>;
@@ -61,6 +62,8 @@ export function HomePage() {
           <Link to="/join" className="mt-1 inline-block text-sm text-link">Join a class with a code</Link>
         </div>
       </div>
+      <ReviewBanner />
+      <ThisWeek />
       {!data.total && isStaff(user) && (
         <Card className="mb-6 p-5">
           <p className="mb-4 text-muted">You're set up as office staff. Run classes and manage the team from the admin area.</p>
@@ -106,6 +109,7 @@ export function HomePage() {
 interface ModuleData {
   module: { id: string; title: string; objective: string; pathName: string; position: number; moduleCount: number; lessons: string[]; keyPoints: string[]; signoff: string[]; assessor: string | null; quizLength: number; lessonsWritten: number };
   status: 'done' | 'started' | 'none'; best: number | null; attempts: number; doneLessons: number[];
+  signoffs: MySignoff[]; inMyPath: boolean;
 }
 
 export function ModulePage() {
@@ -170,13 +174,7 @@ export function ModulePage() {
       </section>
 
       {m.signoff.length > 0 && (
-        <section className="mt-7">
-          <h2 className="section-title mb-3">On the job: sign-offs</h2>
-          <Card className="p-4">
-            <ul className="space-y-2">{m.signoff.map((s, i) => <li key={i}>☐ <Marked text={s} /></li>)}</ul>
-            {m.assessor && <p className="mt-3 text-sm text-muted">Signed off by: <Marked text={m.assessor} /></p>}
-          </Card>
-        </section>
+        <SignoffSection moduleId={id} items={m.signoff} assessor={m.assessor} signoffs={data.signoffs} inMyPath={data.inMyPath} onChange={() => void reload()} />
       )}
 
       <div className="sticky bottom-4 mt-8 space-y-3">

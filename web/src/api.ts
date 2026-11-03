@@ -52,5 +52,5 @@ export function timeAgo(iso: string | null | undefined) {
 
 export function formatWhen(iso: string | null | undefined) {
   if (!iso) return 'Not scheduled';
-  return new Date(iso).toLocaleString('en-AU', { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
+  return new Date(iso).toLocaleString('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
 }

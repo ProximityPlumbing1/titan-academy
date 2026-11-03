@@ -10,6 +10,7 @@ import {
 } from './content.js';
 import { GROUPS } from '../shared/types.js';
 import { liveClassesFor } from './live.js';
+import { activeProgram, dueDates, signoffItems, sydneyToday, weekOf } from './program.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const str = (v: unknown, max = 200) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
@@ -186,7 +187,14 @@ export async function registerRoutes(app: FastifyInstance) {
     if (!m) throw new HttpError(404, 'Module not found.');
     const e = (await progressFor([u.id])).get(u.id)?.get(id);
     const done = await q<{ lesson_index: number }>(`select lesson_index from lesson_progress where user_id = $1 and module_id = $2`, [u.id, id]);
-    return { module: m, status: moduleStatus(id, e), best: e?.best ?? null, attempts: e?.attempts ?? 0, doneLessons: done.map((r) => r.lesson_index) };
+    const signoffs = await q(
+      `select id, item_index, status, job_ref, tech_note, review_note, requested_at, reviewed_at,
+              (select count(*)::int from signoff_photos p where p.signoff_id = s.id) photos
+         from signoffs s where user_id = $1 and module_id = $2`, [u.id, id]);
+    return {
+      module: m, status: moduleStatus(id, e), best: e?.best ?? null, attempts: e?.attempts ?? 0, doneLessons: done.map((r) => r.lesson_index),
+      signoffs, inMyPath: modulesForRole(u.trade_role).includes(id),
+    };
   });
 
   app.get('/api/modules/:id/lessons/:n', async (req) => {
@@ -277,6 +285,14 @@ export async function registerRoutes(app: FastifyInstance) {
     need(req, isStaff);
     const techs = await q<UserRow>(`select * from users where trade_role is not null order by trade_role, name`);
     const prog = await progressFor(techs.map((t) => t.id));
+    const program = await activeProgram();
+    const today = sydneyToday();
+    const stale = new Map((await q<{ user_id: string; n: number }>(
+      `select user_id, count(*)::int n from signoffs where status = 'waiting' and requested_at < now() - interval '7 days' group by 1`))
+      .map((r) => [r.user_id, r.n]));
+    const signoffCounts = new Map((await q<{ user_id: string; approved: number; waiting: number }>(
+      `select user_id, count(*) filter (where status = 'approved')::int approved, count(*) filter (where status = 'waiting')::int waiting
+         from signoffs group by 1`)).map((r) => [r.user_id, r]));
     const week = 7 * 86400 * 1000;
     const rows = techs.map((t) => {
       const ids = modulesForRole(t.trade_role);
@@ -292,7 +308,14 @@ export async function registerRoutes(app: FastifyInstance) {
       else if (t.status === 'disabled') flags.push('Disabled');
       else if (!t.last_seen_at || Date.now() - new Date(t.last_seen_at).getTime() > week) flags.push('Inactive 7+ days');
       if (failedTwice.length) flags.push(`Failed a quiz twice (${failedTwice.join(', ')})`);
+      const due = program ? dueDates(program, t.trade_role) : new Map();
+      const overdue = [...due.entries()].filter(([id, d]) => d.due < today && modules[id] !== 'done').map(([id]) => id);
+      if (overdue.length && t.status !== 'disabled') flags.push(`Behind: ${overdue.length} module${overdue.length > 1 ? 's' : ''} overdue`);
+      if (stale.get(t.id)) flags.push(`Sign-off waiting 7+ days (${stale.get(t.id)})`);
+      const sc = signoffCounts.get(t.id);
+      const signoffTotal = ids.reduce((n, id) => n + signoffItems(id).length, 0);
       return {
+        overdue, signoffs: { approved: sc?.approved ?? 0, waiting: sc?.waiting ?? 0, total: signoffTotal },
         id: t.id, name: t.name, tradeRole: t.trade_role, group: t.training_group, status: t.status,
         isApprentice: t.is_apprentice, lastSeenAt: t.last_seen_at, modules,
         done: Object.values(modules).filter((s) => s === 'done').length, total: ids.length, flags,
@@ -306,7 +329,11 @@ export async function registerRoutes(app: FastifyInstance) {
         where status = 'live' or (status = 'scheduled' and (scheduled_at is null or scheduled_at > now() - interval '1 day'))
         order by status desc, scheduled_at nulls last limit 8`,
     );
-    return { techs: rows, columns, classes };
+    const waiting = (await one<{ n: number }>(`select count(*)::int n from signoffs where status = 'waiting'`))!.n;
+    return {
+      techs: rows, columns, classes, signoffsWaiting: waiting,
+      program: program ? { name: program.name, startDate: program.start_date, week: weekOf(program, today), weeks: program.schedule.length } : null,
+    };
   });
 
   // ------------------------------------------------------------------ admin: users
@@ -316,9 +343,9 @@ export async function registerRoutes(app: FastifyInstance) {
     return { users: rows.map(publicUser) };
   });
 
-  const FLAGS = ['is_admin', 'is_office', 'is_trainer', 'is_assessor', 'is_lead_tech', 'is_apprentice'] as const;
-  const FLAG_KEYS: Record<string, (typeof FLAGS)[number]> = {
+  const FLAG_KEYS: Record<string, string> = {
     isAdmin: 'is_admin', isOffice: 'is_office', isTrainer: 'is_trainer', isAssessor: 'is_assessor', isLeadTech: 'is_lead_tech', isApprentice: 'is_apprentice',
+    isInstallManager: 'is_install_manager', isSalesManager: 'is_sales_manager', isDispatch: 'is_dispatch', signoffAll: 'signoff_all',
   };
 
   function readUserInput(b: any) {
@@ -344,6 +371,11 @@ export async function registerRoutes(app: FastifyInstance) {
       out.status = b.status;
     }
     for (const [k, col] of Object.entries(FLAG_KEYS)) if (typeof b[k] === 'boolean') out[col] = b[k];
+    if (b.supervisorId !== undefined) {
+      if (b.supervisorId !== null && (typeof b.supervisorId !== 'string' || !/^[0-9a-f-]{36}$/.test(b.supervisorId)))
+        throw new HttpError(400, 'Unknown supervisor.');
+      out.supervisor_id = b.supervisorId;
+    }
     return out;
   }
 

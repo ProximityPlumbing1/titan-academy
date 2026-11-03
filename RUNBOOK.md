@@ -104,3 +104,9 @@ answered in `data/trade-paths.json`.
   - `data/trade-paths.json` holds the curriculum.
   - `content/quizzes.json` holds the quizzes and role-plays (drafts).
   - Slides are generated from both.
+
+## 8-week program and sign-offs
+- **Start the program:** Admin → 8-week program. Pick the start date and each group's day and time (Sydney time), then create. That makes all 23 classes; move any single class with Move. Ending a program removes classes that haven't happened and keeps everyone's progress.
+- **Who gets sign-off requests:** set on each person in People & logins under "Receives sign-off requests". Lead techs get technical items for their own trade. When the Install Manager is hired, tick Install Manager (and Can sign off anything) on them and untick it on Charlotte.
+- **Reviewing:** reviewers see "Sign-offs waiting for you" on their phone home screen, or use Admin → Sign-offs. Sending one back needs a note saying what to do.
+- **Test:** `E2E_BASE=http://localhost:3000 npm run e2e:program` (test database only: it ends any running program and changes test users' flags).
