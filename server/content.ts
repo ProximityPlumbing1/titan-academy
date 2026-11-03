@@ -165,7 +165,17 @@ export function moduleSlides(id: string, withAnswers: boolean): Slide[] {
 
 export function classDeck(moduleIds: string[], title: string, withAnswers: boolean): Slide[] {
   const deck: Slide[] = [{ key: 'welcome', kind: 'welcome', title, subtitle: 'Join on your phone' }];
-  for (const id of moduleIds) deck.push(...moduleSlides(id, withAnswers));
+  for (const id of moduleIds) {
+    if (id === 'final') {
+      deck.push({
+        key: 'final.title', kind: 'title', moduleId: 'final', moduleTitle: 'Final assessment', pathName: 'Week 8',
+        label: 'Week 8 · Final assessment',
+        objective: 'Open Titan Academy on your phone and tap Final assessment. 25 questions from your whole program. 80% passes, with one retake.',
+      });
+      continue;
+    }
+    deck.push(...moduleSlides(id, withAnswers));
+  }
   deck.push({ key: 'end', kind: 'end', title: 'Thanks, everyone' });
   return deck;
 }

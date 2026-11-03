@@ -10,6 +10,7 @@ import {
 } from './content.js';
 import { GROUPS } from '../shared/types.js';
 import { liveClassesFor } from './live.js';
+import { maybeIssue } from './certificates.js';
 import { activeProgram, dueDates, signoffItems, sydneyToday, weekOf } from './program.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -243,7 +244,10 @@ export async function registerRoutes(app: FastifyInstance) {
     const passed = score >= 80;
     await q(`insert into quiz_attempts (user_id, module_id, score, passed, answers, source) values ($1, $2, $3, $4, $5, 'self')`,
       [u.id, id, score, passed, JSON.stringify(answers)]);
-    if (passed) await markLessons(u.id, id, 'quiz');
+    if (passed) {
+      await markLessons(u.id, id, 'quiz');
+      await maybeIssue([u.id]);
+    }
     return { score, passed, results };
   });
 

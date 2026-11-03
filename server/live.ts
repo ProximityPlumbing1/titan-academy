@@ -1,6 +1,7 @@
 import type { FastifyInstance } from 'fastify';
 import type { WebSocket } from 'ws';
 import { one, q, tx } from './db.js';
+import { maybeIssue } from './certificates.js';
 import { COOKIE, HttpError, canPresent, isStaff, need, userFromToken, type UserRow } from './auth.js';
 import { answerFor, classDeck, getModule, quizFor } from './content.js';
 import { config } from './config.js';
@@ -221,6 +222,7 @@ async function endClass(room: Room): Promise<ClassSummary> {
   });
   for (const cl of room.clients) send(cl, { type: 'ended', summary });
   rooms.delete(room.classId);
+  await maybeIssue([...room.attendees.keys()]).catch((e) => console.error('certificate check failed', e));
   return summary;
 }
 

@@ -10,6 +10,7 @@ import { COOKIE, HttpError, userFromToken } from './auth.js';
 import { registerRoutes } from './routes.js';
 import { registerLive } from './live.js';
 import { registerProgram } from './program.js';
+import { registerCertificates } from './certificates.js';
 
 const app = Fastify({ logger: { level: config.isProd ? 'info' : 'warn' }, trustProxy: true, bodyLimit: 256 * 1024 });
 
@@ -55,6 +56,7 @@ app.get('/health', async () => {
 await registerRoutes(app);
 await registerLive(app);
 await registerProgram(app);
+await registerCertificates(app);
 
 const webDir = path.join(process.cwd(), 'dist', 'web');
 if (fs.existsSync(webDir)) {

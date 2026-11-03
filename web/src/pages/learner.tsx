@@ -5,6 +5,7 @@ import { api, useApi } from '../api';
 import { canPresent, isStaff, useAuth } from '../auth';
 import { Badge, Button, Card, ErrorNote, Loading, Logo, Marked, Ring, firstName } from '../ui';
 import { ReviewBanner, SignoffSection, ThisWeek, type MySignoff } from './program';
+import { CertificateBanner, FinalBanner } from './certificates';
 
 interface Overview {
   paths: Array<{ id: string; name: string; summary: string; modules: Array<{ id: string; title: string; objective: string; lessonCount: number; lessonsWritten: number; quizLength: number; status: 'done' | 'started' | 'none' }> }>;
@@ -62,6 +63,8 @@ export function HomePage() {
           <Link to="/join" className="mt-1 inline-block text-sm text-link">Join a class with a code</Link>
         </div>
       </div>
+      <CertificateBanner />
+      <FinalBanner />
       <ReviewBanner />
       <ThisWeek />
       {!data.total && isStaff(user) && (
@@ -306,7 +309,7 @@ export function QuizPage() {
             const r = result.results[n];
             const ok = r.chosen === r.correct;
             return (
-              <Card key={n} className={`p-4 ${ok ? '' : 'border-amber/40'}`}>
+              <Card key={n} className={`p-4 ${ok ? '' : 'shadow-[inset_0_0_0_1.5px_var(--color-amber),var(--shadow-card)]'}`}>
                 <div className="mb-1 text-sm font-semibold">{ok ? '✓' : '✗'} {q.q}</div>
                 {!ok && <div className="text-sm text-good">Answer: {q.options[r.correct]}</div>}
                 <div className="mt-1 text-sm text-muted">{r.why}</div>
@@ -334,15 +337,15 @@ export function QuizPage() {
   return (
     <PhoneShell back={`/module/${id}`}>
       <div className="mb-4 flex items-center gap-2">
-        {qs.map((_, n) => <span key={n} className={`h-1.5 flex-1 rounded-full ${n < i ? 'bg-brand2' : n === i ? 'bg-white' : 'bg-tone/10'}`} />)}
+        {qs.map((_, n) => <span key={n} className={`h-1.5 flex-1 rounded-full ${n < i ? 'bg-link' : n === i ? 'bg-brand' : 'bg-tone/10'}`} />)}
       </div>
       <div className="eyebrow mb-2">Question {i + 1} of {qs.length}</div>
       <h1 className="headline text-2xl leading-snug">{q.q}</h1>
       <div className="mt-5 space-y-3">
         {q.options.map((o, n) => (
           <button key={n} onClick={() => setAnswers((a) => { const c = [...a]; c[i] = n; return c; })}
-            className={`flex w-full items-start gap-3 rounded-2xl border-2 px-4 py-4 text-left transition ${chosen === n ? 'border-brand bg-brand/25' : 'border-line bg-card'}`}>
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-tone/10 font-extrabold">{LETTERS[n]}</span>
+            className={`flex w-full items-start gap-3 rounded-2xl border-2 px-4 py-4 text-left transition ${chosen === n ? 'border-brand bg-soft' : 'border-line bg-card'}`}>
+            <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-extrabold ${chosen === n ? 'bg-brand text-white' : 'bg-tone/5 text-title'}`}>{LETTERS[n]}</span>
             <span className="pt-1">{o}</span>
           </button>
         ))}

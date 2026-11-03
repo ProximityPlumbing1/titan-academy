@@ -32,13 +32,14 @@ export function AdminLayout() {
           {item('/admin/program', '8-week program')}
           {item('/admin/classes', 'Classes')}
           {item('/admin/signoffs', 'Sign-offs')}
+          {item('/admin/certificates', 'Final & certificates')}
           {item('/admin/content', 'Content')}
           {item('/admin/needs-answers', 'Needs answers')}
         </nav>
         <div className="mt-8 hidden lg:block">
           <div className="px-3 text-[11px] font-semibold uppercase tracking-widest text-faint">Coming next</div>
           <div className="mt-2 space-y-1 px-3 text-sm text-faint">
-            <div>Final assessment</div><div>Certificates</div><div>Weekly digest email</div>
+            <div>Weekly digest email</div><div>Email invites</div>
           </div>
         </div>
         <div className="mt-8 hidden border-t border-line pt-4 text-sm lg:absolute lg:bottom-5 lg:left-5 lg:right-5 lg:block">

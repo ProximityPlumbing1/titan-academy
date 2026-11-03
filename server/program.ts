@@ -2,6 +2,7 @@ import type { FastifyInstance } from 'fastify';
 import { one, q, tx } from './db.js';
 import { HttpError, canPresent, isStaff, need, type UserRow } from './auth.js';
 import { getModule, modulesForRole, program as programSpec } from './content.js';
+import { maybeIssue } from './certificates.js';
 
 // ------------------------------------------------------------------ program and due dates
 
@@ -313,6 +314,7 @@ export async function registerProgram(app: FastifyInstance) {
     if (!canReview(me, { id: s.user_id, trade_role: s.trade_role }, s.module_id)) throw new HttpError(403, 'This sign-off is routed to someone else.');
     if (s.status !== 'waiting') throw new HttpError(409, 'Someone has already reviewed this one.');
     await q(`update signoffs set status = $2, review_note = $3, reviewed_by = $4, reviewed_at = now() where id = $1`, [s.id, action, note || null, me.id]);
+    if (action === 'approved') await maybeIssue([s.user_id]);
     return { ok: true };
   });
 
