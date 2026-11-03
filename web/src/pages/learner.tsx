@@ -81,7 +81,7 @@ export function HomePage() {
       )}
       {data.paths.map((p) => (
         <section key={p.id} className="mb-6">
-          <h2 className="mb-2 eyebrow">{p.name}</h2>
+          <h2 className="section-title mb-2">{p.name}</h2>
           <Card className="divide-y divide-line">
             {p.modules.map((m, i) => (
               <Link key={m.id} to={`/module/${m.id}`} className="flex items-center gap-3 px-4 py-3.5 hover:bg-tone/[0.03]">
@@ -134,7 +134,7 @@ export function ModulePage() {
       </div>
 
       <section className="mt-7">
-        <h2 className="mb-3 eyebrow">{m.lessonsWritten ? `Lessons · ${[...done].filter((i) => i < m.lessonsWritten).length} of ${m.lessonsWritten} read` : 'What this module covers'}</h2>
+        <h2 className="section-title mb-3">{m.lessonsWritten ? `Lessons · ${[...done].filter((i) => i < m.lessonsWritten).length} of ${m.lessonsWritten} read` : 'What this module covers'}</h2>
         {m.lessonsWritten > 0 ? (
           <Card className="divide-y divide-line">
             {m.lessons.map((l, i) => i < m.lessonsWritten ? (
@@ -161,7 +161,7 @@ export function ModulePage() {
       </section>
 
       <section className="mt-7">
-        <h2 className="mb-3 eyebrow">Key points</h2>
+        <h2 className="section-title mb-3">Key points</h2>
         <div className="space-y-3">
           {m.keyPoints.map((k, i) => (
             <Card key={i} className="p-4"><div className="flex gap-3"><b className="headline text-gold">{i + 1}</b><p className="leading-relaxed"><Marked text={k} /></p></div></Card>
@@ -171,7 +171,7 @@ export function ModulePage() {
 
       {m.signoff.length > 0 && (
         <section className="mt-7">
-          <h2 className="mb-3 eyebrow">On the job: sign-offs</h2>
+          <h2 className="section-title mb-3">On the job: sign-offs</h2>
           <Card className="p-4">
             <ul className="space-y-2">{m.signoff.map((s, i) => <li key={i}>☐ <Marked text={s} /></li>)}</ul>
             {m.assessor && <p className="mt-3 text-sm text-muted">Signed off by: <Marked text={m.assessor} /></p>}

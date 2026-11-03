@@ -15,7 +15,8 @@ const VARIANTS: Record<Variant, string> = {
 
 export function Button({ variant = 'primary', size = 'md', className = '', ...rest }:
   ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant; size?: 'sm' | 'md' | 'lg' }) {
-  const sz = size === 'sm' ? 'px-3 py-1.5 text-sm' : size === 'lg' ? 'px-6 py-4 text-lg' : 'px-4 py-2.5';
+  // Website buttons are at least 50px tall; small ones are for tables and toolbars.
+  const sz = size === 'sm' ? 'min-h-[36px] px-3 text-sm' : size === 'lg' ? 'min-h-[56px] px-6 text-lg' : 'min-h-[50px] px-6 text-[15px]';
   return (
     <button
       {...rest}

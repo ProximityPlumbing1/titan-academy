@@ -1,0 +1,228 @@
+/* =====================================================================
+   Proximity Plumbing: website fonts and style
+   Taken from the live site (proximityplumbing.com.au), 3 November 2026.
+   Drop this file into any project and link it before your own CSS.
+   Everything is a CSS variable, so you can change one value in :root.
+   ===================================================================== */
+
+/* Fonts: Inter for everything, Fraunces italic for one emphasised word */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,wght@1,500&display=swap");
+
+:root {
+  /* ---- Colours ---- */
+  --px-accent: #00aded;          /* Proximity cyan: headings, buttons, links, header bar */
+  --px-accent-hover: #0097cf;    /* button hover */
+  --px-accent-tint: #c7edfb;     /* light cyan (footer gradient end) */
+  --px-accent-soft: #ecf9fe;     /* palest cyan: chips, soft panels */
+  --px-on-accent: #ffffff;       /* text on cyan */
+
+  --px-title: #33353d;           /* dark headings and card titles */
+  --px-text: #4a4c55;            /* body text */
+  --px-text-muted: #77787f;      /* secondary text, captions */
+
+  --px-bg: #ffffff;              /* page and card background */
+  --px-surface: #fafbfc;         /* subtle panel background */
+  --px-light: #f0f0f0;           /* light grey section background */
+  --px-border: #e5e5e5;          /* hairlines and borders */
+
+  --px-dark: #1a2332;            /* navy: dark sections, award panels */
+  --px-overlay: #052c5c;         /* deep blue photo overlay */
+  --px-rating: #d4a94a;          /* gold: stars and awards */
+  --px-status: #22b357;          /* green "open now" dot */
+  --px-status-text: #17803d;
+  --px-status-bg: #ecfbf1;
+  --px-danger: #e5391c;
+
+  --px-gradient-from: #0bbdff;   /* cyan gradient (hero and call-to-action bands) */
+  --px-gradient-to: #00aded;
+  --px-footer-gradient: linear-gradient(180deg, #f8f8f8 0%, #ecf9fe 60%, #c7edfb 100%);
+
+  /* ---- Fonts ---- */
+  --px-font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --px-font-display: var(--px-font-body);
+  --px-font-emphasis: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* ---- Type sizes (desktop, mobile below 960px) ---- */
+  --px-type-hero-title: clamp(32px, (100vw - 959px) * 1000, 46px);    /* 46 / 32 */
+  --px-type-cta-title: clamp(28px, 3vw, 40px);                        /* 40 / 28 */
+  --px-type-section-title: clamp(24px, (100vw - 959px) * 1000, 34px); /* 34 / 24 */
+  --px-type-feature-title: clamp(21px, (100vw - 959px) * 1000, 26px); /* 26 / 21 */
+  --px-type-card-title: 18px;
+  --px-type-intro: 16px;
+  --px-type-body: 15.5px;
+  --px-type-button: 15px;
+  --px-type-card-text: 14.5px;
+  --px-type-caption: 13px;
+  --px-type-kicker: 12.5px;
+
+  /* ---- Shape ---- */
+  --px-radius-control: 6px;      /* inputs */
+  --px-radius-media: 8px;        /* images */
+  --px-radius-button: 10px;      /* buttons */
+  --px-radius-card: 12px;        /* small cards */
+  --px-radius-panel: clamp(16px, (100vw - 959px) * 1000, 20px); /* big white panels */
+  --px-radius-pill: 999px;       /* chips */
+
+  /* ---- Shadows ---- */
+  --px-shadow-panel: 0 2px 4px rgba(26,35,50,.03), 0 20px 44px -24px rgba(26,35,50,.18);
+  --px-shadow-card: 0 2px 4px rgba(26,35,50,.04), 0 14px 30px -20px rgba(26,35,50,.32), inset 0 0 0 1px rgba(26,35,50,.06);
+  --px-shadow-card-hover: 0 2px 4px rgba(16,24,32,.05), 0 16px 32px -18px rgba(16,24,32,.35);
+  --px-shadow-button: 0 12px 26px -12px rgba(41,170,225,.8);
+
+  /* ---- Layout ---- */
+  --px-container: 1280px;        /* wide content width */
+  --px-container-narrow: 960px;  /* text-heavy pages */
+  --px-gutter: clamp(16px, (100vw - 959px) * 1000, 32px);
+  --px-section-gap: 28px;        /* space between stacked panels */
+  --px-panel-pad-y: clamp(22px, (100vw - 959px) * 1000, 40px);
+  --px-panel-pad-x: clamp(16px, (100vw - 959px) * 1000, 44px);
+}
+
+/* ---- Base ---- */
+body {
+  margin: 0;
+  font-family: var(--px-font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--px-text);
+  background: var(--px-bg);
+  -webkit-font-smoothing: antialiased;
+}
+p { font-size: var(--px-type-body); line-height: 1.5; margin: 0 0 14px; }
+a { color: var(--px-accent); text-decoration: none; }
+a:hover { color: var(--px-accent-hover); }
+
+/* Hero title: sentence case, extra bold, tight */
+h1, .px-hero-title {
+  font-family: var(--px-font-display);
+  font-size: var(--px-type-hero-title);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--px-title);
+  margin: 0;
+}
+
+/* Section titles: CAPITALS in Proximity cyan */
+h2, .px-section-title {
+  font-family: var(--px-font-display);
+  font-size: var(--px-type-section-title);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--px-accent);
+  margin: 0 0 12px;
+}
+
+/* Call-to-action band title (on cyan or navy): sentence case, white */
+.px-cta-title {
+  font-size: var(--px-type-cta-title);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0;
+}
+
+/* Feature and card titles: sentence case, dark */
+h3, .px-feature-title {
+  font-size: var(--px-type-feature-title);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--px-title);
+  margin: 10px 0 8px;
+}
+h4, .px-card-title { font-size: var(--px-type-card-title); font-weight: 700; line-height: 1.3; color: var(--px-title); margin: 0 0 6px; }
+
+/* Kicker / eyebrow above a heading: small capitals, wide spacing */
+.px-kicker {
+  display: block;
+  font-size: var(--px-type-kicker);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--px-accent);
+  margin-bottom: 8px;
+}
+
+/* The one emphasised word in a heading: "Sydney's <em>Highest-Rated</em> Plumber" */
+h1 em, h2 em, .px-cta-title em, .px-em {
+  font-family: var(--px-font-emphasis);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.px-intro { font-size: var(--px-type-intro); color: var(--px-text); }
+.px-caption { font-size: var(--px-type-caption); color: var(--px-text-muted); }
+
+/* ---- Buttons ---- */
+.px-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  padding: 0 24px;
+  border: 1.5px solid var(--px-accent);
+  border-radius: var(--px-radius-button);
+  background: var(--px-accent);
+  color: var(--px-on-accent);
+  font: 700 var(--px-type-button)/1.1 var(--px-font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+.px-btn:hover { background: var(--px-accent-hover); border-color: var(--px-accent-hover); color: var(--px-on-accent); }
+.px-btn--glow { box-shadow: var(--px-shadow-button); }
+
+/* Outline button: white with cyan border and text */
+.px-btn--secondary { background: #fff; color: var(--px-accent); }
+.px-btn--secondary:hover { background: var(--px-accent); color: var(--px-on-accent); }
+
+/* Chip: small rounded quick link */
+.px-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: var(--px-radius-pill);
+  background: var(--px-accent-soft);
+  box-shadow: inset 0 0 0 1px rgba(0,173,237,.18);
+  color: var(--px-title);
+  font: 600 13.5px/1 var(--px-font-body);
+  text-decoration: none;
+}
+.px-chip:hover { background: var(--px-accent-tint); color: var(--px-title); }
+
+/* ---- Surfaces ---- */
+/* Big white panel (the site's main section container) */
+.px-panel {
+  background: var(--px-bg);
+  border-radius: var(--px-radius-panel);
+  box-shadow: var(--px-shadow-panel);
+  padding: var(--px-panel-pad-y) var(--px-panel-pad-x);
+}
+/* Card inside a panel */
+.px-card {
+  background: var(--px-bg);
+  border-radius: var(--px-radius-card);
+  box-shadow: var(--px-shadow-card);
+  padding: 20px;
+  transition: box-shadow .3s;
+}
+.px-card:hover { box-shadow: var(--px-shadow-card-hover); }
+
+/* Section backgrounds */
+.px-section { padding: var(--px-section-gap) var(--px-gutter); }
+.px-section--light { background: var(--px-light); }
+.px-section--dark { background: var(--px-dark); color: #c3cbd4; }
+.px-section--cyan { background: linear-gradient(135deg, var(--px-gradient-from), var(--px-gradient-to)); color: #fff; }
+.px-footer { background: var(--px-footer-gradient); color: var(--px-text); font-size: 14.5px; }
+
+.px-container { max-width: var(--px-container); margin: 0 auto; padding: 0 var(--px-gutter); }
+.px-container--narrow { max-width: var(--px-container-narrow); }

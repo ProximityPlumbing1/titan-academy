@@ -91,7 +91,7 @@ export function DashboardPage() {
       {data.classes.length > 0 && (
         <Card className="mb-6 p-5">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="font-bold text-title">Live and upcoming classes</h2>
+            <h2 className="card-title">Live and upcoming classes</h2>
             <Link to="/admin/classes" className="text-sm text-link">All classes</Link>
           </div>
           <div className="divide-y divide-line">
@@ -107,7 +107,7 @@ export function DashboardPage() {
       )}
       {attention.length > 0 && (
         <Card className="mb-6 p-5">
-          <h2 className="mb-3 font-bold text-title">Needs attention ({attention.length})</h2>
+          <h2 className="mb-3 card-title">Needs attention ({attention.length})</h2>
           <div className="flex flex-wrap gap-2">
             {attention.map((t) => (
               <span key={t.id} className="rounded-xl bg-tone/5 px-3 py-1.5 text-sm">
@@ -142,7 +142,7 @@ function Stat({ label, value, tone }: { label: string; value: ReactNode; tone?: 
 function ProgressGrid({ title, columns, techs }: { title: string; columns: Array<{ id: string; title: string }>; techs: Dash['techs'] }) {
   return (
     <Card className="mb-6 overflow-x-auto p-5">
-      <h2 className="mb-3 font-bold text-title">{title} <span className="text-muted">({techs.length})</span></h2>
+      <h2 className="mb-3 card-title">{title} <span className="text-muted">({techs.length})</span></h2>
       <table className="w-full border-separate border-spacing-y-1 text-sm">
         <thead>
           <tr>
@@ -509,7 +509,7 @@ export function ContentPage() {
       <div className="grid gap-5 xl:grid-cols-2">
         {meta.data.paths.map((p) => (
           <Card key={p.id} className="p-5">
-            <h2 className="mb-3 font-bold text-title">{p.name} <span className="text-muted">({p.modules.length})</span></h2>
+            <h2 className="mb-3 card-title">{p.name} <span className="text-muted">({p.modules.length})</span></h2>
             <div className="divide-y divide-line">
               {p.modules.map((m) => (
                 <Link key={m.id} to={`/admin/content/${m.id}`} className="flex items-center gap-3 py-2 hover:text-link">
@@ -567,11 +567,11 @@ export function PreviewPage() {
       </div>
       <div className="mt-6 grid max-w-6xl gap-5 lg:grid-cols-2">
         <Card className="p-5">
-          <h2 className="mb-2 font-bold text-title">Key points</h2>
+          <h2 className="mb-2 card-title">Key points</h2>
           <ol className="list-decimal space-y-2 pl-5 text-sm">{m.keyPoints.map((k: string, n: number) => <li key={n}><Marked text={k} /></li>)}</ol>
         </Card>
         <Card className="p-5">
-          <h2 className="mb-2 font-bold text-title">Lessons</h2>
+          <h2 className="mb-2 card-title">Lessons</h2>
           <ol className="list-decimal space-y-1 pl-5 text-sm">{m.lessons.map((l: string, n: number) => <li key={n}><Marked text={l} /></li>)}</ol>
           <p className="mt-3 text-xs text-faint">
             {m.lessonsWritten ? `${m.lessonsWritten} of ${m.lessons.length} lessons written. ` : 'Lessons not written yet. '}
@@ -582,7 +582,7 @@ export function PreviewPage() {
       {data.lessons && data.lessons.lessons.length > 0 && (
         <section className="mt-8 max-w-3xl">
           <div className="mb-4 flex flex-wrap items-center gap-3">
-            <h2 className="headline text-xl">Written lessons</h2>
+            <h2 className="section-title">Written lessons</h2>
             <Badge tone={data.lessons.status === 'approved' ? 'good' : 'amber'}>{data.lessons.status}</Badge>
           </div>
           <div className="space-y-4">
@@ -616,7 +616,7 @@ export function NeedsAnswersPage() {
       <PageHead title="Needs answers" sub={`${data.items.length} items marked CONFIRM or VERIFY. They show as "to be confirmed" on the TV until they're answered.`} />
       {Object.entries(groups).map(([name, items]) => (
         <Card key={name} className="mb-5 p-5">
-          <h2 className="mb-3 font-bold text-title">{name} <span className="text-muted">({items.length})</span></h2>
+          <h2 className="mb-3 card-title">{name} <span className="text-muted">({items.length})</span></h2>
           <div className="divide-y divide-line">
             {items.map((it, i) => (
               <div key={i} className="flex gap-4 py-2.5 text-sm">
