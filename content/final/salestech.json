@@ -1,0 +1,486 @@
+{
+  "role": "salestech",
+  "_status": "DRAFT for owner review",
+  "questions": [
+    {
+      "module": "x1",
+      "q": "Your third hot water lead this week in the same Kellyville estate. The house is identical to the last two, and both signed Standard. Which approach stops you leaving money on the table?",
+      "options": [
+        "Inspect the whole system and present all four options, Elite first, as if it were your first house in the estate",
+        "Lead with Standard, since it's what this estate buys, and bring up Elite only if the owner asks about it",
+        "Quote the same Standard package as the neighbours to save time, so you can fit in an extra lead today",
+        "Ask what the neighbours ended up paying, then build the options around that figure so nobody is surprised"
+      ],
+      "correct": 0,
+      "why": "Same pitch, same options and the same guess at the budget is the autopilot the program is built to kill. Every house gets the full inspection and all four options, Elite first."
+    },
+    {
+      "module": "x1",
+      "q": "It's 2pm. You've sold two of your three leads today and dispatch offers you a fourth in Ryde. What's the right reading of the numbers?",
+      "options": [
+        "Decline it: two from three is a strong close rate today, and a fourth lead late in the day could drag it down",
+        "Take it: the gap to the $200K floor is full days, not harder selling, and an unrun lead is the biggest leak there is",
+        "Take it only if it looks like a big-ticket job, so a small sale doesn't pull your average ticket down this month",
+        "Decline it and make up the sales later with an on-call Saturday shift, which counts the same in Dispatch Pro"
+      ],
+      "correct": 1,
+      "why": "You already have the capacity for $200K; the gap is running every lead, every full day. On-call shifts are ignored by Dispatch Pro, so Saturdays only count if they're rostered as regular shifts."
+    },
+    {
+      "module": "x1",
+      "q": "You've been quoting drain relining regularly for months, with strong numbers, but Dispatch Pro never sends you a drain lead. What do you check first?",
+      "options": [
+        "Your drive-time limit, because Dispatch Pro lets top-ranked techs travel further for the jobs with the most potential",
+        "Your recalls, because warranty and recall jobs count against your score until they're closed off in ServiceTitan",
+        "That the skill for that job type is on file with dispatch, because Dispatch Pro needs every skill the job type lists",
+        "Your 12-month history, because Dispatch Pro ignores the last 30 days and only ranks you on the longer period"
+      ],
+      "correct": 2,
+      "why": "Dispatch Pro only sends a tech who has every skill the job type lists. Drive time is a hard limit, recalls are excluded, and it remembers both the last 30 days and the last 12 months."
+    },
+    {
+      "module": "x1",
+      "q": "A long-standing customer in Epping asks for \"a bit off for loyalty\" on a $1,000 job. Which explains why the answer is still no?",
+      "options": [
+        "Loyalty discounts are fine up to 5% as long as you note the reason on the job in ServiceTitan before you leave",
+        "Discounts are allowed on small jobs like this one, and only bundled quotes have to stay at the pricebook price",
+        "A discount is fine if the customer pays the full amount today instead of the usual 50% deposit at signing",
+        "Profit is about 20%, so 10% off gives away about half the profit for the same work, and only Harriet or Sadie can change a price"
+      ],
+      "correct": 3,
+      "why": "On a $1,000 job the profit is about $200, so a 10% discount gives away $100, half the profit. No free discounts, and only Harriet (Sales Manager) or Sadie (Office Manager) can change a price."
+    },
+    {
+      "module": "x1",
+      "q": "Which habit on a commitment card will actually hold up when your numbers are checked in week 8?",
+      "options": [
+        "\"Elite first at every door, starting with my first lead tomorrow.\"",
+        "\"Present better and be more confident with the big numbers.\"",
+        "\"Lift my close rate as high as I possibly can by week 8.\"",
+        "\"Focus on the bigger jobs and spend less time on small ones.\""
+      ],
+      "correct": 0,
+      "why": "The habit has to be specific and start tomorrow. \"Present better\" isn't a habit; \"Elite first at every door, starting with my first lead tomorrow\" is."
+    },
+    {
+      "module": "x2",
+      "q": "Two weeks after you sold a hot water upgrade in Baulkham Hills, the customer texts your mobile asking to move the install date and how the balance gets paid. What's the best response?",
+      "options": [
+        "Rebook the date yourself with dispatch, since you sold the job and she trusts you more than anyone else in the office",
+        "Point her to the Install Manager, who owns delivery and the balance, pass the message on, and ask what your handover missed",
+        "Answer both questions yourself so she stays happy, then let the Install Manager know what you've told her afterwards",
+        "Tell her the balance can be paid in instalments, then leave the Install Manager to work out the details with her"
+      ],
+      "correct": 1,
+      "why": "After a complete handover the job belongs to the Install Manager (Charlotte, interim), who owns delivery, the customer's happiness and the balance. A customer ringing you means the handover didn't set them up."
+    },
+    {
+      "module": "x2",
+      "q": "At 7pm a customer signs Elite but says she'd rather pay the deposit when the installer arrives, \"when I can see the work start\". What do you do?",
+      "options": [
+        "Book it with Kim anyway and note on the job that the installer will collect the deposit on the day",
+        "Order the long-lead tapware tonight so the job isn't delayed, and follow up the deposit next week",
+        "Collect the 50% deposit now, explaining that it locks in the booking and gets the materials ordered",
+        "Skip the deposit for a returning customer and have the Install Manager collect it all on completion"
+      ],
+      "correct": 2,
+      "why": "You collect the 50% deposit at signing, before you leave. No deposit, no booking and no materials ordered, and asking a week later turns it into a chase."
+    },
+    {
+      "module": "x2",
+      "q": "Which handover for a sold bathroom in Castle Hill passes the test of a finished handover?",
+      "options": [
+        "The signed approval, the total price, the 50% deposit confirmation, and a scope line reading \"see photos and video for the full job\"",
+        "The scope of work that's included, the photos and video, and a note telling the installer to call you if anything is unclear",
+        "Scope in and out line by line, the photos, and the hours you'd take yourself, trimmed slightly to keep the customer's price sharp",
+        "Scope in and out line by line, the mixer model, numbered photos referred to in the scope, the gate code, realistic hours and that she works from home"
+      ],
+      "correct": 3,
+      "why": "The test is whether the installer could do the job without ever calling you. Photos support the scope but never replace it, and the hours have to be realistic for how the installer will actually pace the job."
+    },
+    {
+      "module": "x2",
+      "q": "A re-pipe in an older Hornsby house has a low, tight subfloor. The customer is price-sensitive and you're tempted to quote standard hours. What's the right call?",
+      "options": [
+        "Scope realistic hours for the access and note the subfloor, because under-scoping comes back as scope-change calls and returns",
+        "Quote standard hours to keep the number down, and mention the subfloor to the installer by phone the day before",
+        "Quote standard hours; if the job runs over, the installer can add the extra time to the customer's final balance",
+        "Leave the subfloor out of the handover notes so it doesn't make the customer nervous before the install day"
+      ],
+      "correct": 0,
+      "why": "Under-scoping costs the installer first, then lands back on you as scope-change calls and warranty returns. When hours run over on work that's in the scope, the customer doesn't pay for them; we do."
+    },
+    {
+      "module": "x2",
+      "q": "As she signs, the customer asks whether the installer can \"also have a quick look at the outside tap\" and whether it'll all be done before Christmas. What do you say?",
+      "options": [
+        "Say yes to both, since small favours keep the customer happy and the installer won't mind a quick look on the day",
+        "Promise nothing outside the scope or any date you don't control; price the tap as a line if she wants it, and note it all in the handover",
+        "Promise the Christmas date to close it out, then ask Kim to find a slot that makes it work when you book the job",
+        "Tell her to ask the installer about the tap on the day, since small extras are his call once the job is underway"
+      ],
+      "correct": 1,
+      "why": "No promises about dates you don't control and no extras that aren't in the scope. Anything promised at the table that isn't in the handover becomes the installer's problem on the day."
+    },
+    {
+      "module": "x3",
+      "q": "A big new home in Kellyville Ridge, two new European cars in the driveway, and a failed hot water unit with perished flexis. What's the right approach to the options?",
+      "options": [
+        "Present only Premium and Elite, since showing Essential at a house like this could cheapen the conversation",
+        "Present Elite on its own, since anything less would undersell a home like this and waste the owner's time",
+        "Present all four options, Elite first, because you can't see their budget or their debt from the driveway",
+        "Ask what budget they had in mind first, then build the four options so they all sit inside that number"
+      ],
+      "correct": 2,
+      "why": "Prejudging works both ways: the flashy home may be drowning in debt. Present every option, every time, and let their choice reveal the budget."
+    },
+    {
+      "module": "x3",
+      "q": "A Kogarah home has its third sewer blockage this year, and the camera shows roots through a cracked section. The owner asks for \"just a clear\". How do you build the quote?",
+      "options": [
+        "Quote the clear only, since that's what was asked for and pushing a reline on a first visit tends to break the customer's trust",
+        "Quote the reline only, since anything less just books in the next call-out and the footage makes the case on its own",
+        "Quote the clear and the reline together at a bundle price that comes in below the two lines priced separately",
+        "Essential clears it; the tiers above add relining the damaged section, up to scheduled jetting under a Care Plan at Elite, all from the footage"
+      ],
+      "correct": 3,
+      "why": "Never quote one job. The Drain Fix-for-Good tiers run from clearing the blockage up to relining with scheduled jetting under a Care Plan, built from what the camera showed, with every line at pricebook and no bundle discount."
+    },
+    {
+      "module": "x3",
+      "q": "You're building a Whole-Home Water Protection quote and want Elite to look substantial, but nothing you found in this house supports filtration. What do you do?",
+      "options": [
+        "Leave filtration out: bundles come from findings, and a customer who catches you padding a quote won't trust the next one",
+        "Add it to Elite only, since Elite is meant to be the full future-proofed bundle and the lower tiers stay honest",
+        "Add it anyway, since the standard bundle lists filtration and every Elite should carry the same contents",
+        "Add it at no charge so Elite looks bigger without changing the price, as a goodwill gesture to win the job"
+      ],
+      "correct": 0,
+      "why": "Bundles come from findings, never from a script. If it isn't needed, it doesn't go in, and adding free items is a discount by another name."
+    },
+    {
+      "module": "x3",
+      "q": "An owner in Castle Hill says: \"If you're doing the unit, the valves and the hoses in one visit, surely that's cheaper than three separate jobs?\" What's the best answer?",
+      "options": [
+        "Agree to a small bundle saving, since doing it all in one visit genuinely saves us travel time and that's only fair to pass on",
+        "Every line stays at pricebook; the bundle's value is one visit, one warranty and one handover. If she wants less, she picks fewer lines",
+        "Tell her you'll ask the office about a bundle rate tonight and call her back with a sharper number in the morning",
+        "Throw the valves in at no charge as a goodwill extra, while keeping the unit and the hoses at the full pricebook price"
+      ],
+      "correct": 1,
+      "why": "No bundle discounts, ever. The value of a bundle is one visit, one warranty, one handover and the next failure fixed first. Cheaper means fewer lines, never a lower price."
+    },
+    {
+      "module": "x3",
+      "q": "Which of these is going small for the wrong reason?",
+      "options": [
+        "Earning trust with one great first job for a guarded customer who still hasn't opened up after a full inspection",
+        "Not leaning on Elite's future-proofing for owners who've told you in discovery that they're selling next year",
+        "Leading with a smaller job because you're nervous about the number, though they've already asked \"how long will it last?\"",
+        "Moving to an option with fewer lines after the customer has chosen to go for a cheaper tier than you recommended"
+      ],
+      "correct": 2,
+      "why": "Forward questions like \"how long will it last?\" are high trust, so go for the whole job. Going small because you're nervous about the price is just prejudging in disguise."
+    },
+    {
+      "module": "x4",
+      "q": "You've quoted hundreds of bathrooms and want to save time at a Lane Cove home by skipping the up-front agreement. What's the strongest reason not to?",
+      "options": [
+        "It commits the customer to sitting through your full presentation before they're allowed to say no to anything",
+        "It's where you give a ballpark figure early, so the real number at the end of the visit doesn't come as a shock",
+        "It mainly matters with first-time customers, so it can safely be skipped when the customer has used us before",
+        "Agreeing that yes, no or not yet are all fine lowers their guard so they talk, and it earns you the time for discovery"
+      ],
+      "correct": 3,
+      "why": "The up-front agreement tells the customer there's no ambush coming, so they stop guarding and start talking. It makes \"not yet\" a normal outcome and earns you the time for proper discovery."
+    },
+    {
+      "module": "x4",
+      "q": "A couple in Epping nod along, thank you for every finding, and have asked \"do we really need all that?\" twice. Do you present now?",
+      "options": [
+        "Not yet: polite isn't sold. Their questions are still defensive, so keep discovering and present when they turn forward",
+        "Yes: they've agreed with every finding you've shown them, which is the trust shift you've been waiting for",
+        "Yes, but start with Essential to show you're not upselling, then work up through the options to Elite",
+        "No: leave a written quote in their inbox instead, so they can decide in their own time without any pressure"
+      ],
+      "correct": 0,
+      "why": "A customer can nod and thank you and still be guarding every word. Big jobs go cold when the price comes too early, so present after the shift to forward questions."
+    },
+    {
+      "module": "x4",
+      "q": "Owners in North Ryde say they'll \"sort the hot water next year\". The unit is weeping at the base. Which is the consequence question the lesson teaches?",
+      "options": [
+        "\"Honestly, leaving it this long is illegal, so you'd be taking on a real risk by waiting.\"",
+        "\"If it lets go while you're away over Christmas, what happens?\" Then let them answer it themselves.",
+        "\"Units like this flood a house overnight, so it really can't wait another week, I'm afraid.\"",
+        "\"Fair enough. I'll leave the quote with you, and you can call when you're ready to go.\""
+      ],
+      "correct": 1,
+      "why": "Consequence questions let the customer state the cost of waiting in their own words. Consequences, not scare tactics: never exaggerate or use words like \"illegal\" to push a decision."
+    },
+    {
+      "module": "x4",
+      "q": "In a Mosman home, the owner mentions in passing that her husband \"handles anything over a few thousand\", and he's at work. When and how do you deal with it?",
+      "options": [
+        "After the price: present everything to her first, then ask whether anyone else needs to approve it before she signs",
+        "Never: asking implies she can't make the decision herself, so present the options and let her raise it if she wants",
+        "Before presenting: confirm who decides, and agree how she'd like to bring him in, such as a call or a time when both are home",
+        "Before presenting: cut the options down to Essential, since he'll most likely approve only the cheapest one anyway"
+      ],
+      "correct": 2,
+      "why": "Discovery for big decisions asks who decides, and how the customer would like to bring them in, before you build the options. Cutting the options to suit an absent decision-maker is prejudging."
+    },
+    {
+      "module": "x4",
+      "q": "The same failing hot water unit in two homes: a shift-working nurse in Penrith and a family with three teenagers in Castle Hill. What should change between the two visits?",
+      "options": [
+        "The options: Essential for the nurse living alone and Elite for the family, based on what each household can probably spend",
+        "Nothing at all: same unit and same findings, so delivering the identical pitch is the most consistent and professional approach",
+        "The price: adjust each option to how urgent the problem is for each household, so the quote feels fair to both customers",
+        "How you present it: use what the problem means to each household, in their words, because they're buying peace of mind, not parts"
+      ],
+      "correct": 3,
+      "why": "Diagnose the person: the same unit means different things in different homes, and the value gap closes when they see what the fix means for them. Every home still gets all four options at pricebook prices."
+    },
+    {
+      "module": "x5",
+      "q": "The camera shows most of the pipework in an Ermington home is sound, with one section failing. You're tempted to walk them through a whole-house burst to anchor Elite. What does anchoring honestly require?",
+      "options": [
+        "Describe what could genuinely happen to this system, using your footage, and say so where most of it is sound",
+        "Use the worst failure you've seen on any job, since anchoring only works if the disaster feels big enough",
+        "Skip the failure story altogether and lead straight with the Elite price, since the first number is the anchor",
+        "Describe a burst in general terms, so it isn't technically a claim about this particular home's pipework"
+      ],
+      "correct": 0,
+      "why": "Anchoring only works if it's true. Consequences, not scare tactics: describe what could genuinely happen to this system, use your evidence, and never invent a disaster."
+    },
+    {
+      "module": "x5",
+      "q": "You've led with Elite in a Pennant Hills kitchen, with full confidence. What happens next?",
+      "options": [
+        "Read Premium, Standard and Essential line by line, so they've heard every detail before choosing",
+        "Narrow to the two options that fit what they told you in discovery, keeping all four on the page",
+        "Take Essential off the page, so the conversation stays focused on the top options that fit best",
+        "Ask them which of the four they like best, then talk through only the option they've picked out"
+      ],
+      "correct": 1,
+      "why": "Don't read it like a menu. Present Elite first, then narrow to the two that fit this home, while still presenting all four. Narrowing is about where the conversation lives."
+    },
+    {
+      "module": "x5",
+      "q": "In a Gladesville living room, one partner turns to the other: \"Two winters of cold showers. Let's just do it properly this time.\" What's your next move?",
+      "options": [
+        "Back it up straight away with three more reasons why Elite is the right choice for a home like theirs",
+        "Check they're sure by reminding them that Premium is also a solid choice and costs quite a bit less",
+        "Stop talking and let it stand, because that sentence is worth more coming from them than anything you could add",
+        "Jump in with the weekly figure from HomePro so the price doesn't put the other partner off the idea"
+      ],
+      "correct": 2,
+      "why": "Let them choose up: people want to be the one who says \"I'd rather just do it properly once\". When they say it, stop talking."
+    },
+    {
+      "module": "x5",
+      "q": "You say \"$22,400\" for a Wahroonga re-pipe. After a pause the owner says, \"Wow. That's more than I thought.\" What do the best sellers do next?",
+      "options": [
+        "Explain quickly why it costs that much, so the doubt doesn't have time to settle in before you've answered it",
+        "Offer to see what the office can do on the price, so the customer knows you're willing to work with them",
+        "Move straight to the Essential price, so the owner hears a smaller number before the moment goes cold",
+        "Pause again, then find out what's behind it, because after an objection the best sellers get quieter, not faster"
+      ],
+      "correct": 3,
+      "why": "Never justify and never discount to fill the quiet. In the call analysis cited in the October session (a correlation, not a guarantee), star reps paused far longer after an objection while average reps talked faster."
+    },
+    {
+      "module": "x5",
+      "q": "On one job you'd honestly choose Premium for your own home, because the Elite upgrade adds little for this house. What do you do?",
+      "options": [
+        "Still present all four with Elite first, but don't use the 'my own home' line, and check Elite is truly built from your findings",
+        "Present Premium first this time, since leading with your genuine recommendation matters more than the order of the options",
+        "Use the 'my own home' line for Elite anyway, since it's the approved line from the session and the customer won't know",
+        "Leave Elite off this quote altogether, since an option you wouldn't choose yourself shouldn't be on the page at all"
+      ],
+      "correct": 0,
+      "why": "Elite always goes first, but you only call it the option you'd put in your own home if it's true. Built honestly from your findings, it should be, so a weak Elite is a sign to check what you found."
+    },
+    {
+      "module": "x6",
+      "q": "Inspecting a Hunters Hill home ahead of a likely $25K re-pipe, the owner mentions he's just retired from banking. Do you use the first finance line?",
+      "options": [
+        "No, it could come across as insulting, so wait to see whether he flinches when you give him the price",
+        "Yes, in the same words and tone as every big job, because skipping it for customers who look wealthy is prejudging",
+        "Yes, but frame it as something for people on a tight budget, so he knows it isn't really aimed at him",
+        "No, save finance for after the price, since that's the moment when it's most likely to close the sale"
+      ],
+      "correct": 1,
+      "why": "Touchpoint 1 is a throwaway line said the same way to every customer on every big job. Saying it only to people who look worried is prejudging, and cash-is-king customers are often the wealthiest."
+    },
+    {
+      "module": "x6",
+      "q": "As you finish presenting Elite in an Epping home, you say, \"For the bigger one, some customers just pay it weekly rather than all at once.\" Nobody reacts. What now?",
+      "options": [
+        "Explain how HomePro works in some detail, so the line doesn't get lost in the rest of the options",
+        "Repeat the line as you present each option, so it sticks with them before they hear the total price",
+        "Move straight on to the next option: the seed is planted, and you'll bring it home after the price",
+        "Stop and ask them directly whether they'd like to finance it, so you know where you stand early on"
+      ],
+      "correct": 2,
+      "why": "Touchpoint 2 is one light sentence tied to Elite, then straight back to the options. If it turns into a speech about how finance works, it's become a pitch."
+    },
+    {
+      "module": "x6",
+      "q": "You state $16,200 and the room goes quiet. A few seconds in, you feel the urge to add \"and that can be weekly, of course\". What's right?",
+      "options": [
+        "Say it now, since the third touchpoint is meant to come straight after you've stated the price",
+        "Say it now, but in a softer and more casual tone, so it doesn't come across as a sales pitch",
+        "Leave finance out from here on, since they've already heard it twice and a third mention is pushy",
+        "Hold the silence: offered into your own quiet, finance sounds like a rescue. Bring it home when they speak"
+      ],
+      "correct": 3,
+      "why": "Touchpoint 3 comes after the number and after the silence. Don't jump to finance to fill the quiet; when they speak, it lands as the next step rather than a lifeline."
+    },
+    {
+      "module": "x6",
+      "q": "A customer choosing Elite asks, \"I'll definitely get approved, won't I? And it's interest-free?\" What do you say?",
+      "options": [
+        "Make no promises about approval or interest; take her through Apply and let HomePro's real answer and figures speak",
+        "Reassure her that almost everyone gets approved, so she can relax and go ahead with choosing Elite today",
+        "Tell her it's usually interest-free for the first year, and that HomePro will confirm the details after she applies",
+        "Tell her you'll add the finance terms to the proposal, so she has them in writing alongside the full price"
+      ],
+      "correct": 0,
+      "why": "Never promise it's interest-free, never say they'll be approved, and never guess at rates, fees or terms. Use HomePro's real numbers, and the proposal never mentions finance."
+    },
+    {
+      "module": "x6",
+      "q": "In deal review, a tech says he only brings up finance \"when they look like they're struggling\". Which customers is he missing?",
+      "options": [
+        "None: finance really only suits budget-constrained customers, so offering it to those who look tight is well targeted",
+        "Cash-is-king and cashflow smoothers: people who could pay but would rather keep their money free or avoid one big hit",
+        "Mainly first-home buyers, who are the biggest users of home-repair finance and are the easiest customers to spot",
+        "Mainly commercial and strata clients, who finance most of their planned works through lenders rather than paying"
+      ],
+      "correct": 1,
+      "why": "Finance means savvy, not broke. Two of the three types aren't short of money at all, and you can't tell who's who from the driveway, so offer it to everyone with a flattering reason."
+    },
+    {
+      "module": "x7",
+      "q": "After \"Totally fair. Can I ask what feels like too much about it?\", a Mount Druitt owner says, \"It's just more than we expected in one go.\" Which tool do you reach for?",
+      "options": [
+        "Step down to Essential, because she's told you plainly that the household budget is a lot lower",
+        "Go back over all the findings, because she clearly doesn't see the value of the work yet",
+        "The weekly figure from HomePro, because she's scared of the lump sum rather than doubting the value",
+        "Offer to hold the price for a month, so the household has some time to save up the money"
+      ],
+      "correct": 2,
+      "why": "Their answer tells you which tool to reach for. \"More than we expected in one go\" is fear of the number, and the tool is the real weekly figure from HomePro."
+    },
+    {
+      "module": "x7",
+      "q": "A Ryde couple say, \"We need to think about it.\" You've asked which part they're unsure of, and they genuinely need time. What do you do before you leave?",
+      "options": [
+        "Tell them the price is only held until Friday, so the decision doesn't drift and they don't lose the slot",
+        "Say \"No pressure at all, just call me whenever you're ready\", so you keep the goodwill you've built up today",
+        "Leave the quote with them and plan to check in sometime next week, once they've had a proper chance to talk",
+        "Agree a day and time for the follow-up and what they'll decide by then, and log it in ServiceTitan as the next action"
+      ],
+      "correct": 3,
+      "why": "A respectful \"not yet\" with a booked follow-up is a win. Agree when you'll follow up and what they'll decide by then, with no fake deadlines."
+    },
+    {
+      "module": "x7",
+      "q": "A Sutherland owner says relining is overkill and he'll just get the drain cleared again. You go to use feel, felt, found. Which \"found\" is right?",
+      "options": [
+        "What you've actually seen: his footage of the roots back through the crack, and how often drains like this needed clearing again",
+        "A customer story that makes the point well, even if it's a blend of a few different jobs you've done over the years",
+        "A figure about how often drains fail after clearing, rounded up a little so it sticks in his mind when he's deciding",
+        "Your own firm opinion that relining is better value, said with enough confidence that he takes it as the expert view"
+      ],
+      "correct": 0,
+      "why": "The \"found\" has to be true. Use what you've actually seen: the footage, the return visits, the homes that patched it. Never invent a customer story."
+    },
+    {
+      "module": "x7",
+      "q": "A Maroubra owner shows you a competitor's drain quote that's 30% under your Standard. It's a clear and camera at an hourly rate after the first hour. What's your move?",
+      "options": [
+        "Warn her that hourly operators often pad the hours, so she should be careful about who she lets into the house",
+        "Put the quotes side by side: fixed price or hourly, root cause or symptom, exclusions. Then let her see which of ours it matches",
+        "Match their price on Standard to keep the job, then look to win the bigger reline at the next visit",
+        "Ask the office whether they can get you close to the competitor's number, then come back to her this afternoon"
+      ],
+      "correct": 1,
+      "why": "Compare scope line by line and never badmouth the other company or match a price. A cheaper quote almost always has a smaller scope, and if she still wants less, step down an option."
+    },
+    {
+      "module": "x7",
+      "q": "A builder renovating in Drummoyne says, \"Sharpen your pencil and the next three jobs are yours.\" What do you do?",
+      "options": [
+        "Take 5% off this job as an investment in the relationship, since three more jobs will more than cover it",
+        "Tell him you'll see what the office can do on price if he's prepared to commit to the three jobs in writing",
+        "Sharpen the scope, not the price, taking lines out if he wants less, and pass the future-work opportunity to Alex",
+        "Hold the price on this job but promise him priority booking and a better rate on the next three jobs"
+      ],
+      "correct": 2,
+      "why": "The answer is the same as at any kitchen table: you can't discount, and a trade customer who learns your price moves will haggle every time. Don't promise ongoing work or special terms; pass the opportunity to Alex (Commercial Manager)."
+    },
+    {
+      "module": "x8",
+      "q": "A strata manager at a Neutral Bay block meets you about a failing hot water riser. She'll forward your quote to a committee who will never see the plant room. What must the quote include?",
+      "options": [
+        "One recommended option in full detail, with a note that you'll gladly explain the alternatives at the committee meeting",
+        "The Elite option in full detail, with the three lower options summarised as cheaper alternatives in a short closing line",
+        "A price range for the committee to discuss, with the detailed scope and photos to follow once they've approved the work",
+        "Findings and photos, all four options Elite first, what each one fixes, what's in and out, and what happens if they do nothing"
+      ],
+      "correct": 3,
+      "why": "The quote has to work for people who weren't in the room. A formal multi-option quote for committee approval stands on its own: findings, photos, all four options Elite first, inclusions, exclusions and the cost of doing nothing."
+    },
+    {
+      "module": "x8",
+      "q": "The owner of a Newtown café wants to go ahead but says, \"We pay everything on invoice. We don't do deposits.\" What do you do?",
+      "options": [
+        "Don't agree to terms or argue: note it on the job, tell him who'll be in touch, and pass it to Alex before anything is booked",
+        "Agree to invoice terms on the spot, since commercial clients often work that way and it keeps the job moving forward",
+        "Insist on the 50% deposit today, and tell him firmly the job can't be booked in until it has been paid",
+        "Book the job with Kim and add a note that the installer will collect the full payment on completion"
+      ],
+      "correct": 0,
+      "why": "Commercial terms aren't agreed on site. Terms are part of the relationship, which belongs to Alex (Commercial Manager) or Bella (strata), so take it to them before anything is booked."
+    },
+    {
+      "module": "x8",
+      "q": "On Tuesday a Kogarah couple agreed to decide between Premium and Standard by Thursday. It's Thursday. Which call is right?",
+      "options": [
+        "\"Just checking in to see whether you've had any more thoughts about the quote I left.\"",
+        "\"On Tuesday you said you'd decide between Premium and Standard by today. Where did you land?\"",
+        "\"I wanted to give you a heads-up that our prices are going up from next week.\"",
+        "\"I've had a word with the office, and I might be able to sharpen the Premium price.\""
+      ],
+      "correct": 1,
+      "why": "Follow up at the time you agreed, and never with \"just checking in\". Every call has a purpose: the decision they said they'd make. No fake deadlines and no discounts."
+    },
+    {
+      "module": "x8",
+      "q": "Friday afternoon: eight open estimates, three of which just say \"sent\". A colleague says the Sales Manager chases open quotes anyway. What's right?",
+      "options": [
+        "Leave those three to Harriet, since her follow-up counts towards your close rate either way once the customer signs",
+        "Close the three off as lost so your pipeline is clean for the audit, and focus your time on the five that are still active",
+        "You own the follow-up on your quotes: give every open estimate a next action and date, since Harriet only chases when dispatch allows",
+        "Wait for those customers to call you back, since chasing a quote that's only been sent can come across as desperate"
+      ],
+      "correct": 2,
+      "why": "Every open estimate has a next action and a date in ServiceTitan; if it's only in your head, it doesn't exist. Harriet also chases open quotes when dispatch allows, so don't rely on it, because a cold quote comes off your close rate."
+    },
+    {
+      "module": "x8",
+      "q": "At your week 8 review, your close rate is up against your commitment card but your average ticket hasn't moved. What does the review focus on?",
+      "options": [
+        "Lowering the ticket target for next time, since close rate is the number Harriet weighs most heavily",
+        "Adding Saturday shifts to make up the shortfall in sales, since total sales is what the card really measures",
+        "Nothing further, since the program ends in week 8 and the commitment card is closed off at that point",
+        "Which habit slipped, for example whether every option was shown and Elite presented first on every quote"
+      ],
+      "correct": 3,
+      "why": "Average ticket and close rate are the two numbers, and they come from the weekly habits. If a number hasn't moved, the review is about which habit slipped. The program ends in week 8; the habits don't."
+    }
+  ]
+}
