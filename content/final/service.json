@@ -1,0 +1,534 @@
+{
+  "role": "service",
+  "_status": "DRAFT for owner review",
+  "questions": [
+    {
+      "module": "f1",
+      "q": "A customer in Castle Hill asks what happens if your repair leaks again in six months. How should you answer?",
+      "options": [
+        "Tell them everything we touch has a lifetime warranty on it",
+        "Say it depends, and they'll need to ring the office to find out",
+        "Explain our promise in the approved wording every tech uses",
+        "Promise you'll personally come back for free whenever they call"
+      ],
+      "correct": 2,
+      "why": "Every tech explains the promise the same way, in the approved wording. If one tech invents their own version, the customer hears two different companies."
+    },
+    {
+      "module": "f1",
+      "q": "Two techs each finish five jobs in a day around Penrith. Which one had the better day for the truck as a business?",
+      "options": [
+        "The one who fixed each job first time and was paid and signed off before leaving",
+        "The one who fitted in a sixth job by leaving the payments for the office to collect",
+        "The one who finished early by skipping the health check on the smaller jobs",
+        "The one who kept every customer happy by rounding their prices down a little"
+      ],
+      "correct": 0,
+      "why": "A truck hits its numbers through first-time fixes, the whole problem fixed and every job paid and signed off before you leave. Return trips, unpaid jobs and discounts all cost the truck."
+    },
+    {
+      "module": "f2",
+      "q": "Swapping a tap in a Chatswood unit, you close the valve under the sink and the tap keeps running. The next shut-off is the building's main, which affects every unit. What do you do?",
+      "options": [
+        "Work on it wet with towels down, since it's only a quick cartridge swap",
+        "Shut the building main straight away so you can finish on time",
+        "Ask the customer to hold a bucket under it while you swap it quickly",
+        "Stop, photograph the valve and call the office before using the main"
+      ],
+      "correct": 3,
+      "why": "Never work a valve that won't fully shut off. Go to the next isolation point, and if that affects other people, call the office first."
+    },
+    {
+      "module": "f2",
+      "q": "Stepping off a ladder in a Willoughby laundry, you skid on wet tiles. You don't fall and nothing is damaged. What do you do?",
+      "options": [
+        "Nothing to report, since nobody was hurt and nothing in the laundry broke",
+        "Report it as a near-miss today, and dry the floor and foot the ladder",
+        "Mention it at the next team meeting if it's still on your mind by then",
+        "Log it only if the customer saw it happen and might make a complaint"
+      ],
+      "correct": 1,
+      "why": "A near-miss is when something nearly happened, and you report it just like an incident. It shows us the hazard before someone gets hurt."
+    },
+    {
+      "module": "f3",
+      "q": "You're finishing a job in Ryde and heading to your next customer across town. When do you set 'on my way' in ServiceTitan?",
+      "options": [
+        "When you pull up outside the next customer's house",
+        "When you actually leave, after calling the customer",
+        "At the start of the day for all your jobs, to save time",
+        "Once the office confirms the last job's invoice is paid"
+      ],
+      "correct": 1,
+      "why": "Set 'on my way' when you actually leave, not before and not on arrival, and call the customer before you pull out. Dispatch plans everyone's day from your statuses."
+    },
+    {
+      "module": "f3",
+      "q": "You've just finished a bathroom job in Strathfield and taken five good before-and-after photos. The office is usually quick to answer texts. What's the right move?",
+      "options": [
+        "Text them to the office, who'll add them to the job when they can",
+        "Keep them on your phone in case the customer queries the job",
+        "Email them to yourself and upload them all at the end of the week",
+        "Save them to the job in ServiceTitan before you leave the site"
+      ],
+      "correct": 3,
+      "why": "If it isn't in ServiceTitan, it didn't happen. Texted photos often never make it onto the job, so nobody can find them when the work is questioned months later."
+    },
+    {
+      "module": "f4",
+      "q": "Your first job is running over, and you'll be well past the arrival window for a customer in Gordon who took the morning off work. What do you do?",
+      "options": [
+        "Call her yourself before the window passes, and let dispatch know",
+        "Push on and apologise when you arrive, since you'll get there soon",
+        "Leave it to dispatch to notice and ring her if they have time",
+        "Send her a text once you're parked outside so she knows you're there"
+      ],
+      "correct": 0,
+      "why": "If you're running late, ring the customer before their arrival window passes and tell dispatch so they can adjust the day. A call turns a complaint into a courtesy."
+    },
+    {
+      "module": "f4",
+      "q": "Halfway through replacing a shower mixer in Maroubra, you find the pipe behind it is badly corroded. What do you do?",
+      "options": [
+        "Replace the pipe while the wall is open and add it to the invoice",
+        "Replace the pipe at no charge so the customer isn't upset by it",
+        "Stop, photograph it, show the owner her options and get signed approval",
+        "Finish the mixer and mention the pipe on your way out the door"
+      ],
+      "correct": 2,
+      "why": "If something changes once you're into the job, you stop, show the customer, price the options from the pricebook and get signed approval before carrying on. Unapproved extra work breaks the no-hidden-costs promise."
+    },
+    {
+      "module": "f5",
+      "q": "You're at a rental in Merrylands on an agent's work order for a blocked toilet. In the laundry, the hot water unit is leaking from the base. What do you do?",
+      "options": [
+        "Leave it, since it's outside what the agent's work order covers",
+        "Note it at the bottom of the invoice so the agent sees it later",
+        "Tag it hot-water-8yr+ so the office follows it up next month",
+        "Tell the tenant, photograph it and flag it 'Needs attention now'"
+      ],
+      "correct": 3,
+      "why": "Something that risks damage if it's left gets flagged 'Needs attention now' so the office calls the same day. Never tuck it at the bottom of the invoice or decide it's not your job."
+    },
+    {
+      "module": "f5",
+      "q": "You're running behind on a vanity mixer swap in Randwick and notice the cabinet floor under the basin is already swollen from an old leak. What protects you best?",
+      "options": [
+        "Take before photos of the swollen cabinet before any tool comes out",
+        "Point it out to the customer verbally and get started straight away",
+        "Photograph it once the new mixer is in and the job is finished",
+        "Leave it out of the notes, since it isn't part of today's job"
+      ],
+      "correct": 0,
+      "why": "Before photos, taken before a single tool comes out, prove the damage was already there. Once you've started, you can't go back and take them."
+    },
+    {
+      "module": "f6",
+      "q": "It's ten to five in Hurstville and you want to beat the traffic. The customer taps their card and the payment fails. What do you do?",
+      "options": [
+        "Leave and let the office sort the payment out tomorrow morning",
+        "Close the job as complete and tell the customer you'll text a link",
+        "Stay calm, try another method, and call the office if it still fails",
+        "Offer a small discount if they can pay you in cash right now"
+      ],
+      "correct": 2,
+      "why": "A failed payment is the same as no payment. Try another method, check it goes through, and if it can't be sorted, call the office before you leave. Never offer a deal for paying a certain way."
+    },
+    {
+      "module": "f6",
+      "q": "You finish a planned job and state the balance. The customer says, \"I already paid.\" What do you do?",
+      "options": [
+        "Take their word for it and close the job off as paid in full",
+        "Check the job in ServiceTitan, then state the balance and collect it",
+        "Tell them they're mistaken and ask for the full price again",
+        "Leave it unpaid and ask Chloe to sort it out with them next week"
+      ],
+      "correct": 1,
+      "why": "Check, never assume. It's often a mix-up, like thinking the deposit covered everything. Look at what's actually been paid in ServiceTitan, then state the balance clearly and collect it."
+    },
+    {
+      "module": "f7",
+      "q": "You're sent back to a Mosman home where a mixer another tech fitted last month is dripping. What's the right way to handle it?",
+      "options": [
+        "Apologise for the hassle, fix it properly and note what you found",
+        "Explain that whoever fitted it last month didn't do it properly",
+        "Fix it quickly and leave it off the job record to save time",
+        "Tell the customer it isn't your fault and refer them to the office"
+      ],
+      "correct": 0,
+      "why": "Returns are handled graciously, linked to the original job, with no blaming another tech. Note what you found so the business can learn from it."
+    },
+    {
+      "module": "f7",
+      "q": "You sold and captain a planned bathroom job in Epping. On completion day, the customer rings you unhappy about paying the balance. What do you do?",
+      "options": [
+        "Agree a lower balance yourself, since you were the one who sold it",
+        "Ask the installer to waive part of the balance to keep them happy",
+        "Tell Charlotte straight away, as she owns payment and their happiness",
+        "Tell them to raise it with Chloe when she makes her happy call"
+      ],
+      "correct": 2,
+      "why": "As job captain you own the handover, the installer's questions and the finish, but the Install Manager (Charlotte, interim) owns payment and the customer's happiness. Tell her straight away so she can look after it."
+    },
+    {
+      "module": "e1",
+      "q": "You're writing the scope for a hot water replacement that means cutting old pipes out of a plaster wall. What must the scope say?",
+      "options": [
+        "Just the new unit's model, since the customer can ask about the rest",
+        "What's included, and that patching the wall afterwards isn't",
+        "That any extra costs will be worked out on the day of the install",
+        "That the wall will be left looking as good as new afterwards"
+      ],
+      "correct": 1,
+      "why": "Every estimate says what's included and what isn't. A vague scope lets the customer fill the gaps with assumptions that turn into arguments on install day."
+    },
+    {
+      "module": "e1",
+      "q": "You're quoting a re-pipe in an older Lane Cove house. The template hours assume easy access, but the subfloor is low and tight. What do you do?",
+      "options": [
+        "Use the template hours as they are, since templates are already tested",
+        "Leave the access issue out so the price stays as competitive as possible",
+        "Type a higher price over the template line to cover the extra work",
+        "Note the tight access in the scope so the hours reflect the real site"
+      ],
+      "correct": 3,
+      "why": "Realistic hours matter because the installer's time and the business's profit depend on them. Note anything that will slow the job in the scope, and never type your own price."
+    },
+    {
+      "module": "e2",
+      "q": "Your camera shows roots in a drain in Dee Why, and the customer is waiting at the kitchen table. How do you build the quote?",
+      "options": [
+        "Type the lines in one by one so the quote fits this job exactly",
+        "Quote the clear only, and build the rest back at the depot later",
+        "Open the Drain Fix-for-Good template and fit it to what you found",
+        "Copy last week's drain quote for another customer and adjust it"
+      ],
+      "correct": 2,
+      "why": "Never build from scratch when a template exists. Start from the template, then add or remove pricebook lines to match what you actually found."
+    },
+    {
+      "module": "e2",
+      "q": "A template you use every week has hours that are clearly too low for how the job is really done. What do you do?",
+      "options": [
+        "Raise it with Harriet so the template gets fixed for everyone",
+        "Quietly add a few extra hours each time you use the template",
+        "Stop using it and build that job from scratch from now on",
+        "Make your own copy with better hours and share it with the team"
+      ],
+      "correct": 0,
+      "why": "If a template's wording or hours look wrong, don't quietly work around it. Raise it with Harriet (Sales Manager) so it's reviewed and fixed for every quote."
+    },
+    {
+      "module": "e3",
+      "q": "A customer in Strathfield watches you replace a tap in under an hour and says, \"That's a lot for an hour's work.\" What's the best reply?",
+      "options": [
+        "Offer to charge them by the hour instead, if they'd prefer that",
+        "Agree it's steep, and say you'll ask the office for a better price",
+        "Explain it's mostly the cost of the parts, not the hour of labour",
+        "Explain the fixed price covers far more than the hour they saw"
+      ],
+      "correct": 3,
+      "why": "The customer only sees your hour. The price also pays for the booking, the van, the parts on board, the office and the warranty, and offering to ask the office for a better price is a discount by another name."
+    },
+    {
+      "module": "e3",
+      "q": "Halfway through a job in Engadine, the old isolation valve won't turn off. You have a new one in the van. What do you do?",
+      "options": [
+        "Fit the new valve quietly, since it's a small part and helps them",
+        "Stop, show them, price it from the pricebook and get signed approval",
+        "Fit it and add it to the invoice, since they'll clearly want it",
+        "Fit it and record it as goodwill so it doesn't upset the price"
+      ],
+      "correct": 1,
+      "why": "Extra work done as a favour either breaks the no-hidden-costs promise or comes out of the profit as unbilled materials. Stop, show the customer, price it from the pricebook and get signed approval."
+    },
+    {
+      "module": "e4",
+      "q": "A Carlingford customer with a failing hot water unit hears the price and says, \"I need to think about it.\" What's the best next step?",
+      "options": [
+        "Offer a deal if she's happy to sign before you leave today",
+        "Ask whether her worry is the overall cost or whether it's worth it",
+        "Say you'll ask the office to sharpen the price and call her back",
+        "Leave the quote with her and wait for her to ring when she's ready"
+      ],
+      "correct": 1,
+      "why": "Stay calm and curious: find out whether the concern is price or value, then clarify the options and the promise. If she still isn't ready, agree a follow-up time and log it."
+    },
+    {
+      "module": "e4",
+      "q": "A customer in Kings Langley says another plumber quoted a few hundred dollars less. What do you do?",
+      "options": [
+        "Offer to match the other quote so you don't lose the job to them",
+        "Point out that the other plumber's reviews aren't as good as ours",
+        "Drop them to a lower option before they've even asked for one",
+        "Ask what their quote included, then explain what comes with ours"
+      ],
+      "correct": 3,
+      "why": "We don't compete on price and we never knock the other plumber or offer to beat a quote. Find out what their quote covered, then walk through what the Proximity promise gives them."
+    },
+    {
+      "module": "e5",
+      "q": "In Dundas, a customer says, \"Yep, let's do Premium. Just book it in and I'll sign when your installer turns up.\" What do you do?",
+      "options": [
+        "Get the plan signed in ServiceTitan now, before anything is booked",
+        "Book it with Kim and note that the customer will sign on the day",
+        "Order the materials now so the job is ready, then book it in",
+        "Leave it there, since a clear verbal yes is enough to lock it in"
+      ],
+      "correct": 0,
+      "why": "A yes at the table isn't approval. The plan is approved when it's signed in ServiceTitan, and nothing is scheduled or ordered until the deposit is in."
+    },
+    {
+      "module": "e5",
+      "q": "The installer arrives at a hot water upgrade you sold in St Ives to a locked side gate, a dog in the yard, and no idea where the owner wanted the new unit. What was missing from your handover?",
+      "options": [
+        "The materials list and any special parts to be ordered",
+        "The estimated hours and the exclusions in the scope",
+        "The access details and the customer's notes",
+        "The deposit amount and when the balance is due"
+      ],
+      "correct": 2,
+      "why": "Every handover covers access (gates, keys, pets) and customer notes (what they want on the day). The test is whether the installer could do the job without ever calling you."
+    },
+    {
+      "module": "s1",
+      "q": "You clear a blocked toilet in Gladesville in twenty minutes. On the way out you notice a rusty 12-year-old hot water unit and perished flexi hoses under the vanity. What does doing your whole job look like?",
+      "options": [
+        "Leave it alone, since the customer only called about the toilet",
+        "Tell them they need a new unit today before it bursts on them",
+        "Tag the unit for follow-up and leave without mentioning it",
+        "Photograph both, show the customer and offer the four options"
+      ],
+      "correct": 3,
+      "why": "A Service Tech diagnoses, fixes and sells on the spot. Show what you found and present the options so the customer can choose, without inflating the finding."
+    },
+    {
+      "module": "s1",
+      "q": "You arrive at a Hornsby home to fix a dripping tap. Before you start, what's the best thing to tell the customer?",
+      "options": [
+        "\"I'll work it out as I go and let you know what it all costs at the end.\"",
+        "\"I'll fix the tap, check the rest, then show you options before any extra work.\"",
+        "\"I'll just get stuck in and fix whatever else I happen to find while I'm here.\"",
+        "\"Tap jobs are quick, so I'll be in and out of here in ten minutes or so.\""
+      ],
+      "correct": 1,
+      "why": "Great service techs tell the customer what's going to happen: what they'll check, roughly how long, and that nothing extra happens until they've seen the options."
+    },
+    {
+      "module": "s2",
+      "q": "A toilet in Epping keeps running and the inlet valve is clearly worn. What does the diagnostic flow say to do before you call it done?",
+      "options": [
+        "Swap the valve and leave, since the cause is already obvious",
+        "Swap the valve and recommend a full re-pipe just to be safe",
+        "Test why it wore out, such as the pressure, then check the rest",
+        "Quote a new toilet suite, since worn valves always fail again"
+      ],
+      "correct": 2,
+      "why": "Listen, inspect, test, find the root cause, then explain. A worn valve can be a symptom of high mains pressure, and fixing only the symptom means another call-out."
+    },
+    {
+      "module": "s2",
+      "q": "During the health check at a Thornleigh home, the owner admits she has no idea where the stop tap is. What's the best move?",
+      "options": [
+        "Show her where it is and how to turn it off in an emergency",
+        "Note it in the job and move on, since it isn't today's problem",
+        "Quote a replacement stop tap so it's easier for her to find",
+        "Suggest she rings the office later to ask where it is"
+      ],
+      "correct": 0,
+      "why": "The health check includes whether the customer can find and turn off the stop tap in an emergency. Showing her takes a minute and could save her home."
+    },
+    {
+      "module": "s3",
+      "q": "In Dulwich Hill the kitchen sink is blocked, the shower is draining slowly, and the ground around the gully grate is wet. Where's the blockage most likely to be?",
+      "options": [
+        "The main line, rather than the sink trap",
+        "The kitchen sink trap, so plunge it first",
+        "The shower waste, so clear that first",
+        "The stormwater, so check the downpipes"
+      ],
+      "correct": 0,
+      "why": "One fixture blocked points to that fixture's branch. Several fixtures affected, or the gully overflowing, points to the main line."
+    },
+    {
+      "module": "s3",
+      "q": "A Beecroft sewer has blocked three times this year. The customer wants it \"just cleared again, cheaply\", and you suspect the pipe is cracked. What do you do?",
+      "options": [
+        "Force the cutter through hard to clear it fast and keep it cheap",
+        "Clear it and leave, since that's exactly what the customer asked for",
+        "Recommend dig and replace straight away, without running the camera",
+        "Run the camera, show the footage and present all four options"
+      ],
+      "correct": 3,
+      "why": "Run the camera first if you suspect damage, because forcing a cutter can make it worse. A clear is temporary with roots or damage present, so show the footage and let the customer choose, Elite first, without pressure."
+    },
+    {
+      "module": "s4",
+      "q": "A customer in Pennant Hills has a water bill that's suddenly jumped, with no sign of a leak anywhere. Where do you start?",
+      "options": [
+        "Open the wall behind the most likely fixture and have a look",
+        "Run a meter test first, recording readings, times and photos",
+        "Use the thermal camera and mark the leak wherever it shows warm",
+        "Tell them it's probably the meter and suggest they call Sydney Water"
+      ],
+      "correct": 1,
+      "why": "The meter test proves whether water is escaping, so it comes first on every leak job. Thermal images are clues, not findings, and you never open a wall on a guess."
+    },
+    {
+      "module": "s4",
+      "q": "After a night of storms in Wahroonga, a customer asks you to write that the leak \"only started last night\" so their insurance claim goes through. You can see old staining and mould. What do you write?",
+      "options": [
+        "What they asked, since it helps the customer with their claim",
+        "That their insurer is unlikely to cover a leak like this one",
+        "Only what you saw, including the staining and the mould",
+        "Nothing at all, so the assessor can decide everything themselves"
+      ],
+      "correct": 2,
+      "why": "Never change a finding to help a claim, and never tell a customer what their insurer will cover. Record exactly what you saw: an honest record protects the customer, the business and you."
+    },
+    {
+      "module": "s5",
+      "q": "An elderly couple in Carlingford have had no hot water since last night. Their electric unit is eleven years old and the element has failed. What do you present?",
+      "options": [
+        "Just the new element, since they're elderly and likely on a budget",
+        "Just a new unit, since repairing an old unit is a waste of money",
+        "Repair and replacement across all four options, Elite first",
+        "Nothing yet; tell them to ring the office for a replacement quote"
+      ],
+      "correct": 2,
+      "why": "For older units, present repair vs replace across the four options, Elite first, and never prejudge what they can afford. If they choose a replacement, sell it on the spot."
+    },
+    {
+      "module": "s5",
+      "q": "In Baulkham Hills, the hot water relief valve keeps running onto the path, and the customer asks you to cap it. What do you do?",
+      "options": [
+        "Explain it's a safety device, then test the mains pressure for the cause",
+        "Cap it as asked, since a little water on the path isn't worth the fuss",
+        "Replace the relief valve and tell them that has fixed it for good",
+        "Plug the drain line so the water stops running across the path"
+      ],
+      "correct": 0,
+      "why": "Never plug, cap or disable a relief valve. A constant flow often comes from high mains pressure, which a new valve alone won't fix but a pressure-limiting valve will."
+    },
+    {
+      "module": "s6",
+      "q": "In Ryde, the customer says this is the third cistern inlet valve in two years. What's your next step?",
+      "options": [
+        "Fit a new valve and tell them the last brand was the problem",
+        "Fit a more expensive valve so this one lasts a bit longer",
+        "Recommend a new toilet suite, since the cistern is worn out",
+        "Test the mains pressure, as repeat failures often point to it"
+      ],
+      "correct": 3,
+      "why": "If the same kind of part keeps failing in a house, test the pressure. The valve fixes today; a PRV fixes the pattern."
+    },
+    {
+      "module": "s6",
+      "q": "A tired old mixer in Hurstville needs a cartridge you don't carry for that brand. What's the best way to avoid a return trip?",
+      "options": [
+        "Book a return visit straight away and leave the tap dripping for now",
+        "Offer the options, including a new mixer you carry, from the pricebook",
+        "Fit a cartridge from another brand that roughly fits, just for now",
+        "Order the cartridge and come back later without telling dispatch"
+      ],
+      "correct": 1,
+      "why": "A return trip doubles the cost of the job. Offer an upgrade you do carry alongside the other options and let the customer choose, and never leave a bodge behind."
+    },
+    {
+      "module": "s7",
+      "q": "In Westmead, a customer says, \"Just fix the leak. I don't want to be sold anything.\" What's the best approach?",
+      "options": [
+        "Present all four options before you start anyway, Elite first",
+        "Fix the leak and leave without mentioning anything else you saw",
+        "Fix the leak, then warn them the other problems are urgent",
+        "Fix the leak, then offer to show a couple of photos you took"
+      ],
+      "correct": 3,
+      "why": "Respect what they asked for: fix it, then briefly show what you found. If they want to know more, present the options with no pressure."
+    },
+    {
+      "module": "s7",
+      "q": "At a Dundas home for a running toilet, the health check finds a dripping shower mixer and perished flexi hoses. The customer asks if you'll \"do a deal\" for doing it all at once. What's right?",
+      "options": [
+        "Take 10% off the Elite option, since it's a much bigger job",
+        "Quote only the toilet for now, so the price stays low and simple",
+        "Explain every line is pricebook; cheaper means fewer lines",
+        "Say you'll ask Harriet for a bundle price and call them back"
+      ],
+      "correct": 2,
+      "why": "Bundle what you found into Standard, Premium and Elite, but never discount a bundle. If they want it cheaper, they choose an option with fewer lines."
+    },
+    {
+      "module": "s8",
+      "q": "After fixing a shower mixer in Kellyville, you mention the Care Plan. The customer asks, \"Does it cover parts?\" You're not sure. What do you say?",
+      "options": [
+        "That it's a good question, and you'll check and get back to them",
+        "Yes, since most memberships cover parts as well as labour",
+        "No, so that you can't be accused of overpromising anything",
+        "That they should look it up on the website, as it's not your area"
+      ],
+      "correct": 0,
+      "why": "Never promise a benefit that isn't on the approved list. A confident guess that turns out wrong is the quickest way to lose a member."
+    },
+    {
+      "module": "s8",
+      "q": "You've finished a quick tap washer job for a customer in a modest home in Auburn. Do you offer the Care Plan?",
+      "options": [
+        "No, it's really only worth offering on the bigger jobs",
+        "Yes, briefly, as on every completed job, and a no is fine",
+        "No, they don't look like they'd be interested in a membership",
+        "Yes, and keep explaining the benefits until they agree to join"
+      ],
+      "correct": 1,
+      "why": "The Care Plan is offered on every completed job, to every customer. Offered to some and not others, it becomes a judgement about them. The habit is the offer, not the sale."
+    },
+    {
+      "module": "s9",
+      "q": "At 9pm in Kogarah, water is pouring through a kitchen ceiling and the customer's first question is what it will cost. What do you do?",
+      "options": [
+        "Explain the after-hours pricing in full before you touch anything",
+        "Say \"Let me stop the water first\" and go straight to the stop tap",
+        "Photograph all the damage first so it's ready for the insurer",
+        "Ask them to sign an estimate before you turn anything off"
+      ],
+      "correct": 1,
+      "why": "Make safe first: isolate, contain, protect, before the quote, the photos or the conversation about rates. Nothing calms a panicking customer faster than the water stopping."
+    },
+    {
+      "module": "s9",
+      "q": "You've made safe a burst copper pipe under a house in Turramurra and presented four options for the permanent fix. She's rattled and wants to sleep on it. What do you do?",
+      "options": [
+        "Start the re-pipe tonight, since it's clearly what the house needs",
+        "Warn her more bursts are coming unless she signs before you go",
+        "Leave without a plan, since she can always call if it bursts again",
+        "Agree a time to call her tomorrow and log it in ServiceTitan"
+      ],
+      "correct": 3,
+      "why": "Let the customer choose with no pressure. If they're too rattled to decide tonight, agree when you'll follow up and log it in ServiceTitan."
+    },
+    {
+      "module": "s10",
+      "q": "The hot water has failed at a rental in Merrylands, and the fix costs more than the property manager's approval limit. The tenant says, \"Just fix it. The agent won't mind.\" What do you do?",
+      "options": [
+        "Make safe, send the PM photos and options, and get written approval",
+        "Do the full repair, since the tenant's OK covers it on a rental",
+        "Fit a cheaper fix that fits under the limit, even if it won't last",
+        "Ask the tenant to pay whatever the fix costs above the limit"
+      ],
+      "correct": 0,
+      "why": "Tenants aren't the decision-maker. Never exceed the PM's approval limit without written approval, and never squeeze in a fix that won't solve the problem or ask the tenant to pay."
+    },
+    {
+      "module": "s10",
+      "q": "Water is coming through the bathroom ceiling of a unit in Zetland. The tenant is sure it's the unit upstairs and asks who'll be paying. What do you do?",
+      "options": [
+        "Tell them strata will pay, since the water is coming from above",
+        "Tell them the owner upstairs is responsible and has to fix it",
+        "Record exactly where it's coming through, with photos, and not guess",
+        "Go up and check the unit above, even without access arranged"
+      ],
+      "correct": 2,
+      "why": "Always record the facts about lot vs common property, but who approves and pays isn't your call on site. Never enter another lot without permission and arranged access."
+    }
+  ]
+}
