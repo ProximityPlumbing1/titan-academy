@@ -55,8 +55,11 @@ phones. It runs as an 8-week program and ends in a certificate.
   credentials). Never commit them and never send them to the browser.
 - **Phone-first for techs, desktop-first for the owner and admin screens, plus a TV view.** Test
   at 375 px, 1440 px, and 1920×1080 plus 3840×2160 (an 80-inch TV, readable from 3–5 m).
-- Keep the visual identity: dark default, Inter, the blue accent `#0265DC`, gold for
-  certificates and achievements, circular progress rings. See `legacy/styles.css` for tokens.
+- Visual identity matches William's website (proximityplumbing.com.au; owner's decision, Nov 2026):
+  light pages, white cards with soft shadows, Proximity cyan `#00aded`, dark titles `#33353d`,
+  Inter extra-bold headings with one Fraunces italic emphasised word, gold `#d4a94a` for
+  certificates and achievements, circular progress rings. The TV keeps a dark navy (`#1a2332`)
+  version via `.theme-dark`. Tokens live in `web/src/styles.css`.
 
 ## Working style
 - Show a plan before each phase. Ask before a large architectural change.

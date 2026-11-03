@@ -1,22 +1,62 @@
 @import "tailwindcss";
 
+/* Colours and type follow proximityplumbing.com.au (brand file supplied by the owner, Nov 2026).
+   Names describe a role, not a colour, so the TV can swap in a dark navy version (.theme-dark). */
 @theme {
-  --color-ink: #0e1320;
-  --color-navy: #18202f;
-  --color-panel: #1f2839;
-  --color-panel2: #283349;
-  --color-line: rgb(255 255 255 / 0.09);
-  --color-muted: #a7b1c2;
-  --color-faint: #6f7a8d;
-  --color-blue: #0265dc;
-  --color-blue2: #3b8cf0;
-  --color-cyan: #38b6e8;
-  --color-gold: #d4a94a;
-  --color-good: #3fb37f;
-  --color-bad: #e5534b;
-  --color-amber: #e8a33d;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-page: #fafbfc;        /* page background */
+  --color-card: #ffffff;        /* cards, panels, inputs */
+  --color-soft: #ecf9fe;        /* palest cyan: chips, selected rows */
+  --color-tint: #c7edfb;        /* light cyan */
+  --color-line: #e5e5e5;        /* hairlines and borders */
+  --color-tone: #1a2332;        /* overlay base: bg-tone/5 is a faint grey on white */
+  --color-title: #33353d;       /* headings */
+  --color-body: #4a4c55;        /* body text */
+  --color-muted: #63656d;       /* secondary text */
+  --color-faint: #77787f;       /* captions */
+  --color-brand: #00aded;       /* Proximity cyan: buttons, rings, big headings */
+  --color-brand2: #0097cf;      /* button hover */
+  --color-link: #0083b8;        /* cyan for small text, readable on white */
+  --color-cyan: #00aded;
+  --color-navy: #1a2332;        /* dark sections and the TV */
+  --color-gold: #b98a2c;        /* awards and certificates (deeper on white for contrast) */
+  --color-good: #17803d;
+  --color-bad: #d7341a;
+  --color-amber: #b36b00;
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+
+  --radius-control: 6px;
+  --radius-button: 10px;
+  --radius-card: 12px;
+  --radius-panel: 20px;
+
+  --shadow-card: 0 2px 4px rgba(26, 35, 50, 0.04), 0 14px 30px -20px rgba(26, 35, 50, 0.32), inset 0 0 0 1px rgba(26, 35, 50, 0.06);
+  --shadow-panel: 0 2px 4px rgba(26, 35, 50, 0.03), 0 20px 44px -24px rgba(26, 35, 50, 0.18), inset 0 0 0 1px rgba(26, 35, 50, 0.05);
+  --shadow-glow: 0 12px 26px -12px rgba(41, 170, 225, 0.8);
+}
+
+/* The TV and anything else that should read as a dark navy section of the website. */
+.theme-dark {
+  --color-page: #1a2332;
+  --color-card: #222d40;
+  --color-soft: rgb(0 173 237 / 0.12);
+  --color-tint: rgb(0 173 237 / 0.25);
+  --color-line: rgb(255 255 255 / 0.1);
+  --color-tone: #ffffff;
+  --color-title: #ffffff;
+  --color-body: #e3e8ee;
+  --color-muted: #aab4c1;
+  --color-faint: #7f8a9a;
+  --color-link: #00aded;
+  --color-gold: #d4a94a;
+  --color-good: #3fc37a;
+  --color-bad: #f0604b;
+  --color-amber: #f0b04d;
+  --shadow-card: inset 0 0 0 1px rgb(255 255 255 / 0.09);
+  --shadow-panel: inset 0 0 0 1px rgb(255 255 255 / 0.09);
+  color: var(--color-body);
+  background-color: var(--color-page);
 }
 
 html,
@@ -27,26 +67,45 @@ body,
 
 body {
   margin: 0;
-  background: var(--color-ink);
-  color: #fff;
+  background: var(--color-page);
+  color: var(--color-body);
   font-family: var(--font-sans);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  letter-spacing: -0.005em;
 }
 
+/* Website headings: Inter extra bold, sentence case, tight. */
 .headline {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-title);
+}
+
+/* The TV keeps the October decks' italic serif headlines, in the website's navy, cyan and gold. */
+.theme-dark .headline {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
+/* The one emphasised word, as on the website: "Sydney's <em>Highest-Rated</em> Plumber". */
+.em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Kicker above a heading: small capitals in Proximity cyan. */
 .eyebrow {
-  color: var(--color-cyan);
+  color: var(--color-link);
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 12.5px;
+  line-height: 1.2;
 }
 
 button {

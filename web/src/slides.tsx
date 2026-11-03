@@ -46,11 +46,11 @@ interface TvProps {
 }
 
 export function TvSlide({ slide, state, code, joinUrl, presenter, slideNumber, slideCount }: TvProps) {
-  if (!slide) return <div className="h-full w-full bg-navy" />;
+  if (!slide) return <div className="theme-dark h-full w-full" />;
   const reveal = state?.reveal;
   return (
-    <div className="relative flex h-full w-full flex-col bg-navy px-[120px] pb-[84px] pt-[90px] text-white"
-      style={{ background: 'radial-gradient(1400px 700px at 15% -10%, rgba(2,101,220,.18), transparent 60%), #18202f' }}>
+    <div className="theme-dark relative flex h-full w-full flex-col px-[120px] pb-[84px] pt-[90px] text-white"
+      style={{ background: 'radial-gradient(1400px 700px at 15% -10%, rgba(0,173,237,.16), transparent 60%), #1a2332' }}>
       <div className="min-h-0 flex-1">
         <SlideBody slide={slide} reveal={reveal} state={state} presenter={presenter} code={code} joinUrl={joinUrl} />
       </div>
@@ -59,7 +59,7 @@ export function TvSlide({ slide, state, code, joinUrl, presenter, slideNumber, s
         <div className="flex items-center gap-8">
           {slideNumber !== undefined && slideCount !== undefined && <span>{slideNumber} / {slideCount}</span>}
           {code && slide.kind !== 'welcome' && (
-            <span className="rounded-full border border-white/15 px-6 py-2 text-white">
+            <span className="rounded-full border border-tone/15 px-6 py-2 text-white">
               Join <b className="ml-2 tracking-[0.2em] text-gold">{code}</b>
             </span>
           )}
@@ -70,7 +70,7 @@ export function TvSlide({ slide, state, code, joinUrl, presenter, slideNumber, s
 }
 
 function Eyebrow({ children }: { children: ReactNode }) {
-  return <div className="mb-8 text-[30px] font-bold uppercase tracking-[0.2em] text-cyan">{children}</div>;
+  return <div className="mb-8 text-[30px] font-bold uppercase tracking-[0.2em] text-link">{children}</div>;
 }
 
 function SlideBody({ slide, reveal, state, presenter, code, joinUrl }:
@@ -127,7 +127,7 @@ function SlideBody({ slide, reveal, state, presenter, code, joinUrl }:
             <ul className="mt-10 grid grid-cols-2 gap-x-14 gap-y-4">
               {slide.bullets.map((b, i) => (
                 <li key={i} className="flex gap-4 text-[32px] leading-snug text-muted">
-                  <span className="text-cyan">•</span><span><Marked text={b} compact={compact} /></span>
+                  <span className="text-link">•</span><span><Marked text={b} compact={compact} /></span>
                 </li>
               ))}
             </ul>
@@ -138,10 +138,10 @@ function SlideBody({ slide, reveal, state, presenter, code, joinUrl }:
       return (
         <div className="flex h-full flex-col justify-center">
           <Eyebrow>{slide.moduleTitle} · On the job</Eyebrow>
-          <div className="max-w-[1600px] rounded-[28px] border-l-[10px] border-gold bg-white/[0.04] px-16 py-14">
+          <div className="max-w-[1600px] rounded-[28px] border-l-[10px] border-gold bg-tone/[0.04] px-16 py-14">
             <p className="text-[52px] leading-snug"><Marked text={slide.text} compact={compact} /></p>
           </div>
-          <p className="mt-12 text-[36px] text-cyan">What would you do here?</p>
+          <p className="mt-12 text-[36px] text-link">What would you do here?</p>
         </div>
       );
     case 'quiz':
@@ -197,7 +197,7 @@ function QuestionBody({ slide, reveal, state, presenter }:
           {slide.moduleTitle} · {isSim ? `Role-play · step ${slide.step} of ${slide.total}` : `Question ${slide.number} of ${slide.total}`}
         </Eyebrow>
         {state && (
-          <div className={`shrink-0 rounded-full px-7 py-3 text-[30px] font-semibold ${reveal ? 'bg-white/10 text-muted' : 'bg-cyan/15 text-cyan'}`}>
+          <div className={`shrink-0 rounded-full px-7 py-3 text-[30px] font-semibold ${reveal ? 'bg-tone/10 text-muted' : 'bg-cyan/15 text-link'}`}>
             {reveal ? 'Answers revealed' : `${state.answered} of ${state.attendees} answered`}
           </div>
         )}
@@ -213,15 +213,15 @@ function QuestionBody({ slide, reveal, state, presenter }:
       <div className="grid flex-1 grid-cols-2 content-start gap-6">
         {slide.options.map((o, i) => {
           const isRight = correct === i;
-          const tone = correct === undefined ? 'border-white/12 bg-white/[0.04]' : isRight ? 'border-good bg-good/15' : 'border-white/8 bg-white/[0.02] opacity-60';
+          const tone = correct === undefined ? 'border-tone/12 bg-tone/[0.04]' : isRight ? 'border-good bg-good/15' : 'border-tone/8 bg-tone/[0.02] opacity-60';
           const count = reveal?.counts[i] ?? 0;
           return (
             <div key={i} className={`relative overflow-hidden rounded-3xl border-2 px-9 py-7 ${tone}`}>
               {reveal && (
-                <div className={`absolute inset-y-0 left-0 ${isRight ? 'bg-good/25' : 'bg-white/8'}`} style={{ width: `${(count / max) * 100}%` }} />
+                <div className={`absolute inset-y-0 left-0 ${isRight ? 'bg-good/25' : 'bg-tone/8'}`} style={{ width: `${(count / max) * 100}%` }} />
               )}
               <div className="relative flex items-start gap-6">
-                <span className={`flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-2xl text-[34px] font-extrabold ${isRight ? 'bg-good text-ink' : 'bg-white/10'}`}>{LETTERS[i]}</span>
+                <span className={`flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-2xl text-[34px] font-extrabold ${isRight ? 'bg-good text-navy' : 'bg-tone/10'}`}>{LETTERS[i]}</span>
                 <span className="flex-1 pt-2 text-[36px] leading-snug">{o}</span>
                 {reveal && <span className="pt-2 text-[34px] font-bold text-muted">{count}</span>}
               </div>
@@ -263,11 +263,11 @@ export function PhoneSlide({ slide, state, onAnswer, pending }:
             const chosen = mine === i;
             const right = reveal && reveal.correct === i;
             const wrong = reveal && chosen && reveal.correct !== i;
-            const cls = right ? 'border-good bg-good/20' : wrong ? 'border-bad bg-bad/15' : chosen ? 'border-blue2 bg-blue/25' : 'border-line bg-panel';
+            const cls = right ? 'border-good bg-good/10' : wrong ? 'border-bad bg-bad/10' : chosen ? 'border-brand bg-soft' : 'border-line bg-card';
             return (
               <button key={i} disabled={!open} onClick={() => onAnswer(i)}
                 className={`flex w-full items-start gap-3 rounded-2xl border-2 px-4 py-4 text-left text-base transition active:scale-[.99] disabled:cursor-default ${cls}`}>
-                <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-extrabold ${right ? 'bg-good text-ink' : 'bg-white/10'}`}>{LETTERS[i]}</span>
+                <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-extrabold ${right ? 'bg-good text-white' : chosen ? 'bg-brand text-white' : 'bg-tone/5 text-title'}`}>{LETTERS[i]}</span>
                 <span className="pt-1">{o}</span>
               </button>
             );
@@ -276,7 +276,7 @@ export function PhoneSlide({ slide, state, onAnswer, pending }:
         <div className="mt-4 text-center text-sm text-muted">
           {open && (mine === null ? 'Tap your answer. You can change it until the reveal.' : 'Answer in. You can change it until the reveal.')}
           {state?.phase === 'reveal' && reveal && (
-            <div className={`rounded-2xl p-4 text-left text-base ${mine === reveal.correct ? 'bg-good/15 text-white' : 'bg-white/5 text-white'}`}>
+            <div className={`rounded-2xl p-4 text-left text-base ${mine === reveal.correct ? 'bg-good/10 text-title' : 'bg-tone/5 text-title'}`}>
               <b>{mine === null ? 'No answer this time.' : mine === reveal.correct ? 'You got it.' : `The answer was ${LETTERS[reveal.correct]}.`}</b>
               {reveal.explanation && <p className="mt-1 text-muted">{reveal.explanation}</p>}
             </div>
@@ -318,8 +318,8 @@ export function PhoneSlide({ slide, state, onAnswer, pending }:
       {slide.kind === 'onjob' && (
         <>
           <div className="eyebrow mb-2">On the job</div>
-          <p className="rounded-xl border-l-4 border-gold bg-white/[0.04] p-4 leading-relaxed"><Marked text={slide.text} compact /></p>
-          <p className="mt-3 text-sm text-cyan">What would you do here?</p>
+          <p className="rounded-xl border-l-4 border-gold bg-tone/[0.04] p-4 leading-relaxed"><Marked text={slide.text} compact /></p>
+          <p className="mt-3 text-sm text-link">What would you do here?</p>
         </>
       )}
       {slide.kind === 'signoff' && (

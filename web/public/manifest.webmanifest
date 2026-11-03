@@ -4,7 +4,7 @@
   "description": "Proximity Plumbing field team training",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0e1320",
-  "theme_color": "#0e1320",
+  "background_color": "#fafbfc",
+  "theme_color": "#00aded",
   "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }

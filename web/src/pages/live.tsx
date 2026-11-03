@@ -90,9 +90,9 @@ export function TvPage() {
   const full = () => document.documentElement.requestFullscreen?.().catch(() => {});
   if (ended)
     return (
-      <Stage className="h-screen w-screen bg-navy">
-        <div className="flex h-full flex-col items-center justify-center bg-navy text-center text-white">
-          <div className="text-[30px] font-bold uppercase tracking-[0.2em] text-cyan">Class complete</div>
+      <Stage className="theme-dark h-screen w-screen">
+        <div className="flex h-full flex-col items-center justify-center text-center text-white">
+          <div className="text-[30px] font-bold uppercase tracking-[0.2em] text-link">Class complete</div>
           <h1 className="headline mt-6 text-[130px]">Thanks, everyone</h1>
           <p className="mt-8 text-[44px] text-muted">{ended.attended} attended · progress saved</p>
         </div>
@@ -100,15 +100,15 @@ export function TvPage() {
     );
   if (!init || !state)
     return (
-      <Stage className="h-screen w-screen bg-navy">
-        <div className="flex h-full flex-col items-center justify-center bg-navy text-center text-white">
+      <Stage className="theme-dark h-screen w-screen">
+        <div className="flex h-full flex-col items-center justify-center text-center text-white">
           <div className="scale-[2.4]"><Logo /></div>
           <p className="mt-32 text-[48px] text-muted">{error?.status === 404 ? `Waiting for class ${code} to start…` : 'Connecting…'}</p>
         </div>
       </Stage>
     );
   return (
-    <div className="h-screen w-screen bg-navy" onDoubleClick={full} title="Double-click for full screen">
+    <div className="theme-dark h-screen w-screen" onDoubleClick={full} title="Double-click for full screen">
       <Stage className="h-full w-full">
         <TvSlide slide={init.deck[state.slide]} state={state} code={init.code} joinUrl={init.joinUrl} />
       </Stage>
@@ -222,12 +222,12 @@ function PresenterConsole({ code }: { code: string }) {
             </div>
             <div className="text-sm text-muted">Slide {state.slide + 1} of {init.deck.length} · keys: ← → space, R to reveal</div>
           </div>
-          <Stage className="aspect-video w-full rounded-2xl border border-line">
+          <Stage className="theme-dark aspect-video w-full rounded-[20px] shadow-panel">
             <TvSlide slide={slide} state={state} code={init.code} joinUrl={init.joinUrl} presenter slideNumber={state.slide + 1} slideCount={init.deck.length} />
           </Stage>
           {controls}
           {notice && <div className="rounded-xl bg-amber/15 px-4 py-2 text-sm text-amber">{notice}</div>}
-          <select className="w-full rounded-xl border border-line bg-panel px-3 py-2.5 text-sm" value={state.slide}
+          <select className="w-full rounded-[6px] border border-line bg-card px-3 py-2.5 text-sm text-title" value={state.slide}
             onChange={(e) => control('goto', { index: Number(e.target.value) })}>
             {init.deck.map((s, i) => <option key={s.key} value={i}>{i + 1}. {slideSummary(s).slice(0, 110)}</option>)}
           </select>
@@ -247,14 +247,14 @@ function PresenterConsole({ code }: { code: string }) {
           {q && (
             <Card className="p-5">
               <div className="text-xs font-semibold uppercase tracking-widest text-muted">Answers</div>
-              <div className="mt-1 text-3xl font-bold">{state.answered} <span className="text-lg text-muted">of {state.attendees}</span></div>
+              <div className="mt-1 text-3xl font-extrabold text-title">{state.answered} <span className="text-lg text-muted">of {state.attendees}</span></div>
               {notAnswered.length > 0 && state.phase === 'open' && <div className="mt-2 text-sm text-muted">Waiting on: {notAnswered.join(', ')}</div>}
             </Card>
           )}
           <Card className="p-5">
             <div className="mb-2 flex items-center justify-between">
               <div className="text-xs font-semibold uppercase tracking-widest text-muted">In the room ({state.attendees})</div>
-              <button className="text-xs text-cyan" onClick={loadPeople}>+ Tick someone in</button>
+              <button className="text-xs text-link" onClick={loadPeople}>+ Tick someone in</button>
             </div>
             <div className="max-h-64 space-y-1 overflow-y-auto">
               {(state.presence ?? []).map((p) => (
@@ -293,11 +293,11 @@ function PresenterConsole({ code }: { code: string }) {
             <div className="text-3xl font-extrabold tracking-[0.12em] text-gold">{init.code}</div>
           </div>
         </Card>
-        <Stage className="mt-3 aspect-video w-full rounded-xl border border-line">
+        <Stage className="theme-dark mt-3 aspect-video w-full rounded-[12px] shadow-panel">
           <TvSlide slide={slide} state={state} code={init.code} joinUrl={init.joinUrl} presenter />
         </Stage>
         <p className="mt-2 text-sm text-muted">{slideSummary(slide)}</p>
-        {q && <p className="mt-1 text-lg font-bold">{state.answered} of {state.attendees} answered</p>}
+        {q && <p className="mt-1 text-lg font-bold text-title">{state.answered} of {state.attendees} answered</p>}
         {notice && <div className="mt-2 rounded-xl bg-amber/15 px-4 py-2 text-sm text-amber">{notice}</div>}
         <div className="mt-4 grid grid-cols-2 gap-3">
           <Button variant="ghost" className="h-24 text-xl" onClick={() => control('prev')} disabled={state.slide === 0}>← Back</Button>
@@ -326,7 +326,7 @@ function PresenterConsole({ code }: { code: string }) {
           <p className="mb-3 text-sm text-muted">For anyone in the room without a phone. They're marked as attended and do the quiz later.</p>
           <div className="max-h-80 space-y-1 overflow-y-auto">
             {people.map((p) => (
-              <button key={p.id} className="block w-full rounded-lg px-3 py-2 text-left hover:bg-white/5"
+              <button key={p.id} className="block w-full rounded-lg px-3 py-2 text-left hover:bg-tone/5"
                 onClick={() => { control('attend', { userId: p.id }); setPeople((list) => list?.filter((x) => x.id !== p.id) ?? null); }}>
                 {p.name}
               </button>

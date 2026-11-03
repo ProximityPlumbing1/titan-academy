@@ -14,7 +14,7 @@ function NotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-4 text-center">
       <h1 className="headline text-4xl">Page not found</h1>
-      <Link to="/" className="text-cyan underline">Go home</Link>
+      <Link to="/" className="text-link underline">Go home</Link>
     </div>
   );
 }

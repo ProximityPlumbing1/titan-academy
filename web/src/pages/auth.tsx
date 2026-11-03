@@ -7,10 +7,10 @@ import { Button, ErrorNote, Field, Loading, Logo, firstName } from '../ui';
 function Shell({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen items-center justify-center px-4 py-10"
-      style={{ background: 'radial-gradient(900px 500px at 50% -10%, rgba(2,101,220,.18), transparent 60%), #0e1320' }}>
+      style={{ background: 'radial-gradient(900px 520px at 50% -12%, rgba(0,173,237,.16), transparent 62%), linear-gradient(180deg, #fafbfc 0%, #ecf9fe 70%, #c7edfb 100%)' }}>
       <div className="w-full max-w-sm fade-in">
         <div className="mb-8 flex justify-center"><Logo /></div>
-        <div className="rounded-3xl border border-line bg-navy p-6 shadow-2xl">{children}</div>
+        <div className="rounded-[20px] bg-card p-6 shadow-panel sm:p-8">{children}</div>
       </div>
     </div>
   );
@@ -63,7 +63,7 @@ export function LoginPage() {
       </p>
       {setup && (
         <p className="mt-4 text-center text-sm">
-          <Link to="/setup" className="text-cyan underline">First-time admin setup</Link>
+          <Link to="/setup" className="text-link underline">First-time admin setup</Link>
         </p>
       )}
     </Shell>
@@ -159,7 +159,7 @@ export function LinkPage({ kind }: { kind: 'invite' | 'reset' }) {
   };
   return (
     <Shell>
-      <h1 className="headline mb-1 text-2xl">{kind === 'invite' ? `Welcome, ${firstName(info.name)}` : 'Reset your password'}</h1>
+      <h1 className="headline mb-1 text-2xl">{kind === 'invite' ? <>Welcome, <span className="em text-link">{firstName(info.name)}</span></> : 'Reset your password'}</h1>
       <p className="mb-6 text-sm text-muted">
         {kind === 'invite' ? 'Set up your Titan Academy login. You stay signed in on this phone.' : `New password for ${info.email}.`}
       </p>

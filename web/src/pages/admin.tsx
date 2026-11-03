@@ -13,13 +13,13 @@ export function AdminLayout() {
   const { user, logout } = useAuth();
   const item = (to: string, label: string) => (
     <NavLink to={to} end={to === '/admin'}
-      className={({ isActive }) => `block rounded-xl px-3 py-2.5 text-sm font-medium ${isActive ? 'bg-blue/20 text-white' : 'text-muted hover:bg-white/5 hover:text-white'}`}>
+      className={({ isActive }) => `block rounded-[10px] px-3 py-2.5 text-sm ${isActive ? 'bg-soft font-bold text-title shadow-[inset_0_0_0_1px_rgba(0,173,237,.22)]' : 'font-medium text-muted hover:bg-tone/5 hover:text-title'}`}>
       {label}
     </NavLink>
   );
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-[240px_1fr]">
-      <aside className="border-b border-line bg-navy p-4 lg:sticky lg:top-0 lg:h-screen lg:border-b-0 lg:border-r lg:p-5">
+      <aside className="border-b border-line bg-card p-4 lg:sticky lg:top-0 lg:h-screen lg:border-b-0 lg:border-r lg:p-5">
         <div className="flex items-center justify-between lg:block">
           <Logo small />
           <div className="mt-0 flex gap-1 lg:hidden">
@@ -43,8 +43,8 @@ export function AdminLayout() {
           <div className="font-semibold">{user?.name}</div>
           <div className="text-xs text-faint">{user?.position}</div>
           <div className="mt-3 flex gap-3">
-            <Link to="/" className="text-muted hover:text-white">Learner view</Link>
-            <button onClick={logout} className="text-muted hover:text-white">Sign out</button>
+            <Link to="/" className="text-muted hover:text-title">Learner view</Link>
+            <button onClick={logout} className="text-muted hover:text-title">Sign out</button>
           </div>
         </div>
       </aside>
@@ -91,8 +91,8 @@ export function DashboardPage() {
       {data.classes.length > 0 && (
         <Card className="mb-6 p-5">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="font-bold">Live and upcoming classes</h2>
-            <Link to="/admin/classes" className="text-sm text-cyan">All classes</Link>
+            <h2 className="font-bold text-title">Live and upcoming classes</h2>
+            <Link to="/admin/classes" className="text-sm text-link">All classes</Link>
           </div>
           <div className="divide-y divide-line">
             {data.classes.map((c) => (
@@ -107,10 +107,10 @@ export function DashboardPage() {
       )}
       {attention.length > 0 && (
         <Card className="mb-6 p-5">
-          <h2 className="mb-3 font-bold">Needs attention ({attention.length})</h2>
+          <h2 className="mb-3 font-bold text-title">Needs attention ({attention.length})</h2>
           <div className="flex flex-wrap gap-2">
             {attention.map((t) => (
-              <span key={t.id} className="rounded-xl bg-white/5 px-3 py-1.5 text-sm">
+              <span key={t.id} className="rounded-xl bg-tone/5 px-3 py-1.5 text-sm">
                 <b>{t.name}</b> <span className="text-muted">· {t.flags.join(' · ')}</span>
               </span>
             ))}
@@ -123,18 +123,18 @@ export function DashboardPage() {
       <div className="mt-2 flex gap-4 text-xs text-muted">
         <span className="flex items-center gap-1.5"><i className="inline-block h-3 w-3 rounded bg-good" /> Done</span>
         <span className="flex items-center gap-1.5"><i className="inline-block h-3 w-3 rounded bg-amber" /> Started</span>
-        <span className="flex items-center gap-1.5"><i className="inline-block h-3 w-3 rounded bg-white/10" /> Not started</span>
+        <span className="flex items-center gap-1.5"><i className="inline-block h-3 w-3 rounded bg-tone/10" /> Not started</span>
       </div>
     </div>
   );
 }
 
 function Stat({ label, value, tone }: { label: string; value: ReactNode; tone?: 'good' | 'amber' | 'cyan' }) {
-  const c = tone === 'good' ? 'text-good' : tone === 'amber' ? 'text-amber' : tone === 'cyan' ? 'text-cyan' : 'text-white';
+  const c = tone === 'good' ? 'text-good' : tone === 'amber' ? 'text-amber' : tone === 'cyan' ? 'text-link' : 'text-title';
   return (
     <Card className="p-5">
       <div className="text-xs font-semibold uppercase tracking-widest text-muted">{label}</div>
-      <div className={`mt-1 text-3xl font-bold ${c}`}>{value}</div>
+      <div className={`mt-1 text-3xl font-extrabold tracking-[-0.02em] ${c}`}>{value}</div>
     </Card>
   );
 }
@@ -142,11 +142,11 @@ function Stat({ label, value, tone }: { label: string; value: ReactNode; tone?: 
 function ProgressGrid({ title, columns, techs }: { title: string; columns: Array<{ id: string; title: string }>; techs: Dash['techs'] }) {
   return (
     <Card className="mb-6 overflow-x-auto p-5">
-      <h2 className="mb-3 font-bold">{title} <span className="text-muted">({techs.length})</span></h2>
+      <h2 className="mb-3 font-bold text-title">{title} <span className="text-muted">({techs.length})</span></h2>
       <table className="w-full border-separate border-spacing-y-1 text-sm">
         <thead>
           <tr>
-            <th className="sticky left-0 bg-panel pr-4 text-left font-medium text-muted">Name</th>
+            <th className="sticky left-0 bg-card pr-4 text-left font-medium text-muted">Name</th>
             {columns.map((c) => <th key={c.id} title={c.title} className="px-0.5 text-center text-[11px] font-medium uppercase text-faint">{c.id}</th>)}
             <th className="pl-3 text-right font-medium text-muted">Done</th>
             <th className="pl-3 text-right font-medium text-muted">Last seen</th>
@@ -155,7 +155,7 @@ function ProgressGrid({ title, columns, techs }: { title: string; columns: Array
         <tbody>
           {techs.map((t) => (
             <tr key={t.id}>
-              <td className="sticky left-0 whitespace-nowrap bg-panel pr-4">
+              <td className="sticky left-0 whitespace-nowrap bg-card pr-4">
                 {t.name}{t.isApprentice && <span className="ml-1.5 text-xs text-faint">(apprentice)</span>}
                 {t.status === 'invited' && <span className="ml-2"><Badge tone="amber">not signed up</Badge></span>}
               </td>
@@ -163,7 +163,7 @@ function ProgressGrid({ title, columns, techs }: { title: string; columns: Array
                 const s = t.modules[c.id];
                 return (
                   <td key={c.id} className="px-0.5 text-center">
-                    <span title={`${c.id} · ${c.title}`} className={`inline-block h-5 w-5 rounded ${s === 'done' ? 'bg-good' : s === 'started' ? 'bg-amber' : 'bg-white/10'}`} />
+                    <span title={`${c.id} · ${c.title}`} className={`inline-block h-5 w-5 rounded ${s === 'done' ? 'bg-good' : s === 'started' ? 'bg-amber' : 'bg-tone/10'}`} />
                   </td>
                 );
               })}
@@ -217,12 +217,12 @@ export function UsersPage() {
       </PageHead>
       <div className="mb-4 flex flex-wrap items-center gap-2">
         {(['all', 'techs', 'office'] as const).map((f) => (
-          <button key={f} onClick={() => setFilter(f)} className={`rounded-xl px-3 py-1.5 text-sm ${filter === f ? 'bg-blue/25 text-white' : 'text-muted hover:bg-white/5'}`}>
+          <button key={f} onClick={() => setFilter(f)} className={`rounded-xl px-3 py-1.5 text-sm ${filter === f ? 'bg-soft font-semibold text-title shadow-[inset_0_0_0_1px_rgba(0,173,237,.22)]' : 'text-muted hover:bg-tone/5'}`}>
             {f === 'all' ? 'Everyone' : f === 'techs' ? 'Field techs' : 'Office'}
           </button>
         ))}
         <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search…"
-          className="ml-auto w-56 rounded-xl border border-line bg-ink px-3 py-1.5 text-sm focus:border-blue2 focus:outline-none" />
+          className="ml-auto w-56 rounded-[6px] border border-line bg-card px-3 py-1.5 text-sm text-title focus:border-brand focus:outline-none" />
       </div>
       <ErrorNote error={actionError} />
       <Card className="mt-3 overflow-x-auto">
@@ -232,7 +232,7 @@ export function UsersPage() {
           </thead>
           <tbody className="divide-y divide-line">
             {list.map((u) => (
-              <tr key={u.id} className="hover:bg-white/[0.02]">
+              <tr key={u.id} className="hover:bg-tone/[0.02]">
                 <td className="p-3">
                   <div className="font-medium">{u.name}</div>
                   <div className="text-xs text-faint">{u.position}</div>
@@ -292,7 +292,7 @@ function LinkModal({ link, onClose }: { link: { user: User; url: string; kind: s
     <Modal title={`${link.kind === 'invite' ? 'Invite' : 'Reset'} link for ${link.user.name}`} onClose={onClose}>
       <div className="flex justify-center"><Qr value={link.url} className="h-56 w-56" /></div>
       <p className="mt-3 text-center text-sm text-muted">They can scan this from your screen, or you can send the link.</p>
-      <div className="mt-4 break-all rounded-xl bg-ink p-3 text-xs text-muted">{link.url}</div>
+      <div className="mt-4 break-all rounded-[10px] bg-tone/5 p-3 text-xs text-muted">{link.url}</div>
       <div className="mt-3 grid grid-cols-2 gap-2">
         <Button variant="ghost" onClick={() => copy(link.url)}>{copied ? 'Copied ✓' : 'Copy link'}</Button>
         <Button onClick={() => copy(message)}>Copy message</Button>
@@ -322,8 +322,8 @@ function UserModal({ user, onClose, onSaved }: { user: User | null; onClose: () 
     }
   };
   const flag = (k: keyof typeof form, label: string, hint: string) => (
-    <label className="flex items-start gap-3 rounded-xl px-2 py-1.5 hover:bg-white/5">
-      <input type="checkbox" className="mt-1 h-4 w-4 accent-blue" checked={!!form[k]} onChange={(e) => set(k, e.target.checked)} />
+    <label className="flex items-start gap-3 rounded-xl px-2 py-1.5 hover:bg-tone/5">
+      <input type="checkbox" className="mt-1 h-4 w-4 accent-brand" checked={!!form[k]} onChange={(e) => set(k, e.target.checked)} />
       <span><span className="block text-sm font-medium">{label}</span><span className="block text-xs text-faint">{hint}</span></span>
     </label>
   );
@@ -336,7 +336,7 @@ function UserModal({ user, onClose, onSaved }: { user: User | null; onClose: () 
           <Field label="Position" value={form.position} onChange={(e) => set('position', e.target.value)} />
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-muted">Training path</span>
-            <select value={form.tradeRole} onChange={(e) => set('tradeRole', e.target.value)} className="w-full rounded-xl border border-line bg-ink px-4 py-3">
+            <select value={form.tradeRole} onChange={(e) => set('tradeRole', e.target.value)} className="w-full rounded-[6px] border border-line bg-card px-4 py-3 text-title">
               <option value="">None (office staff)</option>
               <option value="install">Install Tech</option>
               <option value="service">Service Tech</option>
@@ -452,7 +452,7 @@ function NewClassModal({ meta, onClose, onCreated }: { meta: Meta; onClose: () =
       <form onSubmit={save} className="space-y-4">
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-muted">Start from the 8-week plan (optional)</span>
-          <select defaultValue="" onChange={(e) => applyPreset(Number(e.target.value))} className="w-full rounded-xl border border-line bg-ink px-4 py-3">
+          <select defaultValue="" onChange={(e) => applyPreset(Number(e.target.value))} className="w-full rounded-[6px] border border-line bg-card px-4 py-3 text-title">
             <option value="" disabled>Choose a week…</option>
             {presets.map((p, i) => (
               <option key={i} value={i}>Week {p.week} · {meta.groups.find((g) => g.id === p.group)?.name ?? p.group} · {p.modules.join(', ')}</option>
@@ -463,7 +463,7 @@ function NewClassModal({ meta, onClose, onCreated }: { meta: Meta; onClose: () =
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-muted">Who's it for</span>
-            <select value={groupId} onChange={(e) => setGroupId(e.target.value)} className="w-full rounded-xl border border-line bg-ink px-4 py-3">
+            <select value={groupId} onChange={(e) => setGroupId(e.target.value)} className="w-full rounded-[6px] border border-line bg-card px-4 py-3 text-title">
               {meta.groups.map((g) => <option key={g.id} value={g.id}>{g.name}</option>)}
             </select>
           </label>
@@ -477,8 +477,8 @@ function NewClassModal({ meta, onClose, onCreated }: { meta: Meta; onClose: () =
                 <div className="mb-1 text-xs font-semibold uppercase tracking-widest text-faint">{p.name}</div>
                 <div className="grid gap-1 sm:grid-cols-2">
                   {p.modules.map((m) => (
-                    <label key={m.id} className="flex items-center gap-2 rounded-lg px-2 py-1 text-sm hover:bg-white/5">
-                      <input type="checkbox" className="accent-blue" checked={moduleIds.includes(m.id)} onChange={() => toggle(m.id)} />
+                    <label key={m.id} className="flex items-center gap-2 rounded-lg px-2 py-1 text-sm hover:bg-tone/5">
+                      <input type="checkbox" className="accent-brand" checked={moduleIds.includes(m.id)} onChange={() => toggle(m.id)} />
                       <span className="text-faint">{m.id}</span><span className="truncate">{m.title}</span>
                       {m.quizLength > 0 && <span className="ml-auto text-xs text-good">quiz</span>}
                     </label>
@@ -509,10 +509,10 @@ export function ContentPage() {
       <div className="grid gap-5 xl:grid-cols-2">
         {meta.data.paths.map((p) => (
           <Card key={p.id} className="p-5">
-            <h2 className="mb-3 font-bold">{p.name} <span className="text-muted">({p.modules.length})</span></h2>
+            <h2 className="mb-3 font-bold text-title">{p.name} <span className="text-muted">({p.modules.length})</span></h2>
             <div className="divide-y divide-line">
               {p.modules.map((m) => (
-                <Link key={m.id} to={`/admin/content/${m.id}`} className="flex items-center gap-3 py-2 hover:text-cyan">
+                <Link key={m.id} to={`/admin/content/${m.id}`} className="flex items-center gap-3 py-2 hover:text-link">
                   <span className="w-9 text-xs text-faint">{m.id}</span>
                   <span className="flex-1 text-sm">{m.title}</span>
                   {m.lessonsWritten > 0 && (
@@ -554,10 +554,10 @@ export function PreviewPage() {
       <Link to="/admin/content" className="text-sm text-muted">← Content</Link>
       <PageHead title={m.title} sub={`${m.pathName} · module ${m.position} of ${m.moduleCount} · ${data.deck.length} slides`}>
         <label className="flex items-center gap-2 text-sm text-muted">
-          <input type="checkbox" className="accent-blue" checked={answers} onChange={(e) => setAnswers(e.target.checked)} /> Show answers and full notes
+          <input type="checkbox" className="accent-brand" checked={answers} onChange={(e) => setAnswers(e.target.checked)} /> Show answers and full notes
         </label>
       </PageHead>
-      <Stage className="aspect-video w-full max-w-6xl rounded-2xl border border-line">
+      <Stage className="theme-dark aspect-video w-full max-w-6xl rounded-[20px] shadow-panel">
         <TvSlide slide={data.deck[i]} presenter={answers} slideNumber={i + 1} slideCount={data.deck.length} />
       </Stage>
       <div className="mt-4 flex max-w-6xl items-center gap-3">
@@ -567,11 +567,11 @@ export function PreviewPage() {
       </div>
       <div className="mt-6 grid max-w-6xl gap-5 lg:grid-cols-2">
         <Card className="p-5">
-          <h2 className="mb-2 font-bold">Key points</h2>
+          <h2 className="mb-2 font-bold text-title">Key points</h2>
           <ol className="list-decimal space-y-2 pl-5 text-sm">{m.keyPoints.map((k: string, n: number) => <li key={n}><Marked text={k} /></li>)}</ol>
         </Card>
         <Card className="p-5">
-          <h2 className="mb-2 font-bold">Lessons</h2>
+          <h2 className="mb-2 font-bold text-title">Lessons</h2>
           <ol className="list-decimal space-y-1 pl-5 text-sm">{m.lessons.map((l: string, n: number) => <li key={n}><Marked text={l} /></li>)}</ol>
           <p className="mt-3 text-xs text-faint">
             {m.lessonsWritten ? `${m.lessonsWritten} of ${m.lessons.length} lessons written. ` : 'Lessons not written yet. '}
@@ -582,12 +582,12 @@ export function PreviewPage() {
       {data.lessons && data.lessons.lessons.length > 0 && (
         <section className="mt-8 max-w-3xl">
           <div className="mb-4 flex flex-wrap items-center gap-3">
-            <h2 className="text-xl font-bold">Written lessons</h2>
+            <h2 className="headline text-xl">Written lessons</h2>
             <Badge tone={data.lessons.status === 'approved' ? 'good' : 'amber'}>{data.lessons.status}</Badge>
           </div>
           <div className="space-y-4">
             {data.lessons.lessons.map((l, n) => (
-              <details key={n} className="group rounded-2xl border border-line bg-panel" open={n === 0}>
+              <details key={n} className="group rounded-[12px] bg-card shadow-card" open={n === 0}>
                 <summary className="flex cursor-pointer list-none items-start gap-3 p-5">
                   <b className="headline text-gold">{n + 1}</b>
                   <span className="flex-1 font-semibold"><Marked text={l.title} /></span>
@@ -616,7 +616,7 @@ export function NeedsAnswersPage() {
       <PageHead title="Needs answers" sub={`${data.items.length} items marked CONFIRM or VERIFY. They show as "to be confirmed" on the TV until they're answered.`} />
       {Object.entries(groups).map(([name, items]) => (
         <Card key={name} className="mb-5 p-5">
-          <h2 className="mb-3 font-bold">{name} <span className="text-muted">({items.length})</span></h2>
+          <h2 className="mb-3 font-bold text-title">{name} <span className="text-muted">({items.length})</span></h2>
           <div className="divide-y divide-line">
             {items.map((it, i) => (
               <div key={i} className="flex gap-4 py-2.5 text-sm">
