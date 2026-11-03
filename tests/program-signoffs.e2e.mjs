@@ -14,6 +14,7 @@ const BASE = process.env.E2E_BASE || 'http://localhost:3100';
 const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL || 'admin@proximityplumbing.com.au';
 const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD || 'longpassword1';
 const SHOTS = process.env.E2E_SHOTS || '';
+const JOB = `E2E-${Date.now() % 1000000}`;
 const shot = async (page, name) => SHOTS && page.screenshot({ path: path.join(SHOTS, `${name}.png`), fullPage: true });
 const assert = (cond, msg) => { if (!cond) throw new Error(`ASSERTION FAILED: ${msg}`); console.log(`  ✓ ${msg}`); };
 
@@ -91,14 +92,22 @@ async function main() {
 
   console.log('Tech requests a sign-off…');
   const t = await ctxFor('e2e+1@example.com', 'e2e-test-pass', { width: 375, height: 812 });
+  // Approved sign-offs can't be undone, so use a module where this tech still has two untouched items.
+  const trade = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'trade-paths.json'), 'utf8'));
+  let mod = null;
+  for (const m of trade.paths.filter((p) => ['field', 'install'].includes(p.id)).flatMap((p) => p.modules)) {
+    const d = await (await t.request.get(`${BASE}/api/modules/${m.id}`)).json();
+    if ((m.signoff ?? []).length - d.signoffs.length >= 2) { mod = m.id; break; }
+  }
+  assert(mod, `using module ${mod} for the sign-off test`);
   const tp = await t.newPage(); watch(tp);
   await tp.goto(`${BASE}/`);
   await tp.getByText('Week 2 of 8').waitFor();
   assert(await tp.getByText(/Overdue:/).isVisible(), 'phone shows overdue week 1 modules');
   await shot(tp, 'phone-home-this-week');
-  await tp.goto(`${BASE}/module/f1`);
+  await tp.goto(`${BASE}/module/${mod}`);
   await tp.getByRole('button', { name: 'Request sign-off' }).first().click();
-  await tp.getByLabel('ServiceTitan job number').fill('E2E-4401');
+  await tp.getByLabel('ServiceTitan job number').fill(JOB);
   const img = path.join(process.env.TMPDIR || '/tmp', `e2e-photo-${process.pid}.png`);
   png(img);
   await tp.locator('input[type=file]').setInputFiles(img);
@@ -120,12 +129,12 @@ async function main() {
   await lp.getByText(/Sign-offs? waiting for you/).waitFor();
   assert(true, 'lead tech sees "waiting for you" on their home screen');
   await lp.getByText(/Sign-offs? waiting for you/).click();
-  await lp.getByText('E2E-4401').waitFor();
+  await lp.getByText(JOB).waitFor();
   assert(await lp.getByAltText('Evidence').first().isVisible(), 'evidence photo shows for the reviewer');
   await shot(lp, 'phone-review');
-  const card = lp.locator('div').filter({ hasText: 'E2E-4401' }).filter({ has: lp.getByRole('button', { name: /Sign off/ }) }).last();
+  const card = lp.locator('div').filter({ hasText: JOB }).filter({ has: lp.getByRole('button', { name: /Sign off/ }) }).last();
   await card.getByRole('button', { name: /Sign off/ }).click();
-  await lp.getByText('E2E-4401').waitFor({ state: 'detached' });
+  await lp.getByText(JOB).waitFor({ state: 'detached' });
   assert(true, 'lead tech signed it off');
   await lp.getByRole('button', { name: 'Send back' }).first().click();
   await lp.getByPlaceholder(/What do they need/).fill('Show me on the next job, with photos of the finished install.');
@@ -143,7 +152,7 @@ async function main() {
   console.log('Admin…');
   await a.goto(`${BASE}/admin/signoffs`);
   await a.getByRole('button', { name: 'Signed off' }).click();
-  await a.getByText('E2E-4401').waitFor();
+  await a.getByText(JOB).waitFor();
   assert(true, 'admin sees the approved sign-off');
   await shot(a, 'admin-signoffs');
   await a.goto(`${BASE}/admin`);

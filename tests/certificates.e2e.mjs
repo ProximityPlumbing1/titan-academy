@@ -13,7 +13,6 @@ const { chromium } = require('playwright');
 const BASE = process.env.E2E_BASE || 'http://localhost:3100';
 const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL || 'admin@proximityplumbing.com.au';
 const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD || 'longpassword1';
-const TECH = 'e2e+4@example.com';
 const SHOTS = process.env.E2E_SHOTS || '';
 const shot = async (page, name) => SHOTS && page.screenshot({ path: path.join(SHOTS, `${name}.png`), fullPage: true });
 const assert = (cond, msg) => { if (!cond) throw new Error(`ASSERTION FAILED: ${msg}`); console.log(`  ✓ ${msg}`); };
@@ -33,16 +32,21 @@ async function main() {
     return ctx;
   };
   const admin = await ctxFor(ADMIN_EMAIL, ADMIN_PASSWORD, { width: 1440, height: 900 });
-  const tech = await ctxFor(TECH, 'e2e-test-pass', { width: 375, height: 812 });
+  // A passed final can't be undone, so each run uses a test tech who hasn't passed it yet.
+  let tech = null;
+  for (let n = 4; n <= 11 && !tech; n++) {
+    const c = await ctxFor(`e2e+${n}@example.com`, 'e2e-test-pass', { width: 375, height: 812 });
+    const meU = (await (await c.request.get(`${BASE}/api/auth/me`)).json()).user;
+    const cert = await (await c.request.get(`${BASE}/api/me/certificate`)).json();
+    if (!meU.isApprentice && !cert.certificate && !cert.status?.final.passed) tech = c; else await c.close();
+  }
+  if (!tech) throw new Error('No unused test tech left (e2e+4 to e2e+11). Reset the test database.');
   const A = (method, url, data) => admin.request.fetch(`${BASE}${url}`, { method, data, headers: { 'x-titan': '1' } });
   const T = (method, url, data) => tech.request.fetch(`${BASE}${url}`, { method, data, headers: { 'x-titan': '1' } });
 
   console.log('Setting up…');
   const me = (await (await T('GET', '/api/auth/me')).json()).user;
   assert(me.tradeRole === 'install' && !me.isApprentice, 'test tech is a (non-apprentice) Install Tech');
-  const certs = await (await A('GET', '/api/admin/certificates')).json();
-  const existing = certs.techs.find((t) => t.id === me.id)?.certificate;
-  if (existing) await A('POST', `/api/admin/certificates/${encodeURIComponent(existing.number)}/revoke`, { reason: 'e2e reset' });
   await A('POST', '/api/admin/final/open', { open: false });
   const modules = trade.paths.filter((p) => ['field', 'install'].includes(p.id)).flatMap((p) => p.modules);
   for (const m of modules) await T('POST', `/api/modules/${m.id}/quiz`, { answers: quizzes[m.id].questions.map((x) => x.correct) });
@@ -114,7 +118,7 @@ async function main() {
   await a.reload();
   await a.getByText(number).waitFor();
   await shot(a, 'admin-certificates');
-  await a.getByRole('button', { name: 'Revoke' }).first().click();
+  await a.locator('tr').filter({ hasText: number }).getByRole('button', { name: 'Revoke' }).click();
   await a.getByPlaceholder(/Reason/).fill('e2e test');
   await a.getByRole('button', { name: 'Revoke', exact: true }).last().click();
   await a.getByText('Revoked', { exact: true }).waitFor();
