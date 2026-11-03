@@ -110,3 +110,12 @@ answered in `data/trade-paths.json`.
 - **Who gets sign-off requests:** set on each person in People & logins under "Receives sign-off requests". Lead techs get technical items for their own trade. When the Install Manager is hired, tick Install Manager (and Can sign off anything) on them and untick it on Charlotte.
 - **Reviewing:** reviewers see "Sign-offs waiting for you" on their phone home screen, or use Admin → Sign-offs. Sending one back needs a note saying what to do.
 - **Test:** `E2E_BASE=http://localhost:3000 npm run e2e:program` (test database only: it ends any running program and changes test users' flags).
+
+## Final assessment and certificates
+- **Before week 8:** Admin → Final & certificates → upload William's signature (a PNG with a transparent background works best) and press "Preview a sample certificate".
+- **In the week 8 session:** press "Open the final assessment". Techs see a banner on their phone. Each gets 25 questions from their role's pool; 80% passes; they get two sittings. Use "+1 attempt" for anyone who needs another. Close it after the session.
+- **Sales Techs:** tick "Role-play" for each one who passes the live role-play round (William, Harriet or anyone who can sign off anything).
+- **Certificates issue themselves** the moment a tech has every module quiz, every sign-off, the final (and the role-play round for Sales). "Issue now" is there in case one is ever missed.
+- **Revoke and reissue:** revoke with a reason (for example when an apprentice becomes licensed), update their details (untick Apprentice), then press Issue now. The old number shows as not valid on the verification page.
+- **Question pools** are drafts in `content/final/<role>.json`. Changing them doesn't affect sittings already started.
+- **Test:** `E2E_BASE=http://localhost:3000 npm run e2e:certificates` (test database only).
