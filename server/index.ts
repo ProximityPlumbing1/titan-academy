@@ -4,6 +4,7 @@ import Fastify from 'fastify';
 import cookie from '@fastify/cookie';
 import websocket from '@fastify/websocket';
 import fastifyStatic from '@fastify/static';
+import fastifyCompress from '@fastify/compress';
 import { config } from './config.js';
 import { pool } from './db.js';
 import { COOKIE, HttpError, userFromToken } from './auth.js';
@@ -36,8 +37,8 @@ app.addHook('onSend', async (_req, reply, payload) => {
   reply.header('x-frame-options', 'DENY');
   reply.header(
     'content-security-policy',
-    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-      "font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' ws: wss:; frame-ancestors 'none'",
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; " +
+      "font-src 'self'; img-src 'self' data: blob:; connect-src 'self' ws: wss:; frame-ancestors 'none'",
   );
   return payload;
 });
@@ -54,6 +55,8 @@ app.get('/health', async () => {
   return { ok: true, app: 'titan-academy' };
 });
 
+// API responses are compressed on the fly (JSON, CSV); images, PDFs and the static files are left alone.
+await app.register(fastifyCompress, { global: true, threshold: 1024, encodings: ['br', 'gzip'] });
 await registerRoutes(app);
 await registerLive(app);
 await registerProgram(app);
@@ -65,6 +68,7 @@ if (fs.existsSync(webDir)) {
   await app.register(fastifyStatic, {
     root: webDir,
     wildcard: false,
+    preCompressed: true, // serves the .br/.gz copies written at build time
     setHeaders: (res: any, filePath: string) => {
       const value = filePath.includes(`${path.sep}assets${path.sep}`) ? 'public, max-age=31536000, immutable' : 'no-cache';
       if (typeof res.setHeader === 'function') res.setHeader('cache-control', value);

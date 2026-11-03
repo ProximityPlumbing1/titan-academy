@@ -211,7 +211,7 @@ export function ThisWeek() {
           {thisWeek.map((m) => (
             <li key={m.id}>
               <Link to={`/module/${m.id}`} className="flex items-center gap-3">
-                <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${m.done ? 'bg-good text-white' : 'bg-tone/5 text-faint'}`}>{m.done ? '✓' : ''}</span>
+                <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${m.done ? 'bg-good text-white' : 'bg-tone/5 text-muted'}`}>{m.done ? '✓' : ''}</span>
                 <span className="min-w-0 flex-1 truncate text-sm font-medium text-title">{m.title}</span>
                 <span className="shrink-0 text-xs text-faint">due {fmtDate(m.due)}</span>
               </Link>
@@ -261,7 +261,7 @@ export function SignoffSection({ moduleId, items, assessor, signoffs, inMyPath, 
             <div key={i} className="p-4">
               <div className="flex gap-3">
                 <span className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
-                  s?.status === 'approved' ? 'bg-good text-white' : s?.status === 'waiting' ? 'bg-soft text-link' : s?.status === 'returned' ? 'bg-bad/10 text-bad' : 'bg-tone/5 text-faint'}`}>
+                  s?.status === 'approved' ? 'bg-good text-white' : s?.status === 'waiting' ? 'bg-soft text-link' : s?.status === 'returned' ? 'bg-bad/10 text-bad' : 'bg-tone/5 text-muted'}`}>
                   {s?.status === 'approved' ? '✓' : s?.status === 'waiting' ? '…' : s?.status === 'returned' ? '!' : i + 1}
                 </span>
                 <div className="min-w-0 flex-1">

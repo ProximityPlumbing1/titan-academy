@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useState, type React
 import { Navigate, useLocation } from 'react-router-dom';
 import { api } from './api';
 import { Loading } from './ui';
+import { clearUserCache, flushQueue } from './offline';
 
 export interface User {
   id: string; name: string; email: string | null; status: 'invited' | 'active' | 'disabled'; position: string | null;
@@ -20,7 +21,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const refresh = useCallback(async () => {
     try {
-      setUser((await api<{ user: User | null }>('/api/auth/me')).user);
+      const u = (await api<{ user: User | null }>('/api/auth/me')).user;
+      // A different person on this device: drop the previous person's offline copy first.
+      let last: string | null = null;
+      try { last = localStorage.getItem('titan:lastUser'); } catch { /* storage blocked */ }
+      if (u && last && last !== u.id) await clearUserCache();
+      if (u) { try { localStorage.setItem('titan:lastUser', u.id); } catch { /* storage blocked */ } void flushQueue(u.id); }
+      setUser(u);
     } catch {
       setUser(null);
     } finally {
@@ -29,12 +36,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
   const logout = useCallback(async () => {
     await api('/api/auth/logout', { body: {} }).catch(() => {});
+    await clearUserCache();
+    try { localStorage.removeItem('titan:lastUser'); } catch { /* storage blocked */ }
     setUser(null);
     location.href = '/login';
   }, []);
   useEffect(() => {
     void refresh();
   }, [refresh]);
+  useEffect(() => {
+    if (!user) return;
+    const on = () => void flushQueue(user.id);
+    window.addEventListener('online', on);
+    return () => window.removeEventListener('online', on);
+  }, [user]);
   return <Ctx.Provider value={{ user, loading, refresh, logout }}>{children}</Ctx.Provider>;
 }
 

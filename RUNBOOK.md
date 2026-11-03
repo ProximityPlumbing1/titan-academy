@@ -127,3 +127,10 @@ answered in `data/trade-paths.json`.
 - **Sales scoreboard:** Admin → Sales scoreboard. Harriet (or an admin) enters each Sales Tech's baseline (their last 90 days) and weekly numbers from ServiceTitan. Sales Techs see their two numbers on their phone.
 - **Week 8 TV:** the final-assessment class has a "Certified" slide that fills with names as people certify.
 - **Test:** `E2E_BASE=http://localhost:3000 npm run e2e:gaps` (test database only; run `e2e:program` first so a week 8 class exists).
+
+## Offline, installing and quality checks
+- **No signal on site:** lessons a tech has opened still load; lessons finished offline are queued on the phone and sent when signal returns. Quizzes and sign-off requests need signal: the app says so and keeps what they entered.
+- **Shared devices:** signing out wipes the offline copy, and a different person signing in on the same device clears the previous person's copy first.
+- **Install on a phone:** iPhone: Safari → Share → Add to Home Screen. Android: Chrome → menu → Install app.
+- **Speed:** built files are compressed at build time (`scripts/compress.mjs`, Brotli and gzip) and API responses on the fly.
+- **Checks before a release:** `npm test`, then against a test database `npm run e2e`, `e2e:program`, `e2e:certificates`, `e2e:gaps`, `e2e:offline` and `audit:a11y` (WCAG 2.1 AA with axe). Lighthouse mobile on 3 Nov 2026: performance 94–98, accessibility 100, best practices 100.

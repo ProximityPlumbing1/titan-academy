@@ -8,7 +8,7 @@
     "node": "22.x"
   },
   "scripts": {
-    "build": "tsc -p server/tsconfig.json && vite build",
+    "build": "tsc -p server/tsconfig.json && vite build && node scripts/compress.mjs",
     "migrate": "node dist/server/migrate.js",
     "start": "node dist/server/index.js",
     "dev:server": "tsx watch server/index.ts",
@@ -18,9 +18,12 @@
     "e2e": "node tests/live-class.e2e.mjs",
     "e2e:program": "node tests/program-signoffs.e2e.mjs",
     "e2e:certificates": "node tests/certificates.e2e.mjs",
-    "e2e:gaps": "node tests/gaps.e2e.mjs"
+    "e2e:gaps": "node tests/gaps.e2e.mjs",
+    "audit:a11y": "node tests/a11y.mjs",
+    "e2e:offline": "node tests/offline.e2e.mjs"
   },
   "dependencies": {
+    "@fastify/compress": "^8.3.1",
     "@fastify/cookie": "^11.1.5",
     "@fastify/static": "^10.1.8",
     "@fastify/websocket": "^11.3.6",
@@ -47,6 +50,7 @@
     "vite": "^8.3.5"
   },
   "devDependencies": {
+    "axe-core": "^4.10.3",
     "tsx": "^4.23.15",
     "vitest": "^5.0.5"
   }

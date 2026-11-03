@@ -1,12 +1,11 @@
 import { useEffect, useState, type ButtonHTMLAttributes, type InputHTMLAttributes, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import QRCode from 'qrcode';
 import { splitMarkers } from '../../shared/types';
 
 type Variant = 'primary' | 'ghost' | 'danger' | 'gold' | 'subtle';
 const VARIANTS: Record<Variant, string> = {
   primary: 'border-[1.5px] border-brand bg-brand text-white hover:border-brand2 hover:bg-brand2',
-  gold: 'border-[1.5px] border-gold bg-gold text-white hover:brightness-110',
+  gold: 'border-[1.5px] border-[#d4a94a] bg-[#d4a94a] text-navy hover:brightness-105',
   danger: 'border-[1.5px] border-bad bg-bad text-white hover:brightness-110',
   // The website's secondary button: white with a cyan border and cyan text.
   ghost: 'border-[1.5px] border-brand bg-card text-link hover:bg-brand hover:text-white',
@@ -70,7 +69,7 @@ export function Ring({ pct, size = 96, stroke = 9, color = 'var(--color-brand)',
 export function Badge({ children, tone = 'muted' }: { children: ReactNode; tone?: 'muted' | 'good' | 'amber' | 'bad' | 'cyan' | 'gold' }) {
   const t = {
     muted: 'bg-tone/8 text-muted', good: 'bg-good/15 text-good', amber: 'bg-amber/15 text-amber',
-    bad: 'bg-bad/10 text-bad', cyan: 'bg-soft text-link', gold: 'bg-gold/15 text-gold',
+    bad: 'bg-bad/10 text-bad', cyan: 'bg-soft text-link', gold: 'bg-gold/15 text-goldtext',
   }[tone];
   return <span className={`inline-flex items-center whitespace-nowrap rounded-full px-2.5 py-0.5 text-xs font-semibold ${t}`}>{children}</span>;
 }
@@ -130,7 +129,9 @@ export function Modal({ title, onClose, children, wide }: { title: string; onClo
 export function Qr({ value, className = '' }: { value: string; className?: string }) {
   const [svg, setSvg] = useState('');
   useEffect(() => {
-    QRCode.toString(value, { type: 'svg', margin: 1, errorCorrectionLevel: 'M', color: { dark: '#1a2332', light: '#ffffff' } })
+    // Loaded on demand: only the admin and TV screens show QR codes.
+    import('qrcode')
+      .then((QRCode) => QRCode.toString(value, { type: 'svg', margin: 1, errorCorrectionLevel: 'M', color: { dark: '#1a2332', light: '#ffffff' } }))
       .then(setSvg)
       .catch(() => setSvg(''));
   }, [value]);

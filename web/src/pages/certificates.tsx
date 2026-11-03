@@ -24,7 +24,7 @@ export function FinalBanner() {
   const { data } = useApi<FinalInfo>('/api/me/final');
   if (!data?.open || !data.role || data.final.passed || data.final.used >= data.final.allowed) return null;
   return (
-    <Link to="/final" className="mb-4 block rounded-[20px] bg-gradient-to-br from-[#0bbdff] to-brand p-5 text-white shadow-glow fade-in">
+    <Link to="/final" className="mb-4 block rounded-[20px] bg-gradient-to-br from-[#0085ba] to-[#006e9e] p-5 text-white shadow-glow fade-in">
       <div className="text-xs font-bold uppercase tracking-widest">Week 8</div>
       <div className="mt-1 text-lg font-bold">The final assessment is open</div>
       <div className="mt-3 inline-block rounded-[10px] bg-white px-4 py-2.5 font-bold text-link">{data.inProgress ? 'Carry on →' : 'Start →'}</div>
@@ -153,7 +153,7 @@ export function CertificateBanner() {
     <Link to="/certificate" className="mb-4 flex items-center gap-4 rounded-[20px] bg-card p-4 shadow-[inset_0_0_0_2px_var(--color-gold),var(--shadow-card)] fade-in">
       <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 text-2xl">🏅</span>
       <span className="min-w-0 flex-1">
-        <span className="block text-xs font-bold uppercase tracking-widest text-gold">{data.certificate.seen_at ? 'Certified' : 'New: you’re certified!'}</span>
+        <span className="block text-xs font-bold uppercase tracking-widest text-goldtext">{data.certificate.seen_at ? 'Certified' : 'New: you’re certified!'}</span>
         <span className="block truncate font-bold text-title">{data.certificate.title}</span>
       </span>
       <span className="text-gold">›</span>
@@ -173,7 +173,7 @@ export function CertificatePage() {
     const s = data.status;
     const row = (label: string, ok: boolean, detail: string) => (
       <li className="flex items-center gap-3 py-3">
-        <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-bold ${ok ? 'bg-good text-white' : 'bg-tone/5 text-faint'}`}>{ok ? '✓' : ''}</span>
+        <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-bold ${ok ? 'bg-good text-white' : 'bg-tone/5 text-muted'}`}>{ok ? '✓' : ''}</span>
         <span className="flex-1 font-medium text-title">{label}</span>
         <span className="text-sm text-muted">{detail}</span>
       </li>

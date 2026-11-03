@@ -1,17 +1,41 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense, lazy, type ComponentType } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+// Fonts are served from our own domain: faster than Google Fonts, and they work offline.
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
+import '@fontsource/fraunces/500-italic.css';
+import '@fontsource/fraunces/600-italic.css';
 import './styles.css';
+import { Loading } from './ui';
+import { registerServiceWorker } from './offline';
 import { AuthProvider, RequireAuth } from './auth';
 import { LinkPage, LoginPage, SetupPage } from './pages/auth';
 import { HomePage, JoinPage, LessonPage, ModulePage, QuizPage } from './pages/learner';
-import { FollowPage, PresentPage, TvPage } from './pages/live';
-import { ProgramPage, ReviewPage, SignoffsAdminPage } from './pages/program';
-import { ScoreboardPage } from './pages/scoreboard';
-import { CertificatePage, CertificatesAdminPage, FinalPage, VerifyPage } from './pages/certificates';
-import {
-  AdminLayout, ClassesPage, ContentPage, DashboardPage, NeedsAnswersPage, PreviewPage, UsersPage,
-} from './pages/admin';
+import { ReviewPage } from './pages/program';
+import { CertificatePage, FinalPage, VerifyPage } from './pages/certificates';
+
+// Admin, presenter and TV screens load on demand, so techs' phones don't download them.
+const pick = <M, K extends keyof M>(load: () => Promise<M>, key: K) =>
+  lazy(() => load().then((m) => ({ default: m[key] as unknown as ComponentType })));
+const live = () => import('./pages/live');
+const admin = () => import('./pages/admin');
+const FollowPage = pick(live, 'FollowPage');
+const PresentPage = pick(live, 'PresentPage');
+const TvPage = pick(live, 'TvPage');
+const AdminLayout = pick(admin, 'AdminLayout');
+const DashboardPage = pick(admin, 'DashboardPage');
+const UsersPage = pick(admin, 'UsersPage');
+const ClassesPage = pick(admin, 'ClassesPage');
+const ContentPage = pick(admin, 'ContentPage');
+const PreviewPage = pick(admin, 'PreviewPage');
+const NeedsAnswersPage = pick(admin, 'NeedsAnswersPage');
+const ProgramPage = pick(() => import('./pages/program'), 'ProgramPage');
+const SignoffsAdminPage = pick(() => import('./pages/program'), 'SignoffsAdminPage');
+const CertificatesAdminPage = pick(() => import('./pages/certificates'), 'CertificatesAdminPage');
+const ScoreboardPage = pick(() => import('./pages/scoreboard'), 'ScoreboardPage');
 
 function NotFound() {
   return (
@@ -26,6 +50,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
+        <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/setup" element={<SetupPage />} />
@@ -57,7 +82,10 @@ createRoot(document.getElementById('root')!).render(
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 );
+
+registerServiceWorker();

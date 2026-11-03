@@ -58,7 +58,9 @@ phones. It runs as an 8-week program and ends in a certificate.
 - Visual identity matches William's website (proximityplumbing.com.au; owner's decision, Nov 2026):
   light pages, white cards with soft shadows, Proximity cyan `#00aded`, dark titles `#33353d`,
   Inter extra-bold headings with one Fraunces italic emphasised word, gold `#d4a94a` for
-  certificates and achievements, circular progress rings. The TV uses the same light look. Tokens live in `web/src/styles.css`; the reference is `docs/brand/proximity-brand.css`.
+  certificates and achievements, circular progress rings. The TV uses the same light look.
+  For WCAG AA, buttons use a deeper cyan (`#007bb0`), small cyan text `#0075a8`, and section titles
+  `#0090c8`; the exact `#00aded` is kept for large decorative shapes. Check with `npm run audit:a11y`. Tokens live in `web/src/styles.css`; the reference is `docs/brand/proximity-brand.css`.
 
 ## Working style
 - Show a plan before each phase. Ask before a large architectural change.

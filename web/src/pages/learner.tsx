@@ -1,12 +1,13 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import type { LessonBlock } from '../../../shared/types';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { api, useApi } from '../api';
+import { api, prefetch, useApi } from '../api';
 import { canPresent, isStaff, useAuth } from '../auth';
 import { Badge, Button, Card, ErrorNote, Loading, Logo, Marked, Ring, firstName } from '../ui';
 import { ReviewBanner, SignoffSection, ThisWeek, type MySignoff } from './program';
 import { CertificateBanner, FinalBanner } from './certificates';
 import { MyNumbers } from './scoreboard';
+import { isOffline, queueLessonDone, queuedLessons, useOnline } from '../offline';
 
 interface Overview {
   paths: Array<{ id: string; name: string; summary: string; modules: Array<{ id: string; title: string; objective: string; lessonCount: number; lessonsWritten: number; quizLength: number; status: 'done' | 'started' | 'none' }> }>;
@@ -16,8 +17,14 @@ interface Overview {
 
 export function PhoneShell({ children, back }: { children: ReactNode; back?: string }) {
   const { user, logout } = useAuth();
+  const online = useOnline();
   return (
     <div className="mx-auto min-h-screen max-w-xl px-4 pb-16 pt-[max(16px,env(safe-area-inset-top))]">
+      {!online && (
+        <div role="status" className="mb-4 rounded-[10px] bg-navy px-4 py-2.5 text-sm text-white">
+          <b>You're offline.</b> Lessons you've opened still work, and lessons you finish are saved and sent when you're back in range.
+        </div>
+      )}
       <header className="mb-5 flex items-center justify-between">
         {back ? <Link to={back} className="rounded-lg py-2 pr-3 text-muted">← Back</Link> : <Logo small />}
         {user && (
@@ -35,22 +42,30 @@ export function PhoneShell({ children, back }: { children: ReactNode; back?: str
 const STATUS = {
   done: { icon: '✓', cls: 'bg-good text-white', label: 'Done' },
   started: { icon: '●', cls: 'bg-amber/20 text-amber', label: 'Started' },
-  none: { icon: '', cls: 'bg-tone/8 text-faint', label: '' },
+  none: { icon: '', cls: 'bg-tone/5 text-muted', label: '' },
 };
 
 export function HomePage() {
   const { user } = useAuth();
   const { data, error, loading } = useApi<Overview>('/api/me/overview');
-  if (loading) return <Loading />;
+  // Load the home screen's cards together, so the page appears once instead of jumping as each arrives.
+  const [extras, setExtras] = useState(false);
+  useEffect(() => {
+    void prefetch([
+      user?.tradeRole ? '/api/me/certificate' : null, '/api/me/final', user?.reviewsSignoffs ? '/api/review/signoffs' : null,
+      '/api/me/program', user?.tradeRole === 'salestech' ? '/api/me/numbers' : null,
+    ]).finally(() => setExtras(true));
+  }, [user]);
+  if (loading || !extras) return <Loading />;
   if (error || !data) return <PhoneShell><ErrorNote error={error?.message} /></PhoneShell>;
   const pct = data.total ? data.done / data.total : 0;
   const nextUp = data.paths.flatMap((p) => p.modules).find((m) => m.status !== 'done');
   return (
     <PhoneShell>
       {data.live.map((c) => (
-        <Link key={c.id} to={`/live/${c.code}`} className="mb-4 block rounded-[20px] bg-gradient-to-br from-[#0bbdff] to-brand p-5 text-white shadow-glow fade-in">
+        <Link key={c.id} to={`/live/${c.code}`} className="mb-4 block rounded-[20px] bg-gradient-to-br from-[#0085ba] to-[#006e9e] p-5 text-white shadow-glow fade-in">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest"><span className="h-2 w-2 animate-pulse rounded-full bg-white" /> Live now</div>
-          <div className="mt-1 text-lg font-bold text-title">{c.title}</div>
+          <div className="mt-1 text-lg font-bold">{c.title}</div>
           <div className="mt-3 inline-block rounded-[10px] bg-white px-4 py-2.5 font-bold text-link">Join class →</div>
         </Link>
       ))}
@@ -118,13 +133,14 @@ interface ModuleData {
 }
 
 export function ModulePage() {
+  const { user } = useAuth();
   const { id = '' } = useParams();
   const { data, error, loading, reload } = useApi<ModuleData>(`/api/modules/${id}`);
   const [busy, setBusy] = useState(false);
   if (loading) return <Loading />;
   if (error || !data) return <PhoneShell back="/"><ErrorNote error={error?.message} /></PhoneShell>;
   const m = data.module;
-  const done = new Set(data.doneLessons);
+  const done = new Set([...data.doneLessons, ...(user ? queuedLessons(user.id, id) : [])]);
   const firstUnread = m.lessons.findIndex((_, i) => i < m.lessonsWritten && !done.has(i));
   const markRead = async () => {
     setBusy(true);
@@ -148,7 +164,7 @@ export function ModulePage() {
           <Card className="divide-y divide-line">
             {m.lessons.map((l, i) => i < m.lessonsWritten ? (
               <Link key={i} to={`/module/${id}/lesson/${i + 1}`} className="flex items-center gap-3 px-4 py-3.5 hover:bg-tone/[0.03]">
-                <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-bold ${done.has(i) ? 'bg-good text-white' : 'bg-tone/5 text-faint'}`}>{done.has(i) ? '✓' : i + 1}</span>
+                <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-bold ${done.has(i) ? 'bg-good text-white' : 'bg-tone/5 text-muted'}`}>{done.has(i) ? '✓' : i + 1}</span>
                 <span className="min-w-0 flex-1 text-[15px] leading-snug"><Marked text={l} compact /></span>
                 <span className="text-faint">›</span>
               </Link>
@@ -221,7 +237,7 @@ export function LessonBlocks({ blocks }: { blocks: LessonBlock[] }) {
             <Tag key={i} className="space-y-2 pl-1">
               {b.items.map((t, j) => (
                 <li key={j} className="flex gap-3">
-                  <span className={b.type === 'ol' ? 'font-bold text-gold' : 'text-link'}>{b.type === 'ol' ? `${j + 1}.` : '•'}</span>
+                  <span className={b.type === 'ol' ? 'font-bold text-goldtext' : 'text-link'}>{b.type === 'ol' ? `${j + 1}.` : '•'}</span>
                   <span><Marked text={t} /></span>
                 </li>
               ))}
@@ -231,7 +247,7 @@ export function LessonBlocks({ blocks }: { blocks: LessonBlock[] }) {
         const style = b.kind === 'say'
           ? { box: 'border-brand bg-soft', label: 'Say it like this', labelCls: 'text-link' }
           : b.kind === 'onjob'
-            ? { box: 'border-gold bg-gold/[0.08]', label: 'On the job', labelCls: 'text-gold' }
+            ? { box: 'border-gold bg-gold/[0.08]', label: 'On the job', labelCls: 'text-goldtext' }
             : { box: 'border-line bg-tone/[0.03]', label: '', labelCls: '' };
         return (
           <div key={i} className={`rounded-xl border-l-4 p-4 ${style.box}`}>
@@ -245,6 +261,7 @@ export function LessonBlocks({ blocks }: { blocks: LessonBlock[] }) {
 }
 
 export function LessonPage() {
+  const { user } = useAuth();
   const { id = '', n = '1' } = useParams();
   const idx = Math.max(0, Number(n) - 1);
   const navigate = useNavigate();
@@ -258,10 +275,13 @@ export function LessonPage() {
     setBusy(true);
     try {
       await api(`/api/modules/${id}/lessons/${idx}/done`, { body: {} });
-      navigate(hasNext ? `/module/${id}/lesson/${idx + 2}` : `/module/${id}`);
+    } catch (e) {
+      if (!isOffline(e) || !user) throw e;
+      queueLessonDone(user.id, id, idx); // sent when signal returns
     } finally {
       setBusy(false);
     }
+    navigate(hasNext ? `/module/${id}/lesson/${idx + 2}` : `/module/${id}`);
   };
   return (
     <PhoneShell back={`/module/${id}`}>
@@ -296,6 +316,7 @@ export function QuizPage() {
   const { data, error, loading } = useApi<{ questions: Array<{ q: string; options: string[] }> }>(`/api/modules/${id}/quiz`);
   const [i, setI] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [result, setResult] = useState<{ score: number; passed: boolean; testedOut: boolean; lessonsLeft: number; results: Array<{ chosen: number | null; correct: number; why: string }> } | null>(null);
   const [busy, setBusy] = useState(false);
   if (loading) return <Loading />;
@@ -342,8 +363,11 @@ export function QuizPage() {
   const chosen = answers[i];
   const submit = async () => {
     setBusy(true);
+    setSubmitError(null);
     try {
       setResult(await api(`/api/modules/${id}/quiz`, { body: { answers } }));
+    } catch (e) {
+      setSubmitError((e as Error).message); // answers are kept, so they can just press Finish again
     } finally {
       setBusy(false);
     }
@@ -372,6 +396,7 @@ export function QuizPage() {
           <Button className="flex-1" size="lg" disabled={chosen === undefined || busy} onClick={submit}>{busy ? 'Marking…' : 'Finish'}</Button>
         )}
       </div>
+      <ErrorNote error={submitError} />
     </PhoneShell>
   );
 }

@@ -12,16 +12,18 @@
   --color-title: #33353d;       /* headings */
   --color-body: #4a4c55;        /* body text */
   --color-muted: #63656d;       /* secondary text */
-  --color-faint: #77787f;       /* captions */
-  --color-brand: #00aded;       /* Proximity cyan: buttons, rings, big headings */
-  --color-brand2: #0097cf;      /* button hover */
-  --color-link: #0083b8;        /* cyan for small text, readable on white */
+  --color-faint: #6e6f76;       /* captions (a touch darker than the site's #77787f, for AA contrast) */
+  --color-brand: #007bb0;       /* buttons, rings, borders: a deeper Proximity cyan so white button text meets WCAG AA */
+  --color-brand2: #006a98;      /* button hover */
+  --color-accent: #00aded;      /* the exact website cyan, for large decorative shapes */
+  --color-link: #0075a8;        /* cyan for small text: meets WCAG AA (4.5:1) on white and pale cyan */
   --color-cyan: #00aded;
   --color-navy: #1a2332;        /* dark sections and the TV */
-  --color-gold: #b98a2c;        /* awards and certificates (deeper on white for contrast) */
-  --color-good: #17803d;
-  --color-bad: #d7341a;
-  --color-amber: #b36b00;
+  --color-gold: #b98a2c;
+  --color-goldtext: #7d5c18;    /* gold for small text, meets AA */        /* awards and certificates (deeper on white for contrast) */
+  --color-good: #147436;
+  --color-bad: #c22d15;
+  --color-amber: #8f5500;
 
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
@@ -75,7 +77,7 @@ body {
   line-height: 1.12;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: var(--color-brand);
+  color: #0090c8; /* closest to the website cyan that meets AA for large text */
 }
 
 /* Card titles: sentence case, dark. */
