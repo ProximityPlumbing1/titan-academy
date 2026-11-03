@@ -266,8 +266,8 @@ export function CertificatesAdminPage() {
   const [err, setErr] = useState<string | null>(null);
   const [revoking, setRevoking] = useState<{ number: string; name: string } | null>(null);
   const [sigKey, setSigKey] = useState(0);
-  if (loading) return <Loading />;
-  if (error || !data) return <ErrorNote error={error?.message} />;
+  if (loading && !data) return <Loading />; // keep the screen (and any open window) up while it refreshes
+  if (!data) return <ErrorNote error={error?.message} />;
   const run = async (fn: () => Promise<unknown>) => { setErr(null); try { await fn(); await reload(); setSigKey((k) => k + 1); } catch (e) { setErr((e as Error).message); } };
   const uploadSig = (e: ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];

@@ -30,6 +30,7 @@ export function PhoneShell({ children, back }: { children: ReactNode; back?: str
         {user && (
           <div className="flex items-center gap-2">
             {isStaff(user) && <Link to="/admin" className="rounded-lg px-3 py-2 text-sm text-link hover:bg-tone/5">Admin</Link>}
+            <Link to="/profile" className="rounded-lg px-3 py-2 text-sm text-link hover:bg-tone/5">Profile</Link>
             <button onClick={logout} className="rounded-lg px-3 py-2 text-sm text-muted hover:bg-tone/5">Sign out</button>
           </div>
         )}

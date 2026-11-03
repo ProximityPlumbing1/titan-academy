@@ -83,8 +83,8 @@ interface Dash {
 
 export function DashboardPage() {
   const { data, error, loading } = useApi<Dash>('/api/admin/dashboard');
-  if (loading) return <Loading />;
-  if (error || !data) return <ErrorNote error={error?.message} />;
+  if (loading && !data) return <Loading />; // keep the screen (and any open window) up while it refreshes
+  if (!data) return <ErrorNote error={error?.message} />;
   const active = data.techs.filter((t) => t.status === 'active').length;
   const avg = data.techs.length ? Math.round((data.techs.reduce((s, t) => s + t.done / Math.max(1, t.total), 0) / data.techs.length) * 100) : 0;
   const attention = data.techs.filter((t) => t.flags.length);
@@ -205,12 +205,13 @@ export function UsersPage() {
   const [search, setSearch] = useState('');
   const [link, setLink] = useState<{ user: User; url: string; kind: string; expiresAt: string } | null>(null);
   const [editing, setEditing] = useState<User | 'new' | null>(null);
+  const [importing, setImporting] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
   const list = useMemo(() => (data?.users ?? []).filter((u) =>
     (filter === 'all' || (filter === 'techs' ? !!u.tradeRole : !u.tradeRole)) &&
     (!search || `${u.name} ${u.email ?? ''}`.toLowerCase().includes(search.toLowerCase()))), [data, filter, search]);
-  if (loading) return <Loading />;
-  if (error || !data) return <ErrorNote error={error?.message} />;
+  if (loading && !data) return <Loading />; // keep the screen (and any open window) up while it refreshes
+  if (!data) return <ErrorNote error={error?.message} />;
   const admin = !!me?.isAdmin;
   const makeLink = async (u: User) => {
     setActionError(null);
@@ -233,8 +234,11 @@ export function UsersPage() {
   return (
     <div className="fade-in">
       <PageHead title="People & logins" sub="Give each person their own login: send the invite link by SMS or WhatsApp, or let them scan the QR code.">
+        <a href="/api/admin/roster.csv"><Button variant="subtle">Download roster (CSV)</Button></a>
+        {admin && <Button variant="ghost" onClick={() => setImporting(true)}>Import roster (CSV)</Button>}
         {admin && <Button onClick={() => setEditing('new')}>+ Add person</Button>}
       </PageHead>
+      {importing && <RosterModal onClose={() => setImporting(false)} onDone={() => { void reload(); }} />}
       <div className="mb-4 flex flex-wrap items-center gap-2">
         {(['all', 'techs', 'office'] as const).map((f) => (
           <button key={f} onClick={() => setFilter(f)} className={`rounded-xl px-3 py-1.5 text-sm ${filter === f ? 'bg-soft font-semibold text-title shadow-[inset_0_0_0_1px_rgba(0,173,237,.22)]' : 'text-muted hover:bg-tone/5'}`}>
@@ -592,8 +596,8 @@ export function PreviewPage() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [data]);
-  if (loading) return <Loading />;
-  if (error || !data) return <ErrorNote error={error?.message} />;
+  if (loading && !data) return <Loading />; // keep the screen (and any open window) up while it refreshes
+  if (!data) return <ErrorNote error={error?.message} />;
   const m = data.module;
   return (
     <div className="fade-in">
@@ -651,8 +655,8 @@ export function PreviewPage() {
 
 export function NeedsAnswersPage() {
   const { data, error, loading } = useApi<{ items: Array<{ pathName: string; moduleId: string; moduleTitle: string; where: string; text: string }> }>('/api/admin/needs-answers');
-  if (loading) return <Loading />;
-  if (error || !data) return <ErrorNote error={error?.message} />;
+  if (loading && !data) return <Loading />; // keep the screen (and any open window) up while it refreshes
+  if (!data) return <ErrorNote error={error?.message} />;
   const groups = data.items.reduce<Record<string, typeof data.items>>((acc, it) => {
     (acc[it.pathName] ??= []).push(it);
     return acc;
@@ -677,5 +681,106 @@ export function NeedsAnswersPage() {
         </Card>
       ))}
     </div>
+  );
+}
+
+// ---------------------------------------------------------------- roster import
+interface RosterPlan {
+  rows: Array<{ line: number; name: string; action: 'new' | 'update' | 'same' | 'error'; changes: string[]; error?: string }>;
+  notInFile: Array<{ id: string; name: string }>;
+}
+
+function RosterModal({ onClose, onDone }: { onClose: () => void; onDone: () => void }) {
+  const [csv, setCsv] = useState('');
+  const [plan, setPlan] = useState<RosterPlan | null>(null);
+  const [result, setResult] = useState<{ added: number; updated: number; unchanged: number } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const load = (f: File | undefined) => {
+    if (!f) return;
+    const r = new FileReader();
+    r.onload = () => { setCsv(String(r.result ?? '')); setPlan(null); setResult(null); };
+    r.readAsText(f);
+  };
+  const go = async (path: string) => {
+    setBusy(true);
+    setError(null);
+    try {
+      if (path.endsWith('preview')) setPlan(await api<RosterPlan>(path, { body: { csv } }));
+      else { setResult(await api(path, { body: { csv } })); onDone(); }
+    } catch (e) { setError((e as Error).message); }
+    finally { setBusy(false); }
+  };
+  const count = (a: string) => plan?.rows.filter((r) => r.action === a).length ?? 0;
+  const tone = { new: 'good', update: 'cyan', same: 'muted', error: 'bad' } as const;
+  const label = { new: 'New', update: 'Update', same: 'No change', error: 'Error' } as const;
+  return (
+    <Modal title="Import the roster" onClose={onClose} wide>
+      {result ? (
+        <div className="space-y-4">
+          <p className="text-title">Done: <b>{result.added}</b> added, <b>{result.updated}</b> updated, {result.unchanged} unchanged.</p>
+          <p className="text-sm text-muted">New people show as “not signed up” until you send them their invite link.</p>
+          <div className="flex justify-end"><Button onClick={onClose}>Close</Button></div>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          <p className="text-sm text-muted">
+            Use the same columns as the roster download: <b className="text-title">name</b>, <b className="text-title">trade_role</b> (install, service or salestech),
+            apprentice, email, lead_tech, supervising_tech. You'll see every change before anything is saved. Nobody is removed:
+            people missing from the file are listed so you can disable anyone who has left.
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <label className="cursor-pointer">
+              <span className="inline-flex min-h-[36px] items-center rounded-[10px] bg-tone/5 px-3 text-sm font-bold text-title hover:bg-tone/10">Choose a CSV file</span>
+              <input type="file" accept=".csv,text/csv" className="hidden" onChange={(e) => { load(e.target.files?.[0]); e.target.value = ''; }} />
+            </label>
+            <span className="text-xs text-faint">or paste it below</span>
+          </div>
+          <textarea aria-label="Roster CSV" value={csv} onChange={(e) => { setCsv(e.target.value); setPlan(null); }} rows={6}
+            placeholder={'name,trade_role,apprentice,email\nJane Citizen,install,no,jane@example.com'}
+            className="w-full rounded-[6px] border border-line bg-card px-3 py-2 font-mono text-xs text-title focus:border-brand focus:outline-none" />
+          <ErrorNote error={error} />
+          {plan && (
+            <div className="space-y-3">
+              <div className="flex flex-wrap gap-2">
+                <Badge tone="good">{count('new')} new</Badge><Badge tone="cyan">{count('update')} to update</Badge>
+                <Badge>{count('same')} unchanged</Badge>{count('error') > 0 && <Badge tone="bad">{count('error')} with errors</Badge>}
+              </div>
+              <div className="max-h-72 overflow-y-auto rounded-[10px] shadow-card">
+                <table className="w-full text-sm">
+                  <tbody className="divide-y divide-line">
+                    {plan.rows.filter((r) => r.action !== 'same').map((r) => (
+                      <tr key={r.line}>
+                        <td className="w-10 px-3 py-2 text-xs text-faint">{r.line}</td>
+                        <td className="px-3 py-2 font-medium text-title">{r.name}</td>
+                        <td className="px-3 py-2"><Badge tone={tone[r.action]}>{label[r.action]}</Badge></td>
+                        <td className="px-3 py-2 text-muted">{r.error ?? r.changes.join(' · ')}</td>
+                      </tr>
+                    ))}
+                    {plan.rows.every((r) => r.action === 'same') && <tr><td className="px-3 py-3 text-muted">Everyone in the file is already up to date.</td></tr>}
+                  </tbody>
+                </table>
+              </div>
+              {plan.notInFile.length > 0 && (
+                <p className="text-sm text-muted">
+                  <b className="text-title">Not in this file ({plan.notInFile.length}):</b> {plan.notInFile.map((p) => p.name).join(', ')}. They stay as they are.
+                  If anyone has left, disable them from the list.
+                </p>
+              )}
+            </div>
+          )}
+          <div className="flex justify-end gap-2">
+            <Button variant="ghost" onClick={onClose}>Cancel</Button>
+            {!plan ? (
+              <Button disabled={!csv.trim() || busy} onClick={() => go('/api/admin/roster/preview')}>{busy ? 'Checking…' : 'Check the file'}</Button>
+            ) : (
+              <Button disabled={busy || count('error') > 0 || count('new') + count('update') === 0} onClick={() => go('/api/admin/roster/apply')}>
+                {busy ? 'Saving…' : `Apply ${count('new') + count('update')} change${count('new') + count('update') === 1 ? '' : 's'}`}
+              </Button>
+            )}
+          </div>
+        </div>
+      )}
+    </Modal>
   );
 }

@@ -75,7 +75,7 @@ async function main() {
   await a.getByRole('combobox', { name: /Supervising tech/ }).or(a.locator('select').filter({ hasText: 'Not set yet' })).first().selectOption(supervisor.id);
   await shot(a, 'supervisor-picker');
   await a.getByRole('button', { name: 'Save' }).click();
-  await a.getByText(`Apprentice · ${supervisor.name.split(' ')[0]}`).waitFor();
+  await a.getByRole('row').filter({ hasText: apprentice.name }).getByText(`Apprentice · ${supervisor.name.split(' ')[0]}`).waitFor();
   assert(true, 'admin set the apprentice\'s supervisor');
   const app = await ctxFor('e2e+0@example.com', 'e2e-test-pass', { width: 375, height: 812 });
   let item = null;

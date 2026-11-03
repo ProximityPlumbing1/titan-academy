@@ -50,7 +50,21 @@ async function main() {
 
   console.log('Setting up…');
   const users = (await (await api('GET', '/api/admin/users')).json()).users;
-  const tech = users.find((u) => u.email === 'e2e+1@example.com');
+  // Approved sign-offs can't be undone, so each run uses a test tech who still has a module with two untouched items.
+  const trade = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'trade-paths.json'), 'utf8'));
+  let TECH_EMAIL = null, mod = null;
+  for (const n of [1, 8, 9, 10, 11, 3, 4, 5, 6, 7]) {
+    const c = await browser.newContext();
+    if (!(await c.request.post(`${BASE}/api/auth/login`, { data: { email: `e2e+${n}@example.com`, password: 'e2e-test-pass' }, headers: { 'x-titan': '1' } })).ok()) { await c.close(); continue; }
+    for (const m of trade.paths.filter((p) => ['field', 'install'].includes(p.id)).flatMap((p) => p.modules)) {
+      const d = await (await c.request.get(`${BASE}/api/modules/${m.id}`)).json();
+      if ((m.signoff ?? []).length - d.signoffs.filter((x) => x.status === 'approved').length >= 2) { mod = m.id; break; }
+    }
+    await c.close();
+    if (mod) { TECH_EMAIL = `e2e+${n}@example.com`; break; }
+  }
+  if (!mod) throw new Error('No test tech has two untouched sign-offs left. Reset the test database.');
+  const tech = users.find((u) => u.email === TECH_EMAIL);
   const lead = users.find((u) => u.email === 'e2e+2@example.com');
   assert(tech && lead, 'test techs exist');
   await api('PATCH', `/api/admin/users/${lead.id}`, { isLeadTech: true });
@@ -62,7 +76,7 @@ async function main() {
     const list = (await (await api('GET', `/api/review/signoffs?status=${st}`)).json()).signoffs;
     for (const s of list.filter((x) => x.user_id === tech.id)) {
       const t = await browser.newContext();
-      await t.request.post(`${BASE}/api/auth/login`, { data: { email: 'e2e+1@example.com', password: 'e2e-test-pass' }, headers: { 'x-titan': '1' } });
+      await t.request.post(`${BASE}/api/auth/login`, { data: { email: TECH_EMAIL, password: 'e2e-test-pass' }, headers: { 'x-titan': '1' } });
       await t.request.delete(`${BASE}/api/signoffs/${s.id}`, { headers: { 'x-titan': '1' } });
       await t.close();
     }
@@ -91,15 +105,8 @@ async function main() {
   assert(true, 'moved a class to 9:30');
 
   console.log('Tech requests a sign-off…');
-  const t = await ctxFor('e2e+1@example.com', 'e2e-test-pass', { width: 375, height: 812 });
-  // Approved sign-offs can't be undone, so use a module where this tech still has two untouched items.
-  const trade = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'trade-paths.json'), 'utf8'));
-  let mod = null;
-  for (const m of trade.paths.filter((p) => ['field', 'install'].includes(p.id)).flatMap((p) => p.modules)) {
-    const d = await (await t.request.get(`${BASE}/api/modules/${m.id}`)).json();
-    if ((m.signoff ?? []).length - d.signoffs.length >= 2) { mod = m.id; break; }
-  }
-  assert(mod, `using module ${mod} for the sign-off test`);
+  const t = await ctxFor(TECH_EMAIL, 'e2e-test-pass', { width: 375, height: 812 });
+  assert(mod, `using ${TECH_EMAIL}, module ${mod}, for the sign-off test`);
   const tp = await t.newPage(); watch(tp);
   await tp.goto(`${BASE}/`);
   await tp.getByText('Week 2 of 8').waitFor();

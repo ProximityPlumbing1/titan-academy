@@ -6,6 +6,7 @@ import { answerFor, classDeck, getModule, program, modulesForRole, moduleSlides,
 import { canReview, dueDates, routeFor, sessionDate, weekOf } from '../server/program';
 import { certificateTitle, drawFinal, poolFor } from '../server/certificates';
 import { toCsv } from '../server/extras';
+import { parseCsv } from '../server/roster';
 
 describe('content', () => {
   it('gives each trade the right paths', () => {
@@ -194,5 +195,13 @@ describe('small gaps', () => {
     expect(canReview(lead, apprentice, 'f1')).toBe(false);
     expect(canReview(owner, apprentice, 'f1')).toBe(true);
     expect(canReview(lead, { ...apprentice, supervisor_id: null }, 'f1')).toBe(true);
+  });
+});
+
+describe('roster import', () => {
+  it('parses CSV with quotes, commas, blank lines and a byte-order mark', () => {
+    expect(parseCsv('﻿name,trade_role\r\n"O\'Connor, Paddy",install\n\n"Say ""hi""",service')).toEqual([
+      ['name', 'trade_role'], ["O'Connor, Paddy", 'install'], ['Say "hi"', 'service'],
+    ]);
   });
 });

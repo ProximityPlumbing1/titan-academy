@@ -24,8 +24,8 @@ export function ProgramPage() {
   const { data, error, loading, reload } = useApi<ProgramData>('/api/admin/program');
   const [moving, setMoving] = useState<ProgramData['classes'][number] | null>(null);
   const [ending, setEnding] = useState(false);
-  if (loading) return <Loading />;
-  if (error || !data) return <ErrorNote error={error?.message} />;
+  if (loading && !data) return <Loading />; // keep the screen (and any open window) up while it refreshes
+  if (!data) return <ErrorNote error={error?.message} />;
   if (!data.program) return <CreateProgram defaults={data.defaults} canCreate={!!user?.isAdmin} onCreated={reload} />;
   const p = data.program;
   const weeks = [...new Set(data.classes.map((c) => c.week))].sort((a, b) => a - b);

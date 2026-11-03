@@ -134,3 +134,8 @@ answered in `data/trade-paths.json`.
 - **Install on a phone:** iPhone: Safari → Share → Add to Home Screen. Android: Chrome → menu → Install app.
 - **Speed:** built files are compressed at build time (`scripts/compress.mjs`, Brotli and gzip) and API responses on the fly.
 - **Checks before a release:** `npm test`, then against a test database `npm run e2e`, `e2e:program`, `e2e:certificates`, `e2e:gaps`, `e2e:offline` and `audit:a11y` (WCAG 2.1 AA with axe). Lighthouse mobile on 3 Nov 2026: performance 94–98, accessibility 100, best practices 100.
+
+## Roster import and profiles
+- **Roster:** People & logins → Download roster (CSV), edit it in a spreadsheet, then Import roster (CSV). Columns: name, trade_role (install, service or salestech), apprentice, email, lead_tech, supervising_tech. You see every change before it's saved; nobody is removed (people missing from the file are listed so you can disable anyone who has left).
+- **Profile:** techs tap Profile on their phone for progress by path, quiz results, sign-off history, final attempts, their certificate and Change password (which signs out their other devices).
+- **Test:** `E2E_BASE=http://localhost:3000 npm run e2e:team` (test database only).

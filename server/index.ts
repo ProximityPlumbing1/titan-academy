@@ -13,6 +13,8 @@ import { registerLive } from './live.js';
 import { registerProgram } from './program.js';
 import { registerCertificates } from './certificates.js';
 import { registerExtras } from './extras.js';
+import { registerRoster } from './roster.js';
+import { registerProfile } from './profile.js';
 
 const app = Fastify({ logger: { level: config.isProd ? 'info' : 'warn' }, trustProxy: true, bodyLimit: 256 * 1024 });
 
@@ -62,6 +64,8 @@ await registerLive(app);
 await registerProgram(app);
 await registerCertificates(app);
 await registerExtras(app);
+await registerRoster(app);
+await registerProfile(app);
 
 const webDir = path.join(process.cwd(), 'dist', 'web');
 if (fs.existsSync(webDir)) {

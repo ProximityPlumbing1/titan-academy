@@ -84,6 +84,27 @@ export async function registerRoutes(app: FastifyInstance) {
     return { user: pu };
   });
 
+  // Change your own password. Signs out every other device, keeps this one signed in.
+  app.post('/api/auth/password', async (req, reply) => {
+    const u = need(req);
+    const b = req.body as any;
+    const current = typeof b?.current === 'string' ? b.current : '';
+    const next = typeof b?.next === 'string' ? b.next : '';
+    const key = `pw:${u.id}`;
+    checkLimit(key, 8);
+    if (!(await verifyPassword(current, u.password_hash))) {
+      recordFailure(key);
+      throw new HttpError(400, 'Your current password is not right.');
+    }
+    const min = u.is_admin ? 10 : 8;
+    if (next.length < min) throw new HttpError(400, `Use at least ${min} characters for your new password.`);
+    if (next === current) throw new HttpError(400, 'Choose a password you have not used here before.');
+    await q(`update users set password_hash = $2 where id = $1`, [u.id, await hashPassword(next)]);
+    await q(`delete from sessions where user_id = $1`, [u.id]);
+    await startSession(reply, req, u.id);
+    return { ok: true };
+  });
+
   app.post('/api/auth/login', async (req, reply) => {
     const b = req.body as any;
     const email = str(b?.email).toLowerCase();

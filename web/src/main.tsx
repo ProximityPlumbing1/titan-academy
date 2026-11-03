@@ -16,6 +16,7 @@ import { LinkPage, LoginPage, SetupPage } from './pages/auth';
 import { HomePage, JoinPage, LessonPage, ModulePage, QuizPage } from './pages/learner';
 import { ReviewPage } from './pages/program';
 import { CertificatePage, FinalPage, VerifyPage } from './pages/certificates';
+import { ProfilePage } from './pages/profile';
 
 // Admin, presenter and TV screens load on demand, so techs' phones don't download them.
 const pick = <M, K extends keyof M>(load: () => Promise<M>, key: K) =>
@@ -64,6 +65,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/join" element={<RequireAuth><JoinPage /></RequireAuth>} />
           <Route path="/review" element={<RequireAuth><ReviewPage /></RequireAuth>} />
           <Route path="/final" element={<RequireAuth><FinalPage /></RequireAuth>} />
+          <Route path="/profile" element={<RequireAuth><ProfilePage /></RequireAuth>} />
           <Route path="/certificate" element={<RequireAuth><CertificatePage /></RequireAuth>} />
           <Route path="/verify/:number" element={<VerifyPage />} />
           <Route path="/live/:code" element={<RequireAuth><FollowPage /></RequireAuth>} />
