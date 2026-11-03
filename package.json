@@ -17,7 +17,8 @@
     "test": "vitest run",
     "e2e": "node tests/live-class.e2e.mjs",
     "e2e:program": "node tests/program-signoffs.e2e.mjs",
-    "e2e:certificates": "node tests/certificates.e2e.mjs"
+    "e2e:certificates": "node tests/certificates.e2e.mjs",
+    "e2e:gaps": "node tests/gaps.e2e.mjs"
   },
   "dependencies": {
     "@fastify/cookie": "^11.1.5",

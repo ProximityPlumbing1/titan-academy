@@ -3,6 +3,7 @@ import { one, q, tx } from './db.js';
 import { HttpError, canPresent, isStaff, need, type UserRow } from './auth.js';
 import { getModule, modulesForRole, program as programSpec } from './content.js';
 import { maybeIssue } from './certificates.js';
+import { completeModules } from './progress.js';
 
 // ------------------------------------------------------------------ program and due dates
 
@@ -88,9 +89,12 @@ export function routeFor(moduleId: string): Route[] {
   return [...r];
 }
 
-export function canReview(reviewer: UserRow, tech: Pick<UserRow, 'id' | 'trade_role'>, moduleId: string): boolean {
+type TechRef = Pick<UserRow, 'id' | 'trade_role'> & Partial<Pick<UserRow, 'is_apprentice' | 'supervisor_id'>>;
+export function canReview(reviewer: UserRow, tech: TechRef, moduleId: string): boolean {
   if (reviewer.id === tech.id || reviewer.status !== 'active') return false;
   if (reviewer.signoff_all) return true;
+  // Apprentices are signed off by their supervising tech (or William/Charlotte), once one is set.
+  if (tech.is_apprentice && tech.supervisor_id) return reviewer.id === tech.supervisor_id;
   return routeFor(moduleId).some((r) =>
     (r === 'lead_trade' && reviewer.is_lead_tech && !!reviewer.trade_role && reviewer.trade_role === tech.trade_role)
     || (r === 'lead_install' && reviewer.is_lead_tech && reviewer.trade_role === 'install')
@@ -100,8 +104,8 @@ export function canReview(reviewer: UserRow, tech: Pick<UserRow, 'id' | 'trade_r
     || (r === 'dispatch' && reviewer.is_dispatch));
 }
 
-export const isReviewer = (u: UserRow) =>
-  u.signoff_all || u.is_lead_tech || u.is_install_manager || u.is_sales_manager || u.is_dispatch;
+export const isReviewer = (u: UserRow & { supervises?: boolean }) =>
+  u.signoff_all || u.is_lead_tech || u.is_install_manager || u.is_sales_manager || u.is_dispatch || !!u.supervises;
 
 // ------------------------------------------------------------------ photos
 
@@ -127,7 +131,7 @@ async function signoffView(where: string, params: unknown[]) {
   return q(
     `select s.id, s.user_id, s.module_id, s.item_index, s.item_text, s.status, s.job_ref, s.tech_note, s.requested_at,
             s.review_note, s.reviewed_at, r.name reviewed_by_name, u.name tech_name, u.trade_role tech_role,
-            u.is_apprentice tech_apprentice,
+            u.is_apprentice tech_apprentice, u.supervisor_id tech_supervisor,
             coalesce((select array_agg(p.id order by p.created_at) from signoff_photos p where p.signoff_id = s.id), '{}') photo_ids
        from signoffs s join users u on u.id = s.user_id left join users r on r.id = s.reviewed_by
       where ${where}`, params);
@@ -227,8 +231,7 @@ export async function registerProgram(app: FastifyInstance) {
     if (!p || !u.trade_role) return { program: null };
     const today = sydneyToday();
     const due = dueDates(p, u.trade_role);
-    const passed = new Set((await q<{ module_id: string }>(
-      `select distinct module_id from quiz_attempts where user_id = $1 and passed`, [u.id])).map((r) => r.module_id));
+    const passed = (await completeModules([u.id])).get(u.id) ?? new Set<string>();
     const modules = [...due.entries()].map(([id, d]) => ({
       id, title: getModule(id)!.module.title, week: d.week, due: d.due, done: passed.has(id),
       overdue: !passed.has(id) && d.due < today,
@@ -294,10 +297,11 @@ export async function registerProgram(app: FastifyInstance) {
   // ---- reviewers
   app.get('/api/review/signoffs', async (req) => {
     const me = need(req);
-    if (!isReviewer(me) && !isStaff(me)) throw new HttpError(403, 'You do not review sign-offs.');
+    const supervises = !!(await one(`select 1 from users where supervisor_id = $1 limit 1`, [me.id]));
+    if (!isReviewer({ ...me, supervises }) && !isStaff(me)) throw new HttpError(403, 'You do not review sign-offs.');
     const status = ['waiting', 'approved', 'returned'].includes((req.query as any)?.status) ? (req.query as any).status : 'waiting';
     const rows: any[] = await signoffView(`s.status = $1 order by ${status === 'waiting' ? 's.requested_at' : 's.reviewed_at desc'} limit 300`, [status]);
-    const mine = rows.map((r) => ({ ...r, canReview: canReview(me, { id: r.user_id, trade_role: r.tech_role }, r.module_id),
+    const mine = rows.map((r) => ({ ...r, canReview: canReview(me, { id: r.user_id, trade_role: r.tech_role, is_apprentice: r.tech_apprentice, supervisor_id: r.tech_supervisor }, r.module_id),
       moduleTitle: getModule(r.module_id)?.module.title, assessor: getModule(r.module_id)?.module.assessor ?? null }));
     return { signoffs: isStaff(me) || me.signoff_all ? mine : mine.filter((r) => r.canReview) };
   });
@@ -309,9 +313,9 @@ export async function registerProgram(app: FastifyInstance) {
     if (!action) throw new HttpError(400, 'Approve or send back.');
     const note = str(b?.note, 600);
     if (action === 'returned' && !note) throw new HttpError(400, 'Say what the tech needs to do before it can be signed off.');
-    const s = await one(`select s.*, u.trade_role from signoffs s join users u on u.id = s.user_id where s.id = $1`, [(req.params as any).id]);
+    const s = await one(`select s.*, u.trade_role, u.is_apprentice, u.supervisor_id from signoffs s join users u on u.id = s.user_id where s.id = $1`, [(req.params as any).id]);
     if (!s) throw new HttpError(404, 'Sign-off not found.');
-    if (!canReview(me, { id: s.user_id, trade_role: s.trade_role }, s.module_id)) throw new HttpError(403, 'This sign-off is routed to someone else.');
+    if (!canReview(me, { id: s.user_id, trade_role: s.trade_role, is_apprentice: s.is_apprentice, supervisor_id: s.supervisor_id }, s.module_id)) throw new HttpError(403, 'This sign-off is routed to someone else.');
     if (s.status !== 'waiting') throw new HttpError(409, 'Someone has already reviewed this one.');
     await q(`update signoffs set status = $2, review_note = $3, reviewed_by = $4, reviewed_at = now() where id = $1`, [s.id, action, note || null, me.id]);
     if (action === 'approved') await maybeIssue([s.user_id]);
@@ -321,9 +325,9 @@ export async function registerProgram(app: FastifyInstance) {
   app.get('/api/signoffs/:id/photos/:pid', async (req, reply) => {
     const me = need(req);
     const { id, pid } = req.params as any;
-    const s = await one(`select s.user_id, s.module_id, u.trade_role from signoffs s join users u on u.id = s.user_id where s.id = $1`, [id]);
+    const s = await one(`select s.user_id, s.module_id, u.trade_role, u.is_apprentice, u.supervisor_id from signoffs s join users u on u.id = s.user_id where s.id = $1`, [id]);
     if (!s) throw new HttpError(404, 'Not found.');
-    if (s.user_id !== me.id && !isStaff(me) && !canReview(me, { id: s.user_id, trade_role: s.trade_role }, s.module_id))
+    if (s.user_id !== me.id && !isStaff(me) && !canReview(me, { id: s.user_id, trade_role: s.trade_role, is_apprentice: s.is_apprentice, supervisor_id: s.supervisor_id }, s.module_id))
       throw new HttpError(403, 'Not allowed.');
     const p = await one(`select mime, bytes from signoff_photos where id = $1 and signoff_id = $2`, [pid, id]);
     if (!p) throw new HttpError(404, 'Not found.');

@@ -11,6 +11,7 @@ import { registerRoutes } from './routes.js';
 import { registerLive } from './live.js';
 import { registerProgram } from './program.js';
 import { registerCertificates } from './certificates.js';
+import { registerExtras } from './extras.js';
 
 const app = Fastify({ logger: { level: config.isProd ? 'info' : 'warn' }, trustProxy: true, bodyLimit: 256 * 1024 });
 
@@ -57,6 +58,7 @@ await registerRoutes(app);
 await registerLive(app);
 await registerProgram(app);
 await registerCertificates(app);
+await registerExtras(app);
 
 const webDir = path.join(process.cwd(), 'dist', 'web');
 if (fs.existsSync(webDir)) {

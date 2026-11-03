@@ -6,6 +6,7 @@ import { canPresent, isStaff, useAuth } from '../auth';
 import { Badge, Button, Card, ErrorNote, Loading, Logo, Marked, Ring, firstName } from '../ui';
 import { ReviewBanner, SignoffSection, ThisWeek, type MySignoff } from './program';
 import { CertificateBanner, FinalBanner } from './certificates';
+import { MyNumbers } from './scoreboard';
 
 interface Overview {
   paths: Array<{ id: string; name: string; summary: string; modules: Array<{ id: string; title: string; objective: string; lessonCount: number; lessonsWritten: number; quizLength: number; status: 'done' | 'started' | 'none' }> }>;
@@ -67,6 +68,7 @@ export function HomePage() {
       <FinalBanner />
       <ReviewBanner />
       <ThisWeek />
+      <MyNumbers />
       {!data.total && isStaff(user) && (
         <Card className="mb-6 p-5">
           <p className="mb-4 text-muted">You're set up as office staff. Run classes and manage the team from the admin area.</p>
@@ -187,9 +189,14 @@ export function ModulePage() {
           </Link>
         )}
         {m.quizLength > 0 ? (
-          <Link to={`/module/${id}/quiz`}>
+          <>
+          <Link to={`/module/${id}/quiz`} className="block">
             <Button size="lg" className="w-full shadow-xl">{data.status === 'done' ? 'Retake the quiz' : `Take the quiz · ${m.quizLength} questions`}</Button>
           </Link>
+          {data.status !== 'done' && firstUnread >= 0 && (
+            <p className="rounded-[10px] bg-card/90 px-3 py-1.5 text-center text-xs text-muted shadow-card">Already know this? Score 90%+ on the quiz to test out of the lessons.</p>
+          )}
+          </>
         ) : data.status !== 'done' ? (
           <Button size="lg" variant="ghost" className="w-full shadow-xl" onClick={markRead} disabled={busy}>I've read this module</Button>
         ) : null}
@@ -289,7 +296,7 @@ export function QuizPage() {
   const { data, error, loading } = useApi<{ questions: Array<{ q: string; options: string[] }> }>(`/api/modules/${id}/quiz`);
   const [i, setI] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
-  const [result, setResult] = useState<{ score: number; passed: boolean; results: Array<{ chosen: number | null; correct: number; why: string }> } | null>(null);
+  const [result, setResult] = useState<{ score: number; passed: boolean; testedOut: boolean; lessonsLeft: number; results: Array<{ chosen: number | null; correct: number; why: string }> } | null>(null);
   const [busy, setBusy] = useState(false);
   if (loading) return <Loading />;
   if (error || !data) return <PhoneShell back={`/module/${id}`}><ErrorNote error={error?.message} /></PhoneShell>;
@@ -302,7 +309,14 @@ export function QuizPage() {
             <span className="text-3xl font-bold">{result.score}%</span>
           </Ring>
           <h1 className="headline mt-4 text-3xl">{result.passed ? 'Passed!' : 'Not yet'}</h1>
-          <p className="mt-1 text-muted">{result.passed ? 'Module complete. Nice work.' : 'You need 80% to pass. Read the explanations and try again.'}</p>
+          <p className="mt-1 text-muted">
+            {!result.passed ? 'You need 80% to pass. Read the explanations and try again.'
+              : result.lessonsLeft === 0 ? (result.testedOut ? 'You tested out: the lessons are ticked off and the module is complete.' : 'Module complete. Nice work.')
+              : `Quiz passed. Read the ${result.lessonsLeft} remaining lesson${result.lessonsLeft > 1 ? 's' : ''} to complete the module, or score 90%+ to test out.`}
+          </p>
+          {result.passed && result.lessonsLeft > 0 && (
+            <Link to={`/module/${id}`} className="mt-4"><Button variant="ghost">Back to the lessons</Button></Link>
+          )}
         </div>
         <div className="space-y-3">
           {qs.map((q, n) => {

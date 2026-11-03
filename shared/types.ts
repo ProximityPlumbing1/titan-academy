@@ -23,6 +23,7 @@ export type Slide =
   | (SlideBase & { kind: 'onjob'; text: string; lesson: string })
   | (SlideBase & { kind: 'signoff'; items: string[]; assessor?: string })
   | (SlideBase & { kind: 'recap'; points: string[] })
+  | (SlideBase & { kind: 'certified'; title: string })
   | (SlideBase & { kind: 'end'; title: string });
 
 export type SlideKind = Slide['kind'];

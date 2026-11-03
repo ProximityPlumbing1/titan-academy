@@ -33,6 +33,7 @@ export function AdminLayout() {
           {item('/admin/classes', 'Classes')}
           {item('/admin/signoffs', 'Sign-offs')}
           {item('/admin/certificates', 'Final & certificates')}
+          {item('/admin/scoreboard', 'Sales scoreboard')}
           {item('/admin/content', 'Content')}
           {item('/admin/needs-answers', 'Needs answers')}
         </nav>
@@ -93,6 +94,8 @@ export function DashboardPage() {
         ? `${data.program.name} · ${data.program.week === 0 ? `starts ${new Date(`${data.program.startDate}T00:00`).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}` : data.program.week > data.program.weeks ? 'program finished' : `week ${data.program.week} of ${data.program.weeks}`}`
         : "Every tech's progress, at a glance. No 8-week program yet."}>
         {!data.program && <Link to="/admin/program"><Button>Set up the 8-week program</Button></Link>}
+        <a href="/api/admin/export/progress.csv"><Button variant="ghost">Export progress (CSV)</Button></a>
+        <a href="/api/admin/export/signoffs.csv"><Button variant="subtle">Export sign-offs (CSV)</Button></a>
       </PageHead>
       <div className="mb-6 grid grid-cols-2 gap-4 xl:grid-cols-4">
         <Stat label="Field techs" value={data.techs.length} />
@@ -264,7 +267,7 @@ export function UsersPage() {
                     {u.isSalesManager && <Badge tone="good">Sales Manager</Badge>}
                     {u.isDispatch && <Badge tone="good">Dispatch</Badge>}
                     {u.signoffAll && <Badge tone="good">Signs off anything</Badge>}
-                    {u.isApprentice && <Badge>Apprentice</Badge>}
+                    {u.isApprentice && <Badge>{u.supervisorId ? `Apprentice · ${data.users.find((p) => p.id === u.supervisorId)?.name.split(' ')[0] ?? 'supervised'}` : 'Apprentice'}</Badge>}
                   </div>
                 </td>
                 <td className="p-3 text-muted">{u.email ?? <span className="text-faint">—</span>}</td>
@@ -293,7 +296,7 @@ export function UsersPage() {
         </table>
       </Card>
       {link && <LinkModal link={link} onClose={() => { setLink(null); void reload(); }} />}
-      {editing && <UserModal user={editing === 'new' ? null : editing} onClose={() => setEditing(null)} onSaved={() => { setEditing(null); void reload(); }} />}
+      {editing && <UserModal user={editing === 'new' ? null : editing} people={data.users} onClose={() => setEditing(null)} onSaved={() => { setEditing(null); void reload(); }} />}
     </div>
   );
 }
@@ -322,14 +325,16 @@ function LinkModal({ link, onClose }: { link: { user: User; url: string; kind: s
   );
 }
 
-function UserModal({ user, onClose, onSaved }: { user: User | null; onClose: () => void; onSaved: () => void }) {
+function UserModal({ user, people, onClose, onSaved }: { user: User | null; people: User[]; onClose: () => void; onSaved: () => void }) {
   const [form, setForm] = useState({
     name: user?.name ?? '', email: user?.email ?? '', position: user?.position ?? '', tradeRole: user?.tradeRole ?? '',
     isAdmin: user?.isAdmin ?? false, isOffice: user?.isOffice ?? !user?.tradeRole, isTrainer: user?.isTrainer ?? false,
     isAssessor: user?.isAssessor ?? false, isLeadTech: user?.isLeadTech ?? false, isApprentice: user?.isApprentice ?? false,
     isInstallManager: user?.isInstallManager ?? false, isSalesManager: user?.isSalesManager ?? false,
     isDispatch: user?.isDispatch ?? false, signoffAll: user?.signoffAll ?? false,
+    supervisorId: user?.supervisorId ?? null as string | null,
   });
+  const supervisors = people.filter((p) => p.id !== user?.id && p.status !== 'disabled' && p.tradeRole === 'install' && !p.isApprentice);
   const [error, setError] = useState<string | null>(null);
   const set = (k: string, v: unknown) => setForm((f) => ({ ...f, [k]: v }));
   const save = async (e: FormEvent) => {
@@ -372,6 +377,17 @@ function UserModal({ user, onClose, onSaved }: { user: User | null; onClose: () 
           {flag('isOffice', 'Office staff', 'Can see the admin dashboard')}
           {flag('isApprentice', 'Apprentice', 'Sign-offs are supervised')}
         </div>
+        {form.isApprentice && (
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-semibold text-title">Supervising tech</span>
+            <select value={form.supervisorId ?? ''} onChange={(e) => set('supervisorId', e.target.value || null)}
+              className="w-full rounded-[6px] border border-line bg-card px-4 py-3 text-title">
+              <option value="">Not set yet (sign-offs go to the usual people)</option>
+              {supervisors.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
+            </select>
+            <span className="mt-1 block text-xs text-faint">Their sign-offs go to this tech. William and Charlotte can still sign off anything.</span>
+          </label>
+        )}
         <div>
           <div className="eyebrow mb-1 px-2">Receives sign-off requests</div>
           <div className="grid gap-1 sm:grid-cols-2">

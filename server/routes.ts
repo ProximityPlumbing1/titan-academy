@@ -11,6 +11,7 @@ import {
 import { GROUPS } from '../shared/types.js';
 import { liveClassesFor } from './live.js';
 import { maybeIssue } from './certificates.js';
+import { PASS, TEST_OUT } from './progress.js';
 import { activeProgram, dueDates, signoffItems, sydneyToday, weekOf } from './program.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -58,7 +59,7 @@ export function moduleStatus(moduleId: string, e: Entry | undefined): 'done' | '
   const hit = getModule(moduleId);
   if (!hit || !e) return 'none';
   const quizLength = quizFor(moduleId).length;
-  if (quizLength > 0 ? e.passed : e.lessons >= hit.module.lessons.length) return 'done';
+  if (e.lessons >= hit.module.lessons.length && (quizLength === 0 || e.passed)) return 'done';
   return e.lessons > 0 || e.attempts > 0 ? 'started' : 'none';
 }
 
@@ -75,7 +76,13 @@ async function markLessons(userId: string, moduleId: string, source: string) {
 
 export async function registerRoutes(app: FastifyInstance) {
   // ------------------------------------------------------------------ auth
-  app.get('/api/auth/me', async (req) => ({ user: req.user ? publicUser(req.user) : null }));
+  app.get('/api/auth/me', async (req) => {
+    if (!req.user) return { user: null };
+    const pu = publicUser(req.user);
+    // Supervising techs review their apprentices' sign-offs.
+    if (!pu.reviewsSignoffs && (await one(`select 1 from users where supervisor_id = $1 limit 1`, [req.user.id]))) pu.reviewsSignoffs = true;
+    return { user: pu };
+  });
 
   app.post('/api/auth/login', async (req, reply) => {
     const b = req.body as any;
@@ -241,14 +248,15 @@ export async function registerRoutes(app: FastifyInstance) {
     const results = quiz.map((x, i) => ({ chosen: Number.isInteger(answers[i]) ? answers[i] : null, correct: x.correct, why: x.why }));
     const right = results.filter((r) => r.chosen === r.correct).length;
     const score = Math.round((right / quiz.length) * 100);
-    const passed = score >= 80;
+    const passed = score >= PASS;
+    const testedOut = score >= TEST_OUT;
     await q(`insert into quiz_attempts (user_id, module_id, score, passed, answers, source) values ($1, $2, $3, $4, $5, 'self')`,
       [u.id, id, score, passed, JSON.stringify(answers)]);
-    if (passed) {
-      await markLessons(u.id, id, 'quiz');
-      await maybeIssue([u.id]);
-    }
-    return { score, passed, results };
+    if (testedOut) await markLessons(u.id, id, 'testout');
+    if (passed) await maybeIssue([u.id]);
+    const read = (await one<{ n: number }>(`select count(*)::int n from lesson_progress where user_id = $1 and module_id = $2`, [u.id, id]))!.n;
+    const lessonsLeft = Math.max(0, getModule(id)!.module.lessons.length - read);
+    return { score, passed, testedOut, lessonsLeft, results };
   });
 
   app.post('/api/modules/:id/read', async (req) => {

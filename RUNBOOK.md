@@ -119,3 +119,11 @@ answered in `data/trade-paths.json`.
 - **Revoke and reissue:** revoke with a reason (for example when an apprentice becomes licensed), update their details (untick Apprentice), then press Issue now. The old number shows as not valid on the verification page.
 - **Question pools** are drafts in `content/final/<role>.json`. Changing them doesn't affect sittings already started.
 - **Test:** `E2E_BASE=http://localhost:3000 npm run e2e:certificates` (test database only).
+
+## Test-out, supervisors, exports and the Sales scoreboard
+- **Module complete** means the quiz is passed (80%+) and every lesson is read. Lessons are read on the phone, credited by attending the live class, or ticked off by **testing out**: 90%+ on the module quiz.
+- **Apprentices:** People & logins → edit the apprentice → Supervising tech. Their sign-offs then go to that tech only (William and Charlotte can still sign anything). With no supervisor set, they follow the normal routing.
+- **Exports:** Dashboard → Export progress (CSV) gives one row per tech per module; Export sign-offs (CSV) lists every request.
+- **Sales scoreboard:** Admin → Sales scoreboard. Harriet (or an admin) enters each Sales Tech's baseline (their last 90 days) and weekly numbers from ServiceTitan. Sales Techs see their two numbers on their phone.
+- **Week 8 TV:** the final-assessment class has a "Certified" slide that fills with names as people certify.
+- **Test:** `E2E_BASE=http://localhost:3000 npm run e2e:gaps` (test database only; run `e2e:program` first so a week 8 class exists).

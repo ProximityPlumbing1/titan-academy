@@ -10,6 +10,7 @@ import { config } from './config.js';
 import { HttpError, isStaff, need, type UserRow } from './auth.js';
 import { modulesForRole, pathsForRole } from './content.js';
 import { signoffItems, sydneyToday } from './program.js';
+import { completeModules } from './progress.js';
 
 // ------------------------------------------------------------------ question pools
 
@@ -67,10 +68,7 @@ export async function statusFor(users: UserRow[]): Promise<Map<string, CertStatu
   const ids = users.map((u) => u.id);
   const out = new Map<string, CertStatus>();
   if (!ids.length) return out;
-  const passed = new Map<string, Set<string>>();
-  for (const r of await q<{ user_id: string; module_id: string }>(
-    `select distinct user_id, module_id from quiz_attempts where passed and user_id = any($1)`, [ids]))
-    (passed.get(r.user_id) ?? passed.set(r.user_id, new Set()).get(r.user_id)!).add(r.module_id);
+  const passed = await completeModules(ids);
   const approved = new Map<string, Set<string>>();
   for (const r of await q<{ user_id: string; k: string }>(
     `select user_id, module_id || ':' || item_index k from signoffs where status = 'approved' and user_id = any($1)`, [ids]))

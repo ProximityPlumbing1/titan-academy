@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import type { LiveState, Reveal, Slide } from '../../shared/types';
 import { isQuestion } from '../../shared/types';
 import { Marked, Qr } from './ui';
@@ -173,6 +173,8 @@ function SlideBody({ slide, reveal, state, presenter, code, joinUrl }:
           </ol>
         </div>
       );
+    case 'certified':
+      return <CertifiedWall code={code} />;
     case 'end':
       return (
         <div className="flex h-full flex-col items-center justify-center text-center">
@@ -334,6 +336,13 @@ export function PhoneSlide({ slide, state, onAnswer, pending }:
           <ol className="space-y-3">{slide.points.map((p, i) => <li key={i} className="flex gap-3"><b className="headline text-gold">{i + 1}</b><Marked text={p} compact /></li>)}</ol>
         </>
       )}
+      {slide.kind === 'certified' && (
+        <div className="py-10 text-center">
+          <div className="text-5xl">🏅</div>
+          <h2 className="headline mt-4 text-3xl">Certified</h2>
+          <p className="mt-2 text-muted">Watch the TV: names appear the moment someone certifies.</p>
+        </div>
+      )}
       {slide.kind === 'end' && (
         <div className="py-10 text-center">
           <h2 className="headline text-3xl">{slide.title}</h2>
@@ -355,7 +364,49 @@ export function slideSummary(s: Slide | undefined): string {
     case 'sim': return `Role-play ${s.step}: “${s.them}”`;
     case 'onjob': return `On the job · ${s.text.slice(0, 60)}…`;
     case 'signoff': return `Sign-offs · ${s.moduleTitle}`;
+    case 'certified': return 'Certified: names appear as people certify';
     case 'recap': return `Recap · ${s.moduleTitle}`;
     case 'end': return 'End';
   }
+}
+
+// Week 8: everyone certified so far. Refreshes every 5 seconds during the live class.
+function CertifiedWall({ code }: { code?: string }) {
+  const [names, setNames] = useState<Array<{ name: string; title: string }> | null>(null);
+  useEffect(() => {
+    if (!code) return;
+    let stop = false;
+    const load = () => fetch(`/api/live/${code}/certified`, { headers: { 'x-titan': '1' } })
+      .then((r) => (r.ok ? r.json() : null)).then((d) => { if (!stop && d) setNames(d.certified); }).catch(() => {});
+    void load();
+    const t = setInterval(load, 5000);
+    return () => { stop = true; clearInterval(t); };
+  }, [code]);
+  const list = names ?? [];
+  return (
+    <div className="flex h-full flex-col">
+      <Eyebrow>Week 8 · Final assessment</Eyebrow>
+      <div className="flex items-end gap-8">
+        <h1 className="headline text-[96px] leading-none">Certified</h1>
+        <span className="mb-2 rounded-full bg-gold/15 px-6 py-1.5 text-[40px] font-extrabold text-gold">{list.length}</span>
+      </div>
+      {!code ? (
+        <p className="mt-12 text-[40px] text-muted">Names appear here during the live class, the moment each person certifies.</p>
+      ) : !list.length ? (
+        <p className="mt-12 text-[40px] text-muted">The first names will appear here as people pass. Good luck, everyone.</p>
+      ) : (
+        <div className={`mt-12 grid gap-x-12 gap-y-6 ${list.length > 12 ? 'grid-cols-3' : 'grid-cols-2'}`}>
+          {list.map((n) => (
+            <div key={n.name} className="flex items-center gap-5 fade-in">
+              <span className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-full bg-gold text-[30px] text-white">✓</span>
+              <span className="min-w-0">
+                <span className={`block truncate font-extrabold text-title ${list.length > 12 ? 'text-[38px]' : 'text-[46px]'}`}>{n.name}</span>
+                <span className="block truncate text-[24px] text-muted">{n.title}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }

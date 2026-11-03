@@ -172,6 +172,7 @@ export function classDeck(moduleIds: string[], title: string, withAnswers: boole
         label: 'Week 8 · Final assessment',
         objective: 'Open Titan Academy on your phone and tap Final assessment. 25 questions from your whole program. 80% passes, with one retake.',
       });
+      deck.push({ key: 'final.certified', kind: 'certified', moduleId: 'final', moduleTitle: 'Final assessment', pathName: 'Week 8', title: 'Certified' });
       continue;
     }
     deck.push(...moduleSlides(id, withAnswers));

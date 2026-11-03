@@ -5,6 +5,7 @@ import { splitMarkers } from '../shared/types';
 import { answerFor, classDeck, getModule, program, modulesForRole, moduleSlides, needsAnswers, parseLessonMarkdown, quizFor } from '../server/content';
 import { canReview, dueDates, routeFor, sessionDate, weekOf } from '../server/program';
 import { certificateTitle, drawFinal, poolFor } from '../server/certificates';
+import { toCsv } from '../server/extras';
 
 describe('content', () => {
   it('gives each trade the right paths', () => {
@@ -176,5 +177,22 @@ describe('final assessment and certificates', () => {
     expect(certificateTitle({ trade_role: 'service', is_apprentice: false })?.title).toBe('Proximity Certified Service Technician');
     expect(certificateTitle({ trade_role: 'salestech', is_apprentice: false })?.title).toBe('Proximity Advanced Sales Certification');
     expect(certificateTitle({ trade_role: null, is_apprentice: false })).toBeNull();
+  });
+});
+
+describe('small gaps', () => {
+  it('escapes CSV cells and blocks spreadsheet formulas', () => {
+    expect(toCsv([['a', 'b,c', 'say "hi"', '=SUM(A1)', null, 3]])).toBe('a,"b,c","say ""hi""",\'=SUM(A1),,3\r\n');
+  });
+  it('routes an apprentice\'s sign-offs to their supervisor once one is set', () => {
+    const base = { status: 'active', signoff_all: false, is_lead_tech: true, trade_role: 'install', is_install_manager: false, is_sales_manager: false, is_dispatch: false } as any;
+    const lead = { ...base, id: 'lead' };
+    const sup = { ...base, id: 'sup', is_lead_tech: false };
+    const owner = { ...base, id: 'owner', is_lead_tech: false, signoff_all: true };
+    const apprentice = { id: 'app', trade_role: 'install', is_apprentice: true, supervisor_id: 'sup' };
+    expect(canReview(sup, apprentice, 'f1')).toBe(true);
+    expect(canReview(lead, apprentice, 'f1')).toBe(false);
+    expect(canReview(owner, apprentice, 'f1')).toBe(true);
+    expect(canReview(lead, { ...apprentice, supervisor_id: null }, 'f1')).toBe(true);
   });
 });

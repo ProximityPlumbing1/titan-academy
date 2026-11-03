@@ -7,6 +7,7 @@ import { LinkPage, LoginPage, SetupPage } from './pages/auth';
 import { HomePage, JoinPage, LessonPage, ModulePage, QuizPage } from './pages/learner';
 import { FollowPage, PresentPage, TvPage } from './pages/live';
 import { ProgramPage, ReviewPage, SignoffsAdminPage } from './pages/program';
+import { ScoreboardPage } from './pages/scoreboard';
 import { CertificatePage, CertificatesAdminPage, FinalPage, VerifyPage } from './pages/certificates';
 import {
   AdminLayout, ClassesPage, ContentPage, DashboardPage, NeedsAnswersPage, PreviewPage, UsersPage,
@@ -49,6 +50,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="classes" element={<ClassesPage />} />
             <Route path="signoffs" element={<SignoffsAdminPage />} />
             <Route path="certificates" element={<CertificatesAdminPage />} />
+            <Route path="scoreboard" element={<ScoreboardPage />} />
             <Route path="content" element={<ContentPage />} />
             <Route path="content/:id" element={<PreviewPage />} />
             <Route path="needs-answers" element={<NeedsAnswersPage />} />
