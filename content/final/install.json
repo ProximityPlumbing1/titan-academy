@@ -1,0 +1,486 @@
+{
+  "role": "install",
+  "_status": "DRAFT for owner review",
+  "questions": [
+    {
+      "module": "f1",
+      "q": "On a tapware install in Kellyville, the customer asks, \"If I pay cash, could you ring the office and see if they'll do a better price?\" What's the best response?",
+      "options": [
+        "\"Sure, I'll give the office a quick call now and see what they can do.\"",
+        "\"Cash is fine. I'll take a bit off the labour myself to keep it simple.\"",
+        "\"I can't change the price, but I can take you through what's included.\"",
+        "\"If you're happy to do the clean-up yourself, that should bring the price down a bit.\""
+      ],
+      "correct": 2,
+      "why": "Techs can't discount or change a price, and offering to ask the office for a better price in front of a customer is a discount by another name. A deal for paying cash is a discount too."
+    },
+    {
+      "module": "f1",
+      "q": "A re-pipe in Ryde runs two hours over because you left a box of fittings at base and had to go back for it. The customer asks if the bill will go up. What's actually true?",
+      "options": [
+        "The extra two hours are added to the final invoice at an hourly rate.",
+        "The price is fixed, so the extra hours come out of our profit, not theirs.",
+        "The office will split the cost of the extra two hours with the customer.",
+        "Nothing is lost, because every fixed price already includes time for overruns."
+      ],
+      "correct": 1,
+      "why": "We never charge by the hour. The customer has a fixed upfront price, so unestimated hours come out of the business's profit, not the customer's pocket."
+    },
+    {
+      "module": "f2",
+      "q": "You're fitting a new laundry tub in an older Bankstown home and need to drill through grey sheeting behind it. The owner says, \"It's only fibro, the last plumber drilled it no worries.\" What do you do?",
+      "options": [
+        "Wet the sheet down, put a mask on and drill just the one hole you need.",
+        "Ask the owner whether it's ever been tested, and carry on drilling if they say it has.",
+        "Drill slowly with a respirator on, then vacuum up the dust straight away.",
+        "Stop, photograph it, flag it in ServiceTitan and call the Install Manager or office."
+      ],
+      "correct": 3,
+      "why": "You can't tell asbestos by looking, and the customer can't either, so treat it as asbestos. Never cut, drill or break it, not wetted down and not for just one hole: stop, photograph, flag and call."
+    },
+    {
+      "module": "f2",
+      "q": "Swapping a toilet in a Hornsby townhouse, you close the isolation valve but water keeps trickling through. The next shut-off is the main for the whole complex, which would cut water to the neighbours. What's the right move?",
+      "options": [
+        "Stop, photograph the valve and call the office before you touch the shared main.",
+        "Work it wet with towels down, since it's only a slow trickle from the valve.",
+        "Turn the main off quickly without telling anyone, as you'll only be ten minutes.",
+        "Leave the old toilet in place and rebook the job for the owner another day."
+      ],
+      "correct": 0,
+      "why": "Never work a valve that won't fully shut off \"wet\". Go to the next isolation point, and if that affects other people, call the office first."
+    },
+    {
+      "module": "f2",
+      "q": "On a hot water job in Penrith, your ladder skids on the wet garage floor as you step off it. You're not hurt and nothing is damaged. What should happen next?",
+      "options": [
+        "Nothing needs reporting, because nobody was hurt and nothing was damaged.",
+        "Mention it to the crew at some point so they know to be careful next time.",
+        "Report it today as a near-miss, then dry the floor and get the ladder footed.",
+        "Report it only if the customer saw it happen and might mention it to the office."
+      ],
+      "correct": 2,
+      "why": "A near-miss is when something nearly happened. Report incidents and near-misses alike, because a near-miss shows us the hazard before someone gets hurt."
+    },
+    {
+      "module": "f3",
+      "q": "It's 6:55am and you're still loading the van at home, but you set your first job to 'on my way' so dispatch can see you're moving. Why is that a problem?",
+      "options": [
+        "It isn't a problem, as long as you still arrive inside the customer's arrival window.",
+        "Dispatch plans the day from statuses, so they're working from the wrong picture.",
+        "The customer gets charged from the moment the status changes to 'on my way'.",
+        "Statuses only matter at the end of the day, when the timesheets get checked."
+      ],
+      "correct": 1,
+      "why": "Set 'on my way' when you actually leave, not before. Dispatch plans everyone's day from your statuses, so a status that's ahead of reality gives them, and the next customer, the wrong picture."
+    },
+    {
+      "module": "f3",
+      "q": "You've taken a dozen photos and two videos during a re-pipe in Epping. You're tempted to text them to the office tonight. What should you do?",
+      "options": [
+        "Text them tonight as planned, and someone in the office can attach them to the job.",
+        "Keep them on your phone in case anyone ever asks about the job later.",
+        "Email them to yourself so they're backed up somewhere safe off the phone.",
+        "Save them to the job in ServiceTitan now, numbered and referred to in your notes."
+      ],
+      "correct": 3,
+      "why": "If it isn't in ServiceTitan, it didn't happen. Photos left on your camera roll or texted to the office get lost and can't go into reports, so save them to the job as you go and refer to them by number."
+    },
+    {
+      "module": "f4",
+      "q": "Your first install in Blacktown is running over, and you're going to miss the arrival window for your next customer in Glenwood, who has taken the morning off work. What do you do?",
+      "options": [
+        "Call the customer yourself before the window passes, and let dispatch know.",
+        "Push on and apologise when you arrive, since the work here has to be finished.",
+        "Send dispatch a text and leave it to them to sort out with the customer.",
+        "Wait until this job is finished, then call the customer when you're on the way."
+      ],
+      "correct": 0,
+      "why": "If you're running late, call the customer before their arrival window passes and let dispatch know so they can adjust the day. A call turns a complaint into a courtesy."
+    },
+    {
+      "module": "f4",
+      "q": "Halfway through a hot water install in Cherrybrook, the owner says, \"Your company didn't turn up last time, and now this is taking ages. I want money off.\" What's the best response?",
+      "options": [
+        "Explain that dispatch double-booked last time, so that part wasn't your fault.",
+        "Offer to take a bit off the balance so they finish the day feeling happier.",
+        "Listen calmly, promise no discount, and call the Install Manager to log it.",
+        "Tell them to ring the office about it once you've finished and left site."
+      ],
+      "correct": 2,
+      "why": "Stay calm and listen, never blame dispatch or another tech, and never promise a refund or discount. Call the Install Manager (Charlotte, interim) or the office while you're on site, and log it so Customer Service takes over."
+    },
+    {
+      "module": "f5",
+      "q": "Under a house in Ashfield you find old pipework that looks badly done and is heavily corroded. Which note belongs on the job, knowing it may end up in a customer report?",
+      "options": [
+        "\"Illegal pipework put in by the last plumber. Needs replacing straight away.\"",
+        "\"Photo 6: pipework under the house shows age and corrosion, worth a licensed assessment.\"",
+        "\"Non-compliant and dangerous work found under the house. Customer has been told about it.\"",
+        "\"Old pipes under the house, not looking great. Might need doing at some stage.\""
+      ],
+      "correct": 1,
+      "why": "Notes become customer reports, so record observations, not legal opinions. Never write 'illegal', 'non-compliant' or 'dangerous', and be specific by referring to the numbered photo."
+    },
+    {
+      "module": "f5",
+      "q": "You're installing a new mixer at a rental in Auburn. Out the back, sewage is overflowing from a gully in the yard. It isn't part of your job and you can't fix it today. What do you do?",
+      "options": [
+        "Tag it for follow-up so the office can call the agent about it when they next have time.",
+        "Add a note about it at the bottom of the invoice for the agent to read.",
+        "Leave it, because it's outside the work order and not your job to raise.",
+        "Tell the tenant, photograph it and flag it 'Needs attention now' in ServiceTitan."
+      ],
+      "correct": 3,
+      "why": "A real risk of damage or harm that can't be fixed on this visit gets the 'Needs attention now' flag, so the office calls the same day. Tags are for things that can wait, and a note on the invoice means nobody acts in time."
+    },
+    {
+      "module": "f6",
+      "q": "You finish a hot water install in Kogarah. When you mention the balance, the customer says, \"I already paid for this.\" What's the right next step?",
+      "options": [
+        "Check in ServiceTitan what's been paid, then state the balance clearly.",
+        "Take their word for it and close the job, so you don't upset them.",
+        "Insist on the full price today, and let the office refund any overpayment.",
+        "Tell them the office will sort it out, and head off to the next job."
+      ],
+      "correct": 0,
+      "why": "Check, never assume. Often the customer paid the deposit and thinks that covered everything, so open the job, see what's actually been paid and collect the balance."
+    },
+    {
+      "module": "f6",
+      "q": "It's ten to five in Hornsby and you want to beat the traffic. The customer taps their card for the balance and the payment fails. What do you do?",
+      "options": [
+        "Head off and let the office chase the payment with the customer tomorrow.",
+        "Stay calm, try another method, and call the office if it still won't go through.",
+        "Set the job to complete in ServiceTitan and add a note that the card payment failed.",
+        "Tell the customer to pay the invoice online whenever it suits them this week."
+      ],
+      "correct": 1,
+      "why": "A failed payment is the same as no payment. Try another method, confirm it shows as paid against the job, and if it can't be sorted, call the office before you leave."
+    },
+    {
+      "module": "f7",
+      "q": "You're installing a planned job that a Service Tech sold. When you unbox the new vanity, it has arrived cracked. Who do you call?",
+      "options": [
+        "Only the Service Tech, because they sold the job and so they own all of it.",
+        "The Sales Manager, because the customer may want a different price.",
+        "Customer Service, so they can ring the customer and let them know about the delay.",
+        "The Install Manager (Charlotte, interim), and let the Service Tech know too."
+      ],
+      "correct": 3,
+      "why": "Problems with parts, scope, access or the customer go to the Install Manager straight away. The Service Tech captains the planned jobs they sell, so keep them in the loop as well."
+    },
+    {
+      "module": "f7",
+      "q": "You're sent to a Lane Cove home where a mixer another installer fitted last month is now dripping. The customer is annoyed. What's the right approach?",
+      "options": [
+        "Explain that the other installer rushed it, so they know it wasn't you.",
+        "Fix it, but charge for your time because it wasn't your workmanship.",
+        "Apologise, fix it properly, and note the cause on the linked return job.",
+        "Fix it quietly and keep it off the record so your colleague isn't marked down."
+      ],
+      "correct": 2,
+      "why": "Warranty returns are handled graciously and linked to the original job. Never blame another tech, and note what you found so the business can learn from it."
+    },
+    {
+      "module": "i1",
+      "q": "Every time you fit a particular wall-hung toilet, it takes well over the estimated time, even when you've prepared properly. What should you do?",
+      "options": [
+        "Record honest times and tell the Install Manager so the estimate can be fixed.",
+        "Round your timesheet to the estimate so the job doesn't look like it ran over.",
+        "Rush that part of the job so it fits inside the time it was estimated for.",
+        "Say nothing, because overs on that job will even out against unders elsewhere."
+      ],
+      "correct": 0,
+      "why": "If a task keeps taking much longer than its estimate, tell the Install Manager so the pricebook can be fixed. Honest, real-time hours keep the efficiency model fair and get the estimate right for the next job."
+    },
+    {
+      "module": "i1",
+      "q": "You've been finishing installs right on the estimate for weeks and want to start beating it. Which change widens the gap between estimated and actual hours the right way?",
+      "options": [
+        "Skip the final leak check on small jobs that obviously look fine.",
+        "Confirm parts and access the day before, and work in a clean sequence.",
+        "Leave the final clean-up to the customer on jobs that are running behind the estimate.",
+        "Drop the walk-through on small jobs and just tell them it's all done."
+      ],
+      "correct": 1,
+      "why": "Real speed comes from preparation, sequence and skill. Skipping steps like the leak test, clean-up or walk-through is fake speed, and a warranty return wipes out any time it saved."
+    },
+    {
+      "module": "i2",
+      "q": "At 3pm you open tomorrow's handover for a vanity replacement in Rouse Hill. It doesn't say which mixer is going in, or whether the old one is being reused. What do you do?",
+      "options": [
+        "Ask the customer when you arrive in the morning and go from there.",
+        "Load a couple of different mixers from the supplier so you're covered whichever it is.",
+        "Work it out on site once you've seen the old vanity and the plumbing.",
+        "Call the Install Manager this afternoon, while there's time to sort it."
+      ],
+      "correct": 3,
+      "why": "Confirm the scope and parts the day before so nothing holds the job up. If anything is missing or unclear, raise it with the Install Manager (Charlotte, interim) while there's still time to fix it, not at 7am in the driveway."
+    },
+    {
+      "module": "i2",
+      "q": "You arrive for a bathroom fit-off in Bella Vista. The owner says, \"And you're moving the basin over to the other wall too, right?\" That isn't in the signed scope. What do you do before you start?",
+      "options": [
+        "Start the work that's included and sort out the basin question at the end.",
+        "Move the basin anyway, as it's quicker than arguing about the paperwork.",
+        "Go through the signed scope, then call the Install Manager before starting.",
+        "Tell them whoever sold the job must have got it wrong, and carry on as planned."
+      ],
+      "correct": 2,
+      "why": "Walking the customer through the approved scope before you start is how you catch surprises early. If they expected something that isn't in it, call the Install Manager (Charlotte, interim) before starting. Don't improvise, and never blame the seller."
+    },
+    {
+      "module": "i3",
+      "q": "Day one of a two-day bathroom job in Epping is done, and overnight you might be moved to another job. Which end-of-day brief is best?",
+      "options": [
+        "\"Done: vanity out, rough-in pressure tested (photos 1 to 9). Outstanding: fit-off after tiling. Issues: new mixer finish, raised with Install Manager.\"",
+        "\"Good progress today and most of the rough-in is done. Back tomorrow to finish everything off, test it all and tidy up the bathroom properly.\"",
+        "\"Done: vanity out and rough-in. Outstanding: the rest of the job. Issues: will explain to whoever takes over in the morning.\"",
+        "\"Rough-in mostly complete and looking good. Customer had a question about the mixer finish, so I'll mention it to the office when I get a chance tomorrow.\""
+      ],
+      "correct": 0,
+      "why": "The end-of-day brief means anyone can pick the job up tomorrow. It covers what's done, what's outstanding and any issues, short and specific with numbered photos. 'Mostly done' or 'I'll mention it' tells the next person nothing."
+    },
+    {
+      "module": "i3",
+      "q": "Halfway through a job in Seven Hills, you realise you need a fitting that isn't on the van, and a supplier run can't be avoided. What's the right way to handle it?",
+      "options": [
+        "Go quickly without saying anything, and you'll be back before anyone notices.",
+        "Go now, and add the fitting to the job's materials at the end of the week.",
+        "Pack up for the day and come back tomorrow with the right fitting on board.",
+        "Tell the customer and dispatch, note the pickup against the job, then go."
+      ],
+      "correct": 3,
+      "why": "A mid-job run sometimes happens. Tell the customer, tell dispatch and note the pickup against the job, because parts not recorded against a job are unbilled materials. Then work out what you'd have checked the day before to avoid it."
+    },
+    {
+      "module": "i4",
+      "q": "You need to cut into a bathroom wall in an older Strathfield home to run new pipe. The water is off and the customer is keen for you to get going. What comes before the cut?",
+      "options": [
+        "Ask the customer where the wiring runs, and cut wherever they say is clear.",
+        "Find out what's behind the wall first, and treat every cable as live.",
+        "Cut quickly while the water's off, and deal with anything you hit after.",
+        "Cut a small test hole first, then work out what's behind it from there."
+      ],
+      "correct": 1,
+      "why": "Wall cavities can hide live cables, gas and water pipes, and old building materials you can't see until you cut. Before you cut or drill, find out what's behind the wall and treat every cable as live."
+    },
+    {
+      "module": "i4",
+      "q": "You finish a gas hot water install in Frenchs Forest at 5pm on a Friday. The compliance paperwork still needs doing. When do you do it?",
+      "options": [
+        "Monday morning, once you've had the weekend to get on top of things.",
+        "Never: leave it for the office, since paperwork is admin, not your job.",
+        "Now, on site, while the details and test results are in front of you.",
+        "At home on the next quiet evening, when you can sit down and focus."
+      ],
+      "correct": 2,
+      "why": "Certificates lodged on time are part of finishing the job, not admin for later. Do the paperwork on site while the details are fresh, and attach a copy to the job in ServiceTitan."
+    },
+    {
+      "module": "i5",
+      "q": "You arrive at a Glenhaven home to install the gas storage hot water unit that was sold. The unit on your van is a natural gas model, but the house runs on LPG bottles. What do you do?",
+      "options": [
+        "Don't connect it, and call the Install Manager before you start any work.",
+        "Connect it anyway, since the burner will adjust itself to either gas.",
+        "Install it today, and ask the office to send out a conversion kit for it next week.",
+        "Swap in an electric unit from stock so the family has hot water today."
+      ],
+      "correct": 0,
+      "why": "Natural gas and LPG units aren't interchangeable, so the unit has to match the gas on site. Install exactly what was sold, and if the site doesn't suit the unit, call the Install Manager (Charlotte, interim) before you start."
+    },
+    {
+      "module": "i5",
+      "q": "On a like-for-like hot water swap in Northmead, you find the old unit's PTR valve has no drain line and someone has fitted a cap over it. What do you do?",
+      "options": [
+        "Fit the new unit the same way, since the job was sold as like-for-like.",
+        "Cap the new PTR valve as well, so it can't drip onto the customer's path.",
+        "Quietly add a drain line at no charge and don't mention it to anyone.",
+        "Photograph it and raise it with the Install Manager before you start."
+      ],
+      "correct": 3,
+      "why": "A PTR valve must never be capped, blocked or left without a drain line. Where the scope is missing something the install needs to be compliant, photograph it and call the Install Manager before you start, rather than copying the old setup or doing unapproved work."
+    },
+    {
+      "module": "i5",
+      "q": "The new hot water unit at a Quakers Hill home is in, commissioned and running hot, and you're running late for your next job. What's still left to do on this one?",
+      "options": [
+        "Nothing more. Once the water's hot and tested, the install is finished.",
+        "Record the make, model, serial and install date in the equipment records.",
+        "Write the serial number on the invoice and let the office add it later.",
+        "Leave the unit's paperwork on the bench so the customer can record it."
+      ],
+      "correct": 1,
+      "why": "The job isn't finished when the water's hot. Record the new unit in ServiceTitan equipment records with its serial and install date, and photograph the data plate, so warranty claims are quick and the next tech knows what's installed."
+    },
+    {
+      "module": "i6",
+      "q": "At fit-off in a Gymea bathroom, you notice a tear in the new waterproofing membrane beside the shower waste. The tiler says, \"Just fit off over it, it'll be fine.\" What do you do?",
+      "options": [
+        "Patch the membrane yourself with sealant so the job can keep moving.",
+        "Fit off as normal, since the waterproofing isn't your trade or your fault.",
+        "Photograph it, stop that part of the work and call the Install Manager.",
+        "Fit off, then tell the customer to ring their waterproofer if it leaks."
+      ],
+      "correct": 2,
+      "why": "On renovations, know which trade owns what, and don't fix another trade's work yourself. If you fit off over damaged waterproofing it becomes your leak, so photograph it, stop and call the Install Manager (Charlotte, interim)."
+    },
+    {
+      "module": "i6",
+      "q": "You've just carried a new toilet suite into a Kings Langley bathroom. In the standard fixture-swap sequence, what comes first, before anything else happens?",
+      "options": [
+        "Check the new suite against the old one: connections, sizes, mounting and model.",
+        "Take the old suite out first, so you can see exactly what connections you're working with.",
+        "Fit new flexi hoses straight away, as they'll be needed whatever happens.",
+        "Unbox the new suite fully and lay all the parts out on the bathroom floor."
+      ],
+      "correct": 0,
+      "why": "The standard sequence starts by checking the new fixture against the old one before anything comes off. Finding a mismatch after the old suite is out leaves the customer without a toilet and turns a simple swap into a problem."
+    },
+    {
+      "module": "i7",
+      "q": "You've just fitted a new vanity and mixer in a Kirrawee home. Everything looks dry after a quick run of the tap, and the customer is waiting for the walk-through. What do you do?",
+      "options": [
+        "Start the walk-through now and check under the basin while you show them.",
+        "Pack up, since it looks dry and the customer has been waiting a while.",
+        "Ask the customer to keep an eye under the basin tonight and call us if they see water.",
+        "Run it hot and cold at full flow, then recheck every joint before the walk-through."
+      ],
+      "correct": 3,
+      "why": "Nothing leaves site untested, and 'it looks fine' is not a test. Run every outlet hot and cold, check the joints again after the water's been running, and do it before the walk-through so you find the drip, not the customer."
+    },
+    {
+      "module": "i7",
+      "q": "You finish a hot water install in Padstow. It passes the leak test, but the new pipework is crooked, one run isn't supported and there's sealant smeared down the wall. Is the job finished?",
+      "options": [
+        "Yes. It passed the leak test, so it meets the standard.",
+        "No. Straighten, support and clean up the pipework before you leave.",
+        "Yes. The customer won't look closely at pipework behind the unit.",
+        "Only if the customer doesn't comment on it during the walk-through."
+      ],
+      "correct": 1,
+      "why": "The workmanship standard is more than passing a test: pipework straight and supported, and no smeared sealant or loose ends. Would you be happy for the next plumber to open the cupboard and see your name on it?"
+    },
+    {
+      "module": "i8",
+      "q": "On a re-pipe in Concord, you find rotten pipe that isn't in the scope. You've photographed it, explained it and priced it from the pricebook, and the owner says, \"Yep, go ahead.\" What happens next?",
+      "options": [
+        "Start the extra work now and add it to the invoice when you finish.",
+        "Text the office tonight with the price so they can update the job.",
+        "Add it to the job in ServiceTitan and get it signed before you continue.",
+        "Start the work now, and have the owner sign for the change during the walk-through."
+      ],
+      "correct": 2,
+      "why": "A verbal 'go ahead' isn't approval. Add the change at its pricebook price in ServiceTitan and get the customer's signature before you pick the tools back up, then let the Install Manager know."
+    },
+    {
+      "module": "i8",
+      "q": "During a hot water install in Mortdale, you find a corroded section of pipe that isn't in the scope. You show the owner and give a pricebook price, but they decide not to go ahead. What do you do?",
+      "options": [
+        "Note it with your photos, and call the Install Manager about finishing.",
+        "Replace it anyway at no charge, since it's likely to fail before long.",
+        "Stop the whole job until the owner agrees to have it replaced.",
+        "Offer a lower price on the spot so the owner changes their mind."
+      ],
+      "correct": 0,
+      "why": "If the customer says no, record it in the notes with your photos and call the Install Manager about finishing the approved work. You can't do it for free or discount it: only Harriet or Sadie can change a price."
+    },
+    {
+      "module": "i9",
+      "q": "Replacing a toilet suite in a Bexley home, you notice rusty flexi hoses under the basin and a hot water unit outside that's over 10 years old. Nobody asked you to look. What's the best way to handle it?",
+      "options": [
+        "Mention it at the front door as you leave, so it doesn't slow the job down.",
+        "Tell the office about it when you get back, and they can call the customer.",
+        "Tell the customer the hoses could burst any day, so they act on it today.",
+        "Photograph it, show them in the walk-through, and raise it in ServiceTitan."
+      ],
+      "correct": 3,
+      "why": "Look for genuine extra work on every job: photograph it, explain it at the right moment (often the walk-through, never as a rushed mention at the door), and raise it in ServiceTitan with photos. Never inflate a finding."
+    },
+    {
+      "module": "i9",
+      "q": "It's morning tea on day two of a two-day bathroom job in Caringbah, and you can already see it won't finish in the booked time. What do you do?",
+      "options": [
+        "Push hard this afternoon and rush the fit-off so it's done by tonight.",
+        "Call the Install Manager now, rethink the plan and update the customer.",
+        "Say nothing today, and come back tomorrow to finish without any fuss.",
+        "Skip the final testing so the job can still finish in the booked time."
+      ],
+      "correct": 1,
+      "why": "Flag it the moment you know the job won't finish in the booked time, not on the last afternoon. Rushing or skipping steps is speed without quality, and the customer should hear about a changed finish early."
+    },
+    {
+      "module": "i10",
+      "q": "You've re-piped the shower wall in a Kingsgrove bathroom. At the walk-through, the owner says, \"It all looks exactly the same as before. What did I pay for?\" What's the best response?",
+      "options": [
+        "Reassure them it's all been done properly and that they can trust you.",
+        "Tell them the details are on the invoice and they can read it later.",
+        "Show the before-and-after photos of the old and new pipe in the wall.",
+        "Offer to open up a small section of the wall so they can take a look."
+      ],
+      "correct": 2,
+      "why": "Customers rarely see what was behind the wall. The before-and-after photos are what make the finished work mean something, so show them during the walk-through."
+    },
+    {
+      "module": "i10",
+      "q": "At the end of a tapware install in Carlingford, the customer is upset about a scuff you left on the vanity door. You'd normally ask for a Google review now. What do you do?",
+      "options": [
+        "Hold off on the review and call the Install Manager about the scuff first.",
+        "Ask anyway, since most customers still leave a good review in the end.",
+        "Offer to take a little off the balance if they leave a review today.",
+        "Offer to write the review for them so it takes them no effort at all."
+      ],
+      "correct": 0,
+      "why": "Only ask genuinely happy customers. If something isn't right, fix it or call the Install Manager first, because a review request on an unhappy job invites a bad review. Never offer anything for a review or write it for them."
+    },
+    {
+      "module": "i11",
+      "q": "A customer changed their mixer choice before the install, so the mixer originally ordered for their job has been riding in your van for a week. What do you do with it?",
+      "options": [
+        "Keep it on board, as it'll come in handy on another job sooner or later.",
+        "Use it on the next job that needs a mixer and sort the paperwork out later.",
+        "Leave it in the van until the next van audit, and return it then.",
+        "Return it through the parts return process and note it against the job."
+      ],
+      "correct": 3,
+      "why": "Unused parts go back, because parts left in vans are lost profit. A special ordered for one job is the least likely to be used anywhere else, so return it and note it against the job so the materials are right."
+    },
+    {
+      "module": "i11",
+      "q": "At the start of a job in Marsden Park, you notice the lead on your drill has a nick right through the outer insulation. What do you do?",
+      "options": [
+        "Wrap it in electrical tape and keep using it until the end of the week.",
+        "Stop using it and report it straight away to the Install Manager.",
+        "Quietly buy a replacement yourself so the job isn't held up.",
+        "Use it carefully today, then put it back and mention it later on."
+      ],
+      "correct": 1,
+      "why": "A damaged tool is a safety risk and a delay waiting to happen. Report it straight away so it's fixed or replaced properly, and don't keep using it, hide it or quietly buy a replacement yourself."
+    },
+    {
+      "module": "i12",
+      "q": "At 1pm on a tapware job in Eastwood booked to finish at 2pm, you can see it will run until at least 3:30. Your next customer is expecting you mid-afternoon. What do you do?",
+      "options": [
+        "Text dispatch once you've finished, so they know you're on your way.",
+        "Wait and see how it goes, since you might still catch up on time.",
+        "Call dispatch now with how long you'll be, so the next job can be moved.",
+        "Skip the walk-through and payment here so you can still leave on time."
+      ],
+      "correct": 2,
+      "why": "Call immediately if a job will overrun. Flagged early it's a small change to the day; flagged late it's a scramble that moves other customers' jobs. An urgent problem shouldn't be buried in a text."
+    },
+    {
+      "module": "i12",
+      "q": "You're called back to a Meadowbank laundry where you installed a new tub last month. There's water on the floor, but it looks like it's coming from a different pipe you never touched. What do you do?",
+      "options": [
+        "Don't argue it: photograph it, note it and let the Install Manager decide.",
+        "Tell the customer it's not our work, so it isn't covered, and head off.",
+        "Fix the other pipe for free and say nothing, so the customer stays happy.",
+        "Blame the tub's fittings and suggest they claim from the manufacturer."
+      ],
+      "correct": 0,
+      "why": "Not sure it's our work? Don't argue it on the doorstep. Photograph it, note it and let the Install Manager (Charlotte, interim) decide, and stay gracious with the customer."
+    }
+  ]
+}
