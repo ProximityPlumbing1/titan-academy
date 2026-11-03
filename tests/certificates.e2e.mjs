@@ -81,7 +81,7 @@ async function main() {
     if (!qq) throw new Error(`question not in pool: ${qText}`);
     if (i === 0) await shot(p, 'final-question');
     await p.getByRole('button', { name: qq.options[qq.correct], exact: false }).first().click();
-    await p.getByRole('button', { name: i < total - 1 ? 'Next' : 'Finish and mark' }).click();
+    await p.getByRole('button', { name: i < total - 1 ? 'Next' : 'Finish and mark', exact: true }).click();
   }
   await p.getByText('You passed the final').waitFor();
   assert(await p.getByText('100%').isVisible(), 'scored 100% with the right answers');

@@ -90,7 +90,7 @@
       "module": "f4",
       "q": "Halfway through replacing a shower mixer in Maroubra, you find the pipe behind it is badly corroded. What do you do?",
       "options": [
-        "Replace the pipe while the wall is open and add it to the invoice",
+        "Replace the pipe while the wall is open, then add it to the final invoice",
         "Replace the pipe at no charge so the customer isn't upset by it",
         "Stop, photograph it, show the owner her options and get signed approval",
         "Finish the mixer and mention the pipe on your way out the door"
@@ -128,7 +128,7 @@
       "options": [
         "Leave and let the office sort the payment out tomorrow morning",
         "Close the job as complete and tell the customer you'll text a link",
-        "Stay calm, try another method, and call the office if it still fails",
+        "Stay calm, try another method, and ring the office if it fails",
         "Offer a small discount if they can pay you in cash right now"
       ],
       "correct": 2,
@@ -138,7 +138,7 @@
       "module": "f6",
       "q": "You finish a planned job and state the balance. The customer says, \"I already paid.\" What do you do?",
       "options": [
-        "Take their word for it and close the job off as paid in full",
+        "Take their word for it and close the job in ServiceTitan as paid in full",
         "Check the job in ServiceTitan, then state the balance and collect it",
         "Tell them they're mistaken and ask for the full price again",
         "Leave it unpaid and ask Chloe to sort it out with them next week"
@@ -164,7 +164,7 @@
       "options": [
         "Agree a lower balance yourself, since you were the one who sold it",
         "Ask the installer to waive part of the balance to keep them happy",
-        "Tell Charlotte straight away, as she owns payment and their happiness",
+        "Tell Charlotte straight away, since she owns payment and happiness",
         "Tell them to raise it with Chloe when she makes her happy call"
       ],
       "correct": 2,
@@ -234,7 +234,7 @@
       "module": "e3",
       "q": "Halfway through a job in Engadine, the old isolation valve won't turn off. You have a new one in the van. What do you do?",
       "options": [
-        "Fit the new valve quietly, since it's a small part and helps them",
+        "Fit the new valve quietly, since it's a small part and it helps them out",
         "Stop, show them, price it from the pricebook and get signed approval",
         "Fit it and add it to the invoice, since they'll clearly want it",
         "Fit it and record it as goodwill so it doesn't upset the price"
@@ -248,7 +248,7 @@
       "options": [
         "Offer a deal if she's happy to sign before you leave today",
         "Ask whether her worry is the overall cost or whether it's worth it",
-        "Say you'll ask the office to sharpen the price and call her back",
+        "Say you'll ask the office to sharpen the price and call her back tonight",
         "Leave the quote with her and wait for her to ring when she's ready"
       ],
       "correct": 1,
@@ -306,7 +306,7 @@
       "module": "s1",
       "q": "You arrive at a Hornsby home to fix a dripping tap. Before you start, what's the best thing to tell the customer?",
       "options": [
-        "\"I'll work it out as I go and let you know what it all costs at the end.\"",
+        "\"I'll work it out as I go, and let you know what it all comes to once I'm done.\"",
         "\"I'll fix the tap, check the rest, then show you options before any extra work.\"",
         "\"I'll just get stuck in and fix whatever else I happen to find while I'm here.\"",
         "\"Tap jobs are quick, so I'll be in and out of here in ten minutes or so.\""
@@ -402,7 +402,7 @@
       "module": "s5",
       "q": "In Baulkham Hills, the hot water relief valve keeps running onto the path, and the customer asks you to cap it. What do you do?",
       "options": [
-        "Explain it's a safety device, then test the mains pressure for the cause",
+        "Explain it's a safety device, then test the mains pressure",
         "Cap it as asked, since a little water on the path isn't worth the fuss",
         "Replace the relief valve and tell them that has fixed it for good",
         "Plug the drain line so the water stops running across the path"
@@ -486,7 +486,7 @@
       "module": "s9",
       "q": "At 9pm in Kogarah, water is pouring through a kitchen ceiling and the customer's first question is what it will cost. What do you do?",
       "options": [
-        "Explain the after-hours pricing in full before you touch anything",
+        "Explain the after-hours pricing in full before you touch a single thing",
         "Say \"Let me stop the water first\" and go straight to the stop tap",
         "Photograph all the damage first so it's ready for the insurer",
         "Ask them to sign an estimate before you turn anything off"
@@ -510,7 +510,7 @@
       "module": "s10",
       "q": "The hot water has failed at a rental in Merrylands, and the fix costs more than the property manager's approval limit. The tenant says, \"Just fix it. The agent won't mind.\" What do you do?",
       "options": [
-        "Make safe, send the PM photos and options, and get written approval",
+        "Make safe, send the PM photos and options, and get it in writing",
         "Do the full repair, since the tenant's OK covers it on a rental",
         "Fit a cheaper fix that fits under the limit, even if it won't last",
         "Ask the tenant to pay whatever the fix costs above the limit"
@@ -525,7 +525,7 @@
         "Tell them strata will pay, since the water is coming from above",
         "Tell them the owner upstairs is responsible and has to fix it",
         "Record exactly where it's coming through, with photos, and not guess",
-        "Go up and check the unit above, even without access arranged"
+        "Go up and check the unit above yourself, even without access arranged"
       ],
       "correct": 2,
       "why": "Always record the facts about lot vs common property, but who approves and pays isn't your call on site. Never enter another lot without permission and arranged access."
