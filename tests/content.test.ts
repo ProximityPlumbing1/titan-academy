@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { splitMarkers } from '../shared/types';
 import { answerFor, classDeck, getModule, program, modulesForRole, moduleSlides, needsAnswers, parseLessonMarkdown, quizFor } from '../server/content';
 import { canReview, dueDates, routeFor, sessionDate, weekOf } from '../server/program';
+import { certificateTitle, drawFinal, poolFor } from '../server/certificates';
 
 describe('content', () => {
   it('gives each trade the right paths', () => {
@@ -141,5 +142,39 @@ describe('program and sign-offs', () => {
     for (const role of ['install', 'service', 'salestech'])
       for (const id of modulesForRole(role))
         if ((getModule(id)!.module.signoff ?? []).length) expect(routeFor(id).length, `${id} has no route`).toBeGreaterThan(0);
+  });
+});
+
+describe('final assessment and certificates', () => {
+  it('has a pool for every role, each question well formed', () => {
+    for (const role of ['install', 'service', 'salestech']) {
+      const pool = poolFor(role);
+      expect(pool.length, role).toBeGreaterThanOrEqual(30);
+      const mine = new Set(modulesForRole(role));
+      for (const q of pool) {
+        expect(mine.has(q.module), `${role} ${q.module}`).toBe(true);
+        expect(q.options).toHaveLength(4);
+        expect(q.correct).toBeGreaterThanOrEqual(0);
+        expect(q.correct).toBeLessThan(4);
+        expect(q.why.length).toBeGreaterThan(0);
+      }
+    }
+  });
+  it('draws 25 different questions spread across modules', () => {
+    let seed = 7;
+    const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    const draw = drawFinal('install', rand);
+    expect(draw).toHaveLength(25);
+    expect(new Set(draw.map((q) => q.q)).size).toBe(25);
+    const perModule = new Map<string, number>();
+    for (const q of draw) perModule.set(q.module, (perModule.get(q.module) ?? 0) + 1);
+    expect(perModule.size).toBeGreaterThanOrEqual(15);
+  });
+  it('titles certificates by role, with the supervised version for apprentices', () => {
+    expect(certificateTitle({ trade_role: 'install', is_apprentice: false })?.title).toBe('Proximity Certified Install Technician');
+    expect(certificateTitle({ trade_role: 'install', is_apprentice: true })?.title).toBe('Supervised Competency, Install');
+    expect(certificateTitle({ trade_role: 'service', is_apprentice: false })?.title).toBe('Proximity Certified Service Technician');
+    expect(certificateTitle({ trade_role: 'salestech', is_apprentice: false })?.title).toBe('Proximity Advanced Sales Certification');
+    expect(certificateTitle({ trade_role: null, is_apprentice: false })).toBeNull();
   });
 });
