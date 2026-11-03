@@ -46,11 +46,11 @@ interface TvProps {
 }
 
 export function TvSlide({ slide, state, code, joinUrl, presenter, slideNumber, slideCount }: TvProps) {
-  if (!slide) return <div className="theme-dark h-full w-full" />;
+  if (!slide) return <div className="h-full w-full bg-page" />;
   const reveal = state?.reveal;
   return (
-    <div className="theme-dark relative flex h-full w-full flex-col px-[120px] pb-[84px] pt-[90px] text-white"
-      style={{ background: 'radial-gradient(1400px 700px at 15% -10%, rgba(0,173,237,.16), transparent 60%), #1a2332' }}>
+    <div className="relative flex h-full w-full flex-col px-[120px] pb-[84px] pt-[90px] text-body"
+      style={{ background: 'radial-gradient(1400px 700px at 15% -10%, rgba(0,173,237,.14), transparent 60%), linear-gradient(180deg, #ffffff 0%, #fafbfc 60%, #ecf9fe 100%)' }}>
       <div className="min-h-0 flex-1">
         <SlideBody slide={slide} reveal={reveal} state={state} presenter={presenter} code={code} joinUrl={joinUrl} />
       </div>
@@ -59,7 +59,7 @@ export function TvSlide({ slide, state, code, joinUrl, presenter, slideNumber, s
         <div className="flex items-center gap-8">
           {slideNumber !== undefined && slideCount !== undefined && <span>{slideNumber} / {slideCount}</span>}
           {code && slide.kind !== 'welcome' && (
-            <span className="rounded-full border border-tone/15 px-6 py-2 text-white">
+            <span className="rounded-full bg-card px-6 py-2 text-title shadow-card">
               Join <b className="ml-2 tracking-[0.2em] text-gold">{code}</b>
             </span>
           )}
@@ -84,7 +84,7 @@ function SlideBody({ slide, reveal, state, presenter, code, joinUrl }:
             <Eyebrow>Titan Academy · Live class</Eyebrow>
             <h1 className="headline text-[104px] leading-[1.02]">{slide.title}</h1>
             <p className="mt-10 text-[46px] text-muted">Join on your phone:</p>
-            {joinUrl && <p className="mt-3 text-[38px] text-white">{joinUrl.replace(/^https?:\/\//, '').replace(/\/live\/\d+$/, '')} → Join</p>}
+            {joinUrl && <p className="mt-3 text-[38px] font-semibold text-link">{joinUrl.replace(/^https?:\/\//, '').replace(/\/live\/\d+$/, '')} → Join</p>}
           </div>
           {code && (
             <div className="flex flex-col items-center gap-8">
@@ -213,7 +213,7 @@ function QuestionBody({ slide, reveal, state, presenter }:
       <div className="grid flex-1 grid-cols-2 content-start gap-6">
         {slide.options.map((o, i) => {
           const isRight = correct === i;
-          const tone = correct === undefined ? 'border-tone/12 bg-tone/[0.04]' : isRight ? 'border-good bg-good/15' : 'border-tone/8 bg-tone/[0.02] opacity-60';
+          const tone = correct === undefined ? 'border-line bg-card shadow-card' : isRight ? 'border-good bg-good/15' : 'border-tone/8 bg-tone/[0.02] opacity-60';
           const count = reveal?.counts[i] ?? 0;
           return (
             <div key={i} className={`relative overflow-hidden rounded-3xl border-2 px-9 py-7 ${tone}`}>
@@ -221,7 +221,7 @@ function QuestionBody({ slide, reveal, state, presenter }:
                 <div className={`absolute inset-y-0 left-0 ${isRight ? 'bg-good/25' : 'bg-tone/8'}`} style={{ width: `${(count / max) * 100}%` }} />
               )}
               <div className="relative flex items-start gap-6">
-                <span className={`flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-2xl text-[34px] font-extrabold ${isRight ? 'bg-good text-navy' : 'bg-tone/10'}`}>{LETTERS[i]}</span>
+                <span className={`flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-2xl text-[34px] font-extrabold ${isRight ? 'bg-good text-white' : 'bg-tone/5 text-title'}`}>{LETTERS[i]}</span>
                 <span className="flex-1 pt-2 text-[36px] leading-snug">{o}</span>
                 {reveal && <span className="pt-2 text-[34px] font-bold text-muted">{count}</span>}
               </div>
@@ -230,7 +230,7 @@ function QuestionBody({ slide, reveal, state, presenter }:
         })}
       </div>
       {explanation && (reveal || presenter) && (
-        <div className={`mt-6 rounded-3xl px-9 py-6 text-[34px] leading-snug ${reveal ? 'bg-good/12 text-white' : 'border border-dashed border-gold/50 text-gold'}`}>
+        <div className={`mt-6 rounded-3xl px-9 py-6 text-[34px] leading-snug ${reveal ? 'bg-good/10 text-title' : 'border border-dashed border-gold/50 text-gold'}`}>
           {!reveal && presenter && <b className="mr-3">Presenter only:</b>}{explanation}
         </div>
       )}

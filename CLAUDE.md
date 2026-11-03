@@ -46,9 +46,9 @@ phones. It runs as an 8-week program and ends in a certificate.
   most industry figures in them are US data showing correlation, not guarantees.
 - **External trainers** (`docs/EXTERNAL_TRAINERS.md`): teach their *principles* in our own
   words and credit them. Never copy proprietary scripts, workbooks or paid material.
-- **TV slides** follow the visual style of the October decks: 16:9, dark navy, italic serif
-  headlines, Inter body, cyan eyebrow labels, gold accents, 'Say it like this' callouts, and
-  discussion-question slides.
+- **TV slides** are 16:9 in the website's light style (owner's decision, Nov 2026): white and
+  pale-cyan background, Inter extra-bold headlines, cyan eyebrow labels, gold accents, 'Say it
+  like this' callouts and discussion-question slides, as in the October decks.
 - Lesson content gets owner approval on one sample module per path before you write the rest.
 - **Use Australian English** in the UI and copy (colour, organise, centre).
 - **Secrets go in Railway variables only** (`SESSION_SECRET`, `DATABASE_URL`, Gmail and Google
@@ -58,8 +58,7 @@ phones. It runs as an 8-week program and ends in a certificate.
 - Visual identity matches William's website (proximityplumbing.com.au; owner's decision, Nov 2026):
   light pages, white cards with soft shadows, Proximity cyan `#00aded`, dark titles `#33353d`,
   Inter extra-bold headings with one Fraunces italic emphasised word, gold `#d4a94a` for
-  certificates and achievements, circular progress rings. The TV keeps a dark navy (`#1a2332`)
-  version via `.theme-dark`. Tokens live in `web/src/styles.css`.
+  certificates and achievements, circular progress rings. The TV uses the same light look. Tokens live in `web/src/styles.css`.
 
 ## Working style
 - Show a plan before each phase. Ask before a large architectural change.

@@ -90,8 +90,8 @@ export function TvPage() {
   const full = () => document.documentElement.requestFullscreen?.().catch(() => {});
   if (ended)
     return (
-      <Stage className="theme-dark h-screen w-screen">
-        <div className="flex h-full flex-col items-center justify-center text-center text-white">
+      <Stage className="h-screen w-screen bg-page">
+        <div className="flex h-full flex-col items-center justify-center text-center text-title">
           <div className="text-[30px] font-bold uppercase tracking-[0.2em] text-link">Class complete</div>
           <h1 className="headline mt-6 text-[130px]">Thanks, everyone</h1>
           <p className="mt-8 text-[44px] text-muted">{ended.attended} attended · progress saved</p>
@@ -100,15 +100,15 @@ export function TvPage() {
     );
   if (!init || !state)
     return (
-      <Stage className="theme-dark h-screen w-screen">
-        <div className="flex h-full flex-col items-center justify-center text-center text-white">
+      <Stage className="h-screen w-screen bg-page">
+        <div className="flex h-full flex-col items-center justify-center text-center text-title">
           <div className="scale-[2.4]"><Logo /></div>
           <p className="mt-32 text-[48px] text-muted">{error?.status === 404 ? `Waiting for class ${code} to start…` : 'Connecting…'}</p>
         </div>
       </Stage>
     );
   return (
-    <div className="theme-dark h-screen w-screen" onDoubleClick={full} title="Double-click for full screen">
+    <div className="h-screen w-screen bg-page" onDoubleClick={full} title="Double-click for full screen">
       <Stage className="h-full w-full">
         <TvSlide slide={init.deck[state.slide]} state={state} code={init.code} joinUrl={init.joinUrl} />
       </Stage>
@@ -222,7 +222,7 @@ function PresenterConsole({ code }: { code: string }) {
             </div>
             <div className="text-sm text-muted">Slide {state.slide + 1} of {init.deck.length} · keys: ← → space, R to reveal</div>
           </div>
-          <Stage className="theme-dark aspect-video w-full rounded-[20px] shadow-panel">
+          <Stage className="aspect-video w-full rounded-[20px] shadow-panel">
             <TvSlide slide={slide} state={state} code={init.code} joinUrl={init.joinUrl} presenter slideNumber={state.slide + 1} slideCount={init.deck.length} />
           </Stage>
           {controls}
@@ -293,7 +293,7 @@ function PresenterConsole({ code }: { code: string }) {
             <div className="text-3xl font-extrabold tracking-[0.12em] text-gold">{init.code}</div>
           </div>
         </Card>
-        <Stage className="theme-dark mt-3 aspect-video w-full rounded-[12px] shadow-panel">
+        <Stage className="mt-3 aspect-video w-full rounded-[12px] shadow-panel">
           <TvSlide slide={slide} state={state} code={init.code} joinUrl={init.joinUrl} presenter />
         </Stage>
         <p className="mt-2 text-sm text-muted">{slideSummary(slide)}</p>

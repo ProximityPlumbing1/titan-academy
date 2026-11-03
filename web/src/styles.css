@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* Colours and type follow proximityplumbing.com.au (brand file supplied by the owner, Nov 2026).
-   Names describe a role, not a colour, so the TV can swap in a dark navy version (.theme-dark). */
+   Names describe a role, not a colour, so they can be retuned in one place. */
 @theme {
   --color-page: #fafbfc;        /* page background */
   --color-card: #ffffff;        /* cards, panels, inputs */
@@ -36,29 +36,6 @@
   --shadow-glow: 0 12px 26px -12px rgba(41, 170, 225, 0.8);
 }
 
-/* The TV and anything else that should read as a dark navy section of the website. */
-.theme-dark {
-  --color-page: #1a2332;
-  --color-card: #222d40;
-  --color-soft: rgb(0 173 237 / 0.12);
-  --color-tint: rgb(0 173 237 / 0.25);
-  --color-line: rgb(255 255 255 / 0.1);
-  --color-tone: #ffffff;
-  --color-title: #ffffff;
-  --color-body: #e3e8ee;
-  --color-muted: #aab4c1;
-  --color-faint: #7f8a9a;
-  --color-link: #00aded;
-  --color-gold: #d4a94a;
-  --color-good: #3fc37a;
-  --color-bad: #f0604b;
-  --color-amber: #f0b04d;
-  --shadow-card: inset 0 0 0 1px rgb(255 255 255 / 0.09);
-  --shadow-panel: inset 0 0 0 1px rgb(255 255 255 / 0.09);
-  color: var(--color-body);
-  background-color: var(--color-page);
-}
-
 html,
 body,
 #root {
@@ -80,14 +57,6 @@ body {
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--color-title);
-}
-
-/* The TV keeps the October decks' italic serif headlines, in the website's navy, cyan and gold. */
-.theme-dark .headline {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: -0.01em;
 }
 
 /* The one emphasised word, as on the website: "Sydney's <em>Highest-Rated</em> Plumber". */

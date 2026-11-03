@@ -557,7 +557,7 @@ export function PreviewPage() {
           <input type="checkbox" className="accent-brand" checked={answers} onChange={(e) => setAnswers(e.target.checked)} /> Show answers and full notes
         </label>
       </PageHead>
-      <Stage className="theme-dark aspect-video w-full max-w-6xl rounded-[20px] shadow-panel">
+      <Stage className="aspect-video w-full max-w-6xl rounded-[20px] shadow-panel">
         <TvSlide slide={data.deck[i]} presenter={answers} slideNumber={i + 1} slideCount={data.deck.length} />
       </Stage>
       <div className="mt-4 flex max-w-6xl items-center gap-3">
